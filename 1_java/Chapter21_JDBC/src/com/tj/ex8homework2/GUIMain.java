@@ -1,6 +1,8 @@
 package com.tj.ex8homework2;
 
 import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -40,6 +42,13 @@ public class GUIMain extends JFrame implements ActionListener {
 	
 	// ArrayList<Student> student;
 	public GUIMain() {
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		containPane = getContentPane();
+		containPane.setLayout(new FlowLayout());
+		
+		jpup = new JPanel(new GridLayout(rows, cols))
 		
 	}
 	
