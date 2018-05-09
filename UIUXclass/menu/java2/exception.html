@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/fixedmenu.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header id="top">
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                Exception
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>                        
+
+                    <span class="bold_color_red">예외(Exception) 처리</span>
+
+                    오늘 알아보게 될 예외처리는 처음 개발을 접하는 사람은 예외처리에 대해 많은 필요성을 느끼지 못 할 수 있으나 
+                    프로그램을 어느 정도 한 경우에는 하면 할수록 프로그램에서 예외처리가 얼마나 중요한지를 느낄 수 있다. 
+                    예외처리를 완벽하게 한 프로그램이어야지 프로그램이 끝나다고 할 수 있다. 처음 프로그램을 개발하는 입장에서는 
+                    예외처리를 정확히 하는 것은 불가능하므로 개발을 진행하면서 지속적으로 소스를 관찰하면서 어느 부분에 예외처리가 필요한지, 
+                    테스트 단계에서 예외처리가 필요한지를 확장해 간다.
+
+                    <span class="bold_color_blue">- 예외란</span>
+                    <span class="bold_color_blue">- 예외처리의 필요성</span>
+                    <span class="bold_color_blue">- 예외처리의 문법</span>
+                    <span class="bold_color_blue">- 일반적으로 많이 보게 되는 예외들</span>
+
+                    <h3>예외란?</h3>
+
+                    세상에 완벽한 프로그램은 없는 거 같습니다. 
+                    아무리 간단하고, 문제 없을 거 같은 프로그램도 외부환경요인 등에 의해서 문제가 발생하곤 합니다.
+                    프로그램에서 문제가 발생될 만한 곳을 예상하여 사전에 
+                    "문제가 발생하면 이렇게 해라"라고 프로그래밍 하는 것을 예외 처리라고 합니다.
+                            
+                    </pre>
+                    <table>
+                        <tr>
+                            <td rowspan="4">에러</td>
+                            <td>문법 에러</td>
+                            <td>문법적으로 나타나는 에러 (syntex)</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">실행에러 (실행 시 에러)</td>
+                            <td>논리에러 : 프로그레머가 잘못 작성해서 이상한 결과가 나오는 경우</td>
+                        </tr>
+                        <tr>
+                            <td>시스템에러 : 프로그레머의 의지와 상관없이 나타나는 에러</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                예외사항 : 정상적으로 프로그램이 동작하는 과정에서 나타나는 에러<br>
+                                프로그램 실행 중에 발생하는 예기치 않는 사건 <br>
+                                ex. 정수를 0으로 나누는 경우, 배열 인덱스 벗어난 경우,<br>
+                                부적절한 형변환이 일어나는 경우<br>
+                                입출력을 위한 파일이 없는 경우
+                           </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="a">
+                    <h3 class="headline3">예외처리의 필요성</h3>
+                    <pre>
+
+                        프로그래머는 예외 처리를 왜 해야 될까요? 
+                        이유는 간단합니다. 몇 달 동안 심혈을 기울여 만들어 놓은 프로젝트가 단순한 어떤 이유로 
+                        작동을 하지 않다면(프로그램의 프로세스가 완전 죽은 겁니다. 다시 재가동을 시키지 않으면 움직이지 않는 상태가 된 겁니다) 
+                        얼마나 속상할까요? 예외의 필요성은 어느 한 부분에서 예외가 발생하더라도 
+                        계속해서 프로그램이 동작되도록 하는데 목적이 있습니다. 
+                        어떤 문제가 하나 발생되었다고 그 프로세스가 완전히 정지되어 
+                        시스템을 재가동하기 전까지는 구동을 아예 못한다고 한다면 
+                        너무 많은 손실이 클 것입니다. 그래서 사소한 문제 같은 경우에는 그 문제를 우회해서 가는 방법으로 
+                        프로세스가 죽지 않고 계속 구동하도록 프로그래밍하는 방법이 필요합니다.
+               
+                    </pre>
+                </div>
+                <div id="string">
+                        <pre style="background:#000;color:#f8f8f8">
+                            
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> main(<span style="color:#99cf50">String</span>[] args) {
+                            <span style="color:#99cf50">Scanner</span> scanner <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"원하는 첫번째 정수 i는 ? "</span>);
+                            <span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> scanner<span style="color:#e28964">.</span>nextInt();
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"원하는 두번째 정수 j는 ? "</span>);
+                            <span style="color:#99cf50">int</span> j <span style="color:#e28964">=</span> scanner<span style="color:#e28964">.</span>nextInt();
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i="</span><span style="color:#e28964">+</span>i<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>j="</span><span style="color:#e28964">+</span>j);
+                            
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i*j = "</span><span style="color:#e28964">+</span> (i<span style="color:#e28964">*</span>j));
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i/j = "</span><span style="color:#e28964">+</span> (i<span style="color:#e28964">/</span>j));
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i+j = "</span><span style="color:#e28964">+</span> (i<span style="color:#e28964">+</span>j));
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i-j = "</span><span style="color:#e28964">+</span> (i<span style="color:#e28964">-</span>j));
+                            scanner<span style="color:#e28964">.</span>close();
+                        }
+                    
+                    </pre>
+                </div>
+                <div>
+                    <pre>
+
+                        사용자한테 두 번의 숫자를 입력 받아 곱셈, 나눗셈, 덧셈, 뺄셈을 하는 프로그램이 있습니다. 
+                        사용자가 ‘10’과 ‘2’를 입력하면 결과는 다음과 같을 것입니다.
+
+                       <span class="bold_color_red"> 10 * 2 = 20, 10 / 2 = 5, 10 + 2 = 12, 10 - 2 = 8</span>
+
+                        이 경우에는 아무런 이상이 없습니다. 하지만 사용자가 10과 0을 입력하는 순간 문제가 발생 합니다.
+
+                       <span class="bold_color_red"> 10 * 0 = 0, 10 / 0 = ?, 10 + 0 = 10, 10 - 0 = 10</span>
+
+                       <span class="bold_color_blue"> 0으로 나눌 수 없어 프로그램이 중단 될 것입니다. </span>
+                        
+                        이런 경우 덧셈과 뺄셈은 이상이 없어도 사용자는 프로그램 동작이 중단되어 결과를 볼 수가 없습니다. 
+                        만약, 나눗셈 처리에 예외처리를 해두었다면, 
+                        나눗셈의 결과는 못 보더라도 덧셈과 뺄셈의 결과는 볼 수 있었을 것입니다. 
+                        이것이 바로 예외처리가 필요한 이유 입니다. 
+                        일상적으로 많이 얘기 합니다. 보험처리라고.
+                            
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">예외 처리의 기본 문법</h3>
+                    <pre>
+
+                        예외처리 문법(try ~ catch)
+
+                        <b>try {
+
+                            try블럭 ; 익셉션이 발생할 가능성이 있는 명령문들(문제가 발생할 수 있는 로직을 기술)
+                    
+                        } catch(익셉션타입 익셉션변수) {
+
+                            그 익셉션을 처리하는 명령문(try블록안에서 문제가 발생했을 때 대처방안 기술);
+                    
+                        } finally {
+
+                            익셉션 발생 여부와 상관없이 맨 마지막에 실행할 명령문;
+                        }</b>
+                        
+                    </pre>
+                    <h3 class="headline3 background_bisque">예외 처리를 한 예제 </h3>                        
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex0trycatch</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex01</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Scanner</span> sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
+                                <span style="color:#99cf50">int</span> i<span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>, j <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"사칙연산을 할겁니다."</span>);
+                        
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"첫번째 수?"</span>);
+                                <span style="color:#e28964">try</span> {
+                                    i <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt();
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"꼭 수를 입력하세요."</span>);
+                                }
+                                sc<span style="color:#e28964">.</span>nextLine(); <span style="color:#aeaeae;font-style:italic">// 버퍼 삭제</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"두번째 수?"</span>);
+                                <span style="color:#e28964">try</span> {
+                                    j <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt();
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"꼭 수를 입력하세요."</span>);
+                                }
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i * j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">*</span> j));
+                                <span style="color:#e28964">try</span> {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i / j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">/</span> j));
+                                    
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">ArithmeticException</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                } <span style="color:#e28964">finally</span> {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"계속 수행됨니다."</span>);
+                                }
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i + j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">+</span> j));
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i - j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">-</span> j));
+                        
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"이상입니다."</span>);
+                                sc<span style="color:#e28964">.</span>close();
+                            }
+                        }
+                        
+                    </pre>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex0trycatch</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.InputMismatchException</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex02</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Scanner</span> sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
+                                <span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
+                                <span style="color:#99cf50">int</span> j <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"사칙연산을 할겁니다."</span>);
+                                
+                                <span style="color:#e28964">do</span> {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"첫번째 수?"</span>);
+                                    <span style="color:#e28964">try</span> {
+                                        i <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt(); <span style="color:#aeaeae;font-style:italic">//*</span>
+                                        <span style="color:#e28964">break</span>;
+                                    } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">InputMismatchException</span> e) {
+                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"수를 입력하세요 안그러면 0으로"</span>);
+                                        sc<span style="color:#e28964">.</span>nextLine();
+                                    }
+                                }<span style="color:#e28964">while</span>(<span style="color:#3387cc">true</span>); <span style="color:#aeaeae;font-style:italic">// 수를 입력할때 까지 계속 반복</span>
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"두번째 수?"</span>);
+                                
+                                <span style="color:#e28964">try</span> {
+                                    j <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt(); <span style="color:#aeaeae;font-style:italic">//*</span>
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i * j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">*</span> j));
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i / j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">/</span> j)); <span style="color:#aeaeae;font-style:italic">//*</span>
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">InputMismatchException</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"수를 입력하세요 안그러면 0으로"</span>);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">ArithmeticException</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                }
+                                    
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i + j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">+</span> j));
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i - j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">-</span> j));
+                        
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"이상입니다."</span>);
+                                sc<span style="color:#e28964">.</span>close();
+                            }
+                        }
+                        
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex0trycatch</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">EX03</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">int</span>[] iArr <span style="color:#e28964">=</span> { <span style="color:#3387cc">0</span>, <span style="color:#3387cc">1</span>, <span style="color:#3387cc">2</span> };
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"==========================================="</span>);
+                                <span style="color:#e28964">try</span> {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(iArr[<span style="color:#3387cc">3</span>]);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">ArrayIndexOutOfBoundsException</span> e) {
+                                    <span style="color:#aeaeae;font-style:italic">// e.printStackTrace(); // 예외 메세지를 자세하게 보여준다.</span>
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage() <span style="color:#e28964">+</span> <span style="color:#65b042">"인덱스를 봐"</span>);
+                                } <span style="color:#e28964">finally</span> {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"finally 나는 예외가 나든 안나든 항상 실행하지."</span>);
+                                }
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"==========================================="</span>);
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div id="strctuer">
+                    <h3 class="headline3">Exception Class 객체의 구조</h3>
+                    <pre>
+
+                           <h3> Exception = 최상위 객체로 존재하기때문에 해당 형으로 모든 예외를 가질수 있다.</h3>
+                                IOException
+                                ClassNotFoundException
+                                ….
+                                RuntimeException
+                                ArithmeticException
+                                ClassCaseException
+                                NullPointerException
+                                …
+                                IndexOutOfBoundsException
+
+                            * 자바 API 가 제공하는 예외는 엄청나게 많다.
+                            
+                            catch 문에 예외처리를 여러 개 할 수도 있다 
+
+                           <b>try {
+
+                                try블럭 ; 익셉션이 발생할 가능성이 있는 명령문들
+
+                            }catch(ArrayIndexOutOfBoundsException a) {
+
+                               <span class="bold_color_red"> ArrayIndexOutOfBounds 익셉션을 처리하는 명령문</span>
+
+                            } catch(NumberFormatException n) {
+
+                               <span class="bold_color_blue"> NumberFormat 익셉션을 처리하는 명령문</span>
+
+                            } catch(Exception e) {
+
+                              <span class="bold_color_red">  그 외 익셉션을 처리하는 명령문</span>
+
+                            } finally {
+
+                                익셉션 발생 여부와 상관없이 맨 마지막에 실행할 명령
+                                
+                            }</b>
+
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">예외처리 문법(throws)</h3>
+                    <pre>
+                            
+                        try ~ catch 예외 처리 방법은 예외가 발생했을 때 자체적으로 catch문을 이용해서 해결 했습니다.
+                        이번에 살펴볼 throws의 경우에는 나를 호출한(실행시키는) 쪽으로 예외를 던져버리는 방식 입니다.
+                            
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex1</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThrowEx</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">ThrowEx</span>() <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span> {
+                                actionC();
+                            }
+                        
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionC</span>() <span style="color:#99cf50">throws</span> <span style="color:#99cf50">ArrayIndexOutOfBoundsException</span> {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionC 전반부"</span>);
+                                actionB();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionC 후반부"</span>);
+                            }
+                        
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionB</span>() <span style="color:#99cf50">throws</span> <span style="color:#99cf50">ArrayIndexOutOfBoundsException</span> {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionB 전반부"</span>);
+                                actionA();      
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionB 전반부"</span>);
+                        
+                            }
+                        
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionA</span>() <span style="color:#99cf50">throws</span> <span style="color:#99cf50">ArrayIndexOutOfBoundsException</span> { <span style="color:#aeaeae;font-style:italic">// 예외를 이 메소드에서 처리한다.</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionA 전반부"</span>);
+                                <span style="color:#99cf50">int</span>[] iArr <span style="color:#e28964">=</span> { <span style="color:#3387cc">0</span>, <span style="color:#3387cc">1</span>, <span style="color:#3387cc">2</span> };
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"인덱스 4 값"</span> <span style="color:#e28964">+</span> iArr[<span style="color:#3387cc">4</span>]);
+                        <span style="color:#aeaeae;font-style:italic">//      try {</span>
+                        <span style="color:#aeaeae;font-style:italic">//          System.out.println("인덱스 4 값" + iArr[4]);</span>
+                        <span style="color:#aeaeae;font-style:italic">//      } catch (ArrayIndexOutOfBoundsException e) {</span>
+                        <span style="color:#aeaeae;font-style:italic">//          System.out.println(e.getMessage());</span>
+                        <span style="color:#aeaeae;font-style:italic">//      }</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionA 후반부"</span>);
+                            }
+                        
+                        }
+                        
+                    </pre>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex1</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>){
+                                
+                                    <span style="color:#e28964">try</span> {
+                                        <span style="color:#99cf50">ThrowEx</span> ex <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ThrowEx</span>();
+                                    } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                                        <span style="color:#aeaeae;font-style:italic">// TODO Auto-generated catch block</span>
+                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                    }
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"프로그램은 종료되지 않는다."</span>);
+                            }
+                        
+                        }
+                    
+                    </pre>
+                </div>
+                <div id="flag">
+                    <h3 class="headline3 background_bisque">일반적으로 많이 보게 되는 예외들</h3>
+                    <pre>
+
+                        예외(Exception)의 종류는 아주 많습니다. 정말 많습니다.
+                        Exception클래스는 많은 예외들(자식클래스)를 가지고 있습니다. 
+                        모든 예외를 습득한다는 것은 불가능 하며, 그럴 필요도 없습니다.
+
+                        프로그래밍을 하다 보면, 자주 보게 되는 예외들이 있습니다.
+                        대표적인 몇 가지만 살펴보도록 하겠습니다.
+
+                        JAVA API문서를 통해서 Exception클래스가 얼마나 많은 자식 클래스를 가지고 있는지 알 수 있습니다.
+                        
+                      <span class="bold_color_red">※ ArrayIndexOutOfBoundsException</span> > 배열을 사용시 존재하지 않는 index값을 호출하면 발생 합니다.
+                            
+                            int[] iArr = {0,1,2,3};
+                            System.out.println(iArr[4]);
+                        
+                      <span class="bold_color_red">※ NullPointerException</span> > 존재하지 않는 객체를 가리킬 때 발생 합니다
+                            
+                            String str = null;
+                            char c = str.charAt(0);
+                        
+                      <span class="bold_color_red">※ NumberFormatException</span> > 숫자로 변경할 수 없는 문자열을 변경하려고 함.
+                            
+                            public static void main(String[] args) {
+                                String str = "aa";
+                                String str1 = "10     ";
+                                int i = 10;
+                                int j = Integer.parseInt(str)+i;
+                                j = Integer.parseInt(str1.trim())+i;
+                            }
+                        
+                       <h3>※ DB 관련 Exception</h3>
+
+                        <span class="bold_color_red">ClassNotFoundException</span> : 드라이브 이름을 찾지 못했을 때
+                        <span class="bold_color_red">SQLException</span> : db url, id, pw가 올바르지 않을 때
+                        
+                        등등 Exception의 종류만 봐도 왜 예외가 일어났는지 직관적으로 알 수 있다.
+                            
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex2exceptionexample</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex01</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">String</span> name <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
+                                
+                                <span style="color:#99cf50">String</span> str <span style="color:#e28964">=</span> <span style="color:#65b042">"a"</span>;
+                                <span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#99cf50">Integer</span><span style="color:#e28964">.</span>parseInt(str);
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i = "</span><span style="color:#e28964">+</span>i);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"끝"</span>);
+                                
+                        <span style="color:#aeaeae;font-style:italic">//      System.out.println(name.charAt(0)); // 값이 없기때문에 포인트를 찾을수 없다.</span>
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div id="create">
+                   <h3 class="headline3">강제로 예외 발생시키기(코드에서 예외 발생시키기)</h3>
+                   <pre>
+
+                      <span class="bold_color_red">throw new Exception(“에러메세지”);</span>
+
+                      throws : 강제 예외를 처리한 메소드는 반드시 메소드 뒤에 throws 키워드를 통한 예외 객체를 던지는 코드를 작성해야한다.
+
+                      <h3>ex)</h3>
+                      public void whitdraw(int amount) <span class="bold_color_blue"> throws Exception </span> {
+                        if () { 
+                            <span class="bold_color_red">throw new Exception( account + "인출하기에는 잔액(" + Math.abs(balance - amount) + ")이 부족합니다."); </span>
+                        }
+                        
+                    }
+
+                   </pre>
+                   <hr>
+                        <h3>Account Class</h3>
+                    <hr>
+                   <pre style="background:#000;color:#f8f8f8">
+                       
+                    <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex3account</span>;
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Account</span> {
+                        <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> account;
+                        <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> ownerName;
+                        <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> balance;
+                        <span style="color:#aeaeae;font-style:italic">// 생성자</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">Account</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">account</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">ownerName</span>) {
+                            <span style="color:#3e87e3">super</span>();
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>account <span style="color:#e28964">=</span> account;
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>ownerName <span style="color:#e28964">=</span> ownerName;
+                        }
+                    
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">Account</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">account</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">ownerName</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">balance</span>) {
+                            <span style="color:#3e87e3">super</span>();
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>account <span style="color:#e28964">=</span> account;
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>ownerName <span style="color:#e28964">=</span> ownerName;
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>balance <span style="color:#e28964">=</span> balance;
+                        }
+                        <span style="color:#aeaeae;font-style:italic">// 메소드</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">deposit</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">amount</span>) {
+                            balance <span style="color:#e28964">+=</span> amount;
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(ownerName <span style="color:#e28964">+</span> <span style="color:#65b042">"님이 "</span> <span style="color:#e28964">+</span> amount <span style="color:#e28964">+</span> <span style="color:#65b042">"원 예금하여 잔액 "</span> <span style="color:#e28964">+</span> balance);
+                        }
+                    
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">whitdraw</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">amount</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span> {
+                            <span style="color:#e28964">if</span> (balance <span style="color:#e28964">&lt;</span> amount) { <span style="color:#aeaeae;font-style:italic">// 인출금액이 예금액보다 크다면</span>
+                                <span style="color:#aeaeae;font-style:italic">// 강제 예외 발생시킴</span>
+                                <span style="color:#aeaeae;font-style:italic">// 예외 메세지 작성</span>
+                                <span style="color:#e28964">throw</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Exception</span>( account <span style="color:#e28964">+</span> <span style="color:#65b042">"인출하기에는 잔액("</span> <span style="color:#e28964">+</span> <span style="color:#99cf50">Math</span><span style="color:#e28964">.</span>abs(balance <span style="color:#e28964">-</span> amount) <span style="color:#e28964">+</span> <span style="color:#65b042">")이 부족합니다."</span>); 
+                            }
+                            balance <span style="color:#e28964">-=</span> amount;
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(ownerName <span style="color:#e28964">+</span> <span style="color:#65b042">"님이 "</span> <span style="color:#e28964">+</span> amount <span style="color:#e28964">+</span> <span style="color:#65b042">"원 인출하여 잔액"</span> <span style="color:#e28964">+</span> balance);
+                        }
+                    
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">toString</span>() {
+                            <span style="color:#e28964">return</span> <span style="color:#65b042">"[account="</span> <span style="color:#e28964">+</span> account <span style="color:#e28964">+</span> <span style="color:#65b042">", ownerName="</span> <span style="color:#e28964">+</span> ownerName <span style="color:#e28964">+</span> <span style="color:#65b042">", balance="</span> <span style="color:#e28964">+</span> balance <span style="color:#e28964">+</span> <span style="color:#65b042">"]"</span>;
+                        }
+                        
+                        <span style="color:#aeaeae;font-style:italic">//setter getter</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getAccount</span>() {
+                            <span style="color:#e28964">return</span> account;
+                        }
+                    
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setAccount</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">account</span>) {
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>account <span style="color:#e28964">=</span> account;
+                        }
+                    
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getOwnerName</span>() {
+                            <span style="color:#e28964">return</span> ownerName;
+                        }
+                    
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setOwnerName</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">ownerName</span>) {
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>ownerName <span style="color:#e28964">=</span> ownerName;
+                        }
+                    
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getBalance</span>() {
+                            <span style="color:#e28964">return</span> balance;
+                        }
+                    
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBalance</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">balance</span>) {
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>balance <span style="color:#e28964">=</span> balance;
+                        }
+                        
+                    }
+                    
+                    </pre>
+                    <hr>
+                        <h3>Account Main Class</h3>
+                    <hr>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex3account</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">AccountMain</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Account</span> ac1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Account</span>(<span style="color:#65b042">"111-1111"</span>, <span style="color:#65b042">"홍길동"</span>);
+                                <span style="color:#99cf50">Account</span> ac2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Account</span>(<span style="color:#65b042">"222-2222"</span>, <span style="color:#65b042">"박길동"</span>, <span style="color:#3387cc">2000</span>);
+                                
+                                ac1<span style="color:#e28964">.</span>deposit(<span style="color:#3387cc">10000</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(ac1); <span style="color:#aeaeae;font-style:italic">// tostring();</span>
+                                
+                                ac2<span style="color:#e28964">.</span>deposit(<span style="color:#3387cc">10000</span>);
+                                
+                                <span style="color:#e28964">try</span> {
+                                    ac1<span style="color:#e28964">.</span>whitdraw(<span style="color:#3387cc">2000</span>);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                        <span style="color:#aeaeae;font-style:italic">//          e.printStackTrace();</span>
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                }
+                                
+                                <span style="color:#e28964">try</span> {
+                                    ac1<span style="color:#e28964">.</span>whitdraw(<span style="color:#3387cc">20000</span>);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                        <span style="color:#aeaeae;font-style:italic">//          e.printStackTrace();</span>
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage()); <span style="color:#aeaeae;font-style:italic">// throw new Exception(); 에서 설정된 메세지를 가져와서 출력해줌</span>
+                                }
+                            }
+                        
+                        }
+                        
+                    </pre>
+                </div>
+                <div id="object">
+                    <h3 class="headline3 background_bisque">예외처리 예제</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex4lib</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
+                        
+                        <span style="color:#aeaeae;font-style:italic">// 이름 나이 입력 받고 여차하면 별명 입력. </span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">TestMain</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Scanner</span> sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
+                        
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"이름은?"</span>);
+                                <span style="color:#99cf50">String</span> name <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>next();
+                                
+                                <span style="color:#99cf50">String</span> nickName <span style="color:#e28964">=</span> getNickName(sc);
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"나이는?"</span>);
+                                <span style="color:#99cf50">int</span> age <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt();
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"[이름] : "</span> <span style="color:#e28964">+</span> name <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>[별명] : "</span> <span style="color:#e28964">+</span> nickName <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>[나이] : "</span> <span style="color:#e28964">+</span> age);
+                                
+                                sc<span style="color:#e28964">.</span>close();
+                            }
+                        
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getNickName</span>(<span style="color:#99cf50">Scanner</span> <span style="color:#3e87e3">sc</span>) {
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"별명은?"</span>);
+                                <span style="color:#99cf50">String</span> nickname <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>next();
+                                
+                                <span style="color:#e28964">return</span> nickname;
+                            }
+                        
+                        }
+                        
+                    </pre>
+                </div>
+                <div id="total">
+                    <h3 class="headline3">종합 예제 (Example)</h3>
+                    <hr>
+                        <h3>ILendable Interface</h3>
+                    <hr>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex5booklib</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">ILendable</span> {
+                            <span style="color:#99cf50">byte</span> <span style="color:#3387cc">STATE_BORROWED</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">1</span>; <span style="color:#aeaeae;font-style:italic">// 대출상태</span>
+                            <span style="color:#99cf50">byte</span> <span style="color:#3387cc">STATE_NOMAL</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; <span style="color:#aeaeae;font-style:italic">// 대출가능상태 </span>
+                            
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">checkOut</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">borrower</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span>; <span style="color:#aeaeae;font-style:italic">// 대출</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">checkIn</span>(<span style="color:#99cf50">Scanner</span> <span style="color:#3e87e3">sc</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span>; <span style="color:#aeaeae;font-style:italic">// 반납</span>
+                        }
+                        
+                    </pre>
+                    <hr>
+                        <h3>BookLib Class</h3>
+                    <hr>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex5booklib</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.text.SimpleDateFormat</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Date</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">BookLib</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">ILendable</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> bookTitle; <span style="color:#aeaeae;font-style:italic">// 책이름</span>
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> borrower; <span style="color:#aeaeae;font-style:italic">// 대출자</span>
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">Date</span> checkOutDate; <span style="color:#aeaeae;font-style:italic">// 대출일</span>
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">byte</span> state; <span style="color:#aeaeae;font-style:italic">// 대출 상태</span>
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">BookLib</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">bookTitle</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>bookTitle <span style="color:#e28964">=</span> bookTitle;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>borrower <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
+                                checkOutDate <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
+                                state <span style="color:#e28964">=</span> <span style="color:#3387cc">STATE_NOMAL</span>;
+                            } <span style="color:#aeaeae;font-style:italic">// 데이터 초기화 :</span>
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">checkOut</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">borrower</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span> {
+                        
+                                <span style="color:#e28964">if</span> (state <span style="color:#e28964">==</span> <span style="color:#3387cc">STATE_BORROWED</span>) { <span style="color:#aeaeae;font-style:italic">// 대출중상태 라면 참.</span>
+                                    <span style="color:#e28964">throw</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Exception</span>(bookTitle <span style="color:#e28964">+</span> <span style="color:#65b042">"은(는) 현제 대출 불가능합니다. (대출중)"</span>);
+                                }
+                        
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>borrower <span style="color:#e28964">=</span> borrower;
+                                checkOutDate <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Date</span>();
+                                state <span style="color:#e28964">=</span> <span style="color:#3387cc">STATE_BORROWED</span>; <span style="color:#aeaeae;font-style:italic">// "java" 도서가 대출 되었습니다.</span>
+                        
+                                <span style="color:#99cf50">SimpleDateFormat</span> sdf <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SimpleDateFormat</span>(<span style="color:#65b042">"yyyy년 MM월 dd일 (E) hh시 mm분"</span>);
+                        
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"<span style="color:#ddf2a4">\"</span>"</span> <span style="color:#e28964">+</span> bookTitle <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\"</span>도서가 대출되었습니다."</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[대출인] "</span> <span style="color:#e28964">+</span> borrower);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[대출일] "</span> <span style="color:#e28964">+</span> sdf<span style="color:#e28964">.</span>format(checkOutDate));
+                        
+                            }
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">checkIn</span>(<span style="color:#99cf50">Scanner</span> <span style="color:#3e87e3">sc</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span> {
+                        
+                                <span style="color:#e28964">if</span> (state <span style="color:#e28964">==</span> <span style="color:#3387cc">STATE_NOMAL</span>) {
+                                    <span style="color:#e28964">throw</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Exception</span>(bookTitle <span style="color:#e28964">+</span> <span style="color:#65b042">"도서가 대출중이 아닙니다.(예외메세지)"</span>);
+                                }
+                        
+                                <span style="color:#99cf50">Date</span> now <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Date</span>(); <span style="color:#aeaeae;font-style:italic">// 지금</span>
+                                <span style="color:#aeaeae;font-style:italic">// now.getTime() : 1970 년부터 지금까지 의 밀리세컨</span>
+                                <span style="color:#aeaeae;font-style:italic">// checkOutDate.getTime() : 1970 년부더 대출한 날짜까지의 밀리세컨</span>
+                                <span style="color:#aeaeae;font-style:italic">// diff : 지금부터 대출시점 까지의 밀리세컨</span>
+                        
+                                <span style="color:#99cf50">long</span> diff <span style="color:#e28964">=</span> now<span style="color:#e28964">.</span>getTime() <span style="color:#e28964">-</span> checkOutDate<span style="color:#e28964">.</span>getTime();
+                                
+                                
+                                <span style="color:#99cf50">long</span> borrowedDay <span style="color:#e28964">=</span> diff <span style="color:#e28964">/</span> (<span style="color:#3387cc">1000</span> <span style="color:#e28964">*</span> <span style="color:#3387cc">60</span> <span style="color:#e28964">*</span> <span style="color:#3387cc">60</span> <span style="color:#e28964">*</span> <span style="color:#3387cc">24</span>); <span style="color:#aeaeae;font-style:italic">// 대출 일수로 환산.</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(borrowedDay);
+                                <span style="color:#e28964">if</span> (borrowedDay <span style="color:#e28964">></span> <span style="color:#3387cc">14</span>) { <span style="color:#aeaeae;font-style:italic">// 대출일이 7일이 넘었다면 참.</span>
+                                    <span style="color:#99cf50">int</span> money <span style="color:#e28964">=</span> (<span style="color:#99cf50">int</span>) (borrowedDay <span style="color:#e28964">-</span> <span style="color:#3387cc">14</span>) <span style="color:#e28964">*</span> <span style="color:#3387cc">100</span>;
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"연체료는 : "</span> <span style="color:#e28964">+</span> money <span style="color:#e28964">+</span> <span style="color:#65b042">"원(100원/day)"</span>);
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"연체료를 받으셨나요?(Y/N)?"</span>);
+                        
+                                    <span style="color:#e28964">if</span> (sc<span style="color:#e28964">.</span>next()<span style="color:#e28964">.</span>equalsIgnoreCase(<span style="color:#65b042">"n"</span>)) { <span style="color:#aeaeae;font-style:italic">// n N 을 입력했을때</span>
+                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"연체료 가져와야 반납가능합니다."</span>);
+                                        <span style="color:#e28964">return</span>;
+                                    } <span style="color:#aeaeae;font-style:italic">// 연체료 납부 여부</span>
+                                } <span style="color:#aeaeae;font-style:italic">// 연체가 되었을 경우 if문</span>
+                                
+                                <span style="color:#aeaeae;font-style:italic">//반납을 위해 데이터 가공. </span>
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>borrower <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
+                                checkOutDate <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
+                                state <span style="color:#e28964">=</span> <span style="color:#3387cc">STATE_NOMAL</span>; <span style="color:#aeaeae;font-style:italic">// "java" 도서가 반납 되었습니다.</span>
+                        
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"<span style="color:#ddf2a4">\"</span>"</span> <span style="color:#e28964">+</span> bookTitle <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\"</span>도서가 반납되었습니다."</span>);
+                            }
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">toString</span>() {
+                                <span style="color:#99cf50">String</span> resulte;
+                                
+                                resulte <span style="color:#e28964">=</span> <span style="color:#65b042">"[책이름] : "</span> <span style="color:#e28964">+</span> bookTitle;
+                                resulte <span style="color:#e28964">+=</span> <span style="color:#65b042">" <span style="color:#ddf2a4">\t</span>[대출 가능 상태] : "</span> <span style="color:#e28964">+</span> (state <span style="color:#e28964">==</span> <span style="color:#3387cc">STATE_NOMAL</span> <span style="color:#e28964">?</span> <span style="color:#65b042">"대출가능"</span> <span style="color:#e28964">:</span> <span style="color:#65b042">"대출중"</span>); 
+                                <span style="color:#e28964">if</span> (state <span style="color:#e28964">==</span> <span style="color:#3387cc">STATE_BORROWED</span>) {
+                                    <span style="color:#99cf50">SimpleDateFormat</span> sdf <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SimpleDateFormat</span>(<span style="color:#65b042">"yyyy년 MM월 dd일 (E) hh시 mm분"</span>);
+                                    resulte <span style="color:#e28964">+=</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>[대출일] : "</span> <span style="color:#e28964">+</span> sdf<span style="color:#e28964">.</span>format(checkOutDate);
+                                }
+                                
+                                <span style="color:#e28964">return</span> resulte;
+                            }
+                            
+                            <span style="color:#aeaeae;font-style:italic">// setter</span>
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBookTitle</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">bookTitle</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>bookTitle <span style="color:#e28964">=</span> bookTitle;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBorrower</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">borrower</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>borrower <span style="color:#e28964">=</span> borrower;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setCheckOutDate</span>(<span style="color:#99cf50">Date</span> <span style="color:#3e87e3">checkOutDate</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>checkOutDate <span style="color:#e28964">=</span> checkOutDate;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setState</span>(<span style="color:#99cf50">byte</span> <span style="color:#3e87e3">state</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>state <span style="color:#e28964">=</span> state;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getBookTitle</span>() {
+                                <span style="color:#e28964">return</span> bookTitle;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getBorrower</span>() {
+                                <span style="color:#e28964">return</span> borrower;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">Date</span> <span style="color:#89bdff">getCheckOutDate</span>() {
+                                <span style="color:#e28964">return</span> checkOutDate;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">byte</span> <span style="color:#89bdff">getState</span>() {
+                                <span style="color:#e28964">return</span> state;
+                            }
+                            
+                        }
+                        
+                    </pre>
+                    <hr>
+                        <h3>Book Main Class</h3>
+                    <hr>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex5booklib</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.text.SimpleDateFormat</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Date</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">BookMain</span> {
+                            
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">BookLib</span>[] books <span style="color:#e28964">=</span> { 
+                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"java"</span>), 
+                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"javascript"</span>), 
+                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"database"</span>), 
+                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"jsp"</span>), 
+                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"spring"</span>) 
+                                                            };
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                
+                                <span style="color:#99cf50">Scanner</span> sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
+                                
+                                <span style="color:#e28964">try</span> {
+                                    books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>checkOut(<span style="color:#65b042">"Leos"</span>);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                }
+                                
+                                <span style="color:#e28964">try</span> { <span style="color:#aeaeae;font-style:italic">// 빌렸는데 다시 빌리려하므로 예외 catch 로 진행</span>
+                                    books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>checkOut(<span style="color:#65b042">"Leos"</span>);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                }
+                                
+                                <span style="color:#e28964">try</span> {
+                                    books[<span style="color:#3387cc">1</span>]<span style="color:#e28964">.</span>checkOut(<span style="color:#65b042">"Leos"</span>);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                }
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(books[<span style="color:#3387cc">0</span>]);
+                                books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>setCheckOutDate(<span style="color:#e28964">new</span> <span style="color:#99cf50">Date</span>(<span style="color:#3387cc">118</span>,<span style="color:#3387cc">2</span>,<span style="color:#3387cc">3</span>)); <span style="color:#aeaeae;font-style:italic">// 2018년 3월 3일 : 보통 데이터 베이스에서 가져온다.</span>
+                                
+                                <span style="color:#e28964">try</span> {
+                                    <span style="color:#99cf50">SimpleDateFormat</span> sdf <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SimpleDateFormat</span>(<span style="color:#65b042">"yyyy년 MM월 dd일 (E) hh시 mm분"</span>);
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[대출 반납일] : "</span> <span style="color:#e28964">+</span> sdf<span style="color:#e28964">.</span>format(books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>getCheckOutDate()));
+                                    books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>checkIn(sc);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                }
+                                
+                                <span style="color:#e28964">try</span> {
+                                    books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>checkIn(sc);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
+                                }
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"현제 대출 상태입니다. 종료합니다."</span>);
+                                
+                                <span style="color:#e28964">for</span> (<span style="color:#99cf50">BookLib</span> tb <span style="color:#e28964">:</span> books) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(tb);
+                                }
+                                
+                            }<span style="color:#aeaeae;font-style:italic">// main()</span>
+                        
+                        }
+                        
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+        <div id="fixed_menu">
+            <ul>
+                <li><a href="#a">Exception</a></li>
+                <li><a href="#strctuer">strctuer</a></li>
+                <li><a href="#flag">Flag</a></li>
+                <li><a href="#create">Create</a></li>
+                <li><a href="#total">Total</a></li>
+                <li><a href="#top">Top</a></li>
+            </ul>
+        </div><!-- Fixed Menu -->
+    </div>
+</body>
+</html>

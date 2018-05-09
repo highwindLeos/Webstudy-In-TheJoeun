@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                패키지 (Package)
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>                        
+                        <h2>패키지란?</h1>
+                        
+                        프로그래밍에서 여러 클래스를 관리하기 위해 기능적으로 영향을 미칠 수 있는 클래스끼리 묶어 놓고, 
+                        접근 범위 안에 효과적으로 호출하기 위해서 사용하는 개념이다.
+                        윈도우에는 윈도우탐색기(window+E)가 있다. 윈도우 탐색기는 컴퓨터에 보관되어 있는 파일을 관리하기 위해 폴더를 만들고, 
+                        그러한 폴더를 효율적으로 다루기 위해 존재한다. 즉 폴더 구조를 한눈에 볼 수 있도록 만들어진 프로그램이다.
+                        JAVA에도 많은 ~.java파일들이 존재 합니다. 많은 정도가 예상하기도 힘들 정도로 많이 존재합니다. 
+                        또한 우리가 프로그래밍을 하면서 계속적으로 .java파일을 만들 것입니다. 이러한 많은 파일을 
+                        효율적으로 관리하기 위해 JAVA에서는 ‘패키지’라는 구조를 사용 합니다.
+                        우선 JAVA(jdk)에 존재하는 패키지를 살펴 보도록 하겠습니다. 이미 만들어 놓은 기능들입니다.
+                            
+                        <h3>JDK</h3>
+
+                        ⑴ 아래 주소접속하여 자바(jdk)에서 제공하는 클래스(3,000개정도)들이 어떤 것들이 있는지 봅시다.
+                        ① <a href="http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html">http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html</a> 에 접속하여 다운받거나 
+                            온라인으로 <a href="http://www.oracle.com/technetwork/java/api-141528.html">http://www.oracle.com/technetwork/java/api-141528.html</a> 에 들어가 API들을 볼 수 있다.
+                        
+                        ② JAVA API(Application Programming Interface) : 자바에서 기본적으로 제공되는 클래스의 설명들을 볼 수 있다. 
+                            패키지를 모르면 "All Classes"를 선택하여 쉽게 찾아볼 수 있다. 자바 사전이라고 생각하셔도 무방. 자주 보는 습관을 갖자
+                        
+                        ③ 모든 클래스들을 패키지로 관리되어 있는 것을 볼 수 있다. 해당 패키지에는 해당클래스를 볼 수 있습니다.
+                        
+                        ④ 패키지 : 관련있는 클래스들을 패키지로 그룹지어 관리하는 것(클래스를 모아 놓은 폴더)이라는 것을 확인할 수 있습니다.
+                        
+                        ex > Scanner 클래스는 java/util폴더에 있는 Scanner클래스
+                             <b>(java.util.Scanner)</b>
+
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">우리가 만든 패키지 (User customer Package)</h3>
+                    <pre>
+                        
+                        JAVA(jdk)에 패키지가 있듯이 우리도 클래스를 만들때 패키지로 관리하면 효율적인 작업을 할 수 있습니다.
+                        이제 직접 패키지를 만들어 보도록 하겠습니다.
+                        ☞ 실제 폴더 구조를 보도록 합시다
+
+                        정답은 없지만, 효율적으로 해야 하는 패키지의 일반적인 설계방식
+
+                        ① 초보 개발자 뿐만이 아니라, 오래된 개발자의 경우에도 패키지를 만들 때 패키지 이름에 대해서 다소 고민을 하는 경향이 있습니다. 
+                            패키지 이름만 봐도 어떤 클래스들이 모여있는지 알 수 있도록 만들고 싶은데 그게 쉽지 않은 것이죠. 
+                            패키지 이름은 유일한 이름일수록 좋습니다. 이유는 우리회사에서 개발은 소스(.java파일)를 다른 곳에 이식하려 할 때 
+                            이름이 중복되면 좋지 않기 때문 입니다. 그래서 주로 패키지 이름은 유니크한 도메인 주소를 역방향으로 하여 만듭니다.
+                            예를 들어 회사 도메인이 www.abc.com 이라면, ‘com.abc.’라고 하고 뒤에 기능별 또는 개발팀에서 정한 규칙에 의해 
+                            패키지명을 만듭니다.
+
+                        ② 물론 패키지명은 개발 중 언제든지 수정이 가능, 패키지간의 클래스 이동도 가능 
+                            따라서 패키지명을 만들 때 너무 스트레스를 받지 말고, 쉽게 쉽게 생각하면 될 거 같습니다.
+
+                        ③ 명명규칙은 변수와 같이 숫자로 시작할 수 없고, _나 $를 제외한 특수문자를 사용할 수 없다. 
+                            모두 소문자로 작성하는 것이 일반적이다.
+                           
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">import의 이해</h3>
+                    <pre>
+                            
+                        다른 패키지의 클래스를 가져오자~
+                        패키지를 만들고 클래스를 만든 후 서로 다른 패키지의 클래스를 사용하려고 할 때는 
+                        반드시 import 키워드를 사용해서 해당 클래스를 임포트 해야 합니다. 
+                        하지만 우리가 사용하는 이클립스는 자동으로 임포트되도록 지원합니다.
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">Example</h3> 
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Test1</span> {
+                            
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> i<span style="color:#e28964">=</span><span style="color:#3387cc">1</span>; <span style="color:#aeaeae;font-style:italic">// ② 코드 직접 초기화</span>
+                            
+                            {   <span style="color:#aeaeae;font-style:italic">// ③ 초기화 블럭을 통한 초기화 (잘 사용되지 않는다.)</span>
+                                i<span style="color:#e28964">=</span><span style="color:#3387cc">1</span>;
+                            }
+
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Test1</span>() {i<span style="color:#e28964">=</span><span style="color:#3387cc">1</span>; } <span style="color:#aeaeae;font-style:italic">// ①생성자를 통한 초기화</span>
+
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getI</span>() {
+                                <span style="color:#e28964">return</span> i;
+                            }
+
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setI</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">i</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>i <span style="color:#e28964">=</span> i;
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Test2</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> j;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Test2</span>() {j <span style="color:#e28964">=</span> <span style="color:#3387cc">2</span>;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getJ</span>() {<span style="color:#e28964">return</span> j;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setJ</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">j</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>j <span style="color:#e28964">=</span> j;}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Test3</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> k<span style="color:#e28964">=</span><span style="color:#3387cc">3</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getK</span>() {<span style="color:#e28964">return</span> k;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setK</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">k</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>k <span style="color:#e28964">=</span> k;}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Test1</span> t1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Test1</span>(); 
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(t1<span style="color:#e28964">.</span>getI());
+                                <span style="color:#99cf50">Test2</span> t2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Test2</span>();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(t2<span style="color:#e28964">.</span>getJ());
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+    </div>
+</body>
+</html>

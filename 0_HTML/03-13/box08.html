@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box Model : Inline</title>
+    <style>
+        .inner, img {
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 0 30px;
+            background-color: blue;
+            color: white;
+            opacity: 0.2; /* 투명도 0 ~ 1 소수 */
+            transition: opacity 0.3s; /* 동적인 속성을 적용 */
+            text-align: center;
+            line-height: 150px;
+        }
+
+        div:hover, img:hover {
+            opacity: 1.0;
+        }
+
+        #wrap{
+            /* overflow: hidden; */
+            float: left;
+        }
+
+        /* #wrap:after {
+            content: "";
+            display: block;
+            clear: both;
+        } */
+
+        p{ 
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="inner">opacity: 0.5</div>
+        <img class="inner" src="http://poiemaweb.com/img/doug.jpg" alt="doug">
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Ipsa impedit, fuga nesciunt, autem sapiente sequi sit et a numquam 
+        suscipit possimus doloribus ea totam minima eius veritatis, ut illum quas.</p>
+</body>
+</html>

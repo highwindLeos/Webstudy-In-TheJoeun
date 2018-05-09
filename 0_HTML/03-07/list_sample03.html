@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>List Menu Style</title>
+    <style>
+        body {
+            margin : 0;
+        }
+
+        ul {
+            list-style-type: none;
+            background-color: rgba(255, 106, 0, .1);
+            overflow: hidden; /* 넘치는 내용만큼 해결. Float 를 해제하는 역활 (clearfix)*/
+            padding: 0; /* 기본값 초기화 */
+            margin: 0; /* 기본값 초기화 */
+            border: solid 1px blue;
+        }
+
+        li {
+            float: left; /* 수평적인 정렬은 left 와 right 로 준다 */
+            display : inline; /* 높이나 너비의 값은 존재하지 않고 data 의 값만 존재한다. */
+        }
+
+        li a { /* li 아래에 있는 a (선택자) */
+            display: inline-block; /* 줄개념이지만 박스모델 inline-block*/
+            width: 100px;
+            height: 30px;
+            color: green;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            border: solid 1px red;
+        }
+
+        li a:hover {
+            background-color : #111111;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+    <P>
+       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima deleniti corporis necessitatibus dolor laborum eveniet 
+       emo quod quidem praesentium eos repellat, dolores debitis, veritatis dignissimos laboriosam unde beatae lenduslaudantium.
+    </P>
+</body>
+</html>

@@ -1,0 +1,87 @@
+데이터 베이스 구현 테스트
+
+1. DBMS 기능
+2. DBMS 장단점
+3. 계정추가
+4-1. 권한 부여
+4.2. 권한 박탈
+5. 뷰
+6. 질의 속도를 높이기 위한 SQL
+7-1. MYSQL 설치해서 시스템 계정
+	mysql -uroot -p1111 
+7-2. Oracle 설치해서 시스템 계정
+	sqlplus "/as ~ sqlplus system/비번
+
+8. 데이터 딕셔러리, 데이터 딕셔러리 뷰
+
+---------------------------------------------
+
+sql 활용
+
+1. 조건에 맞는 select 하는. (LIKE, BETWEEN)
+
+2. SELF JOIN + EQUI JOIN
+
+3. LIKE	
+
+4. NON-EQUI JOIN
+
+5. 형변환 단일행 함수
+
+6. 그룹함수에 대한 조건 HAVING
+
+7,8,9 SUBQUERY
+
+다중열 서브쿼리
+SELF JOIN 서브쿼리
+서브쿼리
+	WHERE SAL = (SELECT MAX(SAL) FROM EMP);
+
+10. DELETE
+
+11. UPDATE
+
+12. UPDATE + SUBQUERY
+
+13. DML, DDL, DCL
+
+14. TOP-N
+
+15. 트랜잭션 COMMIT ROLLBACK;
+
+
+16~20
+25점 배점 문제
+
+1~4 다음과 같은 구조의 테이블을 생성하기 위한 테이블 생성하는 SQL문을 작성.
+  (단, 테이블이 있을시 테이블을 삭제하고 생성하시오) 
+  (조건1. 시퀀스를 생성한 뒤, 이를 이용하여 cno의 번호를 자동 생성한다.)
+  (조건2. customer테이블의 levelno는 cus_level테이블의 levelno 와 외래키 연결)
+
+ 데이터 입력 SQL문을 순서대로 작성하시오.
+[ customer 테이블 ] - cno가 주키, phone은 다른사람과 다르게 입력되도록 제한함
+		      joindate는 입력하지 않을시 현재날짜로 입력
+
+  cno    cname   joindate    phone         point  levelno
+   1   홍길동   17/10/17  010-9999-9999     300     1
+   2   이철수   16/09/06  010-9999-9888    NULL     2
+   3   홍길순   16/09/07  010-9999-7777      50     3
+
+[ cus_level 테이블 ] - levelno가 주키, levelname은 NOT NULL 조건.
+       levelno     levelname
+   	1            VVIP
+   	2             VIP           
+   	3            NORMAL
+   	4            BLACK
+
+제약조건① NOT NULL
+제약조건② UNIQUE
+제약조건③ PRIMARY KEY
+제약조건④ REFERENCES 테이블이름(컬럼이름)
+        ⑤ DEFAULT 디폴트값
+
+2. 위와 같은 두개의 테이블을 이용하여 아래와 같이 출력하는 SQL문도 작성하시오
+  cno    cname   joindate    phone         point  levelname
+   1   홍길동   12/12/17  010-9999-9999     300     VVIP
+   2   이철수   16/09/06  010-9999-9888    NULL     VIP
+   3   홍길순   16/09/07  010-9999-7777      50     NORMAL 

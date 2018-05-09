@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                변수 Variable.
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>
+                        <h2>[ 2 ] 자바에서의 변수</h2>
+
+                        목표 : 변수에 대한 개념들을 알고 실제 자바에서 변수를 쓰는 규칙으로 사용할 수 있다.
+                            자바에서 활용되는 여러가지 데이터 형태를 알고 적절하게 사용할 수 있다.
+                            참조변수(reference variable)에 대하여 개념을 안다. 자바에서 활용되는 메모리 구조를 알고, 활용한다.
+                        <h3>1.	변수(variable)란?</h3>
+                        (1)	프로그램 작업을 처리하기 위해 하나의 값을 저장할 수 있는 메모리 공간을 말한다
+                        (2)	임의의 메모리 공간에 이름을 붙여 관리하는 것이다.
+                        (3)	자바에서는 다양한 타입을 저장할 수 없고, 한가지 타입만 값으로 저장될 수 있다.
+                        (4)	식별자(identifier)라고도 한다 : 자바코드에서 변수로 입력시킨 이름을 의미한다.
+                        (5)	변수 선언 방법은 다음과 같다.
+                            int i = 10; //선언과 할당
+
+                        데이터 타입  변수명  할당연산자 변수내용물
+                        (주머니성질) (주머니이름) (주머니내용물)
+
+                                int j;   // 선언
+                                j = 10; // 값할당
+
+                        (ex) String  greeting = “안녕하세요”;
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">VarEx0</span> {
+                            <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args){
+                                <span style="color:#99cf50">int</span> age = <span style="color:#3387cc">23</span>; <span style="color:#aeaeae;font-style:italic">// 우항의 23 값을 좌항의 age라는 곳에 담음</span>
+                                <span style="color:#99cf50">String</span> name = <span style="color:#65b042">"설현"</span>;
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"안녕하세요? "</span> <span style="color:#e28964">+</span> age <span style="color:#e28964">+</span><span style="color:#65b042">"살 "</span> <span style="color:#e28964">+</span> name<span style="color:#e28964">+</span><span style="color:#65b042">"씨"</span>);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"안녕하세요? "</span> <span style="color:#e28964">+</span> age <span style="color:#e28964">+</span><span style="color:#65b042">"살 "</span> <span style="color:#e28964">+</span> name<span style="color:#e28964">+</span><span style="color:#65b042">"씨"</span>);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"안녕하세요? "</span> <span style="color:#e28964">+</span> age <span style="color:#e28964">+</span><span style="color:#65b042">"살 "</span> <span style="color:#e28964">+</span> name<span style="color:#e28964">+</span><span style="color:#65b042">"씨"</span>);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"안녕하세요? "</span> <span style="color:#e28964">+</span> age <span style="color:#e28964">+</span><span style="color:#65b042">"살 "</span> <span style="color:#e28964">+</span> name<span style="color:#e28964">+</span><span style="color:#65b042">"씨"</span>);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"안녕하세요? "</span> <span style="color:#e28964">+</span> age <span style="color:#e28964">+</span><span style="color:#65b042">"살 "</span> <span style="color:#e28964">+</span> name<span style="color:#e28964">+</span><span style="color:#65b042">"씨"</span>);
+                            }
+                        }
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">2. 기본 자료형</h3>
+                    <table>
+                        <tr>
+                            <td>자료형</td>
+                            <td>키워드</td>
+                            <td>크기</td>
+                            <td>표현범위</td>
+                        </tr>
+                        <tr>
+                            <td>논리형</td>
+                            <td>boolean</td>
+                            <td>1 byte</td>
+                            <td>true, false</td>
+                        </tr>
+                        <tr>
+                            <td>문자형</td>
+                            <td>char</td>
+                            <td>2 byte</td>
+                            <td>0~65,535</td>
+                        </tr>
+                        <tr>
+                            <td>정수형</td>
+                            <td>byte</td>
+                            <td>1 byte</td>
+                            <td>-128 ~ 127 (-27~ 27-1)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>short</td>
+                            <td>2 byte</td>
+                            <td>-32,768 ~ 32,767 (-215~ 215-1)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>short</td>
+                            <td>1 byte</td>
+                            <td>-128 ~ 127 (-27~ 27-1)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>int</td>
+                            <td>4 byte</td>
+                            <td>-2,147,483,648 ~ 2,147,483,647</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>long</td>
+                            <td>8 byte</td>
+                            <td>-9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807</td>
+                        </tr>
+                        <tr>
+                            <td>실수형</td>
+                            <td>float</td>
+                            <td>4 byte</td>
+                            <td>-3.4E38 ~ +3.4E38</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>double</td>
+                            <td>8 byte</td>
+                            <td>1.7E308 ~ + 1.7E308</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> com.tj.ex;
+                        <span style="color:#aeaeae;font-style:italic">// 클래스명은 대문자로시작하여 알파벳과 숫자, _를 쓸 수 있다.</span>
+                        <span style="color:#aeaeae;font-style:italic">// 변수명은 소문자로 시작하여 알파벳과 숫자, _를 쓸 수 있다.</span>
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex02</span> {
+                            <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                                <span style="color:#aeaeae;font-style:italic">// 프로그램 작업을 처리하기 위해 하나의 값을 저장하는 주머니 : 변수</span>
+                                <span style="color:#aeaeae;font-style:italic">// 변수 선언 문법 : 데이터타입 변수명 =(할당연산자) 데이터값</span>
+                                <span style="color:#99cf50">int</span> i = <span style="color:#3387cc">10</span>; <span style="color:#aeaeae;font-style:italic">// 4byte짜리 i라는 이름의 주머니에 10을 넣는다.</span>
+                                <span style="color:#99cf50">int</span> j = <span style="color:#3387cc">20</span>; <span style="color:#aeaeae;font-style:italic">// 초기화</span>
+                                <span style="color:#99cf50">int</span> h = <span style="color:#3387cc">0</span>;
+                                i=<span style="color:#3387cc">5</span>; <span style="color:#aeaeae;font-style:italic">// 할당</span>
+                                <span style="color:#99cf50">char</span> c1 = <span style="color:#65b042">'A'</span>;
+                        <span style="color:#aeaeae;font-style:italic">// 2byte짜리 c1이라는 이름의 주머니에 'A'코드값(65:1000 0001)을 넣는다</span>
+                                <span style="color:#99cf50">char</span> c2 = <span style="color:#65b042">'B'</span>;
+                                <span style="color:#99cf50">char</span> c3 = <span style="color:#65b042">'^'</span>;
+                                <span style="color:#aeaeae;font-style:italic">// "\t"는 탭. "\n"은 다음줄 맨 앞으로</span>
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(i<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span><span style="color:#e28964">+</span>j<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span><span style="color:#e28964">+</span>h);<span style="color:#aeaeae;font-style:italic">//개행포함</span>
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.print(c1<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span><span style="color:#e28964">+</span>c2<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span><span style="color:#e28964">+</span>c3<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\n</span>"</span>);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.printf(<span style="color:#65b042">"%d<span style="color:#ddf2a4">\t</span> %d <span style="color:#ddf2a4">\t</span> %d<span style="color:#ddf2a4">\n</span>"</span>,(<span style="color:#99cf50">int</span>)c1,(<span style="color:#99cf50">int</span>)c2,(<span style="color:#99cf50">int</span>)c3);
+                                <span style="color:#aeaeae;font-style:italic">// %c-문자. %s-문자열. %d-10진수. %x-16진수</span>
+                            }
+                        }
+                    </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                            
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex3</span> {
+                        <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                            <span style="color:#aeaeae;font-style:italic">// 변수의 선언 방법</span>
+                            
+                            <span style="color:#aeaeae;font-style:italic">// 1. 자료형  변수명;</span>
+                            <span style="color:#aeaeae;font-style:italic">// 변수의 선언과 값의 대입을 분리하는 방법</span>
+                            <span style="color:#99cf50">int</span> num1;
+                            num1 = <span style="color:#3387cc">10</span>;      
+                            
+                            <span style="color:#aeaeae;font-style:italic">// 2. 자료형 변수명 = 값;</span>
+                            <span style="color:#aeaeae;font-style:italic">// 변수의 선언과 동시에 값을 대입하는 방법</span>
+                            <span style="color:#99cf50">int</span> num2 = <span style="color:#3387cc">20</span>;
+                            
+                            <span style="color:#aeaeae;font-style:italic">// 3. 자료형  변수명1, 변수명2;</span>
+                            <span style="color:#aeaeae;font-style:italic">// 동일한 자료형 타입의 변수를 다수개 선언하는 방법</span>
+                            <span style="color:#99cf50">int</span> num3, num4;
+                            
+                            <span style="color:#aeaeae;font-style:italic">// 4. 자료형 변수명1 = 값1, 변수명2 = 값2;</span>
+                            <span style="color:#aeaeae;font-style:italic">// 동일한 자료형 타입의 변수를 다수개 선언하면서 값을 대입하는 방법</span>
+                            <span style="color:#99cf50">int</span> num5 = <span style="color:#3387cc">50</span>, num6 = <span style="color:#3387cc">60</span>;
+                            <span style="color:#99cf50">int</span> num7, num8 = <span style="color:#3387cc">80</span>, num9;
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"num1="</span><span style="color:#e28964">+</span>num1<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> num2="</span><span style="color:#e28964">+</span>num2);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"num3="</span><span style="color:#e28964">+</span>num3<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> num4="</span><span style="color:#e28964">+</span>num4);
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"num5="</span><span style="color:#e28964">+</span>num5<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> num6="</span><span style="color:#e28964">+</span>num6);
+                        }
+                    }
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex4</span> {
+                        <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                            <span style="color:#aeaeae;font-style:italic">// 변수 선언 위치 : 제약 없음. 어디에서나 변수의 선언이 가능</span>
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"프로그램 시작"</span>);
+                            <span style="color:#99cf50">int</span> num1 = <span style="color:#3387cc">10</span>;
+                            <span style="color:#aeaeae;font-style:italic">// 변수 선언 후 사용할 수 있다.</span>
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.printf(<span style="color:#65b042">"num1 = %d<span style="color:#ddf2a4">\n</span>"</span>,num1);
+                            <span style="color:#aeaeae;font-style:italic">// num2선언전이므로 사용불가</span>
+                            <span style="color:#aeaeae;font-style:italic">//System.out.printf("num2 = %d\n",num2);</span>
+                            <span style="color:#99cf50">int</span> num2 = <span style="color:#3387cc">20</span>;
+                            <span style="color:#aeaeae;font-style:italic">// 모든 변수는 초기화 이후에만 사용가능!!</span>
+                            <span style="color:#aeaeae;font-style:italic">// 초기화 : 변수의 선언 이후 값을 할당하는 것.</span>
+                            <span style="color:#aeaeae;font-style:italic">// 변수는 생성과 동시에 쓰레기값(사용할 수 없는 임의의 값)을 가지므로 값을 할당해야만 사용할 수 있다.</span>
+                            <span style="color:#99cf50">int</span> num3;
+                            <span style="color:#aeaeae;font-style:italic">//System.out.printf("num3 = %d\n", num3);
+                            </span>num3 = <span style="color:#3387cc">30</span>;
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.printf(<span style="color:#65b042">"num3 = %d<span style="color:#ddf2a4">\n</span>"</span>, num3);
+                            }
+                        }
+                    </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex5</span> {
+                        <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args){
+                            <span style="color:#99cf50">char</span> c = <span style="color:#65b042">'씨'</span>;
+                            <span style="color:#99cf50">int</span> i = <span style="color:#3387cc">10</span>;
+                            <span style="color:#99cf50">double</span> d = <span style="color:#3387cc">3.14</span>; <span style="color:#aeaeae;font-style:italic">// double d = 3.14d;</span>
+                            <span style="color:#99cf50">boolean</span> b = <span style="color:#3387cc">true</span>;
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"C는 "</span><span style="color:#e28964">+</span>c);
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"i는 "</span><span style="color:#e28964">+</span>i);
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"d는 "</span><span style="color:#e28964">+</span>d);
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"b는 "</span><span style="color:#e28964">+</span>b);
+                            }
+                        }
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex6</span> {
+                        <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                            <span style="color:#aeaeae;font-style:italic">// float 타입의 선언과 초기화 방법</span>
+                            <span style="color:#99cf50">float</span> f;
+                            <span style="color:#aeaeae;font-style:italic">// 실수의 기본형은 double 타입이므로, 10.1 은 double 타입의 값이 됩니다.</span>
+                            <span style="color:#aeaeae;font-style:italic">// float 자료형은 4 Byte 의 크기를 갖기 때문에 8 Byte 크기의</span>
+                            <span style="color:#aeaeae;font-style:italic">// double 형을 저장할 수 없습니다.</span>
+                            <span style="color:#aeaeae;font-style:italic">// f = 10.1;</span>
+                            <span style="color:#aeaeae;font-style:italic">// 실수의 기본형은 double 타입이므로, float 타입의 실수를 사용하기 위해</span>
+                            <span style="color:#aeaeae;font-style:italic">// 값f / 값F 형식을 사용합니다.</span>
+                            f = <span style="color:#3387cc">10.1f</span>;
+                            f = <span style="color:#3387cc">10.1F</span>;
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.printf(<span style="color:#65b042">"f = %.1f<span style="color:#ddf2a4">\n</span>"</span>, f);
+                            <span style="color:#aeaeae;font-style:italic">// 형변환 예제</span>
+                            <span style="color:#aeaeae;font-style:italic">// (변환할 자료형)값;</span>
+                            f=(<span style="color:#99cf50">float</span>)<span style="color:#3387cc">10.0000017</span>;
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"f="</span><span style="color:#e28964">+</span>f);
+                            <span style="color:#99cf50">double</span> d = <span style="color:#3387cc">10.0000017</span>;
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"d="</span><span style="color:#e28964">+</span>d);
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.printf(<span style="color:#65b042">"f = %.2f<span style="color:#ddf2a4">\n</span>"</span>, f);
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.printf(<span style="color:#65b042">"d= %.2f<span style="color:#ddf2a4">\n</span>"</span>, d);
+                            <span style="color:#e28964">if</span>(f<span style="color:#e28964">==</span>d)
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"같다"</span>);
+                            <span style="color:#e28964">else</span> 
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"다르다"</span>);
+                        }
+                    }
+                    </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex6</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">int</span> n1 <span style="color:#e28964">=</span> <span style="color:#3387cc">97</span>;
+                            <span style="color:#99cf50">int</span> n2 <span style="color:#e28964">=</span> <span style="color:#3387cc">79</span>;
+                            <span style="color:#99cf50">int</span> n3 <span style="color:#e28964">=</span> <span style="color:#3387cc">85</span>;
+                            
+                            <span style="color:#aeaeae;font-style:italic">// 위의 n1, n2, n3 은 각 과목의 성적을 의미합니다.</span>
+                            <span style="color:#aeaeae;font-style:italic">// 성적 점수를 활용해 총점과 평균을 출력하세요.</span>
+                            <span style="color:#99cf50">int</span> tot;    <span style="color:#aeaeae;font-style:italic">// 총점 저장 변수</span>
+                            <span style="color:#99cf50">int</span> avg;    <span style="color:#aeaeae;font-style:italic">// 평균 저장 변수</span>
+                            
+                            tot <span style="color:#e28964">=</span> n1 <span style="color:#e28964">+</span> n2 <span style="color:#e28964">+</span> n3;
+                            avg <span style="color:#e28964">=</span> tot <span style="color:#e28964">/</span> <span style="color:#3387cc">3</span>;
+                            
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>printf(<span style="color:#65b042">"총점 %d 점, 평균 %d 점 입니다.<span style="color:#ddf2a4">\n</span>"</span>, tot, avg);
+                        }
+                    }
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;">
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex6</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">int</span> n1 <span style="color:#e28964">=</span> <span style="color:#3387cc">99</span>;
+                            <span style="color:#99cf50">int</span> n2 <span style="color:#e28964">=</span> <span style="color:#3387cc">79</span>;
+                            <span style="color:#99cf50">int</span> n3 <span style="color:#e28964">=</span> <span style="color:#3387cc">85</span>;
+                            
+                            <span style="color:#aeaeae;font-style:italic">// 위의 n1, n2, n3 은 각 과목의 성적을 의미합니다.</span>
+                            <span style="color:#aeaeae;font-style:italic">// 성적 점수를 활용해 총점과 평균을 출력하세요.</span>
+                            <span style="color:#99cf50">int</span> tot;    <span style="color:#aeaeae;font-style:italic">// 총점 저장 변수</span>
+                            <span style="color:#99cf50">double</span> avg; <span style="color:#aeaeae;font-style:italic">// 평균 저장 변수</span>
+                            
+                            tot <span style="color:#e28964">=</span> n1 <span style="color:#e28964">+</span> n2 <span style="color:#e28964">+</span> n3;
+                            avg <span style="color:#e28964">=</span> tot <span style="color:#e28964">/</span> <span style="color:#3387cc">3.0D</span>;
+                            
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>printf(<span style="color:#65b042">"총점 %d 점, 평균 %5.2f 점 입니다.<span style="color:#ddf2a4">\n</span>"</span>, tot, avg);
+                        }
+                    }
+                    </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex6</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">int</span> n1 <span style="color:#e28964">=</span> <span style="color:#3387cc">97</span>;
+                            <span style="color:#99cf50">int</span> n2 <span style="color:#e28964">=</span> <span style="color:#3387cc">79</span>;
+                            <span style="color:#99cf50">int</span> n3 <span style="color:#e28964">=</span> <span style="color:#3387cc">85</span>;
+                            
+                            <span style="color:#aeaeae;font-style:italic">// 위의 n1, n2, n3 은 각 과목의 성적을 의미합니다.</span>
+                            <span style="color:#aeaeae;font-style:italic">// 성적 점수를 활용해 총점과 평균을 출력하세요.</span>
+                            <span style="color:#99cf50">int</span> tot;    <span style="color:#aeaeae;font-style:italic">// 총점 저장 변수</span>
+                            <span style="color:#99cf50">int</span> avg;    <span style="color:#aeaeae;font-style:italic">// 평균 저장 변수</span>
+                            
+                            tot <span style="color:#e28964">=</span> n1 <span style="color:#e28964">+</span> n2 <span style="color:#e28964">+</span> n3;
+                            avg <span style="color:#e28964">=</span> tot <span style="color:#e28964">/</span> <span style="color:#3387cc">3</span>;
+                            
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>printf(<span style="color:#65b042">"총점 %d 점, 평균 %d 점 입니다.<span style="color:#ddf2a4">\n</span>"</span>, tot, avg);
+                        }
+                    }
+                    
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex6</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">int</span> n1 <span style="color:#e28964">=</span> <span style="color:#3387cc">99</span>;
+                            <span style="color:#99cf50">int</span> n2 <span style="color:#e28964">=</span> <span style="color:#3387cc">79</span>;
+                            <span style="color:#99cf50">int</span> n3 <span style="color:#e28964">=</span> <span style="color:#3387cc">85</span>;
+                            
+                            <span style="color:#aeaeae;font-style:italic">// 위의 n1, n2, n3 은 각 과목의 성적을 의미합니다.</span>
+                            <span style="color:#aeaeae;font-style:italic">// 성적 점수를 활용해 총점과 평균을 출력하세요.</span>
+                            <span style="color:#99cf50">int</span> tot;    <span style="color:#aeaeae;font-style:italic">// 총점 저장 변수</span>
+                            <span style="color:#99cf50">double</span> avg; <span style="color:#aeaeae;font-style:italic">// 평균 저장 변수</span>
+                            
+                            tot <span style="color:#e28964">=</span> n1 <span style="color:#e28964">+</span> n2 <span style="color:#e28964">+</span> n3;
+                            avg <span style="color:#e28964">=</span> tot <span style="color:#e28964">/</span> <span style="color:#3387cc">3.0D</span>;
+                            
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>printf(<span style="color:#65b042">"총점 %d 점, 평균 %5.2f 점 입니다.<span style="color:#ddf2a4">\n</span>"</span>, tot, avg);
+                        }
+                    }
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">3.	기본 데이터 type과 참조 데이터 type의 이해</h3>
+                    <pre>
+
+                        <h4>(1)	기본 데이터 type (primitive)</h4>
+                        메모리에 있는 실제값 = 변수 데이터 값
+                        Java 언어에 이미 존재하고 있는 데이터 타입. 주로 간단한 데이터들(예:int double, boolean, char 등..)
+                        <h4>(2)	참조 데이터 type</h4>
+                        메모리에 있는 실제값(stack영역) = 변수가 저장된 주소(실제 변수 데이터는 heap 영역)
+                        여러 가지 데이터들이 모여 있는 복잡한 데이터로 기본 자료형에 비해 크기가 크다(예:String, System 등의 앞으로 나올 모든 객체, 배열 등등)
+                        String greeting = “Good Morning”;
+                        greeting
+
+                        <h3>4. 형변환</h3>
+                        <h4>(1)	묵시적 형변환 : 작은 주머니의 데이터를 큰 주머니로 옮기는 것</h4>
+                        public class VarEx3 {
+                            public static void main(String[] args){
+                                int i1 = 10;
+                                long l1 = 220000000L;
+                                double d1 = i1; // 묵시적형변환
+                                System.out.println("double형 d1의 데이터는 "+d1);
+                                
+                                double d2 = 10.91d;
+                                int i2 = (int)d2;
+                                System.out.println("int형 i2의 데이터는 "+i2);
+                            }
+                        }
+                        <h4>(2)	명시적 형변환 : 큰 주머니의 데이터를 작은 주머니로 옮기는 것. 데이터 손실이 있을 수 있으며 코드에 명시해 주어야 한다</h4>
+                            double d2 = 10;
+                            int i2 = (int)d2; // 명시적 형변환
+                            System.out.println("int형 i2의 데이터는 "+i2);
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+    </div>
+</body>
+</html>

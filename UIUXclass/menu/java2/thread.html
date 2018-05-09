@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/fixedmenu.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header id="top">
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                Thread
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>                        
+
+                        <span class="bold_color_red">Thread</span>
+
+                        <h3>목표 :</h3>  
+                        멀티 프로세스와 스레드를 구분할 수 있다. 
+                        멀티 태스킹 개념을 이해한다. 
+                        Thread의 life cycle을 이해한다. 
+                        동기화(synchronized) 개념을 이해한다.
+                        자바에서 활용하는 Thread를 이해하고 멀티 스레드 문법으로 구현할 수 있다. 
+  
+
+                        <h3>1.	프로세스와 스레드란?</h3>
+
+                        
+                        실행 가능한 보조기억장치(HDD, SDD)에 있는 파일을 우리는 프로그램이라 부릅니다. 
+                        이러한 프로그램을 실행하게 되면, 이 프로그램은 메모리에 상주하게 되고 우리는 이를 프로세스라 부릅니다. 
+                        Windows는 멀티프로세스를 지원하고 있죠.
+
+                        쉽게 말해서 하나의 CPU(컴퓨터)가 동시에 여러 프로그램을 동시에 실행할 수 있습니다. 
+                        이것이 멀티 프로세스입니다. 
+
+                        멀티프로세스 시스템에서 각 프로세스는 동시에 실행되는 것처럼 보이지만, 
+                        CPU가 하나이기 때문에 실행시간을 잘게 나누어 프로세스가 돌아가는데 각 프로세스들이 돌아가면서 
+                        CPU를 점유하는데 프로세스간 CPU점유작업인 스케줄링을 한다.
+
+                        그럼 스레드(멀티스레드)란 무엇일까요? 하나의 프로그램이 동시에 여러 개의 일을 수행할 수 있도록 해 주는 것입니다. 
+                        위에서 말한 하나의 프로세스에서 다시 여러 가지 일을 하는 것을 뜻 합니다. 
+                        예를 들어 동일한 채팅프로그램에서 상대의 글 내용을 전송받기도 하고 내 글의 내용을 상대에게 전송하고 있는 것 입니다.
+                        멀티스레드이죠.
+
+                        JAVA는 기본적으로 멀티스레드를 지원하기 위해 java.lang.Thread 클래스를 제공하고 있습니다.
+
+                        멀티프로세스 vs. 멀티쓰레드
+
+                        하나의 새로운 프로세스를 생성하는 멀티프로세스 보다 하나의 새로운 쓰레드를 생성하는 것이 더 적은 비용이 듭니다.
+                        스레드는 두 가지 형태로 존재 합니다. 하나는 객체 하나를 n개의 스레드가 공유하는 방식이고, 
+                        또 다른 하나는 객체 하나당 하나의 스레드가 존재하는 방식 입니다.
+
+                        <span class="bold_color_red">(멀티스레드의 장점)</span>
+                        자원을 보다 효율적으로 사용할 수 있다.
+                        사용자에 대한 응답성이 향상된다.
+                        작업이 분리되어 코드가 간결해 진다.
+
+                        <span class="bold_color_red">(멀티스레드의 단점)</span>
+                        동기화(synchronization)에 주의해야 한다.
+                        교착상태(dead-lock)가 발생하지 않도록 주의해야 한다.
+                        각 쓰레드가 효율적으로 고르게 실행될 수 있게 해야 한다(☞프로그래밍할 때 고려해야 할 사항들이 많다)
+
+
+                    </pre>
+                    <div class="image_modify"><img src="../../img/thread1.png" alt="thread1"></div>
+                    <pre>
+                        <h3>2.	스레드의 생명주기</h3>
+
+                        가)	생성 
+                        나)	실행
+                        다)	대기
+                        라)	완료
+
+                    </pre>
+                </div>
+                <div id="Syntex">
+                    <h3 class="headline3">멀티 스레드 문법</h3>
+                    
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex1runerble</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThreadTest</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">Runnable</span> {
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">run</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Thread Test"</span>);
+                        
+                                <span style="color:#e28964">for</span> (<span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; i <span style="color:#e28964">&lt;</span> <span style="color:#3387cc">10</span>; i<span style="color:#e28964">++</span>) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i="</span> <span style="color:#e28964">+</span> i);
+                                    <span style="color:#e28964">try</span> {
+                                        <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>sleep(<span style="color:#3387cc">500</span>);<span style="color:#aeaeae;font-style:italic">// 0.5초</span>
+                                    } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">InterruptedException</span> e) { }
+                                }
+                        
+                            }
+                        }
+                    </pre>
+                    <hr>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex1runerble</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThreadMain</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">ThreadTest</span> threadTest <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ThreadTest</span>();
+                                <span style="color:#aeaeae;font-style:italic">// 스레드 생성. "작업A" 라는 이름을 가지고 있다.</span>
+                                <span style="color:#99cf50">Thread</span> thread <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Thread</span>(threadTest, <span style="color:#65b042">"작업A"</span>);
+                        
+                                thread<span style="color:#e28964">.</span>start(); <span style="color:#aeaeae;font-style:italic">// "작업A" 스레드 시작. 메소드 run()에 있는 작업을 수행.</span>
+                        
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"메인 함수에서 출력함 : "</span> 
+                                        <span style="color:#e28964">+</span> <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName());
+                            }
+                        
+                        }
+                        
+                    </pre>
+                </div>
+                <div id="List">
+                    <h3 class="headline3 background_bisque">Thread 클래스 상속을 통한 Thread</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex2thread</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThreadTest</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Thread</span> {
+                            
+                            <span style="color:#99cf50">@Override</span> <span style="color:#aeaeae;font-style:italic">// 동시에 작헙할 일을 여기에 기술한다.</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">run</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Thread Test"</span>);
+                                
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; i <span style="color:#e28964">&lt;</span> <span style="color:#3387cc">10</span>; i<span style="color:#e28964">++</span>) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i = "</span> <span style="color:#e28964">+</span> i);
+                                    
+                                    <span style="color:#e28964">try</span> {
+                                        <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>sleep(<span style="color:#3387cc">500</span>);
+                                    } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">InterruptedException</span> e) {  }
+                                }
+                            }
+                            
+                        }
+                        
+                    </pre>
+                    <hr>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex2thread</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThreadMain</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                
+                                <span style="color:#99cf50">ThreadTest</span> thread <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ThreadTest</span>(); <span style="color:#aeaeae;font-style:italic">// 작업run() 도 여기 있고 thread 도 있다.</span>
+                                thread<span style="color:#e28964">.</span>setName(<span style="color:#65b042">"작업A"</span>); <span style="color:#aeaeae;font-style:italic">// 쓰레드의 이름을 준다.</span>
+                                
+                                thread<span style="color:#e28964">.</span>start();
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"메인 함수 에서 출력 : "</span><span style="color:#e28964">+</span>
+                                        <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName());
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"메인 쓰레드는 완료가 되었다."</span>);
+                                
+                            }
+                        
+                        }
+                        
+                    </pre>
+                </div>
+                <div id="Synchronized">
+                        <h3 class="headline3">Synchronized</h3>
+                        <pre>
+    
+                            Synchronized의 사전적 의미는 통합, 동시 정도의 의미 입니다.
+    
+                            위에서 살펴본 봐와 같이 JAVA 멀티쓰레드에서 하나의 객체에 n개의 스레드가 진행될 경우가 있습니다. 
+                            이런 경우 문제가 생길 수 있습니다.
+                            객체에 선언되어 있는 인스턴스변수를 스레드에서 공유하게 되어, 인스턴스의 값에 영향을 미치게 됩니다.
+                            이런 경우를 대비해서 JAVA에서는 synchronized라는 키워드를 이용합니다. Synchronized는 먼저 수행되는 
+                            스레드의 모든 작업이 끝날 때까지 다른 스레드는 기다리도록 하는 예약어입니다.
+                            즉, 동기화란? 하나의 자원을 여러 태스크가 사용하려 할 때에, 한 시점에서 하나의 태스크만이 사용할 수 있도록 하는 것.
+                            대부분의 응용 프로그램에서 다수개의 스레드가 공유할 수 있는 부분이 요구되며 공유부분은 상호배타적으로 사용되어야 합니다.
+                            예를 들어 영화극장 좌석예매시스템이 있습니다. 네트워크를 이용하여 여러 매표소에서 좌석이 예매될 때, 
+                            매표소들간에 좌석 예매시스템의 좌석 정보를 동시에 접근할 수 있다면, 
+                            같은 좌석을 여러 사람에게 중복되게 예매할 수도 있습니다. 
+                            
+                            따라서 이렇게 여러 데스크들이 하나의 정보에 접근할 때에는, 한번에 하나씩의 데스크만이 접근할 수 있도록 해야 합니다.
+                            
+                        </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">객체1개. 스레드n개 (mulite thread)</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex3multethread</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThreadTest</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">Runnable</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> testRun <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">run</span>() {
+                                <span style="color:#e28964">for</span> (<span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; i <span style="color:#e28964">&lt;</span> <span style="color:#3387cc">10</span>; i<span style="color:#e28964">++</span>) {
+                                    test();
+                                    <span style="color:#aeaeae;font-style:italic">// 잠깐 잠재워</span>
+                                } <span style="color:#aeaeae;font-style:italic">// for</span>
+                            }<span style="color:#aeaeae;font-style:italic">// run</span>
+                        
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">synchronized</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">test</span>() {
+                                <span>// synchronized : 하나의 쓰레드를 모두 수행 하기전에는 다른 쓰레드는 실행되지 않는다.</span>
+                                
+                                <span style="color:#e28964">if</span> (<span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName()<span style="color:#e28964">.</span>equals(<span style="color:#65b042">"A"</span>)) {
+                                    testRun<span style="color:#e28964">++</span>;
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"- - - A 수행중 - - -"</span>);
+                                }
+
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"testNum = "</span> <span style="color:#e28964">
+                                    +</span> testRun <span style="color:#e28964">+</span> <span style="color:#65b042">"Thread Name = "</span> <span style="color:#e28964">+</span> <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName());
+                                
+                                <span style="color:#e28964">try</span> {
+                                    <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>sleep(<span style="color:#3387cc">500</span>);
+                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">InterruptedException</span> e) {}
+                                
+                            }
+                        }
+                        
+                    </pre>
+                    <hr>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex3multethread</span>;
+                        <span style="color:#aeaeae;font-style:italic">// 쓰레드  N 개가 쓰레드 1개를 공유하는 작업예제</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThreadMain</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">ThreadTest</span> threadTest <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ThreadTest</span>(); <span style="color:#aeaeae;font-style:italic">// 스레드 객체 만듬.</span>
+                                
+                                <span style="color:#99cf50">Thread</span> threadA <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Thread</span>(threadTest, <span style="color:#65b042">"A"</span>);
+                                <span style="color:#99cf50">Thread</span> threadB <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Thread</span>(threadTest, <span style="color:#65b042">"B"</span>);
+                                
+                                threadA<span style="color:#e28964">.</span>start();
+                                threadB<span style="color:#e28964">.</span>start();
+                                
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"main thread 에서도 작업합니다."</span> <span style="color:#e28964">+</span> <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName());
+                        
+                            }
+                        
+                        }
+                        
+                    </pre>
+                </div>
+                <div id="total1">
+                    <h3 class="headline3">Thread 종합예제</h3>
+                    <hr>
+                        <h3>Account Class</h3>
+                    <hr>
+                    <pre style="color:#f8f8f8">
+                            
+                            <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex6atmcardn</span>;
+
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Account</span> {
+                                <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> balence; <span style="color:#aeaeae;font-style:italic">// 잔액.</span>
+                            
+                                <span style="color:#99cf50">public</span> <span style="color:#89bdff">Account</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">balence</span>) {
+                                    <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>balence <span style="color:#e28964">=</span> balence;
+                                }
+                            
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">synchronized</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">deposit</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">amount</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">who</span>) { <span style="color:#aeaeae;font-style:italic">// 한 작업이 마칠때 까지 다른 작업은 시작되지 않음.</span>
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★"</span> <span style="color:#e28964">+</span> who <span style="color:#e28964">+</span> <span style="color:#65b042">"가 입금시작"</span>);
+                                    balence <span style="color:#e28964">+=</span> amount;
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(who <span style="color:#e28964">+</span> <span style="color:#65b042">"가 "</span> <span style="color:#e28964">+</span> amount <span style="color:#e28964">+</span> <span style="color:#65b042">"입금하여 잔액 "</span> <span style="color:#e28964">+</span> balence);
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★--"</span> <span style="color:#e28964">+</span> who <span style="color:#e28964">+</span> <span style="color:#65b042">"가 입금 완료 --★"</span>);
+                                }
+                                
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">synchronized</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">whitdrow</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">amount</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">who</span>) { <span style="color:#aeaeae;font-style:italic">// 한 작업이 마칠때 까지 다른 작업은 시작되지 않음.</span>
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★"</span> <span style="color:#e28964">+</span> who <span style="color:#e28964">+</span> <span style="color:#65b042">"가 출금시작"</span>);
+                                    <span style="color:#e28964">if</span> (balence <span style="color:#e28964">>=</span> amount) {
+                                        balence <span style="color:#e28964">-=</span> amount;
+                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(who <span style="color:#e28964">+</span> <span style="color:#65b042">"가 "</span> <span style="color:#e28964">+</span> amount <span style="color:#e28964">+</span> <span style="color:#65b042">"출금하여 잔액 "</span> <span style="color:#e28964">+</span> balence);
+                                    } <span style="color:#e28964">else</span> {
+                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"잔액 : "</span><span style="color:#e28964">+</span> balence <span style="color:#e28964">+</span> <span style="color:#65b042">" 잔액이 부족합니다."</span>);
+                                    }
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★--"</span> <span style="color:#e28964">+</span> who <span style="color:#e28964">+</span> <span style="color:#65b042">"가 출금 완료 --★"</span>);
+                                }
+                            
+                            }
+                            
+                    </pre>
+                    <hr>
+                        <h3>ATM_action Class</h3>
+                    <hr>
+                    <pre style="background:#000;color:#f8f8f8">
+                            
+                            <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex6atmcardn</span>;
+
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ATM_action</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">Runnable</span> {
+                                <span style="color:#99cf50">private</span> <span style="color:#99cf50">Account</span> obj; <span style="color:#aeaeae;font-style:italic">// 계좌</span>
+                                <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> toggle <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
+                            
+                                <span style="color:#99cf50">public</span> <span style="color:#89bdff">ATM_action</span>(<span style="color:#99cf50">Account</span> <span style="color:#3e87e3">obj</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">toggle</span>) {
+                                    <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>obj <span style="color:#e28964">=</span> obj;
+                                    <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>toggle <span style="color:#e28964">=</span> toggle;
+                                }
+                            
+                                <span style="color:#99cf50">@Override</span>
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">run</span>() { <span style="color:#aeaeae;font-style:italic">// deposit() &lt;-> whitdrow() 반복</span>
+                                    <span style="color:#e28964">for</span> (<span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; i <span style="color:#e28964">&lt;</span> <span style="color:#3387cc">5</span>; i<span style="color:#e28964">++</span>) {
+                                        <span style="color:#e28964">if</span> (toggle <span style="color:#e28964">==</span> <span style="color:#3387cc">1</span>) {
+                                            obj<span style="color:#e28964">.</span>deposit(<span style="color:#3387cc">1000</span>, <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName());
+                                            toggle <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
+                                        } <span style="color:#e28964">else</span> {
+                                            obj<span style="color:#e28964">.</span>whitdrow(<span style="color:#3387cc">1000</span>, <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName());
+                                            toggle <span style="color:#e28964">=</span> <span style="color:#3387cc">1</span>;
+                                        }<span style="color:#aeaeae;font-style:italic">// if</span>
+                                    }<span style="color:#aeaeae;font-style:italic">// for</span>
+                                }<span style="color:#aeaeae;font-style:italic">// run()</span>
+                            
+                            }
+                            
+                    </pre>
+                    <hr>
+                        <h3>Main Function</h3>
+                    <hr>
+                    <pre style="color:#f8f8f8">
+                            
+                            <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex6atmcardn</span>;
+
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Main</span> {
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                    
+                                    <span style="color:#99cf50">Account</span> obj <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Account</span>(<span style="color:#3387cc">1000</span>);
+                                    
+                                    <span style="color:#99cf50">ATM_action</span> card_mom <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ATM_action</span>(obj, <span style="color:#3387cc">0</span>);
+                                    <span style="color:#99cf50">ATM_action</span> card_dad <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ATM_action</span>(obj, <span style="color:#3387cc">0</span>);
+                                    
+                                    <span style="color:#99cf50">Thread</span> mom <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Thread</span>(card_mom,<span style="color:#65b042">"엄마"</span>);
+                                    <span style="color:#99cf50">Thread</span> dad <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Thread</span>(card_dad,<span style="color:#65b042">"아빠"</span>);
+                                    
+                                    mom<span style="color:#e28964">.</span>start();
+                                    dad<span style="color:#e28964">.</span>start();
+                            
+                                }
+                            }
+                            
+                    </pre>
+                </div>
+                <div id="total2">
+                    <h3 class="headline3 background_bisque">오늘의 예제 - 투표율 무작위 증가</h3>
+                    <hr>
+                        <h3>VoteThread Class</h3>
+                    <hr>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex7vote</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Random</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">VoteThread</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Thread</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">TARGETRATE</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">100</span>; <span style="color:#aeaeae;font-style:italic">// 100%</span>
+                            
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> voteRate; <span style="color:#aeaeae;font-style:italic">// 투표율</span>
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">Random</span> random; <span style="color:#aeaeae;font-style:italic">// 투표증가율 난수 발생.</span>
+                            
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">VoteThread</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>) {
+                                <span style="color:#3e87e3">super</span>(name); <span style="color:#aeaeae;font-style:italic">// 스레드이름</span>
+                                random <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Random</span>();
+                            }
+                            
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">run</span>() {
+                                <span style="color:#99cf50">StringBuilder</span> bar <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StringBuilder</span>(); <span style="color:#aeaeae;font-style:italic">// 문자열을 하나 선언.</span>
+                                <span style="color:#e28964">while</span>(<span style="color:#3387cc">true</span>) {
+                                    <span style="color:#aeaeae;font-style:italic">// voteRate 를 random 으로  증가시키면서 * 그래프로 출력하고 100% 면 중지한다.</span>
+                                    voteRate <span style="color:#e28964">+=</span> random<span style="color:#e28964">.</span>nextInt(<span style="color:#3387cc">20</span>); <span style="color:#aeaeae;font-style:italic">// 0~20</span>
+                                    bar<span style="color:#e28964">.</span>delete(<span style="color:#3387cc">0</span>, bar<span style="color:#e28964">.</span>toString()<span style="color:#e28964">.</span>length()); <span style="color:#aeaeae;font-style:italic">// 변수내용을 모두 지음</span>
+                                    
+                                    <span style="color:#e28964">if</span>(voteRate <span style="color:#e28964">>=</span> <span style="color:#3387cc">TARGETRATE</span>) {
+                                        voteRate <span style="color:#e28964">=</span> <span style="color:#3387cc">TARGETRATE</span>;
+                                        <span style="color:#e28964">for</span> (<span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; i<span style="color:#e28964">&lt;</span> voteRate; i<span style="color:#e28964">++</span>) {
+                                            bar<span style="color:#e28964">.</span>append(<span style="color:#65b042">"*"</span>); <span style="color:#aeaeae;font-style:italic">// 그래프를 voteRate 만큼 * 만들기</span>
+                                        }
+                                        
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName() <span style="color:#e28964">+</span>
+                                                        <span style="color:#65b042">"의 개표율 ("</span> <span style="color:#e28964">+</span> voteRate <span style="color:#e28964">+</span> <span style="color:#65b042">"%)<span style="color:#ddf2a4">\t</span>"</span> <span style="color:#e28964">+</span> bar);
+                                    <span style="color:#e28964">break</span>; <span style="color:#aeaeae;font-style:italic">// 개표율이 100이면 while 문 탈출.</span>
+                                    } <span style="color:#e28964">else</span> {
+                                        <span style="color:#e28964">for</span>(<span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; i<span style="color:#e28964">&lt;</span> voteRate; i<span style="color:#e28964">++</span>) {
+                                            bar<span style="color:#e28964">.</span>append(<span style="color:#65b042">"*"</span>); <span style="color:#aeaeae;font-style:italic">// 그래프를 voteRate 만큼 *로 만듬.</span>
+                                        }
+                                        
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>currentThread()<span style="color:#e28964">.</span>getName() <span style="color:#e28964">+</span>
+                                                        <span style="color:#65b042">"의 개표율 ("</span> <span style="color:#e28964">+</span> voteRate <span style="color:#e28964">+</span> <span style="color:#65b042">"%)<span style="color:#ddf2a4">\t</span>"</span> <span style="color:#e28964">+</span> bar);
+                                    
+                                    } <span style="color:#aeaeae;font-style:italic">// if</span>
+                                    
+                                    <span style="color:#e28964">try</span> {
+                                        <span style="color:#99cf50">Thread</span><span style="color:#e28964">.</span>sleep(<span style="color:#3387cc">300</span>); <span style="color:#aeaeae;font-style:italic">// 프로세스 0.3초 중지.</span>
+                                    } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">InterruptedException</span> e) {}
+                                    
+                                }<span style="color:#aeaeae;font-style:italic">// while</span>
+                            }<span style="color:#aeaeae;font-style:italic">// run();</span>
+                        }<span style="color:#aeaeae;font-style:italic">// class</span>
+                        
+                    </pre>
+                    <hr>
+                        <h3>VoteMain Class</h3>
+                    <hr>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex7vote</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">VoteMain</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">VoteThread</span> location1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">VoteThread</span>(<span style="color:#65b042">"지역1"</span>);
+                                <span style="color:#99cf50">VoteThread</span> location2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">VoteThread</span>(<span style="color:#65b042">"지역2"</span>);
+                                <span style="color:#99cf50">VoteThread</span> location3 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">VoteThread</span>(<span style="color:#65b042">"지역3"</span>);
+                                
+                                location1<span style="color:#e28964">.</span>start();
+                                location2<span style="color:#e28964">.</span>start();
+                                location3<span style="color:#e28964">.</span>start();
+                            }
+                        
+                        }
+                        
+                    </pre>
+                </div>
+            </div><!-- contents div end-->
+        </div><!-- nav div end-->
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+        <div id="fixed_menu">
+            <ul>
+                <li><a href="#Syntex">Syntex</a></li>
+                <li><a href="#Synchronized">Synchronized</a></li>
+                <li><a href="#total1">total1</a></li>
+                <li><a href="#total2">total2</a></li>
+                <li><a href="#top">Top</a></li>
+            </ul>
+        </div><!-- Fixed Menu -->
+    </div><!-- Wrap Div end --> 
+</body>
+</html>

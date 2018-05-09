@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Semantic Layout</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
+    <style>
+        /* Simple reset CSS */
+        *{
+            margin : 0;
+            padding : 0;
+            box-sizing: border-box; 
+        /* 
+            컨텐츠의 표현에는 내용만이 있는것이 아니고 마진과 패딩과 테두리가 있다. 
+            이것이 상위 레이아웃의 크기보다 커진다면 레이아웃이 깨지게 된다.
+            이런 것들을 해결해준다. Reset Css 
+        */
+        }
+
+        body {
+            font-family: "Helvetica Neue", helvetica, Arial, sans-serif;
+            color : #58666e;
+            background-color: #fceabb;
+        }
+        
+        li {
+            list-style : none;
+        }
+
+        a {
+            text-decoration : none;
+        }
+
+        #wrap{
+            margin-top: 60px;
+        }
+
+        header {
+            position: fixed;
+            top:0;
+            width :100%;
+            height : 60px; /* 높이 값은 일반적으로 안준다. 컨텐츠에 따라서 늘어나기 때문. 주는 경우는 Fixed navigation을 위한것임.*/
+            z-index : 2000; /* 상대적인 값으로 컨텐츠의 z축의 값 */
+            background-color : #fff;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            float : right;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin: 10px 5px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+        }
+
+        .logo {
+            display: inline-block; /* inline 에 block 을 줘서 박스모델로 만든다. */
+            height : 36px; 
+            /* margin: 12px 0 12px 25px; */
+            margin: 12px 15px;
+        }
+
+        .logo > img {
+            height : 36px; 
+        }
+
+        .nav-items > li {
+            display : inline-block; /* dispaly 속성으로 inline 속성을 가질수 있도록 한다. */
+        }   
+
+        .nav-items > li > a {
+            line-height : 60px; /* Contents 줄간격 (한글에서 줄간격 같은 계념). 박스의 크기만큼 주면 세로 가운데로 정렬 */
+            padding: 0 30px;
+            color : rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-items > li > a:hover {
+            color : rgba(160, 160, 160, 0.8);
+        }
+
+        #contents-wrap {
+            overflow: hidden; /* 넘치는 내용을 숨긴다. */
+            background-color :  #333333;
+        }
+        
+        /* clear fix code */
+        #contents-wrap:after{ /* 가상의 공간을 넣는다 */
+            content: ""; /* 임의의 내용을 넣어 놓는다. */
+            display : block; 
+            clear: both; /* float 해제 */
+        } 
+
+        aside{
+            position: fixed;
+            float : left;
+            width : 20%; /* 사이즈가 반응적으로 적용 */
+            background-color :#333333;
+            padding: 50px 50px 0;
+            /* border-right : 1px solid red; */
+            /* margin-left : 40px;  */
+        }
+
+        aside > ul {
+            width : 100%;
+        }
+
+        aside > ul > li > a {
+            width: 100%;
+            padding: 10px 20px;
+            display: block;
+            color: rgb(187, 187, 187);
+        }
+
+        aside > ul > li > a:hover {
+            width: 100%;    
+            padding: 10px 20px;
+            color: rgb(255, 255, 255);
+            background-color: rgba(200, 200, 200, .6)
+        }
+
+        section{
+            float : right;
+            width : 80%;
+            padding: 0 50px;
+            background-color : rgba(151, 183, 202, 0.5);
+            /* border-left : 1px solid red; */
+        }
+
+        #london, #paris, #tokyo, #newyork{
+            margin: 20px;
+            padding: 25px 40px;
+            background-color: rgba(160, 160, 160, 0.8);
+        }
+    
+        footer {
+            /* footer를 aside위에 올리기 위해 사용(부유객체) */
+            /* position: absolute; */
+            height: 60px;
+            width: 100%;
+            padding: 0 25px;
+            line-height: 60px;
+            color: #8a8c8f;
+            border-top : 2px solid #dee5e7;
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <a class="logo" href="#home"><img src="http://poiemaweb.com/img/logo.png" alt="Logo" height="36px"></a>
+            <nav>
+                <ul class="nav-items">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#content">Content</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>   
+            </nav>
+        </header><!-- header : 주로 타이틀과 로고 네비게이션이 들어감.-->
+        <div id="contents-wrap">
+            <aside>
+                <h1>Aside</h1>
+                <ul class="aside-items">
+                    <li><a href="#" class="active">London</a></li>
+                    <li><a href="#">Paris</a></li>
+                    <li><a href="#">Tokyo</a></li>
+                    <li><a href="#">NewYork</a></li>
+                </ul>
+            </aside><!-- aside : 내용중 좌우측에 서브적으로 배치되는 요소 -->
+            <section>
+                <article id="london">
+                    <h1>London</h1>
+                    <a href="#"><img src="http://via.placeholder.com/600x150"></a>
+                </article>
+                <article id="paris">
+                    <h1>Paris</h1>
+                    <a href="#"><img src="http://via.placeholder.com/350x150"></a>
+                </article>
+                <article id="tokyo">
+                    <h1>Tokyo</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Vivamus facilisis tincidunt dui eget egestas. Praesent a pretium turpis. 
+                        Cras vulputate arcu eu urna luctus, a finibus turpis fringilla. Donec aliquet dui eget
+                        urna interdum finibus. In hac habitasse platea dictumst. Nam non magna at leo finibus porttitor 
+                        placerat in turpis. Donec euismod ac quam a blandit. Duis condimentum nec ex sit amet rutrum. Aliquam accumsan 
+                        ultricies leo ac lobortis. In maximus tortor et fringilla rhoncus. Suspendisse potenti.
+                    </p>
+                    <p>
+                        Nulla in lobortis turpis. Etiam iaculis molestie mi. Donec ac mi mi. 
+                        Nulla facilisi. Phasellus ac tellus odio. Fusce dolor magna, suscipit
+                        sit amet suscipit eget, egestas quis urna. Aenean posuere porttitor gravida.
+                        Nunc sit amet purus quis neque maximus lacinia vitae a leo. Mauris viverra sem odio,
+                        non sagittis ante laoreet a. Mauris sagittis, nibh ut tempor cursus, arcu nisi porta velit,
+                        vitae pellentesque velit dui non dolor. Orci varius natoque penatibus et magnis dis parturient montes,
+                    </p>
+                    <p>
+                        Nunc volutpat finibus odio non vehicula. Donec eget vestibulum nibh. 
+                        Mauris vitae enim turpis. Maecenas nec sodales odio, eget molestie justo. 
+                        Vestibulum vitae nisl sapien. Sed id hendrerit turpis, at tincidunt purus. 
+                        Aliquam vel porta erat. Nulla facilisi. Maecenas nec ultrices velit. Donec mattis 
+                        sollicitudin nulla ac ultricies. Sed sed vestibulum ex. Vestibulum pulvinar aliquet finibus.
+                    </p>
+                </article>
+                <article id="newyork">
+                    <h1>NewYork</h1>
+                    <a href="#"><img src="http://via.placeholder.com/600x150"></a>
+                </article>
+            </section><!-- section :  내용이 주로 들어가는 Semantic 요소 -->
+        </div><!-- content wrap div : 내용을 감싸는 Div  -->
+        <footer> ⓒ Copyright 2018 - Semantic world wide web </footer><!-- footer : 일반적으로 가장 하단의 표시되는 박스 -->
+    </div><!-- wrap div : 제일 바깥을 감싸는 div 일반적으로 정렬을 위해 있다. -->
+</body>
+</html>

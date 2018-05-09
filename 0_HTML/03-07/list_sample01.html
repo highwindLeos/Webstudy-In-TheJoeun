@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>List</title>
+</head>
+<body>
+    <h2>순서 없는 목록 (Unordered List)</h2>
+    <ul>
+        <li>Coffee</li>
+        <li>Tea
+            <ol><!-- 리스트 안에 리스트를 다시 코딩할수 있다.-->
+                <p><b>중첩 리스트.</b></p>
+                <li>Black Tea</li>
+                <li>Green Tea</li>
+            </ol>
+        </li>
+        <li>Milk</li>
+    </ul>
+
+    <h2>Unordered List with Circle Bullets : 원형 리스트</h2>
+    <ul style="list-style-type:circle">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>  
+
+    <h2>Unordered List without Bullets : 기호를 주지 않는다.</h2>
+    <ul style="list-style-type:none">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>  
+    
+    <h2>순서 있는 목록 (Ordered List)</h2>
+    <p>Type</p>
+    <ol type="I"><!--  type 속성 (기본은 숫자):  “1”	숫자 (기본값)    “A”	대문자 알파벳
+                        “a”	소문자 알파벳    “I”	대문자 로마숫자    “i”	소문자 로마숫자 -->
+        <li value="2">Coffee</li><!-- value 속성 : 시작값을 줄수있다. -->
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+    <p>Start</p>
+    <ol start="3"><!-- start 속성 : 시작값을 줄수있다. -->
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+    <p>Reversed</p>
+    <ol reversed><!-- reversed 속성 : List 값을 반전시킨다. -->
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+    <h2>HTML Description Lists : 설명 리스트</h2>
+    <dl>
+        <dt>Coffee</dt><!-- 제목 -->
+        <dd>- black hot drink1</dd><!-- 설명 -->
+        <dd>- black hot drink2</dd><!-- 설명 -->   
+        <dt>Milk</dt><!-- 제목 -->
+        <dd>- white cold drink</dd><!-- 설명 -->
+    </dl>
+    <h2>HTML Description Lists : 정의형 목록</h2>
+    <dl>
+        <dt>Coffee</dt><!-- 제목 -->
+        <dd>- black hot drink1</dd><!-- 설명 -->
+        <dd>- black hot drink2</dd><!-- 설명 -->   
+        <dt>Milk</dt><!-- 제목 -->
+        <dd>- white cold drink</dd><!-- 설명 -->
+    </dl>
+</body>
+</html>

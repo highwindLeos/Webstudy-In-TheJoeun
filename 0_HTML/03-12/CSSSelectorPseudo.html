@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Seletor Pseudo</title>
+    <style>
+        /* Pseudo(가상 선택자.) */
+        /*         
+        pseudo-class	Description
+        :link	셀렉터가 방문하지 않은 링크일 때
+        :visited	셀렉터가 방문한 링크일 때
+        :hover	셀렉터에 마우스가 올라와 있을 때
+        :active	셀렉터가 클릭된 상태일 때
+        :focus	셀렉터에 포커스가 들어와 있을 때 
+        */
+
+        a:hover{
+            color: red;
+        }
+        input:focus{
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div><a href="#">Hover Me</a></div>
+    <input type="text" placeholder="Focus Me">
+</body>
+</html>

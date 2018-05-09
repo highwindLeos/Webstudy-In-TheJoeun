@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animation  Keyframe</title>
+    <style>
+        .obj{
+            width: 100px;
+            height: 100px;
+            background: aquamarine;
+            position: relative;
+            animation: 2.5s LocationTrans;
+            animation-iteration-count: infinite; /* 에니메이션 무한 반복*/
+        }
+        @keyframes LocationTrans {
+            0%{
+                left: 0px; top:0px; background: antiquewhite;
+            }
+            25%{
+                left: 95%; top:0px; background: gray;
+            }
+            50%{
+                left: 95%; top:90vh; background: aquamarine;
+            }
+            75%{
+                left: 0px; top:90vh; background: azure;
+            }
+            100%{
+                left: 0px; top:0px; background: antiquewhite;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="obj"></div>
+</body>
+</html>

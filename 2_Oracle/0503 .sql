@@ -1,0 +1,40 @@
+--------------------------------------------------------------------------------------------------------------------------------
+-- INDEX : 10만건 이상의 데이터에서 특정한 조건에서 검새 속도를 향상시키기 위한 목적.
+--------------------------------------------------------------------------------------------------------------------------------
+
+DROP TABLE EMP01;
+
+-- EMP TABLE COPY : 내용은 같지만 테이블의 제약조건은 복사되지 않는다.
+CREATE TABLE EMP01
+AS SELECT * FROM EMP;
+
+INSERT INTO EMP01 SELECT * FROM EMP; -- EMP 테이블 내용을 그대로 데이터 입력.
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+INSERT INTO EMP01 SELECT * FROM EMP;
+
+SELECT COUNT(*) FROM EMP01;
+
+INSERT INTO EMP01 (EMPNO, ENAME, JOB, SAL, DEPTNO) VALUES (9999, 'HONG', 'CLERK', 5000, 20);
+
+SELECT * FROM EMP01 WHERE ENAME = 'HONG';
+
+CREATE INDEX IDX_EMP01_ENAME ON EMP01(ENAME); -- 검색 인덱스의 컬럼을 지정한다.
+-- 주키가 아닌  ENAME 을 중심으로 조회하는 일이 전채 질의의 95% 이상
+-- EMP01 테이블은 ENAME을 중심으로 조회 할 때 질의 속도를 높이는데 목적
+
+SELECT * FROM EMP01 WHERE ENAME = 'HONG';
+
+DROP INDEX IDX_EMP01_ENAME; -- 인덱스의 삭제

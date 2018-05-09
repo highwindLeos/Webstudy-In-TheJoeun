@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                디자인 패턴  (Desing pattern)
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>                        
+                        
+                        패턴에는 굉장히 많은 종류가 있습니다. 
+                        
+                        그 중 Java 수업시간에 간단한 패턴 한가지와 약간 난이도가 있는 패턴 2가지를 소개합니다. 
+                        난이도가 약간 있는 패턴을 접하고 나면 추상클래스와 상속과 인터페이스에 대한 필요성을 느낄 수 있게 될 것을 기대합니다
+                            
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">패턴(디자인 패턴)이란?</h3>
+                    <pre>
+
+                        패턴(디자인 패턴)이란, 우리가 지금 배우고 있는 객체지향 언어를 배우는데 가장 중요한 방법이라고 생각 되는 것.
+                        객체지향이 세상에 등장한 이후로 훌륭한 우리의 선배 개발자들은 어떻게 하면 더욱 빠르게 개발하고, 
+                        유지 보수 측면에서도 효율적으로 개발을 할 수 있을까에 대한 고민을 많이 해왔습니다. 
+
+                        (정상적인 개발자들은 기간 내 프로젝트를 빨리 끝낼지와 함께 계속 유지보수측면에서 유지보수 하기 쉽게 
+                        개발 초기단계부터 깔끔하게 개발할 수 있을까를 고민합니다. 여기서 “유지보수 하기 쉽게 깔끔하게”가 중요합니다)
+
+                        사실 지금도 하고 있습니다. 이러한 고민을 하던 중 객체지향 언어의 상속, 인터페이스, 추상화 등의 기능을 이용해서 
+                        시간과 인력 투입의 효율을 극대화 하기 위한 방식이 정립되기 시작 했습니다.
+
+                        (선배와 후배와 동료들과 개발할 때 어떤 흐름에 의해 코딩을 하더라는 것입니다. 
+                        그 흐름 어떤 패턴을 가지고 코딩을 하는 것을 하나씩 하나씩 정립화 시켜 놓은 것이 바로 패턴입니다)
+                        그리고 이러한 방식을 어떠한 틀로 정해 놓은 것이 바로 디자인 패턴 입니다.
+
+                        쉽게 정리하면, <span class="bold_color_red">우리의 개발자 선배님들이 객체지향 언어의 장점들을 모아 
+                        가장 효율적으로 개발을 할 수 있게 만들어 놓은 틀 입니다.</span>
+
+                        우리 주변에 많은 개발자들이 객체지향언어를 배웠고, 객체지향 언어로 개발을 하지만, 
+                        결과물을 보면 객체지향과는 거리가 먼 산출물을 봅니다.
+                        이러한 개발자를 누군가는 이렇게 말하곤 합니다. 
+                        ‘무늬만 OOP 개발자(메소드만 쭉 나열하는 개발자는 절차지향과 다를 바 없습니다)’
+                        객체지향 언어의 상속, 인터페이스, 추상화 등등을 배운 상태에서 어떻게 하면 자신이 개발하고 있는 소스에 
+                        객체지향적인 요소들을 가미하여 효율적인 개발을 할 수 있을까요? 정답은 바로 선배님들이 정형화해 놓은 패턴을 배우는 것 입니다. 
+                        다양한 패턴을 습득하고 나면, ‘아~~~ 이래서 상속, 추상화 등등이 필요 한 거구나~~’ 라고 생각하시게 될 것 입니다.
+
+                        이번 강의를 듣고, 도서관에 가셔서 디자인 패턴 관련 책을 보시는 것을 추천 합니다. 
+                        다 그 책이 그 책이니 한권 정도 빌려 다 자세히 보지 말고 쭉 보는 것 추천.
+                        정형화 해놓은 것이 설명되어 있습니다. 객체지향에 대한 감을 잡는데 도움이 됩니다
+
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">예제를 통한 패턴의 이해</h3>
+                    <pre>
+                            
+                        
+                        싱클톤 패턴 : 
+                        
+                        싱글톤 패턴(Singleton pattern)이란 어떤 클래스의 객체는 오직 하나인 유일한 객체를 만들어 
+                        여러가지 상황에서 동일한 객체에 접근하기 위해 만들어진 패턴이다. 실제로 많이 쓰이는 유형이니 꼭 이해하자
+                        
+                        (하나의 클래스를 통해 obj1, obj2, obj3이라는 객체 생성 시, obj2와 obj3는 전혀 다른 독립체. obj2.i와 obj3.i는 별개였지만, 
+                        cf. 어떤 클래스는 객체를 유일하게 하나만 만들 수 있다. 어떻게 하나만 만들 수 있는지 알아본다)
+                        
+                        위키백과 曰, 싱글턴 패턴(Singleton pattern)을 따르는 클래스는, 
+                        생성자가 여러 차례 호출되더라도 실제로 생성되는 객체는 하나이고 이 객체에 접근할 수 있는 전역적인 접촉점을 제공하는 패턴이다.
+                        
+                        지금까지의 클래스를 잘 생각해 보면, 클래스를 하나 만들고, 
+                        만들어진 클래스로부터 객체를 여러 개 생성하여 사용하였습니다. 
+                        하지만 싱글턴 패턴을 이용하면, 클래스 하나에 객체를 유일하게 하나만 생성하여 모든 곳에서 하나의 객체에만 접근할 수 있습니다.
+                        즉 전역의 개념으로 객체를 사용할 수 있습니다.
+                          
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">&lt;</span>싱글톤예제<span style="color:#e28964">></span>
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SingletonClass</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">SingletonClass</span> <span style="color:#3387cc">SINGLETON_INSTANCE</span>;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">10</span>;
+                            <span style="color:#99cf50">private</span> <span style="color:#89bdff">SingletonClass</span>(){}  <span style="color:#aeaeae;font-style:italic">//생성자함수가 private이므로 외부에서는 new를 이용해서 </span>
+                        <span style="color:#aeaeae;font-style:italic">// 생성못하고, 이 클래스 내부에서만 생성자함수 호출할 수 있다.</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">SingletonClass</span> <span style="color:#89bdff">getSingletonClass</span>(){
+                                <span style="color:#aeaeae;font-style:italic">// 객체가 생성되기 전에 데이터영역의 클래스 상태에서 바로 접근가능한 메소드</span>
+                                <span style="color:#e28964">if</span>(<span style="color:#3387cc">SINGLETON_INSTANCE</span><span style="color:#e28964">==</span><span style="color:#3387cc">null</span>)
+                                    <span style="color:#3387cc">SINGLETON_INSTANCE</span> <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SingletonClass</span>();<span style="color:#aeaeae;font-style:italic">//객체생성을 이곳에서만 한다</span>
+                                <span style="color:#e28964">return</span> <span style="color:#3387cc">SINGLETON_INSTANCE</span>;
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getI</span>() {<span style="color:#e28964">return</span> i;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setI</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">i</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>i <span style="color:#e28964">=</span> i;}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FirstClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">FirstClass</span>(){
+                                <span style="color:#99cf50">SingletonClass</span> singletonObject <span style="color:#e28964">=</span> <span style="color:#99cf50">SingletonClass</span><span style="color:#e28964">.</span>getSingletonClass();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"FirstClass 객체 "</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(singletonObject<span style="color:#e28964">.</span>getI());
+                                singletonObject<span style="color:#e28964">.</span>setI(<span style="color:#3387cc">200</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i = "</span><span style="color:#e28964">+</span>singletonObject<span style="color:#e28964">.</span>getI());
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SecondClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SecondClass</span>() {
+                                <span style="color:#99cf50">SingletonClass</span> singletonObject <span style="color:#e28964">=</span> <span style="color:#99cf50">SingletonClass</span><span style="color:#e28964">.</span>getSingletonClass();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"SecondClass 객체 "</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(singletonObject<span style="color:#e28964">.</span>getI());
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">FirstClass</span> firstObj <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">FirstClass</span>();
+                                <span style="color:#99cf50">SecondClass</span> secondObj <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SecondClass</span>();
+                                <span style="color:#99cf50">SingletonClass</span> singObj <span style="color:#e28964">=</span> <span style="color:#99cf50">SingletonClass</span><span style="color:#e28964">.</span>getSingletonClass();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"main()메소드에서 singleton객체"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(singObj<span style="color:#e28964">.</span>getI());
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">스트레티지 패턴(Strategy Pattern)</h3>
+                    <pre style="color:#f8f8f8">
+
+                        < 난이도있는 패턴예제> 
+                        나중에 필드에서 많이 쓰는 전략패턴 
+
+                        <span class="bold_color_red">스트레티지 패턴(Strategy Pattern)</span>
+
+                        알고리즘 군을 정의하고 각각을 캡슐화하여 교환해서 사용할 수 있도록 만든다.
+                        스트래티지를 활용하면 알고리즘을 사용하는 클라이언트와는 독립적으로 알고리즘을 변경할 수 있다.
+
+                        쉽게 말하면, 어떤 객체를 만들 때 객체가 가지는 기능들이 다양하게 존재할 것 입니다. 
+                        이러한 기능들을 추상화 하여 언제든지 적용할 수 있게 만드는 것 입니다. 즉 기능을 부품화 하는 것 입니다.
+                        예를 들어 엑센트와 제네시스 자동차가 있습니다. 
+                        
+                        엑센트에 들어가는 기어 연결부분과 제네시스에 들어가는 연결부분이 동일하다고(추상화) 하면, 
+                        저급기어, 중급기어, 고급기어를 만들어 두고 상황에 따라서 적당한 기어를 적용할수 있을것 입니다. 
+                        
+                        즉 엑센트에는 저급기어를, 제네시스에는 고급기어를 적용하는것 입니다.
+                        이렇게 기능을 부품화하여 구조를 만드는 것을 스트레티지라고 생각하시면 됩니다.
+
+                        개인적으로 실무에서 가장 많이 사용했고. 알아두면 아주 유용하게 사용할 수 있는 패턴 입니다. 
+                        노파심에 말씀 드리면, 한번에 모든 것을 알 수는 없습니다. 그리고 안다고 하여도 실제 본인의 개발 소스에 적용하시란 쉽지 않습니다.
+                        꾸준히 살펴보고, 고민해 보는 자세가 중요 합니다.
+
+                        이번에 살펴 볼 예제는 로봇을 프로그램으로 만들어 보는 것 입니다.
+
+                        시나리오
+
+                        모든 로봇은 기본적으로 걷고, 달릴 수 있어야 합니다.
+                        로봇 모양은 팔, 다리, 머리, 몸통으로 이루어져 있습니다.
+
+                        Super  로봇 : 날 수 O. 미사일을 쏠 수 O. 레이저검.
+                        Standard로봇: 날 수 X. 미사일을 쏠 수 O. 목검
+                        Low    로봇 : 날 수 X. 미사일을 쏠 수 X. 검 없음.
+
+                        위 3가지 형태의 로봇을 만들어 보도록 하고, 
+                        추후 다른 로봇을 만들어야 할 경우를 생각하여 유연한 프로그램을 만들어 보도록 합니다.
+                            
+                    </pre>
+                    <h3 class="headline3 background_bisque">1단계</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        1단계 <span style="color:#e28964">:</span> 
+                        각각 <span style="color:#99cf50">SuperRobot</span>, <span style="color:#99cf50">StandardRobot</span>, <span style="color:#99cf50">LowRobot</span> 
+                        클래스 정의하고 객체 만들어 쓴다. 세 클래스의 중복된 코드가 많다.  그래서 2단계
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SuperRobot</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SuperRobot</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionWalk</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"걸을 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionRun</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"달릴 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"슈퍼로봇입니다. 외형은 팔 다리 몸통 머리가 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"레이저 검이 있습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StandardRobot</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">StandardRobot</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionWalk</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"걸을 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionRun</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"달릴 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"스탠다드 로봇입니다. 외형은 팔 다리 몸통 머리가 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 없습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"목검이 있습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">LowRobot</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">LowRobot</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionWalk</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"걸을 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionRun</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"달릴 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"로우 로봇입니다. 외형은 팔 다리 몸통 머리가 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 없습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 없습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"검이 없습니다"</span>);}
+                        }
+                        
+                        </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">2단계</h3>
+                    <pre style="color:#f8f8f8">
+                        
+                        2단계 <span style="color:#e28964">:</span> 
+                        <span style="color:#99cf50">SuperRobot</span>, <span style="color:#99cf50">StandardRobot</span>, <span style="color:#99cf50">LowRobot</span> 클래스의 공통점을 갖은 슈퍼클래스 만들고 <span style="color:#99cf50">SuperRobot</span>, <span style="color:#99cf50">StandardRobot</span>, <span style="color:#99cf50">LowRobot은</span> 상속시키고 공통점은 뺀다.
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Robot</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionWalk</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"걸을 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionRun</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"달릴 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(getClass()<span style="color:#e28964">.</span>getName() <span style="color:#e28964">+</span><span style="color:#65b042">"형 로봇입니다. 외형은 팔 다리 몸통 머리가 있습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SuperRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SuperRobot</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"레이저 검이 있습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StandardRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">StandardRobot</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 없습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"목검이 있습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">LowRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">LowRobot</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 없습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 없습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"검이 없습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Robot</span>[] robots <span style="color:#e28964">=</span> {<span style="color:#e28964">new</span> <span style="color:#99cf50">SuperRobot</span>(),<span style="color:#e28964">new</span> <span style="color:#99cf50">StandardRobot</span>(),<span style="color:#e28964">new</span> <span style="color:#99cf50">LowRobot</span>()};
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">Robot</span> r <span style="color:#e28964">:</span>robots){
+                                    r<span style="color:#e28964">.</span>shape(); r<span style="color:#e28964">.</span>actionWalk(); r<span style="color:#e28964">.</span>actionRun();
+                                    <span style="color:#e28964">if</span>(r <span style="color:#e28964">instanceof</span> <span style="color:#99cf50">SuperRobot</span>){
+                                        <span style="color:#99cf50">SuperRobot</span> sur <span style="color:#e28964">=</span> (<span style="color:#99cf50">SuperRobot</span>) r;
+                                        sur<span style="color:#e28964">.</span>actionFly(); sur<span style="color:#e28964">.</span>actionMissile(); sur<span style="color:#e28964">.</span>actionknife();
+                                    }<span style="color:#e28964">else</span> <span style="color:#e28964">if</span>(r <span style="color:#e28964">instanceof</span> <span style="color:#99cf50">StandardRobot</span>){
+                                        <span style="color:#99cf50">StandardRobot</span> str <span style="color:#e28964">=</span>(<span style="color:#99cf50">StandardRobot</span>) r;
+                                        str<span style="color:#e28964">.</span>actionFly();str<span style="color:#e28964">.</span>actionMissile();str<span style="color:#e28964">.</span>actionknife();
+                                    }<span style="color:#e28964">else</span> <span style="color:#e28964">if</span>(r <span style="color:#e28964">instanceof</span> <span style="color:#99cf50">LowRobot</span>){
+                                        <span style="color:#99cf50">LowRobot</span> str <span style="color:#e28964">=</span>(<span style="color:#99cf50">LowRobot</span>) r;
+                                        str<span style="color:#e28964">.</span>actionFly();str<span style="color:#e28964">.</span>actionMissile();str<span style="color:#e28964">.</span>actionknife();
+                                    }<span style="color:#aeaeae;font-style:italic">//if</span>
+                                }<span style="color:#aeaeae;font-style:italic">//for</span>
+                            }<span style="color:#aeaeae;font-style:italic">//main</span>
+                        }<span style="color:#aeaeae;font-style:italic">//class</span>
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">3단계</h3>
+                    <pre>
+
+                        3단계 : 추상클래스로 추상화 한다. 
+
+                        각각 SuperRobot, StandardRobot, LowRobot 클래스의 actionFly(), actionMissile(), actionKnife()메소드는 있고 안의 구현하는 부분만 다르다. 
+                        추상화 시키면 다른 사람이 와서 다른 종류의 로봇을 만든다고 해도 actionFly(), actionMissile(), actionKnife() 은 빼지 않고 넣게 된다. 
+                        혹시 사용자가 ARobot형을 추가 시킨다고 해도 Robot에서 상속받아 쓴다면 반드시 actionFly(), actionMissile(), actionKnife()은 구현하게 된다
+                    
+                    </pre>
+                </div>
+                <div>
+                        <pre style="background:#000;color:#f8f8f8">
+                            
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Robot</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionWalk</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"걸을 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionRun</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"달릴 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(getClass()<span style="color:#e28964">.</span>getName() <span style="color:#e28964">+</span><span style="color:#65b042">"형 로봇입니다. 외형은 팔 다리 몸통 머리가 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>();
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SuperRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SuperRobot</span>() { }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 있습니다"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 있습니다"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"레이저 검이 있습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StandardRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">StandardRobot</span>() { }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 없습니다"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 있습니다"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"목검이 있습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">LowRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">LowRobot</span>() { }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 없습니다"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"마사일을 쏠 수 없습니다"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"검이 없습니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Robot</span>[] robots <span style="color:#e28964">=</span> {<span style="color:#e28964">new</span> <span style="color:#99cf50">SuperRobot</span>(),<span style="color:#e28964">new</span> <span style="color:#99cf50">StandardRobot</span>(),<span style="color:#e28964">new</span> <span style="color:#99cf50">LowRobot</span>()};
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">Robot</span> r <span style="color:#e28964">:</span>robots){
+                                    r<span style="color:#e28964">.</span>shape(); r<span style="color:#e28964">.</span>actionWalk(); r<span style="color:#e28964">.</span>actionRun();
+                                    r<span style="color:#e28964">.</span>actionFly(); r<span style="color:#e28964">.</span>actionMissile(); r<span style="color:#e28964">.</span>actionknife();
+                                }<span style="color:#aeaeae;font-style:italic">//for</span>
+                            }<span style="color:#aeaeae;font-style:italic">//main</span>
+                        }<span style="color:#aeaeae;font-style:italic">//class</span>
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">4단계</h3>
+                    <pre>
+
+                        4단계 : 3단계에서 좀 더 유연하여, 좀 더 유지보수도 쉽고 추후 업데이트도 쉽게 만들 수 있도록 리펙토링한다 
+                        
+                        ex.현재는 날수있다없다 에서 저공비행을 한다 고공비행을 한다는 
+                        좀더 업데이트된 기능으로 업데이트 할 수 있다고 생각하자
+
+                        모든 기능을 객체화(부품화) 하였다. 
+                        // object modularization
+                            
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4robot.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">IFly</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">fly</span>();
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FlyNo</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IFly</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">fly</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 없습니다"</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FlyYes</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IFly</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">fly</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"날 수 있습니다"</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">IMissile</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">missile</span>();
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MissileNo</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IMissile</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">missile</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"미사일을 쏠 수 없습니다."</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MissileYes</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IMissile</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">missile</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"미사일을 쏠 수 있습니다."</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">IKnife</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">knife</span>();
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">KnifeLazer</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IKnife</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">knife</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"레이저검이 있습니다."</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">KnifeNo</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IKnife</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">knife</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"검이 없습니다."</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">KnifeWood</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IKnife</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">knife</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"목검이 있습니다."</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Robot</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionWalk</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"걸을 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionRun</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"달릴 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(getClass()<span style="color:#e28964">.</span>getName() <span style="color:#e28964">+</span><span style="color:#65b042">"형 로봇입니다. 외형은 팔 다리 몸통 머리가 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>();
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4robot.modularization</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.robot.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SuperRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#aeaeae;font-style:italic">/*private IFly fly = new FlyYes();
+                            private IMissile missile = new MissileYes();
+                            private IKnife knife = new KnifeLazer();*/</span>
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IFly</span> fly;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IMissile</span> missile;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IKnife</span> knife;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SuperRobot</span>() { 
+                                <span style="color:#aeaeae;font-style:italic">/*fly = new FlyYes();
+                                missile = new MissileYes();
+                                knife = new KnifeLazer();*/</span>
+                                setFly(<span style="color:#e28964">new</span> <span style="color:#99cf50">FlyYes</span>());
+                                setMissile(<span style="color:#e28964">new</span> <span style="color:#99cf50">MissileYes</span>());
+                                setKnife(<span style="color:#e28964">new</span> <span style="color:#99cf50">KnifeLazer</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){fly<span style="color:#e28964">.</span>fly();}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){missile<span style="color:#e28964">.</span>missile();}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {knife<span style="color:#e28964">.</span>knife();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setFly</span>(<span style="color:#99cf50">IFly</span> <span style="color:#3e87e3">fly</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>fly <span style="color:#e28964">=</span> fly;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setMissile</span>(<span style="color:#99cf50">IMissile</span> <span style="color:#3e87e3">missile</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>missile <span style="color:#e28964">=</span> missile;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setKnife</span>(<span style="color:#99cf50">IKnife</span> <span style="color:#3e87e3">knife</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>knife <span style="color:#e28964">=</span> knife;}
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4robot.modularization</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.robot.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StandardRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IFly</span> fly;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IMissile</span> missile;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IKnife</span> knife;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">StandardRobot</span>() {
+                                setFly(<span style="color:#e28964">new</span> <span style="color:#99cf50">FlyNo</span>());
+                                setMissile(<span style="color:#e28964">new</span> <span style="color:#99cf50">MissileYes</span>());
+                                setKnife(<span style="color:#e28964">new</span> <span style="color:#99cf50">KnifeWood</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){fly<span style="color:#e28964">.</span>fly();}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){missile<span style="color:#e28964">.</span>missile();}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {knife<span style="color:#e28964">.</span>knife();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setFly</span>(<span style="color:#99cf50">IFly</span> <span style="color:#3e87e3">fly</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>fly <span style="color:#e28964">=</span> fly;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setMissile</span>(<span style="color:#99cf50">IMissile</span> <span style="color:#3e87e3">missile</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>missile <span style="color:#e28964">=</span> missile;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setKnife</span>(<span style="color:#99cf50">IKnife</span> <span style="color:#3e87e3">knife</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>knife <span style="color:#e28964">=</span> knife;}
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4robot.modularization</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.robot.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">LowRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IFly</span> fly;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IMissile</span> missile;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IKnife</span> knife;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">LowRobot</span>() { 
+                                setFly(<span style="color:#e28964">new</span> <span style="color:#99cf50">FlyNo</span>());
+                                setMissile(<span style="color:#e28964">new</span> <span style="color:#99cf50">MissileNo</span>());
+                                setKnife(<span style="color:#e28964">new</span> <span style="color:#99cf50">KnifeNo</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){fly<span style="color:#e28964">.</span>fly();}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){missile<span style="color:#e28964">.</span>missile();}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {knife<span style="color:#e28964">.</span>knife();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setFly</span>(<span style="color:#99cf50">IFly</span> <span style="color:#3e87e3">fly</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>fly <span style="color:#e28964">=</span> fly;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setMissile</span>(<span style="color:#99cf50">IMissile</span> <span style="color:#3e87e3">missile</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>missile <span style="color:#e28964">=</span> missile;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setKnife</span>(<span style="color:#99cf50">IKnife</span> <span style="color:#3e87e3">knife</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>knife <span style="color:#e28964">=</span> knife;}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"*****SuperRobot,StandardRobot, LowRobot 주문 들어옴*****"</span>);
+                                <span style="color:#99cf50">Robot</span> superR <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SuperRobot</span>();
+                                <span style="color:#99cf50">Robot</span> stanardR <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StandardRobot</span>();
+                                <span style="color:#99cf50">Robot</span> lowR <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">LowRobot</span>();
+                                <span style="color:#99cf50">Robot</span>[] robots <span style="color:#e28964">=</span> {superR,stanardR,lowR};
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">Robot</span> r <span style="color:#e28964">:</span>robots){
+                                    r<span style="color:#e28964">.</span>shape(); r<span style="color:#e28964">.</span>actionWalk(); r<span style="color:#e28964">.</span>actionRun();
+                                    r<span style="color:#e28964">.</span>actionFly(); r<span style="color:#e28964">.</span>actionMissile(); r<span style="color:#e28964">.</span>actionknife();
+                                }<span style="color:#aeaeae;font-style:italic">//for</span>
+                            }<span style="color:#aeaeae;font-style:italic">//main</span>
+                        }<span style="color:#aeaeae;font-style:italic">//class</span>
+                        
+                        아래와 같이 더욱더 수정한다
+
+                    </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex4robot.inter.*</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Robot</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IFly</span> fly;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IMissile</span> missile;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IKnife</span> knife;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionWalk</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"걸을 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionRun</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"달릴 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionFly</span>(){fly<span style="color:#e28964">.</span>fly();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionMissile</span>(){missile<span style="color:#e28964">.</span>missile();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionknife</span>() {knife<span style="color:#e28964">.</span>knife();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setFly</span>(<span style="color:#99cf50">IFly</span> <span style="color:#3e87e3">fly</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>fly <span style="color:#e28964">=</span> fly;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setMissile</span>(<span style="color:#99cf50">IMissile</span> <span style="color:#3e87e3">missile</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>missile <span style="color:#e28964">=</span> missile;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setKnife</span>(<span style="color:#99cf50">IKnife</span> <span style="color:#3e87e3">knife</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>knife <span style="color:#e28964">=</span> knife;}
+                        }
+                        
+                        <span style="color:#aeaeae;font-style:italic">/* Super   로봇 : 날 수 O. 미사일을 쏠 수 O. 레이저검.
+                            * Standard로봇 : 날 수 X. 미사일을 쏠 수 O. 목검
+                            * Low     로봇 : 날 수 X. 미사일을 쏠 수 X. 검 없음. */</span>
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex4robot.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SuperRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SuperRobot</span>() { 
+                                setFly(<span style="color:#e28964">new</span> <span style="color:#99cf50">FlyYes</span>());
+                                setMissile(<span style="color:#e28964">new</span> <span style="color:#99cf50">MissileYes</span>());
+                                setKnife(<span style="color:#e28964">new</span> <span style="color:#99cf50">KnifeLazer</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★★★슈퍼로봇입니다. 슈퍼 팔, 다리, 몸통 머리가  있습니다"</span>);}
+                        }
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex4robot.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StandardRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">StandardRobot</span>() {
+                                setFly(<span style="color:#e28964">new</span> <span style="color:#99cf50">FlyNo</span>());
+                                setMissile(<span style="color:#e28964">new</span> <span style="color:#99cf50">MissileYes</span>());
+                                setKnife(<span style="color:#e28964">new</span> <span style="color:#99cf50">KnifeWood</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★★★스탠다드 로봇입니다. 스탠다드 팔, 다리, 몸통 머리가  있습니다"</span>);}
+                        }
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex4robot.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">LowRobot</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Robot</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">LowRobot</span>() { 
+                                setFly(<span style="color:#e28964">new</span> <span style="color:#99cf50">FlyNo</span>());
+                                setMissile(<span style="color:#e28964">new</span> <span style="color:#99cf50">MissileNo</span>());
+                                setKnife(<span style="color:#e28964">new</span> <span style="color:#99cf50">KnifeNo</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★★★Low 로봇입니다. Low 팔, 다리, 몸통 머리가  있습니다"</span>);}
+                        }
+                            
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4robot.modularization</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.robot.inter.FlyYes</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.robot.inter.KnifeWood</span>;
+
+                        <span style="color:#aeaeae;font-style:italic">
+                        /* Super   로봇 : 날 수 O. 미사일을 쏠 수 O. 레이저검.
+                         * Standard로봇 : 날 수 X. 미사일을 쏠 수 O. 목검
+                         * Low     로봇 : 날 수 X. 미사일을 쏠 수 X. 검 없음. */</span>
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"*****SuperRobot,StandardRobot, LowRobot 주문 들어옴*****"</span>);
+                                <span style="color:#99cf50">Robot</span> superR <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SuperRobot</span>();
+                                <span style="color:#99cf50">Robot</span> stanardR <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StandardRobot</span>();
+                                <span style="color:#99cf50">Robot</span> lowR <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">LowRobot</span>();
+                                <span style="color:#99cf50">Robot</span>[] robots <span style="color:#e28964">=</span> {superR,stanardR,lowR};
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">Robot</span> r <span style="color:#e28964">:</span>robots){
+                                    r<span style="color:#e28964">.</span>shape(); r<span style="color:#e28964">.</span>actionWalk(); r<span style="color:#e28964">.</span>actionRun();
+                                    r<span style="color:#e28964">.</span>actionFly(); r<span style="color:#e28964">.</span>actionMissile(); r<span style="color:#e28964">.</span>actionknife();
+                                }<span style="color:#aeaeae;font-style:italic">//for</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"***** superR의  검부품을 목검으로 교체 *****"</span>);
+                                superR<span style="color:#e28964">.</span>setKnife(<span style="color:#e28964">new</span> <span style="color:#99cf50">KnifeWood</span>());
+                                superR<span style="color:#e28964">.</span>actionknife();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"***** lowR의  날개 부품을 날 수 있는 것으로 교체 *****"</span>);
+                                lowR<span style="color:#e28964">.</span>setFly(<span style="color:#e28964">new</span> <span style="color:#99cf50">FlyYes</span>());
+                                lowR<span style="color:#e28964">.</span>actionFly();
+                            }<span style="color:#aeaeae;font-style:italic">//main</span>
+                        }<span style="color:#aeaeae;font-style:italic">//class</span>
+                        
+                    </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                        
+                        고공비행 날개 부품을 추가하고 superR의 나는 기능을 고공비행기능으로 전환하기 원한다면, 다음을 추가
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4robot.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FlyHi</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IFly</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">fly</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"특별히 높이 높이 날 수 있습니다"</span>);
+                            }
+                        }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"***** 고공비행 날개 부품을 추가하고 superR의 의  날개 부품을 고공비행으로 교체 *****"</span>);
+                                superR<span style="color:#e28964">.</span>setFly(<span style="color:#e28964">new</span> <span style="color:#99cf50">FlyHi</span>());
+                                superR<span style="color:#e28964">.</span>actionFly();
+                            }<span style="color:#aeaeae;font-style:italic">//main</span>
+                        }<span style="color:#aeaeae;font-style:italic">//class</span>
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">종합예제 (Example)</h3>
+                    <pre>
+
+                        -시나리오-
+
+                        모든 자동차는 기본적으로 drive할 수 있어야 합니다.
+                        자동차 모양은 door, sheet, handle로 이루어져 있습니다.
+                        
+                        Genesis 차 : 최고급엔진(EngineHigh).  연비 10Km/l(Km10). 휘발유(FuelGasoline)
+                        Sonata차   : 중급엔진(EngineMid).     연비 15Km/l(Km15). 휘발유(FuelGasoline)
+                        Accent 차  : 저급엔진(EngineLow).     연비 20Km/l(Km20). 경유(FuelDiesel).
+                        
+                        위 3가지 형태의 차를 만들어 보도록 하고, 
+                        추후 다른 차를 만들거나 차종의 부품을 만들어야 할 경우를 생각하여 유연한 프로그램을 만들어 보도록 합니다.
+                            
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex5car.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">IEngine</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">engine</span>();
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">EngineHigh</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IEngine</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">engine</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"최고급 엔진입니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">EngineMid</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IEngine</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">engine</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"중급 엔진입니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">IKm</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kmPerLiter</span>();
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Km10</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IKm</span>{
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kmPerLiter</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"연비 10km/l"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">IFuel</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">fuel</span>();
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FuelGasoline</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IFuel</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">fuel</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"휘발유로 움직입니다"</span>);}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FuelDiesel</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IFuel</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">fuel</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"경유로 움직입니다"</span>);}
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex5car.modularization</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex5car.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Car</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IEngine</span> engine;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IKm</span> km;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IFuel</span> fuel;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">drive</span>(){ <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"드라이브 할 수 있습니다"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">isEngine</span>(){engine<span style="color:#e28964">.</span>engine();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">isKmperLiter</span>(){ km<span style="color:#e28964">.</span>kmPerLiter();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">isFuel</span>(){ fuel<span style="color:#e28964">.</span>fuel();}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setEngine</span>(<span style="color:#99cf50">IEngine</span> <span style="color:#3e87e3">engine</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>engine <span style="color:#e28964">=</span> engine;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setKm</span>(<span style="color:#99cf50">IKm</span> <span style="color:#3e87e3">km</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>km <span style="color:#e28964">=</span> km;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setFuel</span>(<span style="color:#99cf50">IFuel</span> <span style="color:#3e87e3">fuel</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>fuel <span style="color:#e28964">=</span> fuel;}
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex5car.modularization</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex5car.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Accent</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Car</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Accent</span>() {
+                                setEngine(<span style="color:#e28964">new</span> <span style="color:#99cf50">EngineLow</span>());
+                                setKm(<span style="color:#e28964">new</span> <span style="color:#99cf50">Km20</span>());
+                                setFuel(<span style="color:#e28964">new</span> <span style="color:#99cf50">FuelDiesel</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★엑센트door, 엑센트sheet, 엑센트handle로 이루어져 있습니다★"</span>);
+                            }
+                        }
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex5car.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Sonata</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Car</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Sonata</span>() {
+                                setEngine(<span style="color:#e28964">new</span> <span style="color:#99cf50">EngineMid</span>());
+                                setKm(<span style="color:#e28964">new</span> <span style="color:#99cf50">Km15</span>());
+                                setFuel(<span style="color:#e28964">new</span> <span style="color:#99cf50">FuelGasoline</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★소나타door, 소나타sheet, 소나타handle로 이루어져 있습니다★"</span>);
+                            }
+                        }
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex5car.inter.*</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Genesis</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Car</span>{
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Genesis</span>() {
+                                setEngine(<span style="color:#e28964">new</span> <span style="color:#99cf50">EngineHigh</span>());
+                                setKm(<span style="color:#e28964">new</span> <span style="color:#99cf50">Km10</span>());
+                                setFuel(<span style="color:#e28964">new</span> <span style="color:#99cf50">FuelGasoline</span>());
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">shape</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★제네시스 oor, 제네시스sheet, 제네시스handle로 이루어져 있습니다★"</span>);
+                            }
+                        }
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex5car.inter.FuelHybrid</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">com.ch.ex5car.inter.Km20</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Car</span> accent <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Accent</span>();
+                                <span style="color:#99cf50">Car</span> sonata <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Sonata</span>();
+                                <span style="color:#99cf50">Car</span> genesis <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Genesis</span>();
+                                <span style="color:#99cf50">Car</span>[] cars <span style="color:#e28964">=</span> {accent, sonata, genesis};
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">Car</span> c<span style="color:#e28964">:</span>cars){
+                                    c<span style="color:#e28964">.</span>drive(); c<span style="color:#e28964">.</span>shape();
+                                    c<span style="color:#e28964">.</span>isEngine(); c<span style="color:#e28964">.</span>isKmperLiter(); c<span style="color:#e28964">.</span>isFuel();
+                                }
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"소나타를 하이브리드로 교체하고 연비를 20으로 교체후 소나타는 다음과 같다"</span>);
+                                sonata<span style="color:#e28964">.</span>setFuel(<span style="color:#e28964">new</span> <span style="color:#99cf50">FuelHybrid</span>());
+                                sonata<span style="color:#e28964">.</span>setKm(<span style="color:#e28964">new</span> <span style="color:#99cf50">Km20</span>());
+                                sonata<span style="color:#e28964">.</span>isFuel();
+                                sonata<span style="color:#e28964">.</span>isKmperLiter();
+                            }
+                        }
+                            
+                    </pre>
+                    <pre>
+
+                       <span class="bold_color_blue">main()함수내에 소나타의 연료를 전기하이브리드(FuelHybrid)로 바꾸고 연비를 20km/l(Km20)로 바꾸는 부분을 추가합니다.</span>
+
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FuelHybrid</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IFuel</span> {
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">fuel</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"전기 하이브리드로 움직입니다"</span>);}
+                        }
+                    
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">종합 예제 2 (Example)</h3>
+                    <pre>
+
+                        <h3>학원관리시나리오</h3>
+
+                        교육생은  "ID(id), 이름(name), 반(ban)" 데이터를 갖습니다.
+                        강사는    "ID(id), 이름(name), 강의과목(subject)" 데이터를 갖습니다.
+                        스탭은    "ID(id), 이름(name), 부서(part)" 데이터를 갖습니다.
+                        
+                        교육생 :  수업을 듣고 공부합니다(JobStudey). 교육급여를 받습니다(GetStudentPay). 	ID,이름,반을 출력함
+                        강사 :    강의를 합니다(JobLec).             월급을 받습니다(GetSalary).       	ID,이름,과목을 출력함
+                        스탭 :    학원운영업무를 합니다(JobMng).	   월급을 받습니다(GetSalary).      	ID,이름,부서을 출력함
+                        
+                    </pre>
+                </div>
+                <div>
+                    <hr>    
+                        <h3>package Interface</h3>
+                    <hr>
+                        <h3>Interface</h3>
+                    <hr>
+                    <pre style="background:#000;color:#f8f8f8">
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">IJob</span> {
+                            <span style="color:#99cf50">void</span> <span style="color:#89bdff">job</span>(); <span style="color:#aeaeae;font-style:italic">// 이 interface에서구현할 클래스에서 쓸 메소드를 정의했다.</span>
+                        }
+                        
+                    </pre>
+                    <hr>
+                        <h3>IJob Interface 를 구현한 Class 3개</h3>
+                    <hr> 
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">JobStudy</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IJob</span> {
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">job</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"수업을 듣고 공부 합니다."</span>);
+                            }
+                        
+                        }
+                        
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">JobLec</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IJob</span> {
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">job</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"해당 과목을 가르칩니다."</span>);
+                            }
+                        
+                        }
+                        
+                    </pre>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">JobMng</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IJob</span> {
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">job</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"학원 운영 업무를 합니다."</span>);
+                            }
+                        
+                        }
+                        
+                    </pre>
+                    <hr>
+                        <h3>Interface</h3>
+                    <hr>    
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">IPay</span> {
+                            <span style="color:#99cf50">void</span> <span style="color:#89bdff">pay</span>(); <span style="color:#aeaeae;font-style:italic">// 구현할 클래스에서 쓸 메소드를 정의했다.</span>
+                        }
+                        
+                    </pre>
+                    <hr>
+                        <h3>IPay Interface 를 구현한 Class 2개</h3>
+                    <hr>  
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">GetStudentPay</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IPay</span> {
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">pay</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"교육급여를 받습니다."</span>);
+                            }
+                        
+                        }
+                        
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.inter</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">GetSalary</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">IPay</span> {
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">pay</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"월급을 받습니다."</span>);
+                            }
+                        
+                        }
+                        
+                    </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                        
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">Student</span> st1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Student</span>(<span style="color:#65b042">"30301"</span>, <span style="color:#65b042">"강동원"</span>, <span style="color:#65b042">"영화반"</span>);
+                            <span style="color:#99cf50">Student</span> st2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Student</span>(<span style="color:#65b042">"30302"</span>, <span style="color:#65b042">"강예원"</span>, <span style="color:#65b042">"Java반"</span>);
+                            <span style="color:#99cf50">Gangsa</span> gs1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Gangsa</span>(<span style="color:#65b042">"J01"</span>, <span style="color:#65b042">"홍길동"</span>, <span style="color:#65b042">"java"</span>);
+                            <span style="color:#99cf50">Gangsa</span> gs2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Gangsa</span>(<span style="color:#65b042">"J02"</span>, <span style="color:#65b042">"김철수"</span>, <span style="color:#65b042">"db"</span>);
+                            <span style="color:#99cf50">Staff</span> s <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Staff</span>(<span style="color:#65b042">"A01"</span>, <span style="color:#65b042">"유국동"</span>, <span style="color:#65b042">"취업지원"</span>);
+                            <span style="color:#99cf50">Person</span>[] person <span style="color:#e28964">=</span> {st1, st2, gs1, gs2, s};
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"업무시간이니 다 일합시다"</span>);
+                            <span style="color:#e28964">for</span>(<span style="color:#99cf50">Person</span> p <span style="color:#e28964">:</span> person)
+                                p<span style="color:#e28964">.</span>job();
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"월말엔 다 지급할 것 지급"</span>);
+                            <span style="color:#e28964">for</span>(<span style="color:#99cf50">Person</span> p <span style="color:#e28964">:</span> person)
+                                p<span style="color:#e28964">.</span>get();
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"궁금하면 프린트"</span>);
+                            <span style="color:#e28964">for</span>(<span style="color:#99cf50">Person</span> p <span style="color:#e28964">:</span> person)
+                                p<span style="color:#e28964">.</span>print();
+                        }
+                    }
+                    
+                    </pre>
+                </div>
+                <div>
+                    <hr>
+                        <h3>package Modularization</h3>
+                    <hr>
+                    <pre style="background:#000;color:#f8f8f8">
+                        <hr>
+                        <h3>Abstrect Class(추상클래스)</h3>
+                        <hr>
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.modulelization</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.IJob</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.IPay</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Person</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> id;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> name;
+                            <span style="color:#aeaeae;font-style:italic">// interface 로 만들은 변수형</span>
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IJob</span> job; 
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">IPay</span> pay;
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Person</span>() { }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Person</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">id</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>) {
+                                 <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>id <span style="color:#e28964">=</span> id;
+                                 <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>name <span style="color:#e28964">=</span> name;
+                             }
+                            
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">job</span>(){
+                                job<span style="color:#e28964">.</span>job();
+                            }
+                            
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">pay</span>() {
+                                pay<span style="color:#e28964">.</span>pay();
+                            }
+                            
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">print</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"ID : "</span><span style="color:#e28964">+</span> id <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> 이름 : "</span><span style="color:#e28964">+</span>name);
+                            }
+                        
+                            <span style="color:#aeaeae;font-style:italic">// getter setter</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getId</span>() {
+                                <span style="color:#e28964">return</span> id;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setId</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">id</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>id <span style="color:#e28964">=</span> id;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getName</span>() {
+                                <span style="color:#e28964">return</span> name;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setName</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>name <span style="color:#e28964">=</span> name;
+                            }
+                            <span style="color:#aeaeae;font-style:italic">// 인터페이스의 구현대로 변수 형을 설정하고 getter setter 를 만든다.</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">IJob</span> <span style="color:#89bdff">getJob</span>() { 
+                                <span style="color:#e28964">return</span> job;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setJob</span>(<span style="color:#99cf50">IJob</span> <span style="color:#3e87e3">job</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>job <span style="color:#e28964">=</span> job;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">IPay</span> <span style="color:#89bdff">getPay</span>() {
+                                <span style="color:#e28964">return</span> pay;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setPay</span>(<span style="color:#99cf50">IPay</span> <span style="color:#3e87e3">pay</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>pay <span style="color:#e28964">=</span> pay;
+                            }
+                            
+                        }
+                        
+                    </pre>
+                    <hr>
+                        <h3>추상클래스를 상속해서 구현(extends)</h3>
+                    <hr>    
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.modulelization</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.GetStudentPay</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.JobStudy</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Student</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Person</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> ban;
+                            
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Student</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">id</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>,<span style="color:#99cf50">String</span> <span style="color:#3e87e3">ban</span>) {
+                                setId(id);
+                                setName(name);
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>ban <span style="color:#e28964">=</span> ban;
+                                setJob(<span style="color:#e28964">new</span> <span style="color:#99cf50">JobStudy</span>());
+                                setPay(<span style="color:#e28964">new</span> <span style="color:#99cf50">GetStudentPay</span>());
+                            }
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">print</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[ID] : "</span> <span style="color:#e28964">+</span> getId() <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> [이름] : "</span> <span style="color:#e28964">+</span> getName() <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> [반] : "</span> <span style="color:#e28964">+</span> ban);
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getBan</span>() {
+                                <span style="color:#e28964">return</span> ban;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBan</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">ban</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>ban <span style="color:#e28964">=</span> ban;
+                            }
+                            
+                            
+                        }
+                        
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.modulelization</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.GetSalary</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.GetStudentPay</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.JobLec</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Gangsa</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Person</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> course;
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Gangsa</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">id</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">course</span>) {
+                                setId(id);
+                                setName(name);
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>course <span style="color:#e28964">=</span> course;
+                                setJob(<span style="color:#e28964">new</span> <span style="color:#99cf50">JobLec</span>()); <span style="color:#aeaeae;font-style:italic">// interface 로 구현된 클래스를 객체로 생성해서 그형의 변수의 값으로 넣는다.</span>
+                                setPay(<span style="color:#e28964">new</span> <span style="color:#99cf50">GetSalary</span>());
+                            }
+                        
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">print</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[ID] : "</span> <span style="color:#e28964">+</span> getId() <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> [이름] : "</span> <span style="color:#e28964">+</span> getName() <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> [과목] : "</span> <span style="color:#e28964">+</span> course);
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getCourse</span>() {
+                                <span style="color:#e28964">return</span> course;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setCourse</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">course</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>course <span style="color:#e28964">=</span> course;
+                            }
+                        
+                        }
+                        
+                    </pre>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.modulelization</span>;
+
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.GetSalary</span>;
+                        <span style="color:#e28964">import</span> <span style="color:#99cf50">strategy.academy.inter.JobMng</span>;
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Staff</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Person</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> department;
+                            
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Staff</span>() {}
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Staff</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">id</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>,<span style="color:#99cf50">String</span> <span style="color:#3e87e3">department</span>) {
+                                setId(id);
+                                setName(name);
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>department <span style="color:#e28964">=</span> department;
+                                setJob(<span style="color:#e28964">new</span> <span style="color:#99cf50">JobMng</span>()); <span style="color:#aeaeae;font-style:italic">// interface 로 구현된 클래스를 객체로 생성해서 그형의 변수의 값으로 넣는다.</span>
+                                setPay(<span style="color:#e28964">new</span> <span style="color:#99cf50">GetSalary</span>());
+                            }
+                            
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">print</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[ID] : "</span> <span style="color:#e28964">+</span> getId() <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> [이름] : "</span> <span style="color:#e28964">+</span> getName() <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span> [부서] : "</span> <span style="color:#e28964">+</span> department);
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getDepartment</span>() {
+                                <span style="color:#e28964">return</span> department;
+                            }
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setDepartment</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">department</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>department <span style="color:#e28964">=</span> department;
+                            }
+                            
+                        }
+                        
+                    </pre>
+                    <hr>
+                        <h3>Main Class</h3>
+                    <hr>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">strategy.academy.modulelization</span>;
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Main</span> {
+                        
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Student</span> st1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Student</span>(<span style="color:#65b042">"30301"</span>, <span style="color:#65b042">"강동원"</span>, <span style="color:#65b042">"영화반"</span>);
+                                <span style="color:#99cf50">Student</span> st2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Student</span>(<span style="color:#65b042">"30302"</span>, <span style="color:#65b042">"강예원"</span>, <span style="color:#65b042">"Java반"</span>);
+                                <span style="color:#99cf50">Gangsa</span> gs1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Gangsa</span>(<span style="color:#65b042">"J01"</span>, <span style="color:#65b042">"홍길동"</span>, <span style="color:#65b042">"java"</span>);
+                                <span style="color:#99cf50">Gangsa</span> gs2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Gangsa</span>(<span style="color:#65b042">"J02"</span>, <span style="color:#65b042">"김철수"</span>, <span style="color:#65b042">"db"</span>);
+                                <span style="color:#99cf50">Staff</span> s <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Staff</span>(<span style="color:#65b042">"A01"</span>, <span style="color:#65b042">"유국동"</span>, <span style="color:#65b042">"취업지원"</span>);
+                        
+                                <span style="color:#99cf50">Person</span>[] person <span style="color:#e28964">=</span> { st1, st2, gs1, gs2, s };
+                        
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"업무시간이니 다 일합시다"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println();
+                                <span style="color:#e28964">for</span> (<span style="color:#99cf50">Person</span> p <span style="color:#e28964">:</span> person) {
+                                    p<span style="color:#e28964">.</span>job();
+                                }
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"----------------------------------------"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"월말엔 다 지급할 것 지급"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println();
+                                <span style="color:#e28964">for</span> (<span style="color:#99cf50">Person</span> p <span style="color:#e28964">:</span> person) {
+                                    p<span style="color:#e28964">.</span>pay();    
+                                }
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"----------------------------------------"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"궁금하면 프린트"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println();
+                                <span style="color:#e28964">for</span> (<span style="color:#99cf50">Person</span> p <span style="color:#e28964">:</span> person)
+                                    p<span style="color:#e28964">.</span>print();
+                            }
+                        
+                        }
+                        
+                    </pre>
+                    <hr>
+                        <h3>Output</h3>
+                    <hr>
+                    <pre>
+
+                        업무시간이니 다 일합시다
+
+                        수업을 듣고 공부 합니다.
+                        수업을 듣고 공부 합니다.
+                        해당 과목을 가르칩니다.
+                        해당 과목을 가르칩니다.
+                        학원 운영 업무를 합니다.
+                        ----------------------------------------
+                        월말엔 다 지급할 것 지급
+                        
+                        교육급여를 받습니다.
+                        교육급여를 받습니다.
+                        월급을 받습니다.
+                        월급을 받습니다.
+                        월급을 받습니다.
+                        ----------------------------------------
+                        궁금하면 프린트
+                        
+                        [ID] : 30301	 [이름] : 강동원	 [반] : 영화반
+                        [ID] : 30302	 [이름] : 강예원	 [반] : Java반
+                        [ID] : J01	 [이름] : 홍길동	 [과목] : java
+                        [ID] : J02	 [이름] : 김철수	 [과목] : db
+                        [ID] : A01	 [이름] : 유국동	 [부서] : 취업지원
+
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+    </div>
+</body>
+</html>

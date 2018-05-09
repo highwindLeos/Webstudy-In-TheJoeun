@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box Shadow</title>
+    <style>
+        div {
+            box-sizing: content-box;
+        /* box-sizing: borde-box; */
+        /* box-sizing: paddin-box; */
+          width: 300px;
+          height: 100px;
+          padding: 15px;
+          border-radius: 10px;
+          border: 5px dotted red;
+          margin: 20px;
+          background-color: pink;
+        }
+
+        /*box-shadow: Inset Horizontal-offset Vertical-offset Blur-Radius Spread Shadow-Color;*/
+        /* Horizontal-offset Vertical-offset */
+        div:nth-of-type(1) {
+          box-shadow: 10px 10px;
+        }
+
+        /* Horizontal-offset Vertical-offset Shadow-Color */
+        div:nth-of-type(2) {
+          box-shadow: 10px 10px violet;
+        }
+
+        /* Horizontal-offset Vertical-offset Blur-Radius Shadow-Color */
+        div:nth-of-type(3) {
+          box-shadow: 10px 10px 5px violet;
+        }
+
+        /* Horizontal-offset Vertical-offset Blur-Radius Spread Shadow-Color */
+        div:nth-of-type(4) {
+          box-shadow: 10px 10px 5px 5px violet;
+        }
+
+        /* Inset Horizontal-offset Vertical-offset Blur-Radius Spread Shadow-Color */
+        div:nth-of-type(5) {
+          box-shadow: inset 10px 10px 5px 5px violet;
+        }
+
+        /* Horizontal-offset Vertical-offset Blur-Radius Spread Shadow-Color */
+        div:nth-of-type(6) {
+          background-color: white;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        div:nth-of-type(7){
+            -webkit-box-shadow: 5px 5px 5px 10px #3DE5FF;
+            box-shadow: 5px 5px 5px 10px #3DE5FF;
+        }
+        div:nth-of-type(8){
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3232+0,ff7a28+17,f4ff30+34,179343+50,207cca+67,26137a+83,9f5caa+100 */
+            background: #ff3232; /* Old browsers */
+            background: -moz-linear-gradient(left,  #ff3232 0%, #ff7a28 17%, #f4ff30 34%, #179343 50%, #207cca 67%, #26137a 83%, #9f5caa 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(left,  #ff3232 0%,#ff7a28 17%,#f4ff30 34%,#179343 50%,#207cca 67%,#26137a 83%,#9f5caa 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right,  #ff3232 0%,#ff7a28 17%,#f4ff30 34%,#179343 50%,#207cca 67%,#26137a 83%,#9f5caa 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#9f5caa',GradientType=1 ); /* IE6-9 */
+
+        }
+      </style>
+</head>
+<body>
+    <div>This is a div element with a box-shadow</div>
+    <div>This is a div element with a box-shadow</div>
+    <div>This is a div element with a box-shadow</div>
+    <div>This is a div element with a box-shadow</div>
+    <div>This is a div element with a box-shadow</div>
+    <div>This is a div element with a box-shadow</div>
+    <div>This is a div element with a box-shadow</div> 
+    <div>This is a div element with a box-shadow</div>   
+</body>
+</html>

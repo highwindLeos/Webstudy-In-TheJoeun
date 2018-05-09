@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<!-- Block level elements in HTML: 블럭 요소 (박스 모델)
+
+<address><article><aside><blockquote><canvas><dd>
+<div><dl><dt><fieldset><figcaption><figure><footer>
+<form><h1>-<h6><header><hr><li><main><nav><noscript>
+<ol><output><p><pre><section><table><tfoot><ul><video>
+    
+-->
+
+<!-- Inline elements in HTML: 인라인 요소 (높이는 존재하지 않음)
+
+<a><abbr><acronym><b><bdo><big><br><button><cite><code><dfn><em><i>
+<img><input><kbd><label><map><object><q><samp><script><select>
+<small><span><strong><sub><sup><textarea><time><tt><var> 
+
+-->
+
+<!-- /* CSS */
+
+/* 하위 선택자 */
+section ul { border: 1px dotted black; }
+
+/* 자식 선택자 */
+section > ul { border: 1px dotted black; } 
+
+/* CSS */
+/* 인접 형제 선택자 */
+h1 + ul { background: yellowgreen; color: darkgreen; }
+
+/* 일반 형제 선택자 */
+h1 ~ ul { background: darkgreen; color: yellowgreen; }  
+-->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Image sample</title>
+    <style>
+        body{
+            margin : 0;
+        }
+
+        span{
+            border : 1px solid red;
+        }
+
+        div {
+            border : 1px solid blue;
+            float : right;
+        }
+
+        #first{
+            border : 1px solid blue;
+            float : left;
+        }
+    </style>
+</head>
+<body>
+    <span>Hello</span><span>World</span>
+
+    <div id="first">Hello</div>
+    <div>World</div>
+
+    <h1>My <span style="color:red">Important</span> Heading</h1>
+
+    <p>London is the capital city of England. It is the most populous city in the United Kingdom,
+        with a metropolitan area of over 13 million inhabitants.</p>
+
+    <p>London is the capital city of England. It is the most populous city in the United Kingdom,
+            with a metropolitan area of over 13 million inhabitants.</p>
+</body>
+</html>

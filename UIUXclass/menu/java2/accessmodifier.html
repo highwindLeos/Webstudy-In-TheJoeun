@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                접근제한의 종류 (AccessModifiler)
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>                        
+                        <h2>멤버변수 선언</h1>
+
+                        [접근제한자] [static/final] 데이터형 변수명;
+                        [접근제한자] [static/final] 리턴데이터형 메소드명(){
+                            실행할 로직들;
+                        }
+                        
+                        <h3>접근제한자</h3>
+
+                    ① [접근제한자] 접근제한이란 클래스의 데이터나 메소드에 대해서 다른 클래스로부터 접근을 제한하는 것.
+
+                    <span class="bold_color_blue">public</span> : 접근을 제한하지 않는다. 다른 모든 클래스에서 사용 가능
+
+                    <span class="bold_color_blue">protected</span> : 해당 클래스와 동일한 패키지에 있거나 상속받은 클래스일 경우에만 사용 가능
+
+                    <span class="bold_color_blue">default</span> : 접근제어자를 명시하지 않은 경우의 디폴드 접근제어자. 같은 패키지내의 클래스들은 
+                                 public 권한을 갖고 접근가능.
+
+                    <span class="bold_color_blue">private</span> : 해당 클래스만이 이 멤버를 사용할 수 있다. 외부객체에서는 절대로 접근할 수 없다.        
+                          
+                    </pre>
+                    <div class="image_modify"><img src="../../img/access.jpg" alt="accessmodifiler"></div>      
+                </div>
+                <div>
+                    <h3 class="headline3">Example 예제</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Woman</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Woman</span>(){
+                                privateTest();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Woman 클래스 생성자"</span>);
+                            }
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">privateTest</span>(){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"private 접근제한자"</span>);
+                            }
+                            <span style="color:#99cf50">void</span> <span style="color:#89bdff">defaultTest</span>(){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"디폴트 접근제한자"</span>);
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">publicTest</span>(){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"public 접근제한자"</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">WomanTestMain</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Woman</span> w <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Woman</span>();
+                                <span style="color:#aeaeae;font-style:italic">//w.privateTest();</span>
+                                w<span style="color:#e28964">.</span>defaultTest();
+                                w<span style="color:#e28964">.</span>publicTest();
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainTestClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Woman</span> w <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Woman</span>();
+                                <span style="color:#aeaeae;font-style:italic">//w.privateTest();</span>
+                                <span style="color:#aeaeae;font-style:italic">// w.defaultTest();</span>
+                                w<span style="color:#e28964">.</span>publicTest();
+                            }
+                        }
+                        
+                    </pre>
+                    
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">[ static / final ]</h3>
+                    <pre>
+                            
+                        <h3>final : 종단변수</h3>
+
+                        <b>public class FinalEx {
+                            public static void main(String[] args){
+                                final double PI = 3.141592;
+                                double r = 3;
+                                double area = PI* r * r; 
+                                double round = 2 * PI * r;
+                                System.out.println("반지름 " + r+"인 원의 넓이는 "+ area);
+                                System.out.println("반지름 " + r+"인 원의 둘레는 "+ round);
+                            }
+                        }</b>
+
+                        <h3>static : 클래스변수(=static 변수)</h3>
+
+                        ; 객체변수(객체속성)는 객체가 생성될 때마다 각 객체에 변수들이 생성되지만, 
+                        클래스 변수는 클래스로부터 생성된 객체들의 수와 상관없이 하나만 생성.
+                        한 클래스로부터 생성된 모든 객체들은 클래스 변수를 공유
+                        클래스 변수를 이용하여 객체들 사이의 통신에 사용하거나 객체들의 공통속성을 나타낼 수 이다.
+                        객체변수와 달리 클래스 변수는 클래스 이름을 통하여 접근한다.
+
+                        <h3>static의 이해</h3> 
+                        ; 객체들끼리 공유하고 싶은 정보가 있을 때 사용. 일명 깍두기. 
+                        필요에 의해 클래스를 만들고, 사용할 때는 생성자를 통해 객체로 만들어서 사용을 합니다.
+                        이러한 방식으로 모든 것을 처리하다 보면, 문제가 생길 수 있습니다.
+                        
+                        예를 들어 집안에 부모, 그리고 세 쌍둥이가 있습니다.
+                        엄마 지갑에 100원짜리 2개가 있습니다.
+                        이러한 상황에서 아이들이 엄마한테 100원을 달라고 합니다.
+                        당연히 엄마지갑에는 100원 동전 2개가 있으니, 줄 수 있습니다.
+                        
+                        첫째 아이가 먼저 엄마 지갑 객체를 생성하여 100원을 받았습니다.
+                        그리고 둘째 아이가 엄마 지갑 객체를 생성하여 100원을 받았습니다.
+                        마지막으로 셋째 아이가 엄마 지갑 객체를 생성하여 100원을 받았습니다.
+                        
+                        여기까지 보면, 뭔가 이상 합니다. 분명 집안에 엄마도 한 명이고, 지갑도 한 개인데, 아이들 모두 엄마 지갑을 생성하여 100원씩을 받았습니다.
+                        200원 밖에 없는데 아이들이 받은 돈은 모두 300원 입니다. 버그 입니다.
+                        
+                        그럼 이런 상황에서 생각할 수 있는 방법은 무엇일까요?
+                        
+                        아주 쉽게 생각해 보면 엄마 지갑 객체가 세 아이들 모두에게 공유 되면 됩니다.
+                        그러면 첫째 아이가 100원 받고, 둘째 아이가 100원을 받으면, 지갑에는 동전이 없고, 셋째 아이는 100원을 받을 수 없게 됩니다.
+                        셋째 아이한테는 서운한 일이지만, 어째든 프로그램적으로는 이상이 없이 정상 동작 할 것입니다.
+                        
+                        그러면 어떻게 엄마 지갑을 모든 아이들이 공유할 수 있을까요?
+                        바로 ‘static’ 키워드를 사용하는 것 입니다.
+                        우선 ‘static’ 키워드를 ‘공유(깍두기)’ 라고 생각 합니다.
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">Coding Example (잘못된 예시)</h3> 
+                    <pre style="background:#000;color:#f8f8f8">
+                    
+                    <b><잘못된 예시></b>
+                        
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MomPouch</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">MONEY</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">200</span>;
+                    }
+                    
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FirstChild</span> {
+                        <span style="color:#99cf50">MomPouch</span> momPouch <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">MomPouch</span>();
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">FirstChild</span>() {
+                            <span style="color:#aeaeae;font-style:italic">// TODO Auto-generated constructor stub</span>
+                        }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">takeMoney</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">money</span>){
+                            <span style="color:#e28964">if</span>(<span style="color:#99cf50">momPouch<span style="color:#e28964">.</span>MONEY</span><span style="color:#e28964">>=</span>money){
+                                <span style="color:#aeaeae;font-style:italic">//MomPouch.MONEY = MomPouch.MONEY - money;</span>
+                                <span style="color:#99cf50">momPouch<span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">-=</span> money;
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"첫째가 "</span><span style="color:#e28964">+</span>money<span style="color:#e28964">+</span><span style="color:#65b042">" 받음"</span>);
+                            }<span style="color:#e28964">else</span>{
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"첫째는 돈을 못 받아요"</span>);
+                            }
+                        }
+                    }
+                    
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SecondChild</span> {
+                        <span style="color:#99cf50">MomPouch</span> momPouch <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">MomPouch</span>();
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">SecondChild</span>() {
+                            <span style="color:#aeaeae;font-style:italic">// TODO Auto-generated constructor stub</span>
+                        }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">takeMoney</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">money</span>){
+                            <span style="color:#e28964">if</span>(<span style="color:#99cf50">momPouch<span style="color:#e28964">.</span>MONEY</span><span style="color:#e28964">>=</span>money){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"둘째 "</span><span style="color:#e28964">+</span>money<span style="color:#e28964">+</span><span style="color:#65b042">"받음"</span>);
+                                <span style="color:#99cf50">momPouch<span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">-=</span> money;
+                            }<span style="color:#e28964">else</span>{
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"둘째 돈 못 받음"</span>);
+                            }
+                        }
+                    }
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThirdChild</span> {
+                        <span style="color:#99cf50">MomPouch</span> momPouch <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">MomPouch</span>();
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">ThirdChild</span>() {
+                            <span style="color:#aeaeae;font-style:italic">// TODO Auto-generated constructor stub</span>
+                        }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">takeMoney</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">money</span>){
+                            <span style="color:#e28964">if</span>(<span style="color:#99cf50">momPouch<span style="color:#e28964">.</span>MONEY</span><span style="color:#e28964">>=</span>money){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"셋째 "</span><span style="color:#e28964">+</span>money<span style="color:#e28964">+</span><span style="color:#65b042">"받음"</span>);
+                                <span style="color:#99cf50">momPouch<span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">-=</span> money;
+                            }<span style="color:#e28964">else</span>{
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"셋째 돈 못 받음"</span>);
+                            }
+                        }
+                    }
+                    
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainTestClass</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">FirstChild</span>  c1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">FirstChild</span>();
+                            <span style="color:#99cf50">SecondChild</span> c2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SecondChild</span>();
+                            <span style="color:#99cf50">ThirdChild</span>  c3 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ThirdChild</span>();
+                            <span style="color:#aeaeae;font-style:italic">//System.out.println("엄마지갑:"+MomPouch.MONEY);</span>
+                            c1<span style="color:#e28964">.</span>takeMoney(<span style="color:#3387cc">100</span>);
+                            c2<span style="color:#e28964">.</span>takeMoney(<span style="color:#3387cc">100</span>);
+                            c3<span style="color:#e28964">.</span>takeMoney(<span style="color:#3387cc">100</span>);
+                            <span style="color:#aeaeae;font-style:italic">//System.out.println("엄마지갑 : "+MomPouch.MONEY);</span>
+                        }
+                    }
+                    
+                    </pre>                
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">Coding Example (올바른 예시)</h3>
+                    <pre style="color:#f8f8f8">
+                    
+                    <b><올바른 예></b>
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MomPouch</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">MONEY</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">200</span>; <span style="color:#aeaeae;font-style:italic">// 객체가 생성되기전 클래스의 값 공유</span>
+                    }
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">FirstChild</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">FirstChild</span>() { }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">takeMoney</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">money</span>){
+                            <span style="color:#e28964">if</span>(<span style="color:#99cf50">MomPouch</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">&lt;</span> money){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"첫째 돈 못 받아요"</span>);
+                            }<span style="color:#e28964">else</span>{
+                                <span style="color:#99cf50">MomPouch</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">-=</span> money;
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"첫째 "</span><span style="color:#e28964">+</span>money<span style="color:#e28964">+</span><span style="color:#65b042">"원 받았어요"</span>);
+                            }
+                        }
+                    } 
+                    
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SecondChild</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">SecondChild</span>() { }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">takeMoney</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">money</span>){
+                            <span style="color:#e28964">if</span>(<span style="color:#99cf50">MomPouch</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">&lt;</span> money){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"둘째 돈 못 받아요"</span>);
+                            }<span style="color:#e28964">else</span>{
+                                <span style="color:#99cf50">MomPouch</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">-=</span> money;
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"둘째 "</span><span style="color:#e28964">+</span>money<span style="color:#e28964">+</span><span style="color:#65b042">"원 받았어요"</span>);
+                            }
+                        }
+                    }
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThirdChild</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">ThirdChild</span>() { }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">takeMoney</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">money</span>){
+                            <span style="color:#e28964">if</span>(<span style="color:#99cf50">MomPouch</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">&lt;</span> money){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"셋째 돈 못 받아요"</span>);
+                            }<span style="color:#e28964">else</span>{
+                                <span style="color:#99cf50">MomPouch</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MONEY</span> <span style="color:#e28964">-=</span> money; 
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"셋째 "</span><span style="color:#e28964">+</span>money<span style="color:#e28964">+</span><span style="color:#65b042">"원 받았어요"</span>);
+                            }
+                        }
+                    }
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainTestClass</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">FirstChild</span>  c1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">FirstChild</span>();
+                            <span style="color:#99cf50">SecondChild</span> c2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SecondChild</span>();
+                            <span style="color:#99cf50">ThirdChild</span>  c3 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ThirdChild</span>();
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"엄마지갑:"</span><span style="color:#e28964">+</span><span style="color:#99cf50">MomPouch</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MONEY</span>);
+                            c1<span style="color:#e28964">.</span>takeMoney(<span style="color:#3387cc">100</span>);
+                            c2<span style="color:#e28964">.</span>takeMoney(<span style="color:#3387cc">100</span>);
+                            c3<span style="color:#e28964">.</span>takeMoney(<span style="color:#3387cc">100</span>);
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"엄마지갑 : "</span><span style="color:#e28964">+</span><span style="color:#99cf50">MomPouch</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MONEY</span>);
+                        }
+                    }
+
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">Example - 01</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                    <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Person</span>{
+                        
+                        <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> name;
+                        <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> money;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">int</span> comm_money;
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">Person</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>) {
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>name <span style="color:#e28964">=</span> name;
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">currentMoney</span>(){
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(name<span style="color:#e28964">+</span><span style="color:#65b042">"님 자산 : "</span><span style="color:#e28964">+</span>money);
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"공용 자산 : "</span><span style="color:#e28964">+</span>comm_money);
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">saveMoney</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">money</span>) {
+                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>money <span style="color:#e28964">+=</span> money;
+                        }
+                    }
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">A11_Static</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">Person</span> p1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Person</span>(<span style="color:#65b042">"홍길동"</span>);
+                            <span style="color:#99cf50">Person</span> p2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Person</span>(<span style="color:#65b042">"이길동"</span>);
+                            <span style="color:#99cf50">Person</span> p3 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Person</span>(<span style="color:#65b042">"김길동"</span>);
+                            
+                            p1<span style="color:#e28964">.</span>saveMoney(<span style="color:#3387cc">1000</span>);p1<span style="color:#e28964">.</span>saveMoney(<span style="color:#3387cc">1000</span>);p1<span style="color:#e28964">.</span>comm_money <span style="color:#e28964">+=</span><span style="color:#3387cc">1000</span>;
+                            p2<span style="color:#e28964">.</span>saveMoney(<span style="color:#3387cc">1000</span>);p2<span style="color:#e28964">.</span>saveMoney(<span style="color:#3387cc">1000</span>);p2<span style="color:#e28964">.</span>comm_money <span style="color:#e28964">+=</span><span style="color:#3387cc">1000</span>;
+                            p3<span style="color:#e28964">.</span>saveMoney(<span style="color:#3387cc">1000</span>);p3<span style="color:#e28964">.</span>saveMoney(<span style="color:#3387cc">1000</span>);p3<span style="color:#e28964">.</span>comm_money <span style="color:#e28964">+=</span><span style="color:#3387cc">1000</span>;
+                            p1<span style="color:#e28964">.</span>currentMoney();
+                            p2<span style="color:#e28964">.</span>currentMoney();
+                            p3<span style="color:#e28964">.</span>currentMoney();
+                        }
+                    }
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">Example - 02</h3>
+                    <pre style="color:#f8f8f8">
+
+                        <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Product</span>{
+                            <span style="color:#99cf50">static</span> <span style="color:#99cf50">int</span> count; <span style="color:#aeaeae;font-style:italic">// 생성된 인스턴스의 수를 저장하기 위한 static 변수</span>
+                            <span style="color:#99cf50">static</span>{
+                                count<span style="color:#e28964">=</span><span style="color:#3387cc">100</span>;
+                            }
+                            <span style="color:#99cf50">int</span> serialNo; <span style="color:#aeaeae;font-style:italic">// 인스턴스 고유의 번호</span>
+                            {
+                                serialNo <span style="color:#e28964">=</span> <span style="color:#e28964">++</span>count;
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Product</span>() {}
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ProductTest</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Product</span> p1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Product</span>();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"p1의 SN : "</span><span style="color:#e28964">+</span>p1<span style="color:#e28964">.</span>getSerialNo()<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"p1의 count:"</span><span style="color:#e28964">+</span>p1<span style="color:#e28964">.</span>count);
+                                <span style="color:#99cf50">Product</span> p2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Product</span>();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"p1의 SN : "</span><span style="color:#e28964">+</span>p1<span style="color:#e28964">.</span>getSerialNo()<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"p2의 SN : "</span><span style="color:#e28964">+</span>p2<span style="color:#e28964">.</span>getSerialNo()<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"p1의 count:"</span><span style="color:#e28964">+</span>p1<span style="color:#e28964">.</span>count);
+                                <span style="color:#99cf50">Product</span> p3 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Product</span>();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"p1의 SN : "</span><span style="color:#e28964">+</span>p1<span style="color:#e28964">.</span>getSerialNo()<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"p2의 SN : "</span><span style="color:#e28964">+</span>p2<span style="color:#e28964">.</span>getSerialNo()<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"p3의 SN : "</span><span style="color:#e28964">+</span>p3<span style="color:#e28964">.</span>getSerialNo()<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\n</span>"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"p1의 count:"</span><span style="color:#e28964">+</span>p1<span style="color:#e28964">.</span>count);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"p2의 count:"</span><span style="color:#e28964">+</span>p2<span style="color:#e28964">.</span>count);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"p3의 count:"</span><span style="color:#e28964">+</span>p3<span style="color:#e28964">.</span>count);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Product의 count:"</span><span style="color:#e28964">+</span><span style="color:#99cf50">Product</span><span style="color:#e28964">.</span>count);
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">Static Method</h3>
+                    <pre>
+
+                        <h3>※ static변수도 있지만 static 메소드도 있다</h3>
+
+                        static과 객체와의 관계
+
+                        ※ static 변수를 클래스 변수(정적변수, 공용변수)라 부릅니다.
+                        객체는 클래스에서 생성(복사)되어 진다고 배웠습니다.
+                        클래스 하나에서 무한대로 객체를 생성할 수 있고 그러한 객체는 모양은 동일할지 모르지만, 전혀 다른 덩어리 입니다.
+                        하지만  static이 붙은 변수는 객체 변수가 아닌 클래스 변수로써 객체가 생성되기 전에 이미 존재합니다. 
+                        (객체를 생성하지 않고 클래스 내 변수를 사용) 객체 생성과 상관없이 사용할 수 있는 필드와 메서드에 활용
+
+
+                            메모리 관련 얘기를 좀 해보겠습니다.
+
+                            ┌──────────┓      ┌───────────┓
+                            │ 클  래  스  들  이 │      │ 객체들이  모여있음   │ 
+                            │     모 여 있 음    │      │(new를 이용해 생성된) │
+                            └──────────┘      └───────────┘
+                                    데이터 영역              heap 영역  → 가비지 콜렉션 관리영역
+
+
+                        (가비지 콜렉션이 관리하지 않는 영역) 
+                        자바에서는 개발자가 메모리 관리를 하지 않는다. 다 사용한 메모리를 회수하고 사용할 수 있게 하는 것은 JVM이 가비지 콜렉션한다.
+
+                    </pre>
+                </div>
+                <div>
+                    <pre>
+                        <h3>static의 장점과 단점</h3>
+                        <b>※static은 잘 사용하면 좋고, 그렇지 않으면 큰 재앙을 불러 올 수 있습니다.</b>
+                         
+                        static 키워드를 사용한 변수는 객체생성과는 상관없이 클래스와 함께 존재 하게 됩니다.
+                        즉 객체 생성을 하지 않아도 메모리에 상주하게 됩니다. 
+                        이렇게 객체를 생성하지 않고도 존재한다는 것은 Heap 영역은 사용하지 않지만,
+                        데이터 영역의 메모리를 사용한다는 것이다. 
+                         
+                        지금은 간단한 예제를 살펴보고 있기 때문에 객체생성에 따른 메모리의 부하를 느낄 수 없지만, 
+                        프로젝트가 커지면 객체생성에 따른 메모리 부족현상이 있을 수 있습니다. 
+                        물론 가비지콜렉터가 열심히 일을 하고는 있어도 부족현상이 생길 수 있습니다. 
+                        ▼ 사용중인 객체는 메모리에 계속 상주하고 있고, 또 데이터 영역은 가비지콜렉터의 관리영역이 아닙니다.
+                         
+                        객체 생성을 하지 않고도 사용할 수 있는다는 것은 분명 장점이지만, 
+                        한편으로 생각해 보면 가비지콜렉터의 관리 밖에 있기 때문에 항상 메모리에 상주해 있습니다. 
+                        즉 프로젝트가 커지고, 시스템이 오랜 시간 동안 돌아가게 되면 시스템 운영속도가 점차 느려지다가 
+                        급기야 큰 재앙이 올 수도 있습니다. 따라서 static의 사용은 신중해야 됩니다.
+                         
+                        static 변수로 사용되는 대표적인 예를 아마도 final변수(상수:변하지 않는 수) 일 것입니다. 
+                        만약 프로그래밍을 하다가 원주율이 빈번이 사용되어야 한다면 이러한 값은 
+                        final 변수(상수)로 정의해 놓고 사용하는 편이 좋습니다.
+                         
+                        원주율은 3.141592653589793238462643383279… 끝이 없습니다.
+                        이러한 경우 원주율을 3.141592653589793238462643383279까지로 정의해 놓고 사용하자고 팀원들 사이 약속을 합니다.
+                         
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        <h3>Examaple</h3>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">PiClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">double</span> <span style="color:#3387cc">PI</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">3.141592653589793238462643383279</span>;
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"원주율:"</span><span style="color:#e28964">+</span><span style="color:#99cf50">PiClass</span><span style="color:#3387cc"><span style="color:#e28964">.</span>PI</span>);
+                                <span style="color:#aeaeae;font-style:italic">//PiClass.PI = 3.14; // final 클래스 변수(상수)이므로 변경  불가</span>
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                        
+                    <h3>멤버변수의 초기화 시기와 순서</h3>
+                        ※클래스 변수의 초기화 시점 <span style="color:#e28964">:</span> 클래스가 처음 로딩될 때 단 한번
+                        ※인스턴스변수의 초기화 시점 <span style="color:#e28964">:</span> 인스턴스(객체)가 생성될 때 마다
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Test1</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> i<span style="color:#e28964">=</span><span style="color:#3387cc">1</span>; <span style="color:#aeaeae;font-style:italic">// ② 코드 직접 초기화</span>
+                            {   <span style="color:#aeaeae;font-style:italic">// ③ 초기화 블럭을 통한 초기화</span>
+                                i<span style="color:#e28964">=</span><span style="color:#3387cc">1</span>;
+                            }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">Test1</span>() {i<span style="color:#e28964">=</span><span style="color:#3387cc">1</span>; } <span style="color:#aeaeae;font-style:italic">// ①생성자를 통한 초기화</span>
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getI</span>() {
+                                <span style="color:#e28964">return</span> i;
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setI</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">i</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>i <span style="color:#e28964">=</span> i;
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+    </div>
+</body>
+</html>

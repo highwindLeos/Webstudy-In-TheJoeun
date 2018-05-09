@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Seletor sibling</title>
+    <style>
+        /* sibling(형제) */
+        /* p 요소의 형제 요소 중에 p 요소 바로 뒤에 위치하는 ul 요소를 선택한다. */
+        p + ul { color: red; font-size: 2em; }
+
+        /* p 요소의 형제 요소 중에 p 요소 뒤에 위치하는 모든 ul 요소를 선택한다. */
+        p ~ ul { color: blue; }
+
+        /* tag 선택자와 class 선택자의 조합 (특정 위치를 선택) */
+        li.sect{ color :green; }
+
+        .sect{ color: blue; }
+    </style>
+</head>
+<body>
+    <h1>heading2</h1>
+    <div>A div element.</div>
+    <ul>
+        <li>Coffee1</li>
+        <li>Tea2</li>
+        <li>Milk3</li>
+    </ul>
+
+    <p class="sect">The first paragraph.</p>
+    <ul>
+        <li>Coffee1</li>
+        <li class="sect">Tea2</li>
+        <li>Milk3</li>
+    </ul>
+
+    <h2>Another list</h2>
+    <ul>
+        <li>Coffee1</li>
+        <li class="sect">Tea2</li>
+        <li>Milk3</li>
+    </ul>
+</body>
+</html>

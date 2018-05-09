@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function</title>
+    <script>
+        function calcSum(){
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value;
+            
+            var result;
+            result = parseInt(x) + parseInt(y);
+            document.getElementById("result").value = result;
+        }
+
+        function calcSubtract(){
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value;
+            
+            var result;
+            result = parseInt(x) - parseInt(y);
+            document.getElementById("result").value = result;
+        }
+
+        function calcMultiply(){
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value;
+            
+            var result;
+            result = parseInt(x) * parseInt(y);
+            document.getElementById("result").value = result;
+        }
+
+        function calcDivision(){
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value;
+            
+            var result;
+            result = parseInt(x) / parseInt(y);
+            document.getElementById("result").value = result;
+        }
+    </script>
+</head>
+<body>
+    <h2>간편계산기</h2>
+    <form name="calculator" action="#" method="POST">
+        <p>첫번째 정수 : <input type="text" id="x"></p>
+        <p>두번째 정수 : <input type="text" id="y"></p>
+        <p>합계 : <input id="result"></p>
+        <p>
+            <input type="button" value="덧셈" onclick="calcSum()">
+            <input type="button" value="뺄셈" onclick="calcSubtract()">
+            <input type="button" value="곱셈" onclick="calcMultiply()">
+            <input type="button" value="나눗셈" onclick="calcDivision()">
+        </p>
+    </form>
+</body>
+</html>

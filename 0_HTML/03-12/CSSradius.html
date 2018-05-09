@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Radius</title>
+    <style>
+
+        #header, #content, #footer {
+            width: 1000px;
+            margin: 0 auto;
+            box-sizing: border-box; /* border  값을 포함해서 박스를 지정한다.*/
+            overflow: hidden; /* 부모의 height 값을 clear fix */
+        }
+
+        #header .left_space, 
+        #content .left_space, 
+        #footer .left_space {
+            width: 150px;
+            height: 150px;
+            float: left;
+            background-color: #f3f3f3;
+            /* border : 1px solid #ff0000; */
+        }
+        
+        #header .center_space, 
+        #content .center_space, 
+        #footer .center_space {
+            width : 700px;
+            height: 150px;
+            float: left;
+            background-color: #f3f3f3;
+            /* border : 1px solid #ff0000; */
+        }
+
+        #header .right_space, 
+        #content .right_space, 
+        #footer .right_space {
+            width: 150px;
+            height: 150px;
+            float: right;
+            background-color: #f3f3f3;
+            /* border : 1px solid #ff0000; */
+        }
+
+        #header .left_space, 
+        #footer .right_space {
+            border-radius: 30px 0;
+        }
+        #header .right_space, 
+        #footer .left_space {
+            border-radius: 0 30px;
+        }
+
+        #header .center_space {
+            border-radius: 0 0 30px 30px;
+        }
+
+        #footer .center_space {
+            border-radius:  30px 30px 0 0;
+        }
+
+        #content .left_space {
+            border-radius : 0 30px 30px 0;
+            height: 300px;
+        }
+
+        #content .right_space {
+            border-radius : 30px 0 0 30px;
+            height: 300px;
+        }
+
+        #content .center_space {
+            border-radius : 30px;
+            height: 300px;
+        }
+
+        #content .center_space div ul li {
+            list-style: none;
+            display: inline-block;
+            font-weight: bold;
+            font-size : 20px;
+            padding : 0 20px;
+            clear: both;
+        }
+
+        #content .hiseoul {
+            padding : 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="left_space"></div>
+        <div class="center_space"></div>
+        <div class="right_space"></div>
+    </div>
+    <div id="content">
+        <div class="left_space"></div>
+        <div class="center_space">
+            <div class="menu">
+                <ul>
+                    <li>menu1</li>
+                    <li>menu2</li>
+                    <li>menu3</li>
+                    <li>menu4</li>
+                </ul>
+            </div>
+            <div class="hiseoul">
+                <h1>하이 서울 브랜드</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Dolor atque perferendis magnam doloribus rerum! Illum quibusdam molestiae 
+                consectetur</p>
+            </div>
+        </div>
+        <div class="right_space"></div>
+    </div>
+    <div id="footer">
+        <div class="left_space"></div>
+        <div class="center_space"></div>
+        <div class="right_space"></div>
+    </div>
+</body>
+</html>

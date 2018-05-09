@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>border-style</title>
+    <style>
+
+        h2{
+            text-align: center;
+        }
+        
+        div{
+            width:100px;
+            height:100px;
+            display: inline-block;
+            color: #666;
+            background: #eaeaed;
+            line-height: 100px; /* 박스 높이 크기만큼 주면 컨텐츠가 수직 정렬됨.*/
+            text-align: center;
+            margin: 0 20px;
+        }
+
+        .border-rounded{
+            border-radius: 5px;
+        }
+
+        .border-circle{
+            border-radius: 50%;
+        }
+
+        .border-football{
+            border-radius: 5px 75px;
+        }
+    </style>
+</head>
+<body>
+    <h2>border-radius</h2>
+
+    <div class="border-rounded">5px</div>
+    <div class="border-circle">50%</div>
+    <div class="border-football">15px 75px</div>          
+</body>
+</html>

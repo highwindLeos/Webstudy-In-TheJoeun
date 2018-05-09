@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                상속 (inheritance)
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>                        
+                        
+                    목표  : 상속의 의미하는 바와 실제 코드를 작성할 수 있다.
+                        오버로딩(overloading)과 오버라이딩(overriding)의 차이를 알고 구분해서 구현할 수 있다
+                        다형성(polymorphism)의 개념을 이해하고, 활용할 수 있다.
+                
+                        <h2>상속(Inheritance) :</h2> 
+                        
+                        상속이란 일반적으로 재산을 부모가 물려주는 개념이 있듯이, 
+                        자바에서는 부모가 가지고 있는 클래스의 속성과 메서드를 활용할 수 있는 개념으로 시작한다
+
+                        <h3>1. 일상에서 알고 있는 상속</h3>
+
+                        <b>※ 객체지향의 핵심적인 요소 중의 하나.</b> 
+                        
+                        객체지향 언어의 대표인 JAVA를 공부 할 때 가장 중요하고 꼭 알고 넘어가야 하는 부분이 상속과 추상화 개념입니다.
+                        
+                        상속은 우리가 일상에서 알고 있는 상속 입니다.
+                        아버지의 재산을 물려받는 아들의 경우 아버지로부터 아들은 재산을 상속 받은 경우 입니다.
+                        반대로 아버님이 많은 빚을 아들에게 물려주는 경우도 있습니다. 
+                        이 경우에도 아들은 아버님으로부터 많은 빚을 상속 받은 경우 입니다.
+                        
+                        프로그래밍에서도 어떤 클래스가 다른 클래스로부터 객체의 데이터(속성)와 메소드(기능)를 상속 받을 수 있습니다. 
+                        이럴 경우 상속받은 객체는 상속해 준 객체의 데이터 및 메소드를 이용할 수 있고 또는 변경 할 수도 있습니다.                                                                
+                        
+                        상속을 통해서 4발 자전거를 만든다고 생각해 보겠습니다.
+                        자전거에는 기본적으로 핸들, 바퀴, 브레이크, 페달, 프레임 등이 있어야 합니다.
+                        그리고 4발 자전거는 바퀴가 4개 있어야 합니다. 
+                        자전거 제작자가 처음부터 4발 자전거를 만들려고 하면 많은 시간과 노력이 필요 합니다.
+                        그래서 자전거 제작자는 아이디어를 생각해 냅니다. 
+                        자전거 가게에 가서 2발 자전거를 사가지고 와서, 뒷바퀴에 2개의 바퀴를 달면 4발 자전거가 쉽게 제작 되어집니다. 
+                        몇 일이 걸릴 수 있고, 여러 번의 시행착오가 생길 수 있는 자전거 제작을 비교적 짧은 시간에 뚝딱 끝낼 수 있게 되었습니다.
+                        
+                        프로그램도 마찬가지 입니다. 기존의 좋은 클래스(2발 자전거)가 있다면 상속을 통해서 많은 개발시간을 단축시킬 수 있습니다. 
+                        또 기존에 만들어진 클래스는 어느 정도 검증이 된 클래스이므로, 시행착오도 줄일 수 있습니다.
+                        
+                        <h3>2. 상속이 필요한 이유</h3>
+
+                        상속이 필요한 이유는 크게 두 가지 이유입니다.
+                        첫째로는, 모든 개발을 처음부터 하얀 도화지에 할 필요는 없습니다. 
+                        이미 훌륭한 선배님들께서 만들어 놓은 프로그램이 있다면 상속을 통해서 훌륭한 결과물을 빠른 시간 내에 만들 수 있습니다. 
+                        또한 기존의 훌륭한 프로그램은 대부분 검증이 잘 되어 있어 버그도 거의 없을 수 있습니다.
+                                
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">상속 예제 (Inheritace Example)</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ParentClass</span> {
+                            <span style="color:#99cf50">String</span> pStr <span style="color:#e28964">=</span> <span style="color:#65b042">"부모 클래스"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">ParentClass</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getPapaNme</span>(){ <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"아빠 이름 : 홍길동"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getMamiName</span>(){ <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"엄마 이름 : 김길순"</span>); }
+                        }
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex1</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ChildClass</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">ParentClass</span> {
+                            <span style="color:#99cf50">String</span> cStr<span style="color:#e28964">=</span><span style="color:#65b042">"아들 클래스"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">ChildClass</span>() { }
+                        }
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex1</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">ChildClass</span> childClass <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ChildClass</span>();
+                                childClass<span style="color:#e28964">.</span>getPapaNme();
+                                childClass<span style="color:#e28964">.</span>getMamiName();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(childClass<span style="color:#e28964">.</span>cStr <span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>"</span><span style="color:#e28964">+</span>childClass<span style="color:#e28964">.</span>pStr);
+                            }
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Point</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> x;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> y;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getX</span>() {<span style="color:#e28964">return</span> x;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setX</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">x</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>x <span style="color:#e28964">=</span> x;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getY</span>() {<span style="color:#e28964">return</span> y;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setY</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">y</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>y <span style="color:#e28964">=</span> y;}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Point3D</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Point</span>{
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> z;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getZ</span>() {<span style="color:#e28964">return</span> z;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setZ</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">z</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>z <span style="color:#e28964">=</span> z;}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">PointTestMain</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Point</span> p1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Point</span>();
+                                p1<span style="color:#e28964">.</span>setX(<span style="color:#3387cc">5</span>);
+                                p1<span style="color:#e28964">.</span>setY(<span style="color:#3387cc">6</span>);
+                                <span style="color:#99cf50">Point3D</span> p2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Point3D</span>();
+                                p2<span style="color:#e28964">.</span>setX(<span style="color:#3387cc">2</span>);
+                                p2<span style="color:#e28964">.</span>setY(<span style="color:#3387cc">3</span>);
+                                p2<span style="color:#e28964">.</span>setZ(<span style="color:#3387cc">1</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"p1좌표 : "</span><span style="color:#e28964">+</span>p1<span style="color:#e28964">.</span>getX()<span style="color:#e28964">+</span><span style="color:#65b042">", "</span><span style="color:#e28964">+</span>p1<span style="color:#e28964">.</span>getY() );
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"p2좌표 : "</span><span style="color:#e28964">+</span>p2<span style="color:#e28964">.</span>getX()<span style="color:#e28964">+</span><span style="color:#65b042">", "</span><span style="color:#e28964">+</span>p2<span style="color:#e28964">.</span>getY() <span style="color:#e28964">+</span><span style="color:#65b042">", "</span><span style="color:#e28964">+</span>p2<span style="color:#e28964">.</span>getZ());
+                            }
+                        }
+                    
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">상속의 대한 이해</h3>
+                    <pre>
+                            
+                        다양한 객체(타입)를 상속을 통해서 하나의 객체(타입)으로 묶을 수 있습니다.
+
+                        이것은 추상화 개념의 이해가 있어야 하는데요, 아직은 추상화에 대해서 살펴보지 않았으므로 
+                        우선은 다양한 객체를 하나로 통일 시킬 수 있다고만 알고 있으면 될 거 같습니다.
+
+                        생물 = 호흡해
+                        동물 = 호흡하고 움직여 
+                        식물 = 호흡하고 안움직여   
+                        
+                        ☞동물과 식물을 생물로 통일시킬 수 있는 개념
+                        <hr>
+                                       생물               일반화
+                                    ↗       ↖               ↑ 
+                                동물	      식물         
+                            ↗   ↗   ↖   ↖                 ↓ 
+                        조류 포유류 어류 양서류           특수화
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">Example</h3> 
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex2</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">S</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> s<span style="color:#e28964">=</span><span style="color:#3387cc">0</span>;
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex2</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">A</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">S</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">A</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"A 클래스 생성자"</span>);
+                                s <span style="color:#e28964">=</span> <span style="color:#3387cc">1</span>;
+                            }
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex2</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">B</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">S</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">B</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"B 클래스 생성자"</span>);
+                                s <span style="color:#e28964">=</span> <span style="color:#3387cc">2</span>;
+                            }
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex2</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">C</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">S</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">C</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"C 클래스 생성자"</span>);
+                                s <span style="color:#e28964">=</span> <span style="color:#3387cc">3</span>;
+                            }
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex2</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">S</span> a <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">A</span>(); <span style="color:#aeaeae;font-style:italic">//타입을 통일화 이것을 다형성(polymorphism)이라고도 한다</span>
+                                <span style="color:#99cf50">S</span> b <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">B</span>();
+                                <span style="color:#99cf50">S</span> c <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">C</span>();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(a<span style="color:#e28964">.</span>s);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(b<span style="color:#e28964">.</span>s);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(c<span style="color:#e28964">.</span>s);
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">상속 문법의 이해</h3>
+                    <pre>
+
+                        <h3>선언 형식</h3>
+
+                        ※ 접근제어자 [final/abstract] class 클래스이름 <span class="bold_color_blue">extends</span> 상위클래스(super class) {
+                            <span class="bold_color_blue">추가할 멤버변수선언;</span>
+                            <span class="bold_color_blue">생성자;</span>
+                            <span class="bold_color_blue">추가할 메소드선언;</span>
+                        }
+
+                        ⑴ 상속이란 기존의 클래스를 재사용해서 새로운 클래스를 작성하는 것
+
+                        ⑵ 두 클래스를 부모와 자식(조상과 자손)으로 관계를 맺어줄 수 있다.
+
+                        ⑶ 자손은 조상의 멤버를 상속받으나, private멤버는 직접 제어할 없다.
+                           자손의 멤버 개수는 조상보다 작을 수 없다(같거나 많다)
+                            
+                        ⑷ 자바에서는 다중 상속이 지원되지 않는다.
+                            
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex3</span>;
+                        <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Parent</span> {
+                            <span style="color:#99cf50">int</span> p;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Parent</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Parent형 객체 생성"</span>); }
+                        }
+
+                        <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Child1</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Parent</span> {
+                            <span style="color:#99cf50">int</span> c1;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Child1</span>() { .out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Child1형 객체 생성"</span>); 
+                        }
+
+                        <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Child2</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Parent</span> {
+                            <span style="color:#99cf50">int</span> c2;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Child2</span>() { .out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Child2형 객체 생성"</span>); }
+                        }
+
+                        <span style="color:#99cf50">class</span> <span style="text-decoration:underline">GrandChild</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Child1</span>{
+                            <span style="color:#99cf50">int</span> g;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">GrandChild</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"GrandChild형 객체 생성"</span>); }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">GrandChildTestMain</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Parent</span> parent <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Parent</span>();
+                                <span style="color:#99cf50">Child1</span> child1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Child1</span>();
+                                <span style="color:#99cf50">Child2</span> child2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Child2</span>();
+                                <span style="color:#99cf50">GrandChild</span> grandchild <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">GrandChild</span>();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(parent<span style="color:#e28964">.</span>p); <span style="color:#aeaeae;font-style:italic">//가능</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(child1<span style="color:#e28964">.</span>p); <span style="color:#aeaeae;font-style:italic">//가능</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(child1<span style="color:#e28964">.</span>c1); <span style="color:#aeaeae;font-style:italic">//가능</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(child2<span style="color:#e28964">.</span>p); <span style="color:#aeaeae;font-style:italic">//가능</span>
+                                <span style="color:#aeaeae;font-style:italic">//System.out.println(child2.c1); //불가능</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(child2<span style="color:#e28964">.</span>c2); <span style="color:#aeaeae;font-style:italic">//가능</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(grandchild<span style="color:#e28964">.</span>p);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(grandchild<span style="color:#e28964">.</span>c1);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(grandchild<span style="color:#e28964">.</span>g);
+                                <span style="color:#aeaeae;font-style:italic">//System.out.println(grandchild.c2); //불가능</span>
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div>   
+                    <h3 class="headline3">오버라이드(override : 재정의)의 이해</h3>
+                    <pre>
+                        
+                        (cf)생성자 오버로딩(overloading=polymorphism 중복정의) : 인자의 타입이 다르면 같은 이름의 메소드라도 
+                            다른 기능으로 중복정의가 가능한 것
+                        (cf)오버라이드(override=재정의) : 부모 클래스의 메소드를 자식 클래스에서 재정의 함. 
+                            자식 클래스가 부모 클래스를 상속하여 자식한테 없는 메소드를 호출하면 부모클래스에 가서 해당 메소드를 찾게 됩니다. 
+                            만약 부모 클래스의 메소드를 자식클래스에서 동일한 이름으로 다시 재정의 하면 
+                            부모클래의 메소드를 찾지 않고 자식 클래스의 메소드를 호출하게 됩니다. 
+                            
+                            이것을 <span class="bold_color_blue">오버라이드(재정의)</span>라고 합니다.
+                            
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4override</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ParentClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">ParentClass</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method1</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Parent의 method1()"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method2</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Parent의 method2()"</span>);}
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4override</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ChildClass</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">ParentClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">ChildClass</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method1</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"ChildClass의 메소드1"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method3</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"ChildClass의 메소드3"</span>);}
+                        } 
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex4override</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">ChildClass</span> c <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ChildClass</span>();
+                                c<span style="color:#e28964">.</span>method1(); <span style="color:#aeaeae;font-style:italic">//오버라이드(override)한 method1</span>
+                                c<span style="color:#e28964">.</span>method2();
+                                c<span style="color:#e28964">.</span>method3();
+                            }
+                        }
+                        
+                        <span style="color:#fff;font-style:italic">/*위의 경우 c.method1()을 호출하면 ChildClass의 method1()가 호출되며, ParentClass의 method1() 메소드는 호출되지 않는다*/</span>
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex5override</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ParentClass</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> pStr <span style="color:#e28964">=</span> <span style="color:#65b042">"부모클래스"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">ParentClass</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"부모 생성자"</span>); }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">getPapaName</span>(){ <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"아빠 홍길동"</span>); }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">getMamiName</span>(){ <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"엄마 김길자"</span>); }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getpStr</span>() { <span style="color:#e28964">return</span> pStr; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setpStr</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">pStr</span>) { <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>pStr <span style="color:#e28964">=</span> pStr;}
+                        }
+
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex5override</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ChildClass</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">ParentClass</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> cStr <span style="color:#e28964">=</span> <span style="color:#65b042">"아들 클래스"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">ChildClass</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"자식 생성자"</span>); }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">getMamiName</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"아주 이쁜 정말 이쁜 우리 "</span>);
+                                <span style="color:#3e87e3">super</span><span style="color:#e28964">.</span>getMamiName();
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getcStr</span>() { <span style="color:#e28964">return</span> cStr; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setcStr</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">cStr</span>) { <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>cStr <span style="color:#e28964">=</span> cStr; }
+                        }
+                        
+                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex5override</span>;
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">ChildClass</span> cc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ChildClass</span>();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(cc<span style="color:#e28964">.</span>getpStr());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(cc<span style="color:#e28964">.</span>getcStr());
+                                cc<span style="color:#e28964">.</span>getPapaName();
+                                cc<span style="color:#e28964">.</span>getMamiName();
+                                <span style="color:#99cf50">ParentClass</span> pp <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ParentClass</span>();
+                                pp<span style="color:#e28964">.</span>getMamiName();
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+    </div>
+</body>
+</html>

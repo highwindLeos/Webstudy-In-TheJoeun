@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Table sample</title>
+    <style>
+        #col{
+            background-color:rgb(157, 211, 157);
+        }
+    </style>
+</head>
+<body>
+    <h1>Table 4</h1>
+    <table border="1" width="300" text-align="center">
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td id="col" colspan="2">7</td>
+            <td>8</td>
+            <td id="col" rowspan="3">10</td>
+        </tr>
+        <tr>
+            <td id="col" rowspan="2">9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td id="col" colspan="2" rowspan="2">14</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <h1>Table 3</h1>
+    <table border="1" width="300" text-align="center">
+        <tr>
+            <th>Name :</th>
+            <th>Bill Gates</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Telephone</td>
+            <td>555 77 854</td>
+        </tr>
+        <tr>
+            <td>555 77 854</td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <h1>Table 2</h1>
+    <table border="1" width="300" text-align="center">
+        <tr>
+            <th>Name</th>
+            <th colspan="2">Telephone</th>
+        </tr>
+        <tr>
+            <td>Bill Gates</td>
+            <td>555 77 854</td>
+            <td>555 77 854</td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <h1>Table 1</h1>
+    <table border="1" width="300" text-align="center">
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Score</th>
+        </tr>
+        <tr>
+            <td>First name</td>
+            <td>Last name</td>
+            <td rowspan="2">Score</td>
+        </tr>
+        <tr>
+            <td colspan="2">First name</td>
+        </tr>
+        <tr>
+            <td>First name</td>
+            <td>Last name</td>
+            <td>Score</td>
+        </tr>
+    </table>
+</body>
+</html>

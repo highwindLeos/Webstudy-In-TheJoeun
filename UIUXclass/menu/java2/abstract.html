@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                추상화 (abstract)
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>                        
+                        
+                목표  : 다형성(Polymorphism) : 같은 형태이지만 기능적으로 여러 다양한 객체를 이용할 수 있는 성질을 말한다. 
+                        프로그래밍 입장에서 상속받는 여러 객체를 대입함으로 다양한 기능을 이용할 수 있다.
+                
+                        <h2>추상클래스의 이해</h2> 
+                    
+                        ※추상적으로 정의할 테니(선언해 놓을테니), 객체를 사용할 사용자가 꼭 재정의(overriding) 해서 사용하라.
+
+                        ex. 한가지 간단한 상속을 통한 예제를 살펴보도록 하겠습니다.
+                        시나리오는 어제 살펴본 음식점 체인 사업관련 예제입니다. 
+                        우선 본사에서 메뉴에 대한 가격 메소드를 정해 주고, 매장에서는 주변 환경에 맞게 가격을 책정(overriding) 합니다.
+                        단. 지난번과 달리 본사에서는 메뉴만 정해 주고, 가격을 매장에 전부 위임 합니다.
+                                
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">추상클래스 예제 (Abstract Example)</h3>
+                        <pre style="background:#000;color:#f8f8f8">
+                            
+                            본사 :김치찌개-0     부대찌개-0     비빔밥-0     순대국-0      공기밥-0
+                            1호점:김치찌개-4,500 부대찌개-5,000 비빔밥-6,000 순대국-안팔아 공기밥-1,000원
+                            2호점:김치찌개-5,000 부대찌개-5,000 비빔밥-5,000 순대국-5,000  공기밥-무료
+                            3호점:김치찌개-6,000 부대찌개-7,000 비빔밥-7,000 순대국-6,000  공기밥-1,000원
+                            
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">HeadQuarterStore</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> str <span style="color:#e28964">=</span> <span style="color:#65b042">"본사지침"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kimchi</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"김치찌개 0원. 주변환경에 맞게 책정하세요"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"부대찌개 0원. 주변환경에 맞게 책정하세요"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bibib</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"비빔밥 0원. 주변환경에 맞게 책정하세요"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">sunde</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"순대국 0원. 주변환경에 맞게 책정하세요"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">gonggibab</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"공기밥 0원. 주변환경에 맞게 책정하세요"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getStr</span>() { <span style="color:#e28964">return</span> str; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setStr</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">str</span>) { <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>str <span style="color:#e28964">=</span> str; }
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StoreNum1</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">HeadQuarterStore</span>{
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> str <span style="color:#e28964">=</span> <span style="color:#65b042">"* * 1호점 * *"</span>;
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kimchi</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"김치찌개 4,500원"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"부대찌개 5,000원"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">sunde</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"순대국 안팔아"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getStr</span>() {<span style="color:#e28964">return</span> str;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setStr</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">str</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>str <span style="color:#e28964">=</span> str;}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StoreNum2</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">HeadQuarterStore</span>{
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> str <span style="color:#e28964">=</span> <span style="color:#65b042">"* * 2호점 * *"</span>;
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"부대찌개 5,000원"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bibib</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"비빔밥 5,000원"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">gonggibab</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"공기밥 무료"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getStr</span>() {<span style="color:#e28964">return</span> str;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setStr</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">str</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>str <span style="color:#e28964">=</span> str;}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StoreNum3</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">HeadQuarterStore</span>{
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> str <span style="color:#e28964">=</span> <span style="color:#65b042">"* * 3호점 * *"</span>;
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kimchi</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"김치찌개 6,000원"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"부대찌개 7,000원"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bibib</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"비빔밥 7,000원"</span>);}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">sunde</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"순대국 6,000원"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getStr</span>() {<span style="color:#e28964">return</span> str;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setStr</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">str</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>str <span style="color:#e28964">=</span> str;}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">A08TestMain</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">HeadQuarterStore</span> st <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">HeadQuarterStore</span>();
+                                <span style="color:#99cf50">StoreNum1</span> st1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StoreNum1</span>();
+                                <span style="color:#99cf50">StoreNum2</span> st2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StoreNum2</span>();
+                                <span style="color:#99cf50">StoreNum3</span> st3 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StoreNum3</span>();
+                                <span style="color:#99cf50">HeadQuarterStore</span>[] store <span style="color:#e28964">=</span> {st, st1, st2, st3};
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">HeadQuarterStore</span> s <span style="color:#e28964">:</span> store) {
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(s<span style="color:#e28964">.</span>getStr());
+                                    s<span style="color:#e28964">.</span>kimchi();
+                                    s<span style="color:#e28964">.</span>bude();
+                                    s<span style="color:#e28964">.</span>bibib();
+                                    s<span style="color:#e28964">.</span>sunde();
+                                    s<span style="color:#e28964">.</span>gonggibab();
+                                }<span style="color:#aeaeae;font-style:italic">//for</span>
+                            }<span style="color:#aeaeae;font-style:italic">//main</span>
+                        }<span style="color:#aeaeae;font-style:italic">//class</span>
+                        
+                    </pre>
+                </div>
+                <div>
+                    <pre>
+
+                        위에 살펴본 예제와 같이 본사에서 가격을 정하지 않았고, 매장에서 가격을 정(재정의)하지 않았더니, 문제가 발생 했습니다.
+                        비빔밥의 가격이 0원으로 공짜 비빔밥이 되었습니다.
+                        왜 이런 결과가 나온 걸까요? 매장에서는 본사만 믿고 가격을 재정의 하지 않았기 때문입니다.
+                        
+                        그럼 이런 문제를 사전에 예방하려면 
+                        ★매장이 오픈 예정일 때, 본사에서는 ‘모든 메뉴의 가격을 정하세요.’ 라고 강요 하면 됩니다. 
+
+                        <span class="bold_color_red">프로그램에서도 강제로 부모클래스에서 자식클래스에게 메소드를 강제로 재정의(override)하게 할 수 있습니다. 
+                 그리고 이러한 방법으로 만들어진 클래스를 ‘추상클래스’라고 합니다.★</span>
+                            
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">Example</h3> 
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">HeadQuarterStore</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kimchi</span>();
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>();
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bibib</span>();
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">sunde</span>();
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">gonggibab</span>();
+                    } 
+                    
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StoreNum1</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">HeadQuarterStore</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kimchi</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"김치찌개 4,500원"</span>); }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"부대찌개5,000원"</span>); }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">sunde</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"순대국 안팔아"</span>); }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bibib</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"비빔밥 6,000원"</span>);}
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">gonggibab</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"공기밥 1,000원"</span>);}
+                    }
+                    
+                    <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex0store</span>;
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StoreNum2</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">HeadQuarterStore</span> {
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"부대찌개 5,000원"</span>);}
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bibib</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"비빔밥 5,000원"</span>);}
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">gonggibab</span>() { <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"공기밥 무료"</span>);}
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kimchi</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"김치찌개 5,000원"</span>);}
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">sunde</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"김치찌개 5,000원"</span>);}
+                    }
+                    
+                    <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex0store</span>;
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">StoreNum3</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">HeadQuarterStore</span> {
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kimchi</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"김치찌개 6,000원"</span>);}
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"부대찌개 7,000원"</span>);}
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bibib</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"비빔밥 7,000원"</span>);}
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">sunde</span>(){<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"순대국 6,000원"</span>);}
+                        <span style="color:#99cf50">@Override</span>
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">gonggibab</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"공기밥 1,000원"</span>);
+                        }
+                    }
+                     
+                    
+                    <span style="color:#e28964">package</span> <span style="color:#99cf50">com.ch.ex0store</span>;
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★ ★ 본사"</span>);
+                            <span style="color:#99cf50">HeadQuarterStore</span> st <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">HeadQuarterStore</span>() {
+                                <span style="color:#99cf50">@Override</span>
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">sunde</span>() { }
+                                <span style="color:#99cf50">@Override</span>
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">kimchi</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"50원"</span>);}
+                                <span style="color:#99cf50">@Override</span>
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">gonggibab</span>() { }
+                                <span style="color:#99cf50">@Override</span>
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bude</span>() { }
+                                <span style="color:#99cf50">@Override</span>
+                                <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">bibib</span>() { }
+                            };
+                            st<span style="color:#e28964">.</span>kimchi(); st<span style="color:#e28964">.</span>bude(); st<span style="color:#e28964">.</span>bibib();
+                            st<span style="color:#e28964">.</span>sunde();  st<span style="color:#e28964">.</span>gonggibab();
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★ ★ 주택가 1호점"</span>);
+                            <span style="color:#99cf50">HeadQuarterStore</span> st1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StoreNum1</span>();
+                            st1<span style="color:#e28964">.</span>kimchi(); st1<span style="color:#e28964">.</span>bude(); st<span style="color:#e28964">.</span>bibib();
+                            st1<span style="color:#e28964">.</span>sunde();  st1<span style="color:#e28964">.</span>gonggibab();
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★ ★ 대학가 2호점"</span>);
+                            <span style="color:#99cf50">HeadQuarterStore</span> st2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StoreNum2</span>();
+                            st2<span style="color:#e28964">.</span>kimchi(); st2<span style="color:#e28964">.</span>bude(); st2<span style="color:#e28964">.</span>bibib();
+                            st2<span style="color:#e28964">.</span>sunde();  st2<span style="color:#e28964">.</span>gonggibab();
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"★ ★ 증권가 3호점"</span>);
+                            <span style="color:#99cf50">HeadQuarterStore</span> st3 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">StoreNum3</span>();
+                            st3<span style="color:#e28964">.</span>kimchi(); st3<span style="color:#e28964">.</span>bude(); st3<span style="color:#e28964">.</span>bibib();
+                            st3<span style="color:#e28964">.</span>sunde();  st3<span style="color:#e28964">.</span>gonggibab();
+                        }
+                    }
+                    
+                    </pre>  
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">추상클래스의 문법</h3>
+                    <pre>
+                        
+                        <h3>선언 형식</h3>
+                        ※추상 클래스에서는 정의만 합니다. 구현하지 않습니다
+
+                       ① abstract (추상클래스 및 추상 메소드를 선언하는 예약어)이용
+                            
+                        public abstract class ClassName {
+                            …
+                        }
+
+                        ② 추상클래스에는 하나 이상의 추상 메소드가 포함.
+
+                        ③ 추상메소드에는 메소드의 선언부만 있고 실행부(구현부, Body)는 없습니다
+                           <span class="bold_color_blue">abstract 리턴타입 methodName([매개변수])</span>
+
+                        ④ 추상 클래스에서는 메소드 선언만 하고 실제로 구현은 상속받는 클래스에서 한다. 
+                           기능는 자식 클래스에게 위임 - 추상클래스에서 정의된 추상적인 기능은 하위 클래스에서 상세 구현
+
+                        ⑤ 클래스의 프레임만 구성. 직접 객체 생성 불가능(abstract는 인스턴스화를 금지하는 키워드)
+
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">Example 01</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">&lt;</span>예제1<span style="color:#e28964">></span>
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SuperClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SuperClass</span>() {}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method1</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method2</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"Super의 method2()"</span>);
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ChildClass</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">SuperClass</span> {
+                            <span style="color:#aeaeae;font-style:italic">//method1() - 추상메소드</span>
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method2</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"ChildClass의 method2()"</span>);}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method3</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"ChildClass의 method3()"</span>);}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">GrandChildClass</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">ChildClass</span>{
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">method1</span>() {<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"GrandChildClass의 method1()"</span>);}
+                            <span style="color:#aeaeae;font-style:italic">// method2() - ChildClass에서 상속</span>
+                            <span style="color:#aeaeae;font-style:italic">// method3() - ChildClass에서 상속</span>
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex01TestMain</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#aeaeae;font-style:italic">// SuperClass superClass = new SuperClass();</span>
+                                <span style="color:#aeaeae;font-style:italic">// ChildClass childClass = new ChildClass();</span>
+                                <span style="color:#99cf50">GrandChildClass</span> g <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">GrandChildClass</span>();
+                                g<span style="color:#e28964">.</span>method1();
+                                g<span style="color:#e28964">.</span>method2();
+                                g<span style="color:#e28964">.</span>method3();
+                                <span style="color:#99cf50">ChildClass</span> c <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">GrandChildClass</span>();
+                                c<span style="color:#e28964">.</span>method1();
+                                c<span style="color:#e28964">.</span>method2();
+                                c<span style="color:#e28964">.</span>method3();
+                                <span style="color:#99cf50">SuperClass</span> s <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">GrandChildClass</span>();
+                                s<span style="color:#e28964">.</span>method1();
+                                s<span style="color:#e28964">.</span>method2();
+                                <span style="color:#aeaeae;font-style:italic">//s.method3();</span>
+                                <span style="color:#99cf50">Object</span> o <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">GrandChildClass</span>();
+                                ((<span style="color:#99cf50">ChildClass</span>)o)<span style="color:#e28964">.</span>method1();
+                                <span style="color:#aeaeae;font-style:italic">//o.method2();</span>
+                                <span style="color:#aeaeae;font-style:italic">//o.method3();</span>
+                            }
+                        }
+                            
+                    </pre>
+                </div>
+                <div>   
+                    <h3 class="headline3 background_bisque">Example 02</h3>
+                    <pre style="color:#f8f8f8">
+                        
+                        <span style="color:#e28964">&lt;</span>예제2<span style="color:#e28964">></span>
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Shape</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">computeArea</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">draw</span>();
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Circle</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Shape</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> r;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Circle</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Circle</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">r</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>r <span style="color:#e28964">=</span> r;}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">computeArea</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"원 넓이 : "</span><span style="color:#e28964">+</span>(<span style="color:#3387cc">3.14</span><span style="color:#e28964">*</span>r<span style="color:#e28964">*</span>r));
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">draw</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"원을 그려요"</span>);
+                            }
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Triangle</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Shape</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> w, h;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Triangle</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Triangle</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">w</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">h</span>){
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>w <span style="color:#e28964">=</span> w;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>h <span style="color:#e28964">=</span> h;
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">computeArea</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"삼각형 넓이 : "</span><span style="color:#e28964">+</span>((w<span style="color:#e28964">*</span>h)<span style="color:#e28964">/</span><span style="color:#3387cc">2.0</span>));
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">draw</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"삼각형 그려요"</span>);
+                            }
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Rectangle</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Shape</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> w, h;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Rectangle</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Rectangle</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">w</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">h</span>){
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>w <span style="color:#e28964">=</span> w;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>h <span style="color:#e28964">=</span> h;
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">computeArea</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"사각형 넓이 : "</span><span style="color:#e28964">+</span>(w<span style="color:#e28964">*</span>h));
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">draw</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"사각형을 그려요"</span>);
+                            }
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Shape</span> circle <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Circle</span>(<span style="color:#3387cc">5</span>);
+                                <span style="color:#99cf50">Shape</span> triangle <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Triangle</span>(<span style="color:#3387cc">10</span>,<span style="color:#3387cc">5</span>);
+                                <span style="color:#99cf50">Shape</span> rectangle <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Rectangle</span>(<span style="color:#3387cc">10</span>,<span style="color:#3387cc">5</span>);
+                                circle<span style="color:#e28964">.</span>computeArea();
+                                circle<span style="color:#e28964">.</span>draw();
+                                triangle<span style="color:#e28964">.</span>computeArea();
+                                triangle<span style="color:#e28964">.</span>draw();
+                                rectangle<span style="color:#e28964">.</span>computeArea();
+                                rectangle<span style="color:#e28964">.</span>draw();
+                            }
+                        }
+                    
+                    ※ 부모클래스인 Shape 클래스에 생성자가 없는데도 문제가 발생하지 않는 이유는?    
+
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#e28964">&lt;</span>위의 예제 수정<span style="color:#e28964">></span>
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Shape</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">double</span> <span style="color:#89bdff">computeArea</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">draw</span>();
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Circle</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Shape</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> r;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Circle</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Circle</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">r</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>r <span style="color:#e28964">=</span> r;}
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">double</span> <span style="color:#89bdff">computeArea</span>() {
+                                <span style="color:#e28964">return</span> r<span style="color:#e28964">*</span>r<span style="color:#e28964">*</span><span style="color:#3387cc">3.14</span>;
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">draw</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"원을 그려요"</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Triangle</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Shape</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> w, h;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Triangle</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Triangle</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">w</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">h</span>){
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>w <span style="color:#e28964">=</span> w;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>h <span style="color:#e28964">=</span> h;
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">draw</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"삼각형 그려요"</span>);
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">double</span> <span style="color:#89bdff">computeArea</span>() {
+                                <span style="color:#e28964">return</span> w<span style="color:#e28964">*</span>h<span style="color:#e28964">/</span><span style="color:#3387cc">2.0</span>;
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Rectangle</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Shape</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> w, h;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Rectangle</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Rectangle</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">w</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">h</span>){
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>w <span style="color:#e28964">=</span> w;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>h <span style="color:#e28964">=</span> h;
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">double</span> <span style="color:#89bdff">computeArea</span>() {
+                                <span style="color:#e28964">return</span> w<span style="color:#e28964">*</span>h;
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">draw</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"사각형을 그려요"</span>);
+                            }
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Shape</span> circle <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Circle</span>(<span style="color:#3387cc">5</span>);
+                                <span style="color:#99cf50">Shape</span> triangle <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Triangle</span>(<span style="color:#3387cc">10</span>,<span style="color:#3387cc">5</span>);
+                                <span style="color:#99cf50">Shape</span> rectangle <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Rectangle</span>(<span style="color:#3387cc">10</span>,<span style="color:#3387cc">5</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"원넓이:"</span><span style="color:#e28964">+</span>circle<span style="color:#e28964">.</span>computeArea());
+                                circle<span style="color:#e28964">.</span>draw();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"삼각형넓이:"</span><span style="color:#e28964">+</span> triangle<span style="color:#e28964">.</span>computeArea());
+                                triangle<span style="color:#e28964">.</span>draw();
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"사각형넓이:"</span><span style="color:#e28964">+</span> rectangle<span style="color:#e28964">.</span>computeArea());
+                                rectangle<span style="color:#e28964">.</span>draw();
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">추상클래스가 필요한 이유</h3>
+                    <pre>
+                            
+                        ※강제성을 느낄 때 사용 합니다
+
+                        객체지향 언어를 하다 보면 추상화 또는 추상개념 등의 ‘추상’이라는 말을 많이 접하게 될 것 입니다.
+                        프로그래밍에서 ‘추상＇이라는 것은 일반생활에서의 ‘추상’과 동일 합니다.
+                        어떤 행위(메소드)를 추상적으로 정의만 해놓고, 실제로 필요한 곳에서 필요에 따라서 재정의 하는 방식 입니다.
+                        여러분들이 상속을 사용하다가, 자식클래스들에서 강제로 무엇인가 꼭 재정의 해서 사용해야 될 경우가 발생되면, 
+                        추상 개념을 먼저 생각 하시기 바랍니다.
+                        추상 개념은 객체지향 언어에서는 아주 중요한 의미가 있습니다. 
+                        그리고 추상적으로 프로그래밍을 한다는 것은 결코 쉬운 일은 아닐 것 입니다.
+                        하지만, 예제를 많이 접해보고, 추후에 알아볼 패턴에 대해서 공부를 하고 나면, 
+                        추상적으로 프로그래밍 한다는 것이 얼마나 중요한 건지 쉽게 아실 수 있을 것 입니다.  
+                         
+                    </pre>
+                    <h3 class="headline3 background_bisque">추상클래스 상속과 일반적인 상속의 차이</h3>
+                    <pre>
+
+                        ※차이는 있지만, 어느 쪽이 더 좋다는 정답은 없습니다
+
+                        현장에 있는 개발자들도 항상 고민하는 부분 중 하나가 추상 클래스로 할 것인지 일반 클래스로 할 것인지 고민을 하게 됩니다.
+                        결론부터 말씀 드리면, 정답은 없습니다. 그리고 처음부터 100% 확정하지도 않습니다.
+                        초기 설계 단계에서 어느 정도 추상과 일반 클래스를 분리 하기는 하지만, 프로젝트 개발 도중 언제든지 변경하기도 합니다.(리펙토링)
+                        부모 클래스의 메소드를 자식 클래스에서 변경할 일이 없다면, 일반 클래스를 이용한 상속이 좋습니다.
+                        하지만, 이전 예제처럼 자식클래스에서 꼭 재정의 해야 하는 부분이 있다면, 추상클래스를 이용하여 강제로 재정의 하게 해야 됩니다.
+                        추후에 패턴을 살펴 볼 때 일반클래스와 추상클래스를 이용한 상속의 차이를 확실하게 느끼실 수 있습니다.
+                         
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">종합 예제 : Total Example 01</h3>
+                    <pre>
+
+                        <오늘의 총 실습 예제1>
+
+                        어린이집 아이들의 식대 계산 프로그램 구현
+                        ※시나리오 분석 후 추상클래스와 일반클래스를 생각해 본다
+                        어린이집에 어린이들의 점심 식대 관련하여 프로그래밍을 해볼까 합니다.
+                        어린이들은 점심으로 쌀밥, 불고기, 국이 배식 됩니다.
+                        추가로 요플레, 바나나, 우유, 아몬드가 간식으로 배식 됩니다.
+                        
+                        기본적인 쌀밥, 불고기, 나물, 미역국은 모든 아이들이 먹습니다. (일반메소드 역할)
+                        하지만, 개인 체질에 따라서 간식은 선택 할 수가 있습니다. 특히 알레르기가 있는 아이들은 간식을 전부 선택하지 않을 수 도 있습니다.
+                        클래스 설계를 해 보도록 합니다.
+                            
+                    </pre>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <span style="color:#99cf50">LunchMenu</span> <span style="color:#e28964">:</span> rice, bulgogi, soap(기본주식), banana, milk, almond(간식)
+                        <span style="color:#99cf50">Child1</span>    <span style="color:#e28964">:</span> rice, bulgogi, banana       ☞ <span style="color:#99cf50">Child1형</span> 아이는 간식으로 바나나만 먹습니다
+                        <span style="color:#99cf50">Child2</span>    <span style="color:#e28964">:</span> rice, bulgogi, milk, almond ☞ <span style="color:#99cf50">Child2형</span> 아이는 간식으로 우유와 아몬드만 먹습니다
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">LunchMenu</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> rice;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> bulgogi;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> soap;<span style="color:#aeaeae;font-style:italic">//기본 메뉴</span>
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> banana;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> milk;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> almond;
+
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">LunchMenu</span>() { }
+
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">LunchMenu</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">rice</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">bulgogi</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">soap</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">banana</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">milk</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">almond</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>rice <span style="color:#e28964">=</span> rice;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>bulgogi <span style="color:#e28964">=</span> bulgogi;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>soap <span style="color:#e28964">=</span> soap;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>banana <span style="color:#e28964">=</span> banana;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>milk <span style="color:#e28964">=</span> milk;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>almond <span style="color:#e28964">=</span> almond;
+                            }
+
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getStr</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">calculate</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getRice</span>() {<span style="color:#e28964">return</span> rice;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setRice</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">rice</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>rice <span style="color:#e28964">=</span> rice;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getBulgogi</span>() {<span style="color:#e28964">return</span> bulgogi;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBulgogi</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">bulgogi</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>bulgogi <span style="color:#e28964">=</span> bulgogi;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getSoap</span>() {<span style="color:#e28964">return</span> soap;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setSoap</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">soap</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>soap <span style="color:#e28964">=</span> soap;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getBanana</span>() {<span style="color:#e28964">return</span> banana;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBanana</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">banana</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>banana <span style="color:#e28964">=</span> banana;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getMilk</span>() {<span style="color:#e28964">return</span> milk;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setMilk</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">milk</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>milk <span style="color:#e28964">=</span> milk;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getAlmond</span>() {<span style="color:#e28964">return</span> almond;}
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setAlmond</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">almond</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>almond <span style="color:#e28964">=</span> almond;}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Child1</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">LunchMenu</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> str <span style="color:#e28964">=</span> <span style="color:#65b042">"Child1형 식대:"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Child1</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Child1</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">rice</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">bulgogi</span>,<span style="color:#99cf50">int</span> <span style="color:#3e87e3">soap</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">banana</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">milk</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">almond</span>) {
+                                <span style="color:#3e87e3">super</span>(rice, bulgogi, soap, banana, milk, almond);
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">calculate</span>() {
+                                <span style="color:#e28964">return</span> getRice()<span style="color:#e28964">+</span>getBulgogi()<span style="color:#e28964">+</span>getSoap()<span style="color:#e28964">+</span>getBanana();
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getStr</span>() {<span style="color:#e28964">return</span> str;}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Child2</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">LunchMenu</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> str <span style="color:#e28964">=</span> <span style="color:#65b042">"Child1형 식대:"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Child2</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Child2</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">rice</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">bulgogi</span>,<span style="color:#99cf50">int</span> <span style="color:#3e87e3">soap</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">banana</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">milk</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">almond</span>) {
+                                <span style="color:#3e87e3">super</span>(rice, bulgogi, soap, banana, milk, almond);
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">calculate</span>() {
+                                <span style="color:#e28964">return</span> getRice()<span style="color:#e28964">+</span>getBulgogi()<span style="color:#e28964">+</span>getSoap()<span style="color:#e28964">+</span>getMilk()<span style="color:#e28964">+</span>getAlmond();
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getStr</span>() {<span style="color:#e28964">return</span> str;}
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">PriceTable</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">RICE</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">500</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">BULGOGI</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">1000</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">SOAP</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">500</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">BANANA</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">500</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">MILK</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">700</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">ALMOND</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">200</span>;
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex3TestMain</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Child1</span> c1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Child1</span>(<span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>RICE</span>, <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>BULGOGI</span>, 
+                                        <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>SOAP</span>, <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>BANANA</span>, <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MILK</span>,
+                                        <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>ALMOND</span>);
+                                <span style="color:#99cf50">Child2</span> c2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Child2</span>(<span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>RICE</span>, <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>BULGOGI</span>, 
+                                        <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>SOAP</span>, <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>BANANA</span>, <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>MILK</span>,
+                                        <span style="color:#99cf50">PriceTable</span><span style="color:#3387cc"><span style="color:#e28964">.</span>ALMOND</span>);
+                                <span style="color:#99cf50">LunchMenu</span>[] child <span style="color:#e28964">=</span> {c1, c2};
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">LunchMenu</span> c<span style="color:#e28964">:</span>child)
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(c<span style="color:#e28964">.</span>getStr() <span style="color:#e28964">+</span> c<span style="color:#e28964">.</span>calculate());
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">종합 예제 : Total Example 02</h3>
+                    <pre style="color:#f8f8f8">
+                    
+                        자동차 옵션에 따라 변경되는 세금 계산 프로그래밍 구현
+                        ※시나리오 부석 후 상속을 통해 자동차 객체를 만들어본다. 
+                        자동차의 경우 동일한 자동차 모델에서 옵션사항에 따라 세금차이가 있습니다.
+                        그 중 배기량이 높은 자동차의 경우 세금이 높습니다.
+
+                        <span style="color:#99cf50">Car</span> <span style="color:#e28964">:</span> color, tire, displacement, handle, getSpec()
+                        <span style="color:#99cf50">LowGradeCar</span> <span style="color:#e28964">:</span> tax, color(블루), tire(일반타이어), displacement(<span style="color:#3387cc">2000</span>), handle(파워핸들), getSpec()
+                        <span style="color:#99cf50">HighGradeCar</span> <span style="color:#e28964">:</span> tax, color(레드), tire(광폭타이어), displacement(<span style="color:#3387cc">2200</span>), handle(파워핸들), getSpec()
+                        ☞ getSpec()을 통해서 자동차의 옵션을 보고, 세금을 파악합니다
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Car</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> color;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> tire;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> displacement;
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> handle;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Car</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">color</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">tire</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">displacement</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">handle</span>) {
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>color <span style="color:#e28964">=</span> color;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>tire <span style="color:#e28964">=</span> tire;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>displacement <span style="color:#e28964">=</span> displacement;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>handle <span style="color:#e28964">=</span> handle;
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">getSpec</span>();
+                            setter <span style="color:#e28964">&amp;</span> getter
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">LowGradeCar</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Car</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> tax <span style="color:#e28964">=</span> <span style="color:#3387cc">50000</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">LowGradeCar</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">color</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">tire</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">displacement</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">handle</span>) {
+                                <span style="color:#3e87e3">super</span>(color, tire, displacement, handle);
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">getSpec</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"*******************"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"색  상 : "</span><span style="color:#e28964">+</span>getColor());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"타이어 : "</span><span style="color:#e28964">+</span>getTire());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"배기량 : "</span><span style="color:#e28964">+</span>getDisplacement());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"핸   들 : "</span><span style="color:#e28964">+</span>getHandle());
+                                <span style="color:#e28964">if</span>(getDisplacement()<span style="color:#e28964">></span><span style="color:#3387cc">1600</span>) tax <span style="color:#e28964">+=</span> <span style="color:#3387cc">15000</span>;
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"세   금 : "</span> <span style="color:#e28964">+</span>tax);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"*******************"</span>);
+                            }
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">HighGradeCar</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Car</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> tax <span style="color:#e28964">=</span> <span style="color:#3387cc">100000</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">HighGradeCar</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">color</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">tire</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">displacement</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">handle</span>) {
+                                <span style="color:#3e87e3">super</span>(color, tire, displacement, handle);
+                            }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">getSpec</span>() {
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"*******************"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"색  상 : "</span><span style="color:#e28964">+</span>getColor());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"타이어 : "</span><span style="color:#e28964">+</span>getTire());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"배기량 : "</span><span style="color:#e28964">+</span>getDisplacement());
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"핸   들 : "</span><span style="color:#e28964">+</span>getHandle());
+                                <span style="color:#e28964">if</span>(getDisplacement()<span style="color:#e28964">></span><span style="color:#3387cc">2500</span>) tax <span style="color:#e28964">+=</span> <span style="color:#3387cc">30000</span>;
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"세   금 : "</span> <span style="color:#e28964">+</span>tax);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"*******************"</span>);
+                            }
+                        }
+                         
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">CarSpecs</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">String</span> <span style="color:#3387cc">COLOR_RED</span><span style="color:#e28964">=</span><span style="color:#65b042">"레드"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">String</span> <span style="color:#3387cc">COLOR_BLUE</span> <span style="color:#e28964">=</span> <span style="color:#65b042">"블루"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">String</span> <span style="color:#3387cc">COLOR_GRAY</span><span style="color:#e28964">=</span> <span style="color:#65b042">"회색"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">String</span> <span style="color:#3387cc">TIRE_NORMAL</span> <span style="color:#e28964">=</span> <span style="color:#65b042">"일반타이어"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">String</span> <span style="color:#3387cc">TIRE_WIDE</span> <span style="color:#e28964">=</span> <span style="color:#65b042">"일반타이어"</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">DISPLACEMENT_2000</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">2000</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">DISPLACEMENT_2200</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">2200</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">String</span> <span style="color:#3387cc">HANDLE_POWER</span> <span style="color:#e28964">=</span> <span style="color:#65b042">"파워핸들"</span>;
+                        }
+                        
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainTest</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Car</span> lCar <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">LowGradeCar</span>(<span style="color:#99cf50">CarSpecs</span><span style="color:#3387cc"><span style="color:#e28964">.</span>COLOR_BLUE</span>, <span style="color:#99cf50">CarSpecs</span><span style="color:#3387cc"><span style="color:#e28964">.</span>TIRE_NORMAL</span>, <span style="color:#99cf50">CarSpecs</span><span style="color:#3387cc"><span style="color:#e28964">.</span>DISPLACEMENT_2000</span>, <span style="color:#99cf50">CarSpecs</span><span style="color:#3387cc"><span style="color:#e28964">.</span>HANDLE_POWER</span>);
+                                <span style="color:#99cf50">Car</span> hCar <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">HighGradeCar</span>(<span style="color:#99cf50">CarSpecs</span><span style="color:#3387cc"><span style="color:#e28964">.</span>COLOR_RED</span>, <span style="color:#99cf50">CarSpecs</span><span style="color:#3387cc"><span style="color:#e28964">.</span>TIRE_WIDE</span>, <span style="color:#99cf50">CarSpecs</span><span style="color:#3387cc"><span style="color:#e28964">.</span>DISPLACEMENT_2200</span>, <span style="color:#99cf50">CarSpecs</span><span style="color:#3387cc"><span style="color:#e28964">.</span>HANDLE_POWER</span>);
+                                lCar<span style="color:#e28964">.</span>getSpec();
+                                hCar<span style="color:#e28964">.</span>getSpec();
+                            }
+                        }
+                            
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">final(제한자)</h3>
+                    <pre>
+
+                        <span class="bold_color_blue">※ 추상클래스란 "추상적으로 정의할 테니(선언해 놓을테니), 
+                    사용자가 꼭 메소드를 재정의(overriding) 하세요"란 의미입니다.</span>
+                        
+                        <span class="bold_color_red">그와는 정반대되는 개념이 Final 있어 소개합니다.</span>
+                        
+                        ⑴ 클래스 앞에 붙일 경우 : 상속 금지
+                            public final class Test {
+                        
+                            }
+
+                        ⑵ 멤버 메소드 앞에 붙일 경우 : 오버라이딩 금지
+                            public final void print(){
+                            
+                            }
+
+                        ⑶ 멤버변수 앞에 붙일 경우 : 상수화된다(변경금지).
+                            public final int PORT_NUMBER = 80;
+                            
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">Examples</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                        <h3><span style="color:#e28964">&lt;</span>예제1<span style="color:#e28964">></span></h3>
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Parent</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#3387cc">PORT_NUMBER</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">80</span>;
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">parent1</span>(){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"난 일반 메소드 parent1 실행했다"</span>);
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"PORT_NUMBER : "</span><span style="color:#e28964">+</span><span style="color:#3387cc">PORT_NUMBER</span>);
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">parent2</span>(){
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"난 final 메쏘드(재정의 금지)"</span>);
+                            }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Child</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Parent</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">parent1</span>() {
+                                <span style="color:#aeaeae;font-style:italic">//super.parent1();</span>
+                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"parent1() 재정의"</span>);
+                            }
+                            <span style="color:#aeaeae;font-style:italic">/*public void parent2() {
+                                //final 메쏘드는 오버라이드 될 수 없다
+                            }*/</span>
+                        }
+
+                    </pre>
+                </div>
+                <div>
+                    <pre>
+
+                        <h3><span style="color:#e28964">&lt;</span>예제2<span style="color:#e28964">></span></h3>
+                    
+                        정규직 3명과 아르바이트생2명인 조그만 계열사의 월급명세서 출력 프로그램을 구현하시오.
+                        
+                        <span style="color:#99cf50">Employee</span> <span style="color:#e28964">:</span> name, computePay(),computeIncentive(),outString()
+                        <span style="color:#99cf50">SalaryEmployee</span> <span style="color:#e28964">:</span> name, annalSalary, computePay(),computeIncentive()
+                        <span style="color:#99cf50">HourlyEmployee</span> <span style="color:#e28964">:</span> name, hoursWorked, moneyPerHour, computePay(),computeIncentive()
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Employee</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> name;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Employee</span>() { }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">Employee</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>) { <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>name <span style="color:#e28964">=</span> name; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">abstract</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">computePay</span>();
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">final</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">computeIncentive</span>(){
+                                <span style="color:#99cf50">int</span> temp;
+                                temp <span style="color:#e28964">=</span> computePay();
+                                <span style="color:#e28964">if</span> (temp<span style="color:#e28964">></span><span style="color:#3387cc">2000000</span>)
+                                    <span style="color:#e28964">return</span> (<span style="color:#99cf50">int</span>)(temp<span style="color:#e28964">*</span><span style="color:#3387cc">0.1</span>);
+                                <span style="color:#e28964">return</span> <span style="color:#3387cc">0</span>;
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getName</span>() {<span style="color:#e28964">return</span> name; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setName</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>name <span style="color:#e28964">=</span> name; }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">SalaryEmployee</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Employee</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> annalSalary;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SalaryEmployee</span>() {   }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">SalaryEmployee</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">annalSalary</span>) {
+                                <span style="color:#3e87e3">super</span>(name);
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>annalSalary <span style="color:#e28964">=</span> annalSalary;
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getAnnalSalary</span>() { <span style="color:#e28964">return</span> annalSalary; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setAnnalSalary</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">annalSalary</span>) {   <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>annalSalary <span style="color:#e28964">=</span> annalSalary; }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">computePay</span>() {<span style="color:#e28964">return</span> annalSalary<span style="color:#e28964">/</span><span style="color:#3387cc">14</span>; }
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">HourlyEmployee</span> <span style="color:#99cf50">extends</span> <span style="color:#9b5c2e;font-style:italic">Employee</span> {
+                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> hoursWorked, moneyPerHour;
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">HourlyEmployee</span>() {   }
+                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">HourlyEmployee</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">name</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">hoursWorked</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">moneyPerHour</span>) {
+                                <span style="color:#3e87e3">super</span>(name);
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>hoursWorked <span style="color:#e28964">=</span> hoursWorked;
+                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>moneyPerHour <span style="color:#e28964">=</span> moneyPerHour;       
+                            }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getHoursWorked</span>() {<span style="color:#e28964">return</span> hoursWorked; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setHoursWorked</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">hoursWorked</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>hoursWorked <span style="color:#e28964">=</span> hoursWorked; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getMoneyPerHour</span>() {<span style="color:#e28964">return</span> moneyPerHour; }
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setMoneyPerHour</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">moneyPerHour</span>) {<span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>moneyPerHour <span style="color:#e28964">=</span> moneyPerHour; }
+                            <span style="color:#99cf50">@Override</span>
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">computePay</span>() {<span style="color:#e28964">return</span> hoursWorked<span style="color:#e28964">*</span>moneyPerHour;
+                        }
+
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
+                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                                <span style="color:#99cf50">Employee</span>[] sawon <span style="color:#e28964">=</span> {
+                                        <span style="color:#e28964">new</span> <span style="color:#99cf50">SalaryEmployee</span>(<span style="color:#65b042">"홍길동"</span>, <span style="color:#3387cc">24000000</span>),
+                                        <span style="color:#e28964">new</span> <span style="color:#99cf50">SalaryEmployee</span>(<span style="color:#65b042">"강동원"</span>, <span style="color:#3387cc">70000000</span>),
+                                        <span style="color:#e28964">new</span> <span style="color:#99cf50">SalaryEmployee</span>(<span style="color:#65b042">"김고은"</span>, <span style="color:#3387cc">12000000</span>),
+                                        <span style="color:#e28964">new</span> <span style="color:#99cf50">HourlyEmployee</span>(<span style="color:#65b042">"홍길구"</span>, <span style="color:#3387cc">100</span>,<span style="color:#3387cc">7000</span>),
+                                        <span style="color:#e28964">new</span> <span style="color:#99cf50">HourlyEmployee</span>(<span style="color:#65b042">"김길자"</span>, <span style="color:#3387cc">120</span>,<span style="color:#3387cc">8000</span>)};
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">Employee</span> temp <span style="color:#e28964">:</span> sawon){
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"~ ~ ~ 월급명세서 ~ ~ ~"</span>);
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"성 함 :"</span><span style="color:#e28964">+</span>temp<span style="color:#e28964">.</span>getName());
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"월 급 : "</span><span style="color:#e28964">+</span>temp<span style="color:#e28964">.</span>computePay());
+                                    <span style="color:#aeaeae;font-style:italic">//System.out.println("상 여 : "+ temp.computeIncentive());</span>
+                                    <span style="color:#99cf50">int</span> tempIncen <span style="color:#e28964">=</span> temp<span style="color:#e28964">.</span>computeIncentive();
+                                    <span style="color:#e28964">if</span>(tempIncen<span style="color:#e28964">!=</span><span style="color:#3387cc">0</span>){
+                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"상 여 :"</span><span style="color:#e28964">+</span> tempIncen);
+                                    }
+                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">" 수 고 하 셨 습 니 다 "</span>);
+                                }
+                            }
+                        }
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box Model : Inline</title>
+    <style>
+    span {
+        /* display:inline-block; */
+        background-color: red;
+        color: white;
+        border: 1px solid blue;
+        /* 컨텐츠 영역이기 때문에 패딩 상하좌우 값이 있다.*/
+        padding: 10px;
+        /* width, height, margin-top, margin-bottom 프로퍼티를 지정할 수 없다. */
+        /* width: 200px; */
+        /* height: 100px; */
+        /* 좌우만 마진이 적용된다.*/
+        /* margin: 10px;  */
+        /* 상, 하 여백은 line-height로 지정한다. */
+        /* line-height: 50px; */
+    }
+    </style>
+</head>
+<body>
+    <h1>My <span>Important</span> Heading</h1>
+    <span>Inline</span>
+    <span>Inline</span><span>Inline</span>
+</body>
+</html>

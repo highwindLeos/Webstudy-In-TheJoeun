@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: url('../img/background.png') no-repeat fixed; /* 고정 하고 반복하지 않음 */
+    background-size: cover; /*화면 크기로 확대*/
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+}
+
+p {
+    text-align: left;
+}
+
+pre{
+    font-size: 9px;
+}
+
+a {
+    text-decoration: none;
+    color: pink;
+}
+
+h2, h3, h4, h5, h6{
+    padding: 0 5vw;
+}
+
+h1{
+    padding: 10px 0;
+    color: white;
+    background: rgba(218, 142, 192, 0.8);
+    text-align: center;
+    margin-bottom: 5px; 
+}
+
+h1:hover{
+    color: gray;
+    background-color: rgb(127, 161, 255);
+}
+
+hr{
+    border: 1px solid rgba(127, 161, 255, 0.2);
+    margin: 10px 0;
+}
+
+/* Layout Css */
+
+#wrap{
+    width: 85vw;
+    height: 105vh;
+    margin: 0 auto;
+}
+
+.logo {
+    padding: 30px 0;
+    margin: 15px 0 5px 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.logo > a > img {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border: 6px solid gray;
+    opacity: .3;
+    border-radius: 40%;
+}
+
+.logo > a > img:hover {
+    opacity: 1;
+    border: 6px solid bisque;
+}
+
+#navi{
+    width: 100%;
+    margin: 0 auto;    
+    z-index: 999;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li{
+    float: left;
+    width: 10.5vw;
+    height: 40px;
+    color: white;
+    background: rgba(255,255,255, .1);
+    line-height: 40px;
+    text-align: center; 
+    font-size: 12px;;
+    margin: 0 1px;
+}
+
+ul li:hover{
+    color: bisque;
+    background: rgba(132, 168, 216, 0.8);
+}
+
+ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+ul li ul li{
+    display: none;
+    font-size: 12px;
+    z-index: 999;
+}
+
+ul li:hover ul li{
+    display: block; 
+}
+
+ul > li  > ul > li:nth-child(odd):hover{
+    color: bisque;
+    background: rgba(211, 134, 128, 0.8);
+}
+ul > li > ul > li:nth-child(even):hover{
+    color: bisque;
+    background: rgba(157, 132, 216, 0.6);
+}
+
+#footer {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+footer{
+    position: fixed;
+    margin: 0;
+    width: 85vw;
+    left: 7.5vw;
+    right: 7.5vw;
+    bottom: 0;
+    z-index: -9;
+}
+
+/* contents */
+
+#nav {
+    position: relative;
+}
+
+.contents{
+    position: absolute;
+    margin-bottom: 60px; /* 최하단 여백 */
+}
+
+#nav > .contents > div > pre { /* 주로 본문 */
+    display: block;
+    font-size: 1.15em;
+    width: 85vw;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.45); 
+    margin: 5px 0;
+}
+
+.headline3{
+    color: rgb(255, 255, 255);
+    background: rgba(218, 142, 192, 0.8);
+    text-align: center;
+    height: 10vh;
+    line-height: 10vh;
+}
+/* tavle customize */
+table{
+    width: 100%;
+}
+
+table tr {
+    color: pink;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+table tr:nth-child(1){
+    font-size: 1.3em;
+    background: rgba(91, 166, 189, 0.2);
+}
+
+table tr td{
+    font-size: 1.2em;
+    padding: 10px;
+    text-align: center;
+}
+
+/* text area Effect */
+
+.padding_top_bottom_tenpixel{
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.padingleftcontents {
+    padding-left: 100px;
+}
+
+.color_bisque{
+    color: bisque;
+}
+
+.color_aliceblue{
+    color:aliceblue;
+}
+
+.color_pink{
+    color:pink;
+}
+
+.background_bisque{
+    color: black;
+    background-color: rgba(255, 228, 196, .6);
+}
+
+.bold_color_blue {
+    font-size : 1.1em;
+    font-weight: 900;
+    color: rgb(116, 180, 223);
+}
+
+.bold_color_red {
+    font-size : 1.1em;
+    font-weight: 900;
+    color: rgb(223, 116, 125);
+}
+
+/* text area Effect end */
+
+.image_modify{
+    margin: 30px auto;
+    text-align: center;
+}
+
+.image_modify > img{
+    opacity: 0.7;
+    width: 50vw;
+    height: 30vh;
+    border-radius: 30px; 
+}
+
+.image_height > img{
+    height: 15vh;
+    border-radius: 5px; 
+}
+
+/*Responsive tag*/
+@media (max-width : 1023px){
+
+    #nav > .contents > div > pre { /* 주로 본문 */
+        display: block;
+        font-size: 0.9em;
+        width: 85vw;
+        color: aliceblue;
+        background-color: rgba(0, 0, 0, 0.45); 
+        margin: 5px 0;
+    }
+    
+}

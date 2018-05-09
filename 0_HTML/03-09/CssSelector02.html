@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Selector</title>
+    <style>
+    /* id 어트리뷰트 값이 p1인 요소를 선택 */
+    #p1 { color: red; }
+
+    #p2{ color : initial; }
+
+    .container{ color : red;  }
+    /* class 어트리뷰트 값이 text-center인 모든 요소를 선택 */
+    .text-center { text-align: justify; }
+    /* class 어트리뷰트 값이 text-large인 모든 요소를 선택 */
+    .text-large { font-size: 32px; }
+    /* class 어트리뷰트 값이 text-red인 모든 요소를 선택 */
+    .text-red { color: red; }
+    /* class 어트리뷰트 값이 text-blue인 모든 요소를 선택 */
+    .text-blue { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Heading1</h1>
+    <div class="container">
+        <p id="container">paragraph 1</p>
+        <p id="p2">paragraph 2</p>
+        <p class="container">paragraph 3</p>
+    </div>
+    <p>paragraph 4</p>
+    <h1 class="container">Heading2</h1>
+    <p id="p1">paragraph5</p>
+
+    <hr>
+
+    <h2>Class selector</h2><!-- 클래스는 정의해놓은 CSS 의 기술된 값대로 들어간다. -->
+    <p class="text-center">Center</p>
+    <p class="text-large text-red">Large Red</p>
+    <p class="text-center text-large text-blue">Center Large Blue</p>
+</body>
+</html>

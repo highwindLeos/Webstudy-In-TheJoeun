@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UI / UX Engeenering Class</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
+            <h1>
+                <i class="fas fa-tablet-alt fa-1X"></i> 
+                <i class="fas fa-mobile-alt fa-1x"></i> 
+                객체 지향 프로그래밍
+                <i class="fas fa-tv fa-1x"></i> 
+                <i class="fas fa-laptop fa-1x"></i>
+            </h1>
+        </header>
+        <div id="nav">
+            <div class="contents">
+                <div>
+                    <pre>                        
+
+                    <h3>객체 지향 프로그램의 시작에 앞서</h3> 
+                        
+                    1. 객체지향 이전의 프로그래밍
+
+                    <절차지향>
+                    - 지금까지 배운 내용으로 1부터 10까지 정수의 합을 구하고
+                    - 그 결과값이 짝수인지 홀수 인지를 파악하고, 
+                    - 홀수라면, "홀수입니다"를 출력하고 짝수라면 "짝수입니다"를 출력
+
+                        public static void main(String[] args) {
+                            int tot=0;
+                            for(int i=1; i<11; i++){
+                                tot += i;
+                            }
+                            System.out.println("1~10까지 정수합은 "+tot+"입니다");
+                            System.out.println((tot%2==0)? "짝수입니다":"홀수입니다");
+                            int tot=0;
+                            for(int i=10; i<100; i++){
+                                tot += i;
+                            }
+                            System.out.println("10~100까지 정수합은 "+tot+"입니다");
+                            System.out.println((tot%2==0)? "짝수입니다":"홀수입니다");
+
+                        }
+
+                    - 위에서 살펴본 프로그래밍 방식이 절차지향 언어 입니다.
+                    - 위에서부터 순서대로 내려오면서 실행되는 것이죠.
+                    - 절차지향 방식을 이용하면서 개발자들은 몇 가지 비효율적인 면을 느끼게 됩니다.
+
+                    ① 기존의 1~10까지의 합을 구하는 것을 5~100까지로 변경하게 되면 동일한 작업이지만 다시 코드를 수정해야 됩니다.
+                    ② 기존의 로직을 다시 사용하게 될 때, 다시 코딩을 하는 방법과, 기존 코드를 카피해서 재사용 
+                    ③ 두번째 방식으로 코딩을 하면 동일한 로직의 코드가 문서 내에 넘쳐나, 코드의 양이 너무 길어 집니다. 추후에 유지보수가 어렵습니다.
+
+                    - 하여, 등장한 방식이 함수 또는 메소드(method)라고 불리는 녀석 입니다.
+
+                    </pre>
+                </div>
+                <div>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                    <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                        <span style="color:#99cf50">int</span> tot = sum(<span style="color:#3387cc">1</span>,<span style="color:#3387cc">100</span>);
+                        <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(evenOdd(tot));
+                    }
+
+                    <span style="color:#99cf50">private static </span><span style="color:#99cf50">int</span> <span style="color:#89bdff">sum</span>(int from, int to){
+                        <span style="color:#99cf50">int</span> result = <span style="color:#3387cc">0</span>;
+                        <span style="color:#e28964">for</span>(<span style="color:#99cf50">int</span> i=from ; i<span style="color:#e28964">&lt;=</span>to ; i<span style="color:#e28964">++</span>){
+                            result <span style="color:#e28964">+</span>= i;
+                        } 
+                        <span style="color:#e28964">return</span> result;
+                    }
+                    
+                    <span style="color:#99cf50">private static </span><span style="color:#99cf50">String</span> <span style="color:#89bdff">evenOdd</span>(int value){
+                        <span style="color:#99cf50">String</span> result = <span style="color:#e28964">new</span> <span style="color:#99cf50">String</span>();
+                        <span style="color:#e28964">if</span>(value<span style="color:#e28964">%</span><span style="color:#3387cc">2</span> <span style="color:#e28964">==</span> <span style="color:#3387cc">0</span>) {
+                            result = <span style="color:#65b042">"짝수입니다"</span>;
+                        } <span style="color:#e28964">else</span> {
+                            result = <span style="color:#65b042">"홀수입니다"</span>;
+                        }
+                        <span style="color:#e28964">return</span> result;
+                    }
+
+                    </pre>            
+                </div>
+                <div>
+                    <h3 class="headline3">2. 객체지향의 등장 배경과 이해</h3>
+                    <pre>
+                        
+                            - 메소드를 이용한 방식으로 개발자들은 아주 많은 효율성을 느끼게 되어 있습니다.
+                            - 하지만, 메소드를 이용한 방식에도 한계는 있었습니다.
+                            - 데이터가 많아지고, 메소드가 많아짐에 따라 코드의 양이 많이 지고, 유지보수가 어려워 지기 시작 했습니다.
+                            - 하여, 등장한 방식이 객체지향 프로그래밍 입니다.
+                         
+                            - 객체란 동일한 성질의 데이터와 메소드를 한곳에 모아두고 필요한 곳에서 언제든지 이용할 수 있게 만들어 놓은 덩어리 입니다.
+                            - 쉽게 생각해서 세상에 존재하는 모든 것을 객체라고 생각할 수 있으며, 이러한 객체를 이용한 프로그래밍 방식이 객체지향 방식 입니다.
+                         
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">객체 예제</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Arithmetic</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">evenOdd</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">value</span>) {
+                            <span style="color:#99cf50">String</span> result <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
+                            <span style="color:#e28964">if</span>(value<span style="color:#e28964">%</span><span style="color:#3387cc">2</span><span style="color:#e28964">==</span><span style="color:#3387cc">0</span>)
+                                result <span style="color:#e28964">=</span> <span style="color:#65b042">"짝수입니다"</span>;
+                            <span style="color:#e28964">else</span>
+                                result <span style="color:#e28964">=</span> <span style="color:#65b042">"홀수입니다"</span>;
+                            <span style="color:#e28964">return</span> result;
+                        }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">sum</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">from</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">to</span>) {
+                            <span style="color:#99cf50">int</span> result <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
+                            <span style="color:#e28964">for</span>(<span style="color:#99cf50">int</span> i<span style="color:#e28964">=</span>from ; i<span style="color:#e28964">&lt;=</span>to ; i<span style="color:#e28964">++</span>) {
+                                result <span style="color:#e28964">+=</span> i;
+                            }
+                            <span style="color:#e28964">return</span> result;
+                        }
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">abs</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">su</span>) {
+                            <span style="color:#99cf50">int</span> result <span style="color:#e28964">=</span> (su<span style="color:#e28964">&lt;</span><span style="color:#3387cc">0</span>)<span style="color:#e28964">?</span> <span style="color:#e28964">-</span>su <span style="color:#e28964">:</span> su;
+                            <span style="color:#e28964">return</span> result;
+                        }
+                    }
+
+                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ExMain</span> {
+                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
+                            <span style="color:#99cf50">Arithmetic</span> ar <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Arithmetic</span>();
+                            <span style="color:#99cf50">int</span> sum <span style="color:#e28964">=</span>ar<span style="color:#e28964">.</span>sum(<span style="color:#3387cc">1</span>, <span style="color:#3387cc">10</span>);
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"1~10까지 정수합은 "</span><span style="color:#e28964">+</span>sum<span style="color:#e28964">+</span><span style="color:#65b042">"입니다"</span>);
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(ar<span style="color:#e28964">.</span>evenOdd(sum));
+                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"-5의 절대값은 "</span><span style="color:#e28964">+</span>ar<span style="color:#e28964">.</span>abs(<span style="color:#e28964">-</span><span style="color:#3387cc">5</span>)<span style="color:#e28964">+</span><span style="color:#65b042">"입니다"</span>);
+                        }
+                    }
+                    
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">3. 메소드의 이해</h3> 
+                    <pre style="color:#f8f8f8">
+                        
+                            메소드란? 작업을 수행하기 위한 명령문의 집합
+                            어떤 값을 입력받아서 처리하고 그 결과를 돌려준다(입력 받는 값이 없을 수도 있고 결과를 돌려주지 않을 수도 있다.)
+                            메소드의 장점과 작성지침 ; 반복적으로 수행되는 여러 문장을 메소드로 작성한다.
+                            <hr>
+                            접근제한자 [static] 리턴type 메소드명([매개변수1, 매개변수2,..]){ 
+
+                                //return이 없을 경우 리턴type은 void
+                                처리할 프로세스들
+                                [return 리턴값;]
+
+                            }
+                            
+                    </pre>                        
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">함수의 종류 (Function Type)</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+                        
+                    <span style="color:#3387cc">1</span>)  매개변수를 갖지 않는 함수
+
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">Method1</span> {
+                            <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String args[]) {
+                                printCh();
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"Hello, Java"</span>);
+                                printCh();
+                                  <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"Hello, Java"</span>);
+                                printCh();
+                                  <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"Hello, Java"</span>);
+                                printCh();
+                            }
+
+                        pravate <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> printCh(){
+                            <span style="color:#e28964">for</span>(<span style="color:#99cf50">int</span> cnt=<span style="color:#3387cc">1</span> ; cnt<span style="color:#e28964">&lt;=</span><span style="color:#3387cc">20</span> ; cnt<span style="color:#e28964">++</span>)
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.print(<span style="color:#65b042">'*'</span>);
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println();
+                            }
+                        }
+                    
+                    <span style="color:#3387cc">2</span>)  매개변수를 갖는 함수
+
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">method1</span> {
+                            <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String args[]) {
+                                printCh(<span style="color:#65b042">'■'</span>,<span style="color:#3387cc">15</span>);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"Hello, Java"</span>);
+                                printCh(<span style="color:#65b042">'*'</span>,<span style="color:#3387cc">12</span>);
+                        <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"Hello, Java"</span>);
+                                printCh(<span style="color:#65b042">'*'</span>,<span style="color:#3387cc">12</span>);
+                                  <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"Hello, Java"</span>);
+                                printCh(<span style="color:#65b042">'■'</span>,<span style="color:#3387cc">15</span>);
+                            }
+
+                            <span style="color:#99cf50">static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">printCh</span>(char ch, int i){
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">int</span> cnt=<span style="color:#3387cc">1</span> ; cnt<span style="color:#e28964">&lt;=</span>i ; cnt<span style="color:#e28964">++</span>)
+                                    <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.print(ch);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println();
+                            }
+                        }
+
+                    <span style="color:#3387cc">3</span>)  <span style="color:#99cf50">Return값을</span> 갖는 함수
+
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">method1</span> {
+                            <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                                <span style="color:#99cf50">Scanner</span> sc = <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span>.<span style="color:#e28964">in</span>);
+                                <span style="color:#99cf50">int</span> input = sc.nextInt();
+                                <span style="color:#99cf50">int</span> inputAbs = abs(input);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.printf(<span style="color:#65b042">"입력하신수 %d의 절대값은 %d"</span>, input, inputAbs);
+                            }
+
+                            <span style="color:#99cf50">static </span><span style="color:#99cf50">int</span> <span style="color:#89bdff">abs</span>(int in){
+                                <span style="color:#99cf50">int</span> result = (<span style="color:#e28964">in</span><span style="color:#e28964">&lt;</span><span style="color:#3387cc">0</span>)? <span style="color:#e28964">-</span><span style="color:#e28964">in</span> : <span style="color:#e28964">in</span>;
+                                <span style="color:#e28964">return</span> result;
+                            }
+                        }
+                        
+                        </pre>
+                </div>
+                <div>
+                    <pre style="color:#f8f8f8">
+                        
+                        사용자로부터 <span style="color:#3387cc">1</span>~9까지 숫자 중 한 개의 숫자를 입력 받아 구구단을 출력하는 메소드를 구현해보자
+                    
+                    <span style="color:#e28964">import</span> java.util.Scanner;
+                    <span style="color:#e28964">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Gugudan</span> {
+                        <span style="color:#e28964">public</span> <span style="color:#e28964">static</span> <span style="color:#dad085">void</span> main(<span style="color:#99cf50">String</span>[] args) {
+                            Scanner sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> Scanner(<span style="color:#9b859d">System</span>.<span style="color:#dad085">in</span>);
+                            <span style="color:#9b859d">System</span>.out.println(<span style="color:#65b042">"원하는 구구단 단수?"</span>);
+                            <span style="color:#dad085">int</span> <span style="color:#dad085">input</span> <span style="color:#e28964">=</span> sc.nextInt();
+                            Gugudan gugu <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> Gugudan(); <span style="color:#aeaeae;font-style:italic">//메소드</span>
+                            gugu.gugudan(<span style="color:#dad085">input</span>);
+                        }
+
+                    <span style="color:#e28964">public</span> <span style="color:#dad085">void</span> gugudan(<span style="color:#dad085">int</span> i){ <span style="color:#aeaeae;font-style:italic">//메소드 선언부와 구현부</span>
+                            <span style="color:#e28964">for</span>(<span style="color:#dad085">int</span> j<span style="color:#e28964">=</span><span style="color:#3387cc">1</span>;j&lt;<span style="color:#3387cc">10</span>;j<span style="color:#e28964">+</span><span style="color:#e28964">+</span>)
+                                <span style="color:#9b859d">System</span>.out.println(i<span style="color:#e28964">+</span><span style="color:#65b042">"*"</span><span style="color:#e28964">+</span>j<span style="color:#e28964">+</span><span style="color:#65b042">"="</span><span style="color:#e28964">+</span>(i<span style="color:#e28964">*</span>j));
+                        }
+                    }
+                    
+                    </pre>
+                </div>
+                <div>
+                    <h3 class="headline3">메소드의 재귀적 호출</h3>
+                    <pre style="background:#000;color:#f8f8f8">
+
+                        factorial 계산을 위한 메소드 구현 소스
+
+                        <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                                <span style="color:#99cf50">Scanner</span> sc = <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span>.<span style="color:#e28964">in</span>);
+                                <span style="color:#99cf50">int</span> su = sc.nextInt();
+                                <span style="color:#99cf50">int</span> result = factorial(su);
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(su<span style="color:#e28964">+</span><span style="color:#65b042">"! = "</span><span style="color:#e28964">+</span>result);
+                            }
+
+                        <span style="color:#99cf50">private static </span><span style="color:#99cf50">int</span> <span style="color:#89bdff">factorial</span>(int s){
+                                <span style="color:#aeaeae;font-style:italic">// s*(s-1)*(s-2)*(s-3)*......2*1</span>
+                                <span style="color:#99cf50">int</span> fact = <span style="color:#3387cc">1</span>;
+                                <span style="color:#e28964">for</span>(<span style="color:#99cf50">int</span> i=s ; i<span style="color:#e28964">>=</span><span style="color:#3387cc">1</span> ; i<span style="color:#e28964">--</span>)
+                                    fact = fact<span style="color:#e28964">*</span>i;
+                                <span style="color:#e28964">return</span> fact;
+                            }
+
+                        factorial 계산을 위한 재귀적 메소드 호출 소스
+
+                        <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                            <span style="color:#99cf50">Scanner</span> sc = <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span>.<span style="color:#e28964">in</span>);
+                            <span style="color:#99cf50">int</span> su;
+                            <span style="color:#e28964">do</span>{
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.print(<span style="color:#65b042">"양수를 입력하세요 ☞ "</span>);
+                                su = sc.nextInt();
+                            }<span style="color:#e28964">while</span>(su<span style="color:#e28964">&lt;=</span><span style="color:#3387cc">0</span>);
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(su<span style="color:#e28964">+</span><span style="color:#65b042">"! = "</span><span style="color:#e28964">+</span>factorial(su));
+                            sc.close();
+                        }
+
+                        <span style="color:#99cf50">private static </span><span style="color:#99cf50">int</span> <span style="color:#89bdff">factorial</span>(int s){
+                            <span style="color:#aeaeae;font-style:italic">// 3! = 3*2! -> s! = s*(s-1)! 재귀적호출</span>
+                            <span style="color:#aeaeae;font-style:italic">//return (s==1)? 1:s*factorial(s-1);</span>
+                            <span style="color:#e28964">if</span>(s<span style="color:#e28964">==</span><span style="color:#3387cc">1</span>) 
+                                <span style="color:#e28964">return</span> <span style="color:#3387cc">1</span>;
+                            <span style="color:#e28964">else</span>
+                            <span style="color:#e28964">return</span> s <span style="color:#e28964">*</span> factorial(s<span style="color:#e28964">-</span><span style="color:#3387cc">1</span>);          
+                        }
+                        
+                        </pre>
+                </div>
+                <div>
+                    <h3 class="headline3 background_bisque">연습문제</h3>
+
+                    <pre style="color:#f8f8f8">
+                        
+                        사용자로부터 원하는 단수(<span style="color:#3387cc">2</span><span style="color:#e28964">~</span><span style="color:#3387cc">9</span>) 구구단을 출력하는 프로그램을 구현하시오.
+                        (단, 단수에 따라 해당 단수의 구구단을 출력하는 부분을 method로 처리한다. 
+                        사용자가 <span style="color:#3387cc">2</span><span style="color:#e28964">~</span><span style="color:#3387cc">9</span> 사이의 수가 아닌 수를 입력할 시 <span style="color:#3387cc">2</span><span style="color:#e28964">~</span>9사이의 수를 입력할 때까지 계속 입력받는다)
+                        
+                        <span style="color:#99cf50">public </span><span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex03</span> {
+                            <span style="color:#99cf50">public static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(String[] args) {
+                                <span style="color:#99cf50">Scanner</span> sc = <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span>.<span style="color:#e28964">in</span>);
+                                <span style="color:#99cf50">int</span> dansu;
+                                <span style="color:#e28964">do</span> {
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.print(<span style="color:#65b042">"원하는 단수는(단, 2~9단만 가능)"</span>);
+                                dansu = sc.nextInt();
+                                }<span style="color:#e28964">while</span>(dansu<span style="color:#e28964">&lt;</span><span style="color:#3387cc">2</span> <span style="color:#e28964">||</span> dansu<span style="color:#e28964">></span><span style="color:#3387cc">9</span>);
+                                gugudan(dansu);
+                                sc.close();
+                            }
+
+                        <span style="color:#99cf50">private static </span><span style="color:#99cf50">void</span> <span style="color:#89bdff">gugudan</span>(int dansu) {
+                            <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(<span style="color:#65b042">"원하신 "</span><span style="color:#e28964">+</span>dansu<span style="color:#e28964">+</span><span style="color:#65b042">"단 구구단입니다"</span>);
+                            <span style="color:#e28964">for</span>(<span style="color:#99cf50">int</span> i=<span style="color:#3387cc">1</span> ; i<span style="color:#e28964">&lt;</span><span style="color:#3387cc">10</span> ; i<span style="color:#e28964">++</span>)
+                                <span style="color:#99cf50">System</span>.<span style="color:#e28964">out</span>.println(dansu<span style="color:#e28964">+</span><span style="color:#65b042">"*"</span><span style="color:#e28964">+</span>i<span style="color:#e28964">+</span><span style="color:#65b042">"="</span><span style="color:#e28964">+</span>(dansu<span style="color:#e28964">*</span>i));
+                            }
+                        }
+                        
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h1 id="footer">Created By L. Coding Member</h1>
+        </footer>
+    </div>
+</body>
+</html>

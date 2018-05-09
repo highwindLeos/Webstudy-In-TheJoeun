@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Font Css</title>
+    <style>
+        .small {
+          line-height: 70%; /* 16px * 70% */
+        }
+
+        .big {
+          line-height: 1.2; /* 16px * 1.2 */
+        }
+
+        .lh-3x {
+          line-height: 3.0; /* 16px * 3 */
+        }
+
+        /* Buttons */
+        .button {
+            width: 200px;
+            height: 30px;
+            background-color:antiquewhite;
+            border-radius: 30px;
+            box-shadow: 5px 5px 5px #A9A9A9;
+        }
+
+        .button > a {
+            display: block;
+            color: black;
+            font: italic bold 1em/30px Arial, Helvetica, sans-serif; /* Line height 가 적용되었다.*/
+            text-decoration: none;
+            text-align: center;
+            margin-left: 5px;
+        }
+        .button > a:hover {
+            color: #E78883;
+        }
+    
+      </style>
+</head>
+<body>
+    <p>
+        default line-height.<br>
+        default line-height.<br>
+        대부분 브라우저의 default line height는 약 110% ~ 120%.<br>
+      </p>
+    
+      <p class="small">
+        line-height: 70%<br>
+        line-height: 70%<br>
+      </p>
+    
+      <p class="big">
+        line-height: 1.2<br>
+        line-height: 1.2<br>
+      </p>
+    
+      <p class="lh-3x">
+        line-height: 3.0<br>
+        line-height: 3.0<br>
+      </p>
+
+      <div class="button">
+        <a href="#">Click</a>
+      </div><!-- button div -->
+
+</body>
+</html>

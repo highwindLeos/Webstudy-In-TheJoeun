@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Example</title>
+</head>
+<body>
+    <h1>input 요소</h1>
+    <form action="">
+        <fieldset>
+            <legend>회원가입</legend>
+            <p> 아이디 : <input type="text" size="20" maxlength="8" ></p>
+            <p> 비밀번호:<input type="password" size="20" maxlength="8" ></p>
+            <p>
+                메일수신여부 : 
+                <input type="radio" value="y" name="recive" checked>예
+                <input type="radio" value="n" name="recive">아니오
+            </p>
+            <p>관심분야:
+                <input type="checkbox" value="HTML" name="chk1">HTML
+                <input type="checkbox" value="CSS" name="chk1">CSS
+                <input type="checkbox" value="Javascript" name="chk1">Javascript
+            </p>
+            <p>파일올리기 : <input type="file" multiple></p>
+            <p>
+                <input type="submit" value="전송">
+                <input type="reset" value="취소">
+                <input type="button" value="확인">
+                <input type="image" src="btn.png" alt="검색"><!-- image 버튼을 위한 tag -->
+            </p>
+        </fieldset>
+    </form>
+
+    <h1>Textarea and Listbox</h1>
+    <form action="">
+        <fieldset>
+            <legend>여러 줄 글상자의 목록상자</legend>
+            <p>
+                답글 <br/>
+                <textarea cols="30" rows="3" name="replay"></textarea>
+            </p>
+            <p>과목선택
+                <select>
+                    <option value="html5">HTML5</option>
+                    <option value="css3">CSS3</option>
+                    <option value="javascript">Javascript</option>
+                    <option value="jquery">Jquery</option>
+                </select>
+            </p>
+            <p>스터디 지역
+                <select>
+                    <optgroup label="관악구">
+                        <option value="gwanak-bcd">봉천동</option>
+                        <option value="gwanak-sld">신림동</option>
+                        <option value="gwanak-nhd">남현동</option>
+                    </optgroup>
+                    <optgroup label="동대문구">
+                        <option value="ddm-jnb">전농동</option>
+                        <option value="ddm-dsn">답십리</option>
+                        <option value="ddm-ssd">신설동</option>
+                    </optgroup>
+                </select>
+            </p>
+            <p>select 요소 : <br>
+                <select name="cars1"> <!-- multiful 요소를 사용하면 펼쳐진다.-->
+                    <option value="volvo" selected>Volvo</option><!-- 선택되게 함 -->
+                    <option value="saab" disabled>Saab</option><!-- 비활성화 -->
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+                
+                <select name="cars2" size="4" multiple>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi" selected>Audi</option><!-- 선택됨. -->
+                </select>
+
+                <select name="cars3">
+                    <optgroup label="Swedish Cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                    </optgroup>
+                    <optgroup label="German Cars" disabled><!-- 비활성화 -->
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </optgroup>
+                </select>
+            </p>
+            <button type="button" onclick="alert('Hello World!')">Click Me!</button>
+            <input type="button" value="Click Me!" onclick="alert('Hello world!')">
+            <button type="submit" name="myButton" value="foo">Click me</button><!-- 전송 버튼으로 작동하게 된다. -->
+        </fieldset>
+    </form>
+    
+</body>
+</html>

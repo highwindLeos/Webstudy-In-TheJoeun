@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3 </title>
+    <style>
+        #content{
+            width : 300px;
+        }
+
+        ul li {
+            list-style: none;
+            padding : 10px ;
+            background-color : #efefef;
+            font-weight: bold;
+            font-size: 20px;
+            /* border: 1px solid #ccc; */
+        }
+
+        ul li a {
+            text-decoration: none; /*밑줄 해제*/
+            color:black;
+        }
+
+        ul li:nth-child(2n+1){
+            background-color: #de9393;
+        }
+
+        ul li:nth-child(2n){ 
+            background-color: yellow;
+        }
+
+        ul li:first-child ul li:last-child {
+            background-color : yellow;
+        }
+
+        ul li:first-child {
+            border-radius: 10px 10px 0 0 ;
+        }
+        
+        ul li:last-child{
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* hover css */
+
+        /* li:nth-child(2n):hover{  */
+            /* background-color: gray; */
+        /* } */
+        /* li:nth-child(2n+1):hover{  */
+            /* background-color: black; */
+        /* } */
+        /* li:first-child:hover { */
+            /* background-color : black; */
+        /* } */
+        /* li:last-child:hover { */
+            /* background-color : black; */
+        /* } */
+        
+    </style>
+</head>
+<body>
+    
+    <div id="content">
+        <ul>
+            <li><a href="#">1st</a></li>
+            <li><a href="#">2nd</a></li>
+            <li><a href="#">3rd</a></li>
+            <li><a href="#">4th</a></li>
+            <li><a href="#">5th</a></li>
+            <li><a href="#">6th</a></li>
+            <li><a href="#">7th</a></li>
+            <li><a href="#">8th</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>

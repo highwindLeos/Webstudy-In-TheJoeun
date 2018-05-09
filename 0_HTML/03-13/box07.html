@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box Model : Inline</title>
+    <style>
+        .visible { visibility: visible; }
+
+        .hidden  { visibility: hidden; }
+
+        /* .none { visibility: none; } */
+    
+        table, td { border: 1px solid black; }
+
+        /* .collapse { visibility: collapse; }  */
+        .collapse { visibility: hidden; }
+    </style>
+</head>
+<body>
+    <h1 class="visible">visibility: visible 1</h1>
+    <h1 class="hidden">visibility: hidden 2</h1>
+    <h1>visibility: visible 3</h1>
+    <h1 class="none">visibility: none 4</h1>
+    <h1 style="display:none">display:none 5</h1>
+    <h1>visibility: visible 6</h1>
+
+    <table>
+        <tr>
+            <td>A</td>
+            <td class="none">B</td>
+        </tr>
+        <tr class="collapse">
+            <td>C</td>
+            <td>D</td>
+        </tr>
+    </table>
+</body>
+</html>

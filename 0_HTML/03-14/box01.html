@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BBS</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        list-style-type: none;
+    }
+    body{
+        margin: 10px;
+    }
+    .bbs{
+        position: relative;
+        border-radius: 10px;
+        width: 300px;
+        border:2px solid #ccc;
+        background: #ddd;
+        padding: 20px;
+    }
+    .bbs dt{
+        font: bold 120% "굴림",Gulim;
+        padding-bottom: 10px;
+        color:orange;
+    }
+    .bbs dd a{
+       color:#fff;
+       text-decoration: none;
+       padding-left: 10px;
+    }
+
+    .bbs dd a:hover{
+       text-decoration: underline;
+       color: gray;
+    }
+    .bbs p{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .bbs p a{
+        color:aliceblue;                
+    }
+
+    .bbs p a:hover{
+        color:black;                
+    }
+    </style>
+</head>
+<body>
+    <div class="bbs">
+        <dl>
+            <dt>동물병원 24시</dt>
+            <dd><a href="#">밥 먹이는 시간 지킬 것</a></dd>
+            <dd><a href="#">길고양이 주사 맞히기</a></dd>
+            <dd><a href="#">눈 아픈 동물 목에 깔때기 씌우기</a></dd>
+            <dd><a href="#">매일 목욕 시킬것</a></dd>
+            <dd><a href="#">이름 없는 애들 이름 짓지 말기</a></dd>
+        </dl>
+        <p class="more"><a href="#">더보기</a></p>
+    </div>
+</body>
+</html>
