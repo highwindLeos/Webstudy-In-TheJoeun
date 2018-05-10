@@ -158,21 +158,58 @@ public class SuperMarket extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		new SuperMarket("슈퍼마켓 프로그램");
 	}
+	
+	private void ResetFilde() {
+		jtxtTel.setText(""); // 초기화
+		jtxtName.setText("");
+		jtxtPoint.setText("");
+		JtxtAmount.setText("");
+		jcomLevel.setSelectedIndex(0);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == jbtnTelSearch) { // 연락처 4자리 검색
+		if(e.getSource() == jbtnTelSearch) { // 연락처 검색 
+			jtxtPool.setText(""); // 출력 필드초기화
 			
 			try {
-				String selectSql = "SELECT C.*, G.GRADE " + 
+				String selectSql1 = "SELECT C.*, G.GRADE " + 
 								   "FROM CUSTOMER C, CGRADE G " + 
 								   "WHERE C.GNO = G.GNO AND SUBSTR(CTEL, -4) = ?";
+				
+				String selectSql2 = "SELECT C.*, G.GRADE " + 
+						   			"FROM CUSTOMER C, CGRADE G " + 
+						   			"WHERE C.GNO = G.GNO AND CTEL = ?";
 
-				pstmt = conn.prepareStatement(selectSql);
+				pstmt = conn.prepareStatement(selectSql1);
 				pstmt.setString(1, jtxtTel.getText());
 				rs = pstmt.executeQuery();
 				
 				customer.clear();
+				
+				if(rs.next()) {
+					
+					do {
+						int cno = rs.getInt("cno");
+						String ctel = rs.getString("ctel");
+						String cname = rs.getString("cname");
+						int point = rs.getInt("point");
+						int buy = rs.getInt("buy");
+						String grade = rs.getString("grade");
+						
+						customer.add(new Customer(cno, ctel, cname, point, buy, grade));
+					} while (rs.next());
+					
+				} else {
+					jtxtPool.setText("검색 결과가 없습니다.");
+				}
+				
+				rs.close(); // 일단 닫아준다.
+				pstmt.close();// 일단 닫아준다.
+				
+				pstmt = conn.prepareStatement(selectSql2);
+				pstmt.setString(1, jtxtTel.getText());
+				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
 					
@@ -201,6 +238,8 @@ public class SuperMarket extends JFrame implements ActionListener {
 				} else {
 					jtxtPool.append("출력할 결과가 없습니다.");
 				}
+				
+				jtxtTel.setText(""); // 초기화
 					
 			} catch (Exception e1) {
 				System.out.println(e1.getMessage());
@@ -212,22 +251,196 @@ public class SuperMarket extends JFrame implements ActionListener {
 			}
 			
 		} else if (e.getSource() == jbtnNameSearch) {// 이름검색
+			jtxtPool.setText(""); // 출력 필드초기화
 			
-			
-			
+			try {
+				String selectSql = "SELECT C.*, G.GRADE " + 
+									"FROM CUSTOMER C, CGRADE G " + 
+									"WHERE C.GNO = G.GNO AND CNAME = ?";
+				
+				pstmt = conn.prepareStatement(selectSql);
+				pstmt.setString(1, jtxtName.getText());
+				rs = pstmt.executeQuery();
+				
+				customer.clear(); // 리스트 초기화
+				
+				while (rs.next()) {
+					int cno = rs.getInt("cno");
+					String ctel = rs.getString("ctel");
+					String cname = rs.getString("cname");
+					int point = rs.getInt("point");
+					int buy = rs.getInt("buy");
+					String grade = rs.getString("grade");
+					
+					customer.add(new Customer(cno, ctel, cname, point, buy, grade));
+				}
+				
+				jtxtPool.setText("[고객ID]   [고객연락처]   [고객명]   [포인트]   [구매총액]   [고객등급] \n");
+				jtxtPool.append("==================================================================================\n");
+				
+				if (customer.size() != 0) {
+					for (Customer ct : customer) {
+						jtxtPool.append(ct.toString());
+					}
+				} else {
+					jtxtPool.append("출력할 결과가 없습니다.");
+				}
+				
+				jtxtName.setText(""); // 초기화
+
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			}  finally {
+				try {
+					if (rs != null) rs.close();
+					if (pstmt != null) pstmt.close();
+				} catch (Exception e1) { }
+			}
+		
 		} else if (e.getSource() == jbtnPoint) {// 포인트 구매
+			jtxtPool.setText(""); // 출력 필드초기화
+			try {
+				
+				String selectSql = "SELECT POINT FROM CUSTOMER WHERE CNAME = ?";
+				
+				pstmt = conn.prepareStatement(selectSql);
+				pstmt.setString(1, jtxtName.getText());
+				rs = pstmt.executeQuery();
+				
+				int cpoint = 0;
+				while (rs.next()) {
+					cpoint = rs.getInt("point");
+				}
+				
+				System.out.println(cpoint);
+				
+				int pointAmount = Integer.parseInt(JtxtAmount.getText());
+				// 포인트를 데이터베이스에서 꺼내고 일단 DB 객체들을 닫음.
+				rs.close();
+				pstmt.close();
+								
+				if (pointAmount <=  cpoint) { // 포인트가 구매금액 이상일때만 
+					String updateSql = "UPDATE CUSTOMER SET BUY = (BUY + ?) , POINT = (POINT - ?) WHERE SUBSTR(CTEL, -4) = ?";
+					
+					pstmt = conn.prepareStatement(updateSql);
+					pstmt.setInt(1, Integer.parseInt(JtxtAmount.getText()));
+					pstmt.setInt(2, Integer.parseInt(JtxtAmount.getText()));
+					pstmt.setString(3, jtxtTel.getText());
+					
+					int resulte = pstmt.executeUpdate();
+					
+					if (resulte > 0) {
+						jtxtPool.setText("포인트 구매 성공");
+					} else {
+						jtxtPool.setText("포인트 구매 실패");
+					}
+					
+					ResetFilde();
+
+				} else {
+					jtxtPool.setText("포인트가 구매 금액보다 작습니다.");
+					ResetFilde();
+				}
+
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} catch (NumberFormatException e2) {
+				System.out.println(e2.getMessage());
+			}  finally {
+				try {
+					if (rs != null) rs.close();
+					if (pstmt != null) pstmt.close();
+				} catch (Exception e1) { }
+			}
 			
 		} else if (e.getSource() == jbtnBuy) {// 구매
+			jtxtPool.setText(""); // 출력 필드초기화
+
 			
 		} else if (e.getSource() == jbtnLevelOutput) {// 등급별 출력
+			jtxtPool.setText(""); // 출력 필드초기화
+
 			
 		} else if (e.getSource() == jbtnAlloutput) {// 전체 출력
+			jtxtPool.setText(""); // 출력 필드초기화
+
+			try {
+				String selectSql = "SELECT C.*, G.GRADE " + 
+								   "FROM CUSTOMER C, CGRADE G " + 
+								   "WHERE C.GNO = G.GNO " + 
+								   "ORDER BY C.CNO";
+				
+				pstmt = conn.prepareStatement(selectSql);
+				rs = pstmt.executeQuery();
+				
+				customer.clear(); // 리스트 초기화
+				
+				while (rs.next()) {
+					int cno = rs.getInt("cno");
+					String ctel = rs.getString("ctel");
+					String cname = rs.getString("cname");
+					int point = rs.getInt("point");
+					int buy = rs.getInt("buy");
+					String grade = rs.getString("grade");
+					
+					customer.add(new Customer(cno, ctel, cname, point, buy, grade));
+				}
+				
+				jtxtPool.setText("[고객ID]   [고객연락처]   [고객명]   [포인트]   [구매총액]   [고객등급] \n");
+				jtxtPool.append("==================================================================================\n");
+				
+				if (customer.size() != 0) {
+					for (Customer ct : customer) {
+						jtxtPool.append(ct.toString());
+					}
+				} else {
+					jtxtPool.append("출력할 결과가 없습니다.");
+				}
+				
+				ResetFilde();
+				
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			}  finally {
+				try {
+					if (rs != null) rs.close();
+					if (pstmt != null) pstmt.close();
+				} catch (Exception e1) { }
+			}
 			
 		} else if (e.getSource() == jbtnInsert) {// 회원가입
+			jtxtPool.setText(""); // 출력 필드초기화
+			
 			
 		} else if (e.getSource() == jbtnTelupdate) {// 번호수정
+			jtxtPool.setText(""); // 출력 필드초기화
+
 			
 		} else if (e.getSource() == jbtnDelete) {// 회원탈퇴
+			jtxtPool.setText(""); // 출력 필드초기화
+			
+			
+			try {
+				String deleteSql = "DELETE FROM CUSTOMER WHERE CNAME = ?";
+
+				pstmt = conn.prepareStatement(deleteSql);
+				pstmt.setString(1, jtxtName.getText());
+				int resulte = pstmt.executeUpdate();
+				
+				if (resulte > 0) {
+					jtxtPool.setText("회원탈퇴 성공 : " + jtxtName.getText());
+				} else {
+					jtxtPool.setText("회원탈퇴 실패 : " + jtxtName.getText());
+				}
+				
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null) rs.close();
+					if (pstmt != null) pstmt.close();
+				} catch (Exception e1) { }
+			}
 			
 		} else if (e.getSource() == jbtnExit) {// 종료
 			setVisible(false);
