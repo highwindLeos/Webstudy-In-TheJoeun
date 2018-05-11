@@ -53,7 +53,8 @@ public class SuperMarket extends JFrame implements ActionListener {
 	
 	public SuperMarket() {
 		customer = new ArrayList<Customer>();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		// Window object
 		containPane = getContentPane();
 		containPane.setLayout(new FlowLayout());
@@ -148,6 +149,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 		jbtnTelupdate.addActionListener(this);
 		jbtnDelete.addActionListener(this);
 		jbtnExit.addActionListener(this);
+		
 	}
 	
 	public SuperMarket(String title){
@@ -422,10 +424,10 @@ public class SuperMarket extends JFrame implements ActionListener {
 			if (!jcomLevel.getSelectedItem().toString().equals("")) {
 				try {
 					String selectSql = "SELECT C.*, G.GRADE, " +
-							 			"NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP " + 
-							   			"FROM CUSTOMER C, CGRADE G " + 
-							   			"WHERE C.GNO = G.GNO AND G.GRADE = ? " + 
-							   			"ORDER BY CNO";
+							 		   "NVL((SELECT HIGH - BUY + 1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP " + 
+							   		   "FROM CUSTOMER C, CGRADE G " + 
+							   		   "WHERE C.GNO = G.GNO AND G.GRADE = ? " + 
+							   		   "ORDER BY CNO";
 					
 					String grade = jcomLevel.getSelectedItem().toString();
 					System.out.println(grade);
@@ -433,7 +435,9 @@ public class SuperMarket extends JFrame implements ActionListener {
 					pstmt = conn.prepareStatement(selectSql);
 					pstmt.setString(1, grade);
 					rs = pstmt.executeQuery();
+					
 					customer.clear();
+					
 						while (rs.next()) {
 							int cno = rs.getInt("cno");
 							String ctel = rs.getString("ctel");
@@ -446,7 +450,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 							customer.add(new Customer(cno, ctel, cname, point, buy, grade, levelup));
 						}
 	
-						jtxtPool.setText("[고객ID]   [고객연락처]   [고객명]   [포인트]   [구매총액]   [고객등급]  [다음 레벨업 구매액] \n");
+					jtxtPool.setText("[고객ID]   [고객연락처]   [고객명]   [포인트]   [구매총액]   [고객등급]  [다음 레벨업 구매액] \n");
 					jtxtPool.append("==================================================================================\n");
 					
 					if (customer.size() != 0) {
@@ -568,7 +572,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 				int resulte = pstmt.executeUpdate();
 				
 				if (resulte > 0) {
-					jtxtPool.setText(jtxtName.getText()+ " 님의 연락처가 " + jtxtTel.getText() + " 로 변경되었습니다.");
+					jtxtPool.setText(jtxtName.getText() + " 님의 연락처가 " + jtxtTel.getText() + " 로 변경되었습니다.");
 				} else {
 					jtxtPool.setText("연락처 변경에 실패했습니다.");
 				}
@@ -604,10 +608,14 @@ public class SuperMarket extends JFrame implements ActionListener {
 				try {
 					if (rs != null) rs.close();
 					if (pstmt != null) pstmt.close();
+					
 				} catch (Exception e1) { }
 			}
 			
 		} else if (e.getSource() == jbtnExit) {// 종료
+			try {
+				if (conn != null) conn.close();
+			} catch (Exception e2) {}
 			setVisible(false);
 			dispose();
 			System.exit(0);
