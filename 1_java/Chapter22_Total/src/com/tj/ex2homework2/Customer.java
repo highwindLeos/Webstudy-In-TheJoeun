@@ -9,8 +9,9 @@ public class Customer {
 	private int buy;
 	private int gno;
 	private String grade;
+	private int levelup;
 	
-	public Customer(int cno, String ctel, String cname, int point, int buy, int gno, String grade) {
+	public Customer(int cno, String ctel, String cname, int point, int buy, int gno, String grade, int levelup) {
 		this.cno = cno;
 		this.ctel = ctel;
 		this.cname = cname;
@@ -18,15 +19,17 @@ public class Customer {
 		this.buy = buy;
 		this.gno = gno;
 		this.grade = grade;
+		this.levelup = levelup;
 	}
 	
-	public Customer(int cno, String ctel, String cname, int point, int buy, String grade) {
+	public Customer(int cno, String ctel, String cname, int point, int buy, String grade, int levelup) {
 		this.cno = cno;
 		this.ctel = ctel;
 		this.cname = cname;
 		this.point = point;
 		this.buy = buy;
 		this.grade = grade;
+		this.levelup = levelup;
 	}
 
 	@Override
@@ -36,7 +39,8 @@ public class Customer {
 		resulte += "  [고객명] : " + cname;
 		resulte += "  [포인트] : " + point;
 		resulte += "  [구매총액] : " + buy;
-		resulte += "  [고객등급] : " + grade + "\n";
+		resulte += "  [고객등급] : " + grade; 
+		resulte += "  [다음레벨업 구매액]" + levelup + "\n";
 		
 		return resulte;
 	}
