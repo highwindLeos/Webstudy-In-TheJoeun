@@ -160,7 +160,7 @@ public class StudentArrayList extends JFrame implements ActionListener{
 			
 			for (idx = 0 ; idx < students.size(); idx++) {
 				if (students.get(idx).getHakbun() == hakbun) {
-					students.get(idx).setName(textName.getText());
+					students.get(idx).setName(textName.getText().trim());
 					students.get(idx).setMajor(comboBox.getSelectedItem().toString());
 					students.get(idx).setPoint(score);
 					break;
@@ -225,7 +225,7 @@ public class StudentArrayList extends JFrame implements ActionListener{
 			int expelhakbun, idx, studentSize;
 			
 			try {
-				expelhakbun = Integer.parseInt(textHakbun.getText());
+				expelhakbun = Integer.parseInt(textHakbun.getText().trim());
 			} catch (Exception e) {
 				System.out.println("학번은 정수만 "); 
 				return;

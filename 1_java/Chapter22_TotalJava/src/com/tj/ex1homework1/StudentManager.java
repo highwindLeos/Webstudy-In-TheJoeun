@@ -24,7 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class GUIMain extends JFrame implements ActionListener {
+public class StudentManager extends JFrame implements ActionListener {
 	// GUI Variable
 	private Container containPane;
 	private JPanel jpup, jp1, jp2;
@@ -47,7 +47,13 @@ public class GUIMain extends JFrame implements ActionListener {
 	ResultSet rs;
 	
 	ArrayList<Student> student;
-	public GUIMain() {
+	
+	public StudentManager(String title){
+		this();
+		setTitle(title);
+	}
+	
+	public StudentManager() {
 		student = new ArrayList<Student>(); 
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -147,15 +153,6 @@ public class GUIMain extends JFrame implements ActionListener {
 
 	}
 	
-	public GUIMain(String title){
-		this();
-		setTitle(title);
-	}
-	
-	public static void main(String[] args) {
-		new GUIMain("학생관리");
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {// 버튼 이벤트 로직
 		if(e.getSource() == btnNoSearch) {// 학번검색

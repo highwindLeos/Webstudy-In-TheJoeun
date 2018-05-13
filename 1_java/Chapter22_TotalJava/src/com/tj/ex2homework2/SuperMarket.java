@@ -51,6 +51,11 @@ public class SuperMarket extends JFrame implements ActionListener {
 	
 	ArrayList<Customer> customer;
 	
+	public SuperMarket(String title){
+		this();
+		setTitle(title);
+	}
+	
 	public SuperMarket() {
 		customer = new ArrayList<Customer>();
 		//setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -581,15 +586,6 @@ public class SuperMarket extends JFrame implements ActionListener {
 			dispose();
 			System.exit(0);
 		}
-	}
-	
-	public SuperMarket(String title){
-		this();
-		setTitle(title);
-	}
-	
-	public static void main(String[] args) {
-		new SuperMarket("슈퍼마켓 프로그램");
 	}
 	
 	private void ResetFilde() {
