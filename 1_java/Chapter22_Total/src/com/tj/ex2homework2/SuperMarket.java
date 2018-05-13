@@ -152,23 +152,6 @@ public class SuperMarket extends JFrame implements ActionListener {
 		
 	}
 	
-	public SuperMarket(String title){
-		this();
-		setTitle(title);
-	}
-	
-	public static void main(String[] args) {
-		new SuperMarket("슈퍼마켓 프로그램");
-	}
-	
-	private void ResetFilde() {
-		jtxtTel.setText(""); // 초기화
-		jtxtName.setText("");
-		jtxtPoint.setText("");
-		JtxtAmount.setText("");
-		jcomLevel.setSelectedIndex(0);
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == jbtnTelSearch) { // 연락처 검색 
@@ -178,13 +161,8 @@ public class SuperMarket extends JFrame implements ActionListener {
 				String selectSql1 = "SELECT C.*, G.GRADE, " +
 								    "NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP " + 
 								    "FROM CUSTOMER C, CGRADE G " + 
-								    "WHERE C.GNO = G.GNO AND SUBSTR(CTEL, -4) = ?";
+								    "WHERE C.GNO = G.GNO AND CTEL LIKE '%' || ? ";
 				
-				String selectSql2 = "SELECT C.*, G.GRADE, " +
-						 			"NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP " + 
-						   			"FROM CUSTOMER C, CGRADE G " + 
-						   			"WHERE C.GNO = G.GNO AND CTEL = ?";
-
 				pstmt = conn.prepareStatement(selectSql1);
 				pstmt.setString(1, jtxtTel.getText());
 				rs = pstmt.executeQuery();
@@ -203,33 +181,6 @@ public class SuperMarket extends JFrame implements ActionListener {
 						
 						customer.add(new Customer(cno, ctel, cname, point, buy, grade, levelup));
 					} while (rs.next());
-					
-				} else {
-					jtxtPool.setText("검색 결과가 없습니다.");
-				}
-				
-				rs.close(); // 일단 닫아준다.
-				pstmt.close();// 일단 닫아준다.
-				
-				pstmt = conn.prepareStatement(selectSql2);
-				pstmt.setString(1, jtxtTel.getText());
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					
-					do {
-						int cno = rs.getInt("cno");
-						String ctel = rs.getString("ctel");
-						String cname = rs.getString("cname");
-						int point = rs.getInt("point");
-						int buy = rs.getInt("buy");
-						String grade = rs.getString("grade");
-						int levelup = rs.getInt("levelup");
-						
-						
-						customer.add(new Customer(cno, ctel, cname, point, buy, grade, levelup));
-					} while (rs.next());
-					
 				} else {
 					jtxtPool.setText("검색 결과가 없습니다.");
 				}
@@ -311,10 +262,11 @@ public class SuperMarket extends JFrame implements ActionListener {
 			jtxtPool.setText(""); // 출력 필드초기화
 			try {
 				
-				String selectSql = "SELECT POINT FROM CUSTOMER WHERE CNAME = ?";
+				String selectSql = "SELECT POINT FROM CUSTOMER WHERE CTEL LIKE '%' || ? OR CNAME = ?";
 				
 				pstmt = conn.prepareStatement(selectSql);
-				pstmt.setString(1, jtxtName.getText());
+				pstmt.setString(1, jtxtTel.getText());
+				pstmt.setString(2, jtxtName.getText());
 				rs = pstmt.executeQuery();
 				
 				int cpoint = 0;
@@ -325,17 +277,20 @@ public class SuperMarket extends JFrame implements ActionListener {
 				System.out.println(cpoint);
 				
 				int pointAmount = Integer.parseInt(JtxtAmount.getText());
+				
 				// 포인트를 데이터베이스에서 꺼내고 일단 DB 객체들을 닫음.
 				rs.close();
 				pstmt.close();
-								
+
 				if (pointAmount <=  cpoint) { // 포인트가 구매금액 이상일때만 
-					String updateSql = "UPDATE CUSTOMER SET BUY = (BUY + ?) , POINT = (POINT - ?) WHERE SUBSTR(CTEL, -4) = ?";
+					
+					String updateSql = "UPDATE CUSTOMER SET BUY = (BUY + ?), POINT = (POINT - ?) WHERE CTEL LIKE '%' || ? OR CNAME = ?";
 					
 					pstmt = conn.prepareStatement(updateSql);
-					pstmt.setInt(1, Integer.parseInt(JtxtAmount.getText()));
-					pstmt.setInt(2, Integer.parseInt(JtxtAmount.getText()));
+					pstmt.setInt(1, pointAmount);
+					pstmt.setInt(2, pointAmount);
 					pstmt.setString(3, jtxtTel.getText());
+					pstmt.setString(4, jtxtName.getText());
 					
 					int resulte = pstmt.executeUpdate();
 					
@@ -372,7 +327,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 					String updateSql = "UPDATE CUSTOMER SET "
 									 + "POINT = POINT + (? * 0.05), "
 									 + "BUY = (BUY + ?) "
-									 + "WHERE CTEL = ?";
+									 + "WHERE CTEL LIKE '%'||?";
 					
 					pstmt = conn.prepareStatement(updateSql);
 					pstmt.setInt(1, Integer.parseInt(JtxtAmount.getText()));
@@ -382,7 +337,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 					int resulte = pstmt.executeUpdate();
 					
 					if (resulte > 0) {
-						jtxtPool.setText(JtxtAmount.getText() + " 원 구매 성공 했습니다.");
+						jtxtPool.setText(JtxtAmount.getText() + " 원 구매 하셨습니다.");
 					} else {
 						jtxtPool.setText("구매 실패 했습니다.");
 					}
@@ -390,8 +345,8 @@ public class SuperMarket extends JFrame implements ActionListener {
 					pstmt.close();
 					
 					String updateSql2 = "UPDATE CUSTOMER SET GNO = (SELECT G.GNO FROM CUSTOMER C, CGRADE G " + 
-									    "WHERE BUY BETWEEN LOW AND HIGH AND CTEL = ?) " + 
-									    "WHERE CTEL= ?";
+									    "WHERE BUY BETWEEN LOW AND HIGH AND CTEL LIKE '%'|| ?) " + 
+									    "WHERE CTEL LIKE '%'||?";
 					
 					pstmt = conn.prepareStatement(updateSql2);
 					pstmt.setString(1, jtxtTel.getText());
@@ -414,7 +369,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 					} catch (Exception e1) { }
 				}
 			} else {
-				jtxtPool.setText("고객 이름과 연락처를  구매 금액을 입력해주세요.");
+				jtxtPool.setText("연락처, 구매 금액을 입력해주세요.");
 			}
 			
 		} else if (e.getSource() == jbtnLevelOutput) {// 등급별 출력
@@ -621,4 +576,22 @@ public class SuperMarket extends JFrame implements ActionListener {
 			System.exit(0);
 		}
 	}
+	
+	public SuperMarket(String title){
+		this();
+		setTitle(title);
+	}
+	
+	public static void main(String[] args) {
+		new SuperMarket("슈퍼마켓 프로그램");
+	}
+	
+	private void ResetFilde() {
+		jtxtTel.setText(""); // 초기화
+		jtxtName.setText("");
+		jtxtPoint.setText("");
+		JtxtAmount.setText("");
+		jcomLevel.setSelectedIndex(0);
+	}
+	
 }
