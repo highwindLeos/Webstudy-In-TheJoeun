@@ -24,8 +24,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.tj.ex1homework1.Student;
-
 public class SuperMarket extends JFrame implements ActionListener {
 	
 	// GUI variable
@@ -41,8 +39,8 @@ public class SuperMarket extends JFrame implements ActionListener {
 					jbtnInsert, jbtnTelupdate, jbtnDelete, jbtnExit;
 	
 	// DB variavble
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String driver = "oracle.jdbc.driver.OracleDriver"; // Driver
+	String url = "jdbc:oracle:thin:@localhost:1521:xe"; // URL
 	
 	Connection conn;
 	Statement stmt;
@@ -307,11 +305,11 @@ public class SuperMarket extends JFrame implements ActionListener {
 						jtxtPool.setText("포인트 구매 실패");
 					}
 					
-					ResetFilde();
+					ResetField();
 
 				} else {
 					jtxtPool.setText("포인트가 구매 금액보다 작습니다.");
-					ResetFilde();
+					ResetField();
 				}
 
 			} catch (SQLException e1) {
@@ -423,7 +421,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 						jtxtPool.append("출력할 결과가 없습니다.");
 					}
 					
-					ResetFilde(); // 입력필드들 초기화
+					ResetField(); // 입력필드들 초기화
 					
 				} catch (SQLException e1) {
 					System.out.println(e1.getMessage());
@@ -475,7 +473,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 					jtxtPool.append("출력할 결과가 없습니다.");
 				}
 				
-				ResetFilde();
+				ResetField();
 				
 			} catch (SQLException e1) {
 				System.out.println(e1.getMessage());
@@ -506,7 +504,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 						jtxtPool.setText(jtxtName.getText().trim() + "님 회원가입 실패하였습니다.");
 					}
 					
-					ResetFilde();
+					ResetField();
 					
 				} catch (SQLException e1) {
 					System.out.println(e1.getMessage());
@@ -588,7 +586,20 @@ public class SuperMarket extends JFrame implements ActionListener {
 		}
 	}
 	
+<<<<<<< HEAD:1_java/Chapter22_TotalJava/src/com/tj/ex2homework2/SuperMarket.java
 	private void ResetFilde() {
+=======
+	public SuperMarket(String title){
+		this();
+		setTitle(title);
+	}
+	
+	public static void main(String[] args) {
+		new SuperMarket("슈퍼마켓 프로그램");
+	}
+	
+	private void ResetField() {
+>>>>>>> PC:1_java/Chapter22_Total/src/com/tj/ex2homework2/SuperMarket.java
 		jtxtTel.setText(""); // 초기화
 		jtxtName.setText("");
 		jtxtPoint.setText("");
