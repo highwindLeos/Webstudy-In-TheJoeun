@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Summary - TEXT</title>
+
+    <style>
+
+        table {
+            background-color: greenyellow;
+        }
+
+        tr {
+            background: white;
+        }
+        tr:hover {
+            background-color: pink;
+        }
+        td{
+            text-align: center;
+            padding: 5px 8px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 id="top">h1 태그 - 헤더를 의미 하는 태그 개행 포함 (block요소)</h1>
+    <h2>h1 태그 - 헤더를 의미 하는 태그 개행 포함 (block요소)</h2>
+    <h3>h1 태그 - 헤더를 의미 하는 태그 개행 포함 (block요소)</h3>
+    <h4>h1 태그 - 헤더를 의미 하는 태그 개행 포함 (block요소)</h4>
+    <h5>h1 태그 - 헤더를 의미 하는 태그 개행 포함 (block요소)</h5>
+    <h6>h1 태그 - 헤더를 의미 하는 태그 가장 작은 글자크기 개행 포함 (block요소)</h6>
+
+    <p>문단을 의미 하는 p tag (block요소) </br> - 본문에 주로 사용
+       하나의 단락 문을 이루는 태그. 기본 폰트크기는 브라우저 기본 크기인 16px</p>
+    
+    <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit.</br>
+        <i>provident expedita, iusto veritatis facere natus,</i> </br>
+        <b> aliquid quae explicabo dicta repudiandae nesciunt illum,</b></br>
+        officiis similique molestiae quidem quo voluptates magni quam </br>
+        aut nam deleniti? Explicabo velit tenetur, minus asperiores illo </br>
+        eius architecto eum eos facere inventore repudiandae deserunt, </br>
+        aperiam alias.similique molestiae quidem quo voluptates magni quam </br>
+        aut nam deleniti? Explicabo velit tenetur, minus asperiores illo </br>
+        eius architecto eum eos facere inventore repudiandae deserunt, </br>
+        aperiam alias.similique molestiae quidem quo voluptates magni quam </br>
+        aut nam deleniti? Explicabo velit tenetur, minus asperiores illo </br>
+        eius architecto eum eos facere inventore repudiandae deserunt, </br>
+        aperiam alias.
+    </p>
+
+    <p><i>KOREA</i></p><!-- 이텔릭 -->
+    <p>KO<b>REA</b></p><!-- 볼드 -->
+    <p>KOREA<sup>윗첨자</sup></p><!-- 윗첨자 -->
+    <p>KOREA<sub>아래첨자</sub></p><!-- 아래첨자 -->
+    <p><ins>KOREA</ins></p><!-- 언더라인 -->
+    <p><del>KOREA</del></p><!-- 삭제줄 -->
+    <ruby>
+        <span>大韓民國</span><!-- 이텔릭 -->
+        <rt>대한민국</rt><!-- 설명 -->
+    </ruby>
+
+    <food>food 라는 태그가 없으면 없는 셈 친다</food>
+    <rice>없는 태그는 코드는 문서에 영향을 미치지 않는다.</rice>
+
+    <hr>
+    
+    <h3>목록태그 ol ul dl</h3>
+
+    <h4>ul 태그 (매뉴리스트)</h4>
+
+    <ul type="squre"><!-- disc circle squre -->
+        <li>순차가 없는 리스트 1</li>
+        <li>순차가 없는 리스트 2</li>
+        <li>순차가 없는 리스트 3</li>
+        <li>순차가 없는 리스트 4</li>
+    </ul>
+
+    <h4>ol 태그 (지역리스트)</h4>
+
+    <ol type="A"><!-- 1 a A i I -->
+        <li>서울 - 순차가 있는 리스트 1</li>
+        <li>경기 - 순차가 있는 리스트 2</li>
+        <li>충청 - 순차가 있는 리스트 3</li>
+        <li>경상 - 순차가 있는 리스트 4</li>
+    </ol>
+
+    <h4>dl - 정의 목록 태그</h4>
+
+    <dl>
+        <dt>HTML5</dt>
+        <dd>HTML5  는 muiltemedia 태그가 포함되어 플러그인이 필요없는 기술이다.</dd>
+        <dd>디바이스에 따라 달리 반응 할 수 있다. (반응형 웹)</dd>
+        <dt>목록 태그 (dt = definition title)</dt>
+        <dd>정의 목록 (dl) 과 일반 목록 (ol ul)는 용도에 맞게 잘 사용한다.</dd>
+        <dd>목록 태그는 메뉴등 많은 곳에서 사용되어 진다.</dd>
+        <dd>정의 목록 (dl) 과 일반 목록 (ol, ul) 는 용도에 맞게 잘 사용한다.</dd>
+    </dl>
+
+    <hr>
+
+    <h4>테이블 태그 - table</h4>
+
+    <table>
+        <tr>
+            <td>1행 1열</td>
+            <td>1행 2열</td>
+            <td>1행 3열</td>
+        </tr> <!-- 1행 -->
+        <tr>
+            <td>2행 1열</td>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+        </tr> <!-- 2행 -->
+        <tr>
+            <td>3행 1열</td>
+            <td>3행 2열</td>
+            <td>3행 3열</td>
+        </tr> <!-- 3행 -->
+    </table>
+    <br>
+    <table>
+        <!-- <tr>
+            <td rowspan="3">1행 2행 3행 1열</td>
+        </tr>  1행 --> 
+        <tr>
+            <td rowspan="2">1행 1열</td>
+            <td>1행 2열</td>
+            <td>1행 3열</td>
+        </tr> <!-- 2행 -->
+        <tr>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+        </tr> <!-- 3행 -->
+        <tr>
+            <td colspan="2">3행 1열 2열</td> <!-- 열병합 -->
+            <td>3행 3열</td>
+        </tr> <!-- 4행 -->
+    </table>
+    <br>
+    <table>
+        <caption>Table Example3</caption>
+        <tr>
+            <td rowspan="3">중간고사 성적</td>
+            <td>국어</td>
+            <td>영어</td>
+            <td>수학</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>60</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td colspan="2">평균</td>
+            <td>80</td>
+        </tr>
+    </table>
+
+    <hr>
+    <a href="#top">맨 위로 가기</a>
+</body>
+</html>
