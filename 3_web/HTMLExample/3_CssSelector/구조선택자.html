@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>구조 선택자</title>
+    <style>
+        #wrap {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        #wrap > ul > li{
+            text-align: center;
+            list-style: none;
+            margin: 2px 0;
+            padding : 10px 0;
+            /* border: 1px solid gray; */
+        }
+
+        #wrap > ul > li > a{
+            text-decoration: none;
+            color: white;
+        }
+        
+        #wrap > ul > li:nth-child(2n){/*짝수*/
+            background-color: lightgrey;
+        }
+
+        #wrap > ul > li:nth-child(2n+1){ /*홀수*/
+            background-color: lightskyblue;
+        }
+
+        #wrap > ul > li:nth-child(2n):hover{/*짝수*/
+            background-color: lightcoral;
+        }
+
+        #wrap > ul > li:nth-child(2n+1):hover{ /*홀수*/
+            background-color: lightsalmon;
+        }
+
+        #wrap > ul > li:first-child{
+            background-color: lightpink; 
+            border-radius: 10px 10px 0 0;
+        }
+
+        #wrap > ul > li:last-child{
+            background-color: lightpink; 
+            border-radius: 0 0 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul>
+            <li><a href="#m1">Menu1</a></li>
+            <li><a href="#m2">Menu2</a></li>
+            <li><a href="#m3">Menu3</a></li>
+            <li><a href="#m4">Menu4</a></li>
+            <li><a href="#m5">Menu5</a></li>
+            <li><a href="#m6">Menu6</a></li>
+            <li><a href="#m7">Menu7</a></li>
+            <li><a href="#m8">Menu8</a></li>
+        </ul>
+    </div>
+</body>
+</html>

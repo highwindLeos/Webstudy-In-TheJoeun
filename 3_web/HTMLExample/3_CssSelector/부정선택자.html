@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>부정선택자</title>
+    <style>
+        #wrap #header {
+            border-bottom: 1px solid gray; 
+        }
+
+        #wrap #content ul li{
+            list-style: none;
+            padding: 10px 0;
+            margin-left: 50px;
+        }
+
+        #wrap #content a { 
+            text-decoration: none;
+        }
+
+        #wrap #footer ul{
+            overflow: hidden;
+            list-style: none;   
+        }
+
+        #wrap #footer ul li{
+            display: inline;
+        }
+
+        #footer ul li img.logo{
+            margin-top: 15px; 
+        }
+
+        #wrap #content ul li:not(.fa) a{ /* .fa 만 빼고 디자인 스타일링 가능.*/
+            color: lightslategray;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1>Weekly connect Website</h1>
+        </div>
+        <div id="content"> 
+            <ul>
+                <li class="fa"><a href="http://www.naver.com">Naver</a></li>
+                <li><a href="http://www.google.com">Google</a></li>
+                <li><a href="http://www.mega-it.com">Mega-IT</a></li>
+                <li class="fa"><a href="http://www.facebook.com">facebook</a></li>
+                <li><a href="http://www.daum.net">daum</a></li>
+            </ul>
+        </div>
+        <div id="footer">
+            <ul>
+                <li><img class="logo" src="./logoCircus.jpg" alt="logo"/></li>
+                <li><img class="address" src="./footer.jpg" alt="footer"/></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
