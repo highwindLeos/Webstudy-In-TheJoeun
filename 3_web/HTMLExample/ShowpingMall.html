@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ShowpingMall</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        .clear::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* header GNB*/
+        header > #gnb {
+            background-color: #333;
+            height: 30px;
+        }
+
+        header > #gnb > ul {
+            text-align: center;
+        }
+
+        header > #gnb > ul > li {
+            display: inline-block;
+            padding: 5px 30px;
+        }
+
+        header > #gnb > ul > li > a {
+            color: #fff;
+            font-weight: bold;
+        }
+            header > #gnb > ul > li > a:hover {
+                color: #aaa;
+            }
+        /* header Logo*/
+        header > #logo {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+            header > #logo > img {
+                width: 250px;
+                height: 150px;
+            }
+        /* header HitMenu */
+        header > #hitmenu > ul {
+            margin-bottom: 10px;
+            text-align: right;
+        }
+        
+        header > #hitmenu > ul > li {
+            display: inline-block;
+            margin-left: -6px; 
+            border: 1px solid #666;
+            padding: 15px 30px;
+        }
+
+            header > #hitmenu > ul > li:first-child {
+                border-radius: 10px 0 0 10px;
+            }
+
+            header > #hitmenu > ul > li:last-child {
+                border-radius: 0 10px 10px 0;
+                margin-right: 30px
+            }
+
+        header > #hitmenu > ul > li > a {
+            font-weight: bold;
+        }
+
+        header > #hitmenu > ul > li > a:hover {
+            color: #aaa;
+        }
+        /* header LNB */
+        header > #lnb > ul {
+            border-top: 2px dotted #666; 
+            border-bottom: 2px dotted #666; 
+            text-align: center;
+        }
+
+        header > #lnb > ul > li {
+            display: inline-block;
+            padding: 15px 30px;
+        }
+
+        header > #lnb > ul > li > a {
+            font-weight: bold;
+        }
+
+            header > #lnb > ul > li > a:hover {
+                color: #bbb;
+            }
+        /* Content */
+        #content {
+            width: 1000px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        /* Content  section1 */
+        #content > .section1 {
+            overflow: hidden;
+        }
+
+            #content > .section1 > .slide_banner{
+                float: left;
+                top: 0; left: 0;
+                width: 700px;
+                height: 400px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+
+            #content > .section1 > .side_banner{
+                float: left;
+                top: 0; right: 0;
+                width: 300px;
+                height: 400px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+        
+        /* Content  section2 */
+        #content > .section2 {
+            margin-top: 10px;
+            position: relative;
+            height: 300px;
+            top: 0px; left: 0;
+        }
+
+        #content > .section2 > #hit_product {
+            overflow: hidden;
+            border: 1px solid #666;
+        }
+
+            #content > .section2 > #hit_product > .hit_product1{
+                float: left;
+                width: 235px;
+                height: 300px;
+                margin-left: 10px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+
+            #content > .section2 > #hit_product > .hit_product2{
+                float: left;
+                width: 235px;
+                height: 300px;
+                margin-left: 10px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+
+            #content > .section2 > #hit_product > .hit_product3{
+                float: left;
+                width: 235px;
+                height: 300px;
+                margin-left: 10px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+
+            #content > .section2 > #hit_product > .hit_product4{
+                float: left;
+                width: 235px;
+                height: 300px;
+                margin-left: 10px;
+                margin-right: 10px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+
+        /* Content  section2 */
+        #content > .section2 > #md_product {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #666;
+        }
+
+            #content > .section2 > #md_product > .md_product1{
+                float: left;
+                width: 235px;
+                height: 300px;
+                margin-left: 10px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+
+            #content > .section2 > #md_product > .md_product2{
+                float: left;
+                width: 235px;
+                height: 300px;
+                margin-left: 10px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+
+            #content > .section2 > #md_product > .md_product3{
+                float: left;
+                width: 235px;
+                height: 300px;
+                margin-left: 10px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+
+            #content > .section2 > #md_product > .md_product4{
+                float: left;
+                width: 235px;
+                height: 300px;
+                margin-left: 10px;
+                margin-right: 10px;
+                box-sizing: border-box;
+                border: 1px solid #666;
+            }
+        
+        /* Footer */
+        footer {
+            overflow: hidden;
+            width: 1000px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+            footer > .office_logo {
+                float: left;
+                box-sizing: border-box;
+                width: 150px;
+                height: 100px;
+                border: 1px solid #666;
+            }
+        
+            footer > .office_address {
+                float: left;
+                box-sizing: border-box;
+                width: 600px;
+                height: 100px;
+                border: 1px solid #666;
+            }
+
+            footer > .office_info {
+                float: left;
+                box-sizing: border-box;
+                width: 250px;
+                height: 100px;
+                border: 1px solid #666;
+            }
+        
+        footer > .copyright {
+            margin-top: 10px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            background-color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="gnb">
+             <ul>
+                 <li><a href="#">Login</a></li>
+                 <li><a href="#">Join us</a></li>
+                 <li><a href="#">Wish List</a></li>
+                 <li><a href="#">Cart</a></li>
+                 <li><a href="#">Order</a></li>
+                 <li><a href="#">My page</a></li>
+                 <li><a href="#">Notice</a></li>
+                 <li><a href="#">QnA</a></li>
+                 <li><a href="#">Review</a></li>
+                 <li><a href="#">Favorite</a></li>
+             </ul> 
+        </div>
+        <div id="logo">
+            <img src="./img/ShowpingLogo.jpg" alt="Logo">
+        </div>
+        <div id="hitmenu">
+            <ul>
+                <li><a href="#">Hit1</a></li>
+                <li><a href="#">Hit2</a></li>
+                <li><a href="#">Hit3</a></li>
+                <li><a href="#">Hit4</a></li>
+            </ul>
+        </div>
+        <div id="lnb">
+            <ul>
+                <li><a href="#">Menu1</a></li>
+                <li><a href="#">Menu2</a></li>
+                <li><a href="#">Menu3</a></li>
+                <li><a href="#">Menu4</a></li>
+                <li><a href="#">Menu5</a></li>
+                <li><a href="#">Menu6</a></li>
+                <li><a href="#">Menu7</a></li>
+                <li><a href="#">Menu8</a></li>
+            </ul>
+        </div>
+    </header>
+    <section id="content">
+        <div class="section1">
+            <div class="slide_banner">slide_banner</div>
+            <div class="side_banner">side_banner</div>
+            <div class="clear"></div>
+        </div>
+        <div class="section2">
+            <div id="hit_product">
+                <div class="hit_product1">hit_product1</div>
+                <div class="hit_product2">hit_product2</div>
+                <div class="hit_product3">hit_product3</div>
+                <div class="hit_product4">hit_product4</div>
+                <div class="clear"></div>
+            </div>
+            <div id="md_product">
+                <div class="md_product1">md_product1</div>
+                <div class="md_product2">md_product2</div>
+                <div class="md_product3">md_product3</div>
+                <div class="md_product4">md_product4</div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+    <footer>
+        <div class="office_logo">office_logo</div>
+        <div class="office_address">office_address</div>
+        <div class="office_info">office_info</div>
+        <div class="clear"></div>
+        <div class="copyright">copyright ⓒ TheJoeunIT co.ltd All right reserved.</div>
+    </footer>
+</body>
+</html>
