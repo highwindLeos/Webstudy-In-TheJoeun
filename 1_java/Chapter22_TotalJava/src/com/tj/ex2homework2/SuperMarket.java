@@ -49,11 +49,6 @@ public class SuperMarket extends JFrame implements ActionListener {
 	
 	ArrayList<Customer> customer;
 	
-	public SuperMarket(String title){
-		this();
-		setTitle(title);
-	}
-	
 	public SuperMarket() {
 		customer = new ArrayList<Customer>();
 		//setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -155,8 +150,14 @@ public class SuperMarket extends JFrame implements ActionListener {
 		
 	}
 	
+	public SuperMarket(String title){
+		this();
+		setTitle(title);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if(e.getSource() == jbtnTelSearch) { // 연락처 검색 
 			jtxtPool.setText(""); // 출력 필드초기화
 			
@@ -490,7 +491,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 			if (!jtxtTel.getText().equals("") && !jtxtName.getText().equals("")) {
 				try {
 					String insertSql = "INSERT INTO CUSTOMER VALUES "
-							+ "(SEQ_CNO.NEXTVAL, ?, ?, 1000, 0, 1)";
+									 + "(SEQ_CNO.NEXTVAL, ?, ?, 1000, 0, 1)";
 					
 					pstmt = conn.prepareStatement(insertSql);
 					pstmt.setString(1, jtxtTel.getText().trim());
@@ -577,29 +578,18 @@ public class SuperMarket extends JFrame implements ActionListener {
 			}
 			
 		} else if (e.getSource() == jbtnExit) {// 종료
+			
 			try {
 				if (conn != null) conn.close();
 			} catch (Exception e2) {}
+			
 			setVisible(false);
 			dispose();
 			System.exit(0);
 		}
 	}
 	
-<<<<<<< HEAD:1_java/Chapter22_TotalJava/src/com/tj/ex2homework2/SuperMarket.java
-	private void ResetFilde() {
-=======
-	public SuperMarket(String title){
-		this();
-		setTitle(title);
-	}
-	
-	public static void main(String[] args) {
-		new SuperMarket("슈퍼마켓 프로그램");
-	}
-	
 	private void ResetField() {
->>>>>>> PC:1_java/Chapter22_Total/src/com/tj/ex2homework2/SuperMarket.java
 		jtxtTel.setText(""); // 초기화
 		jtxtName.setText("");
 		jtxtPoint.setText("");

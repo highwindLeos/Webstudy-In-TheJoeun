@@ -14,6 +14,10 @@ a:hover{
     color: #bbb;
 }
 
+label{
+    cursor: pointer;
+}
+
 li{
     list-style: none;
 }
@@ -21,6 +25,10 @@ li{
 img {
     border: 0;
 } /* 특정 브라우저에서 img의 a태그 적용시 border 처리*/
+
+#toggle {
+    display: none;
+}
 
 /* header  */
 header {
@@ -48,6 +56,47 @@ header > #logo_wrap {
         position: absolute;
         top: 0; right: 10px;
     }
+/* GNB */
+#gnb {
+    display: none;
+    box-sizing: border-box;
+    /* border: 5px solid #666; */
+    padding: 0;
+}/* 기본값은 안보이게 */
+
+#gnb > ul {
+    overflow: hidden;
+    text-align: center;
+}
+
+#gnb > ul > li {
+    width: 12.4vw;
+    font-size: 1.1em;
+    text-align: center;
+    margin-left: -6PX;
+    border-right: 1px solid #EA8F00;
+    border-bottom: 1px solid #EA8F00;
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#gnb > ul > li:last-child {
+    border-right: 0;
+}
+
+#gnb > ul > li > a {
+    color: #666;
+    display: block;
+}
+
+#gnb > ul > li > a:hover {
+    background-color: lightpink;
+}
+
+#toggle:checked ~ #gnb { /* toggle 이 checked 일때만 #gnb 스타일이 적용*/
+    display: block;
+}
 
 header > #search {
     position: relative;
@@ -73,10 +122,6 @@ header > #search {
     }
 
 /* navigation */
-#lnb{
-    /* background-color: darksalmon; */
-}
-
 #lnb > ul {
     padding: 10px;
     text-align: center;
@@ -103,6 +148,10 @@ header > #search {
 
 #lnb > ul > li > a:hover {
     background-color: lightsalmon;
+}
+
+#lnb > ul > li > a {
+    display: block;
 }
 
 /* section */
