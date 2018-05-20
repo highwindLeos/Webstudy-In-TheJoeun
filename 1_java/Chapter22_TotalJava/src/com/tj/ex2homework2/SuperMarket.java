@@ -166,11 +166,15 @@ public class SuperMarket extends JFrame implements ActionListener {
 								    "NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP " + 
 								    "FROM CUSTOMER C, CGRADE G " + 
 								    "WHERE C.GNO = G.GNO AND CTEL LIKE '%' || ? ";
-				
+				String cTel = jtxtTel.getText().trim();
 				pstmt = conn.prepareStatement(selectSql1);
-				pstmt.setString(1, jtxtTel.getText().trim());
-				rs = pstmt.executeQuery();
+				pstmt.setString(1, cTel);
 				
+				if(!cTel.equals("")) {
+					rs = pstmt.executeQuery();
+				} else {
+					jtxtPool.setText("고객번호를 입력해주세요.");
+				}
 				customer.clear();
 				
 				if(rs.next()) {
@@ -181,7 +185,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 						String cname = rs.getString("cname");
 						jtxtName.setText(cname);
 						int point = rs.getInt("point");
-						jtxtPoint.setText(""+point);
+						jtxtPoint.setText(String.valueOf(point));
 						int buy = rs.getInt("buy");
 						String grade = rs.getString("grade");
 						jcomLevel.setSelectedItem(grade);
@@ -338,7 +342,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 					pstmt = conn.prepareStatement(updateSql);
 					pstmt.setInt(1, Integer.parseInt(JtxtAmount.getText().trim()));
 					pstmt.setInt(2, Integer.parseInt(JtxtAmount.getText().trim()));
-					pstmt.setString(3, jtxtTel.getText());
+					pstmt.setString(3, jtxtTel.getText().trim());
 					
 					int resulte = pstmt.executeUpdate();
 					

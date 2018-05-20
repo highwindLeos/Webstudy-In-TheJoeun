@@ -84,6 +84,7 @@ ul{
     margin: 0;
     padding: 0;
     list-style: none;
+    width: 100%;
 }
 
 ul li{
@@ -172,7 +173,7 @@ footer{
     height: 10vh;
     line-height: 10vh;
 }
-/* tavle customize */
+/* table customize */
 table{
     width: 100%;
 }

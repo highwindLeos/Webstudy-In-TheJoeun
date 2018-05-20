@@ -142,7 +142,7 @@ where pname like 's%';
 -- 9. 사번, 이름, 급여, 부서명, 관리자명
 select w.pno, w.pname, w.pay, dname, m.pname
 from personal w, personal m, division d
-where w.manager = m.pno and p.dno = d.dno;
+where w.manager = m.pno and m.dno = d.dno;
 
 -- 10. 부서코드, 급여합계, 최대급여
 select dno, sum(pay), max(pay)
@@ -210,7 +210,7 @@ from personal p, division d
 where p.dno = d.dno && startdate = (select min(startdate) from personal);
 
 -- 오라클과 아주 다른 단일행 함수 및 예약어.
-select concat(pname, concat('(', concat(job, ')'))) from personal; -- oracle 식alter
+select concat(pname, concat('(', concat(job, ')'))) from personal; -- oracle 식 alter
 
 select concat(pname, '(', job, ')') from personal; -- mysql 식 concat
 
