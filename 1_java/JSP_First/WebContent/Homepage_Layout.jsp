@@ -1,0 +1,33 @@
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HomePage Layout</title>
+    <link rel="stylesheet" href="./css/homepage.css">
+</head>
+<body>
+    <div id="wrap">
+        <header>HEADER</header>
+        <nav>
+            Navigation
+            <ul>
+                <li><a href="#">Menu01</a></li>
+                <li><a href="#">Menu02</a></li>
+                <li><a href="#">Menu03</a></li>
+                <li><a href="#">Menu04</a></li>
+                <li><a href="#">Menu05</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div id="content">Content</div>
+            <div id="banner">Banner</div>
+        </section>
+        <footer>FOOTER</footer>
+    </div>
+    <div id="background"></div>
+</body>
+</html>

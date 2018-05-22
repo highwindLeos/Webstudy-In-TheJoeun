@@ -253,7 +253,7 @@ table tr td{
     border-radius: 5px; 
 }
 
-/*Responsive tag*/
+/* Responsive tag */
 @media (max-width : 1023px){
 
     #nav > .contents > div > pre { /* 주로 본문 */

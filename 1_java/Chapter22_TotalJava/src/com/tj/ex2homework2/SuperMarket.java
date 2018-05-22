@@ -132,7 +132,9 @@ public class SuperMarket extends JFrame implements ActionListener {
 		JScrollpane = new JScrollPane(jtxtPool);
 		containPane.add(JScrollpane);
 		
-		setSize(new Dimension(700, 450));
+		int width = 700, height = 450; // window size Dimension variable
+		
+		setSize(new Dimension(width, height));
 		setLocation(400, 300);
 		setVisible(true);
 		
@@ -416,6 +418,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 						}
 	
 					jtxtPool.setText("[고객ID]   [고객연락처]   [고객명]   [포인트]   [구매총액]   [고객등급]  [다음 레벨업 구매액] \n");
+					jtxtPool.append(grade + "등급 검색 결과 \n");
 					jtxtPool.append("==================================================================================\n");
 					
 					if (customer.size() != 0) {
@@ -468,6 +471,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 				}
 				
 				jtxtPool.setText("[고객ID]   [고객연락처]   [고객명]   [포인트]   [구매총액]   [고객등급]  [다음 레벨업 구매액] \n");
+				jtxtPool.append("전체 회원을 출력합니다.\n");
 				jtxtPool.append("==================================================================================\n");
 				
 				if (customer.size() != 0) {

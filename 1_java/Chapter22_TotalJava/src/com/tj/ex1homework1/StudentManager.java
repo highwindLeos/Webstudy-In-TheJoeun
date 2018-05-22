@@ -187,16 +187,18 @@ public class StudentManager extends JFrame implements ActionListener {
 							s.setScore(rs.getInt("score"));
 							s.setMname(rs.getString("mname"));
 							
+							txtNo.setText(rs.getString("sno"));
+							txtName.setText(rs.getString("sname"));
+							comMajor.setSelectedItem(rs.getString("mname"));
+							txtscore.setText(String.valueOf(rs.getInt("score")));
+							
 							txtPool.append(s.toString());
 						} while(rs.next());
 					} else {
 						txtPool.setText("검색 결과가 없습니다.");
 					}
 					
-					txtNo.setText("");
-					txtName.setText("");
-					comMajor.setSelectedIndex(0);
-					txtscore.setText("");
+
 					
 				} catch (ClassNotFoundException e1) {
 					System.out.println(e1.getMessage());
@@ -245,16 +247,17 @@ public class StudentManager extends JFrame implements ActionListener {
 							s.setScore(rs.getInt("score"));
 							s.setMname(rs.getString("mname"));
 							
+							txtNo.setText(rs.getString("sno"));
+							txtName.setText(rs.getString("sname"));
+							comMajor.setSelectedItem(rs.getString("mname"));
+							txtscore.setText(String.valueOf(rs.getInt("score")));
+							
 							txtPool.append(s.toString());
 						} while(rs.next());
 					} else {
 						txtPool.setText("검색 결과가 없습니다.");
 					}
 					
-					txtNo.setText("");
-					txtName.setText("");
-					comMajor.setSelectedIndex(0);
-					txtscore.setText("");
 					
 				} catch (ClassNotFoundException e1) {
 					System.out.println(e1.getMessage());
@@ -332,6 +335,7 @@ public class StudentManager extends JFrame implements ActionListener {
 			}
 			
 		} else if(e.getSource() == btnInput) {// 학생정보 입력
+			
 			String sno, sname, mno;
 			int score;
 			
