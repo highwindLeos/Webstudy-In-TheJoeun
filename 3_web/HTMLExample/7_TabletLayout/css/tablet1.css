@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 body{
     min-width: 1000px;
 }
@@ -9,6 +10,7 @@ body{
 li{
     list-style: none;
 }
+
 a{
     text-decoration: none;
     color: #fff;
@@ -17,6 +19,7 @@ a{
 a:hover{
     color: #ddd;
 }
+
 /* header */
 header {
     background-color: blueviolet;
@@ -28,6 +31,7 @@ header > h1 {
     color: white;
     font-size: 1.5em;
     font-weight: bold;
+    text-align: center;
 }
 
 /* gnb menu */
@@ -72,14 +76,16 @@ header > h1 {
     #gnb > ul:nth-child(2) > li:nth-child(2) {
         border-right: 0;
      }
+
 /* wrap */
 #wrap {
     overflow: hidden;
+    background-color: lightsalmon;
 }
 
 /* lnb  */
 #lnb {
-    background: lightgreen;
+    background: lightsalmon;
     width: 100px;
     float: left;
 }
@@ -91,24 +97,57 @@ header > h1 {
 
 #lnb > ul > li{
     padding: 20px 0;
+    border-bottom: 1px solid #ddd;
 }
 
 /* section */
 section {
    overflow: hidden;
+   background-color: azure;
 }
 
 section > #content {
    float: left;
-   padding: 15px;
-
+   box-sizing: border-box;
+   padding: 20px;
+   width: 100%;
+   margin-right: -100px;
  }
 
- section > #content > div > img {
-    width: 125px;
-    height: 100px;
-    border: 2px solid lightgray;
-  }
+section > #content > div > img {
+    width: 200px;
+    height: 150px;
+    margin: 5px 20px 5px 5px;
+    border: 2px dashed lightgray;
+    border-radius: 10px;
+}
+
+section > #content > div {
+    overflow: hidden;
+    margin: 0 0 15px 0;
+}
+
+section > #content > div > p::first-line {
+    font-size: 1.2em;
+    color: lightskyblue;
+}
+
+section > #content > div > p::first-letter {
+    font-size: 1.2em;
+    font-weight: bold; 
+}
+
+section > #content > div:nth-child(1) > img {
+    float: left;
+}
+
+section > #content > div:nth-child(2) > img {
+    float: right;
+}
+
+section > #content > div:nth-child(4) > ul > li {
+    display: inline-block;
+}
 
 /* footer */
 footer {

@@ -349,7 +349,7 @@ public class SuperMarket extends JFrame implements ActionListener {
 					int resulte = pstmt.executeUpdate();
 					
 					if (resulte > 0) {
-						jtxtPool.setText(JtxtAmount.getText().trim() + " 원 구매 하셨습니다.");
+						jtxtPool.setText(jtxtTel.getText().trim() + " 님이 " + JtxtAmount.getText().trim() + " 원 구매 하셨습니다.");
 					} else {
 						jtxtPool.setText("구매 실패 했습니다.");
 					}
