@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loop</title>
+    <script>
+        var startTime = new Date().getTime(); // 현제 시간의 밀리세컨
+
+        for (var n = 0; new Date().getTime() < startTime + 1000; n++) {
+            
+        }
+        document.write('1초동안 ' + n + ' 번 for 문 수행' + '<br>');
+        // 두 반복문의 속도 체크. for문이 빠름.
+        var no = 0;
+        while (new Date().getTime() <= startTime + 1000){
+            no++;
+        }
+
+        document.write('1초동안 ' + no + ' 번 for 문 수행' + '<br>');
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

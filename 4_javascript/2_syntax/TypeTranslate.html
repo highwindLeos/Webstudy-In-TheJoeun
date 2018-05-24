@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TypeTranslate</title>
+    <script>// 형변환 (숫자 <-> 문자) 
+        document.write('<h1>숫자를 문자로 형변환 String</h1>');
+        var num = 10;
+        document.write('' + num + '<br>');
+        document.write(String(num) + '<br>'); // 숫자를 문자로...
+
+        document.write('<h1>문자를 숫자로 형변환 Number parseInt parseFloat</h1>');
+        var str = '100점';
+        document.write('Number(\'100점\') 이용 ' + Number(str) + '<br>'); // 숫자로 바꾸지 못한다. NaN 을 출력
+        document.write('parseInt(\'100점\') 이용 ' + parseInt(str) + '<br>'); // 문자를 숫자로...
+
+        var str = 'a'; // 16진수 a = 10 진수 10 으로 형변환.
+        document.write('a 문자를 16진수로 형변환 ' + parseInt(str, 16) + '<br>');
+
+        str = '3.3';
+        document.write('3.3 문자를 수로 형변환 ' + Number(str)  + '<br>');
+        document.write('3.3 문자를 수로 형변환 ' + parseFloat(str)  + '<br>');
+
+        str = '10+20+30';
+        document.write('10+20+30 문자를 실행하여 출력 ' + eval(str) + '<br>'); // eval() 입력된 변수를 실행해준다.
+
+        str = 'var num = 10; alert(num)';
+        eval(str); 
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Syntax02</title>
+    <script> // 국어점수와 영어점수를 입력받아 합을 출력한다.
+        /*
+        국어 점수와 영어점수를 입력받는데 제대로 된 점수를 입력하지
+        않을 시에는 제대로 된 점수 (60점 60)을 입력할때까지 계속 입력받아
+        제대로 된 두 과목의 점수를 입력하면 합을 출력.
+        */ 
+        var kor, eng;
+        
+        do{
+            kor = Number(prompt('국어 점수를 입력해주세요', '100'));
+
+            if(kor != 'NaN' && kor <= 100 && kor >= 0) { // 숫자가 아닐때.
+                console.log('kor 의 타입은 ' + typeof(kor) + '입니다.');
+                break;
+            } else {
+                alert('1~100 이나 숫자로 입력해주세요.');
+            }
+        } while(true);
+        
+        do{
+            eng = Number(prompt('영어 점수를 입력해주세요', '100'))
+            
+            if(!(eng >= 0) || !(eng <= 100) || isNaN(eng)) {
+                // isNaN(eng) : eng 가 Nan 이면 true 반환, eng 가 수면 false
+                alert('1~100 이나 숫자로 입력해주세요.');
+            } else {
+                console.log('kor 의 타입은 ' + typeof(eng) + '입니다.');
+                break;
+            }
+        } while(true);
+
+        var sum = kor + eng;
+
+        alert('국어와 영어 점수의 합계는 ' + sum + ' 점 입니다.');
+        document.write('국어와 영어 점수의 합계는 ' + sum + ' 점 입니다.');
+        console.log('국어와 영어 점수의 합계는 ' + sum + ' 점 입니다.');
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array</title>
+    <script>
+        var arr = [236, 's', true, function(){ alert(1); }];
+
+        alert('arr 의 방 갯수 ' + arr.length);
+        // arr 4번 index 에 입력 가능. (Java의 Array와 다름)
+        arr.push({'name' : 'leos'});
+
+        alert('arr 의 방 갯수 ' + arr.length); // length 는 5
+
+        arr.pop(); // 마지막 방을 제거.
+        alert('arr 의 방 갯수 ' + arr.length); // length 는 4
+        // 1 일반 for 문
+        for (var idx = 0; idx < arr.length; idx++){
+            document.write(idx + '번 째 값은 ' + arr[idx] + '<br>');
+        }       
+        document.write('<hr>');
+        // 2 for in 문
+        for(var idx in arr){
+            document.write(idx + '번 째 값은 ' + arr[idx] + '<br>');
+        } 
+        document.write('<hr>');
+        // forEach 문 () : 함수로 되어있으면 매개변수를 함수로 가진다. 
+        arr.forEach(function(data, idx) {
+            document.write(idx + '번째 값은 ' + data + '<br>');
+        });
+
+        document.write('<hr>');
+
+        arr.forEach(function(data, idx) {
+            document.write(idx + '번째 값은 ' + arr[idx] + '<br>');
+        });
+
+        document.write('<hr>');
+
+        arr.forEach(function(data){
+            document.write(data + '<br>' );
+        });
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

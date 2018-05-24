@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loop Example1</title>
+    <style>
+        table{
+            border:1px solid lightblue;
+            background-color: white;
+        }
+
+        table caption {
+            font-size: 1.5em;
+        }
+
+        table td  {
+            background-color: lightpink;
+            padding: 10px;
+            text-align: center;
+        }
+
+    </style>
+    <script>
+        var dan = 0;
+        do{
+            dan = prompt('출력한 구구단 단수는?', "");
+
+            if (isNaN(dan)){
+                alert('수만 입력해주세요.');
+            } else if(dan < 2 || dan > 10) {
+                alert('2 ~ 9 까지만 입력해주세요.');
+            } else {
+                break;
+            }
+        } while(true);
+
+        document.write('<table>');
+        document.write('<caption>' + dan + '단 </caption>');
+
+        for(var i = 1; i < 9; i++){
+            document.write('<tr><td>' + dan + ' * ' + i + ' = <b>' + (dan * i) + '</b></tr></td>');
+        }
+
+        document.write('</table>');
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

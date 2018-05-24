@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example03</title>
+    <script>
+        var date = new Date(); // 현제 시간을 변수에 담는다
+        date = date.getDay();  // 요일 정보를 숫자로 가져온다.
+
+        console.log(date); 
+
+        switch (date){
+            case 0: 
+            alert('일요일 입니다.');
+            document.write('일요일 입니다.');
+            document.body.style.backgroundColor = 'red';
+            document.body.style.color = '#fff';
+            console.log('일요일 입니다.');
+
+            break;
+
+            case 1: 
+            alert('월요일 입니다.');
+            document.write('월요일 입니다.');
+            document.body.style.backgroundColor = 'orenge';
+            document.body.style.color = '#fff';
+            console.log('월요일 입니다.');
+            break;
+
+            case 2: 
+            alert('화요일 입니다.');
+            document.write('화요일 입니다.');
+            document.body.style.backgroundColor = 'yellow';
+            document.body.style.color = '#fff';
+            console.log('화요일 입니다.');
+            break;
+
+            case 3: 
+            alert('수요일 입니다.');
+            document.write('수요일 입니다.');
+            document.body.style.backgroundColor = 'green';
+            document.body.style.color = '#fff';
+            console.log('수요일 입니다.');
+            break;
+
+            case 4: 
+            alert('목요일 입니다.');
+            document.write('목요일 입니다.');
+            document.body.style.backgroundColor = 'blue';
+            document.body.style.color = '#fff';
+            console.log('목요일 입니다.');
+            break;
+
+            case 5: 
+            alert('금요일 입니다.');
+            document.write('금요일 입니다.');
+            document.body.style.backgroundColor = '#0033cc';
+            document.body.style.color = '#fff';
+            console.log('금요일 입니다.');
+            break;
+
+            case 6: 
+            alert('토요일 입니다.');
+            document.write('토요일 입니다.');
+            document.body.style.backgroundColor = '#cc00cc';
+            document.body.style.color = '#fff';
+            console.log('토요일 입니다.');
+            break;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

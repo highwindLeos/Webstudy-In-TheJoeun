@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example</title>
+    <script>
+        var kor,eng,mat;
+
+        do{ 
+            kor = parseInt(prompt('국어 학점을 입력해주세요.'));
+            
+            if (!isNaN(kor) && kor >= 0 && kor <= 100){
+                console.log(kor);
+                break;
+            }
+            alert('0 ~ 100 이하의 점수만 입력해주세요.');
+            console.log('0 ~ 100 이하의 점수만 입력해주세요.');
+        } while (true);
+
+        do{ 
+            eng = parseInt(prompt('영어 학점을 입력해주세요.'));
+            
+            if (!isNaN(eng) && eng >= 0 && eng <= 100){
+                console.log(eng);
+                break;
+            }
+            alert('0 ~ 100 이하의 점수만 입력해주세요.');
+            console.log('0 ~ 100 이하의 점수만 입력해주세요.');
+        } while (true);
+
+        do{ 
+            mat = parseInt(prompt('수학 학점을 입력해주세요.'));
+            
+            if (!isNaN(mat) && mat >= 0 && mat <= 100){
+                console.log(mat);
+                break;
+            }
+            alert('0 ~ 100 이하의 점수만 입력해주세요.');
+            console.log('0 ~ 100 이하의 점수만 입력해주세요.');
+        } while (true);
+
+        var sum = kor + eng + mat;
+        console.log(sum);
+        var avg = sum / 3;
+        console.log(avg);
+
+        switch(Math.trunc(avg / 10)){ //10으로 나누어 case 구간을 정해준다.
+            case 9: case 10:
+            resulteMsg = '수 입니다.'; break;
+
+            case 8:
+            resulteMsg = '우 입니다.'; break;
+
+            case 7:
+            resulteMsg = '미 입니다.'; break;
+
+            case 6:
+            resulteMsg = '양 입니다.'; break;
+
+            case 5:
+            resulteMsg = '가 입니다.'; break;
+
+        } // switch 문으로 처리
+
+        document.write('총점은 ' + sum + ' 평균은 ' + avg.toFixed() + ' 평가점은 ' + resulteMsg + ' <br>' );
+
+        if (avg >= 90  && avg <= 100){
+            alert('수 입니다.');
+            document.write('총점은 '+ sum + '<br>');
+            document.write('평균은 '+ avg.toFixed(2) + '<br>');
+            document.write('수 입니다.');
+            console.log('수 입니다.');
+        } else if (avg >= 80 && avg < 89) {
+            alert('우 입니다.');
+            document.write('총점은 '+ sum + '<br>');
+            document.write('평균은 '+ avg.toFixed(2) + '<br>');
+            document.write('우 입니다.');
+            console.log('우 입니다.');
+        } else if (avg >= 70 && avg < 79) {
+            alert('미 입니다.');
+            document.write('총점은 '+ sum + '<br>');
+            document.write('평균은 '+ avg.toFixed(2) + '<br>');
+            document.write('미 입니다.');
+            console.log('미 입니다..');
+        } else if (avg >= 60 && avg < 69) {
+            alert('양 입니다..');
+            document.write('총점은 '+ sum + '<br>');
+            document.write('평균은 '+ avg.toFixed(2) + '<br>');
+            document.write('양 입니다.');
+            console.log('양 입니다..');
+        } else if (avg < 59) {
+            alert('가입니다 분발하세요.');
+            document.write('총점은 '+ sum + '<br>');
+            document.write('평균은 '+ avg.toFixed(2) + '<br>');
+            document.write('가입니다 분발하세요.');
+            console.log('가입니다 분발하세요..');
+        } // if 문으로 처리
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

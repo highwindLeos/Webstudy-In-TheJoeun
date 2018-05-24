@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example01</title>
+    <script>
+        var score;
+        do{ 
+            score = Number(prompt('학점을 입력해주세요.'));
+            if (!isNaN(score) && score >= 0 && score <= 4.5){
+                console.log(score);
+                break;
+            }
+            alert('4.5 이하의 학점만 입력해주세요.');
+            console.log('4.5 이하의 학점만 입력해주세요.');
+        } while (true);
+
+        if (score >= 4.0 && score <= 4.5){
+            alert('A학점입니다.');
+            document.write('A학점입니다');
+            console.log('A학점입니다.');
+        } else if (score >= 3.0 && score < 4.0) {
+            alert('B학점입니다.');
+            document.write('B학점입니다');
+            console.log('B학점입니다.');
+        } else if (score >= 2.0 && score < 3.0) {
+            alert('C학점입니다.');
+            document.write('C학점입니다');
+            console.log('C학점입니다.');
+        } else if (score < 2.0) {
+            alert('분발하세요.');
+            document.write('분발하세요');
+            console.log('분발하세요.');
+        } else {
+            alert('4.5 이하의 학점만 입력해주세요.');
+            document.write('4.5 이하의 학점만 입력해주세요.');
+            console.log('4.5 이하의 학점만 입력해주세요.');
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Syntax03</title>
+    <script> // confirm()
+    function chk(){
+       var answer = confirm('수강 신청을 계속 진행 할까요?');
+
+       if (answer == true){
+           alert('감사합니다. 진행 하겠습니다.');
+           return true;
+       } else {
+           alert('취소되었습니다. 다시 신청하세요.');
+           location.href = 'http://naver.com'; //페이지를 이동시킨다.
+           return false;
+       }
+    } 
+    </script>
+</head>
+<body>
+    <form action="" onsubmit="return chk()">
+        <p>이름<input type="text" name="name"></p>
+        <p><input type="submit" value="신청"></p>
+    </form>
+</body>
+</html>

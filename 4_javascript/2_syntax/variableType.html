@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>variable</title>
+    <script>
+        var varStr; // 변수를 초기화 하지 않음 (undefined)
+        alert('varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr)); // 초기화 하지 않았다면 undefined 로 에러가 난다.
+        console.log('varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+        varStr = 'Hellow javascript'; // 문자형 (String)
+        alert('문자로 변경후 값 = ' + varStr + '\n타입 = ' + typeof(varStr));
+        console.log('문자로 변경후 값 varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+        varStr = 10; // 정수 (number)
+        alert('숫자형으로 변경후 값 = ' + varStr + '\n타입 = ' + typeof(varStr));
+        console.log('숫자형으로 변경후 값 varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+        varStr = 10.11; // 실수 (number)
+        alert('실수로 변경후 값 = ' + varStr + '\n타입 = ' + typeof(varStr));
+        console.log('실수로 변경후 값 varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+        varStr = true; // boolean 형 자료
+        alert('boolean 변경후 값 = ' + varStr + '\n타입 = ' + typeof(varStr));
+        console.log('boolean 변경후 값 varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+        varStr = function chk(){ alert(1); }; // 함수형 자료
+        alert('function 변경후 값 = ' + varStr + '\n타입 = ' + typeof(varStr));
+        console.log('function 변경후 값 varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+        varStr = {'name':'Leos', 'age':25}; // 객체형 자료
+        alert('Object1 변경후 값 = ' + varStr + '\n타입 = ' + typeof(varStr));
+        console.log('Object1 변경후 값 varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+        varStr = {'date':'2018-05-24', '서울':'22도 흐림'}; // 객체형 자료
+        alert('Object2 변경후 값 = ' + varStr + '\n타입 = ' + typeof(varStr));
+        console.log('Object2 변경후 값 varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+        varStr = [277, 2, 'hellow', function(){alert(1);}, {}]; //배열을 대입
+        alert('Array 변경후 값 = ' + varStr + '\n타입 = ' + typeof(varStr));
+        console.log('Array 변경후 값 varStr = ' + varStr + '\nvarStr의 타입 = ' + typeof(varStr));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
