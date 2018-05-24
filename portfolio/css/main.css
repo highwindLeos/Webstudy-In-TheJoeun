@@ -1,0 +1,79 @@
+/* header - top bar*/
+#header > div#top_bar {
+    background-color: #F0F0F0;
+}
+
+#header > div#top_bar > div {
+    width: 80vw;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#header > div#top_bar > div > ul:nth-child(1) {
+    float: left;
+}
+
+#header > div#top_bar > div > ul:nth-child(2) {
+    float: right;
+}
+
+#header > div#top_bar > div > ul > li {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 0.6rem;
+}
+
+#header > #gnb {
+    width: 100%;
+}
+
+#header > #gnb > .wrap {
+    position: relative;
+    height: 120px;
+    line-height: 120px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#header > #gnb > .wrap > .category {
+    position: absolute;
+    left: 0; top: 0;
+    height: 120px;
+    width: 120px;
+    line-height: 120px;
+    background-color: lightskyblue;
+    text-align: center;
+}
+
+#header > #gnb > .wrap > .searchbar {
+    position: absolute;
+    left: 140px; top: 0;
+}
+
+#header > #gnb > .wrap > .searchbar > form {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#header > #gnb > .wrap > .searchbar > form > input[type=text] {
+    display: inline-block;
+    height: 40px;
+    width: 300px;
+    border-left: 3px solid lightskyblue;
+    border-top: 3px solid lightskyblue;
+    border-bottom: 3px solid lightskyblue;
+    border-radius: 5px 0 0 5px;
+}
+
+#header > #gnb > .wrap > .searchbar > form > input[type=submit] {
+    height: 46px;
+    width: 45px;
+    margin-left: -8px;
+    border-radius: 0 5px 5px 0;
+    background: white;
+    border-right: 3px solid lightskyblue;
+    border-top: 3px solid lightskyblue;
+    border-bottom: 3px solid lightskyblue;
+}
+
+
