@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function10 - 내부 함수</title>
+    <script> // A가 만든 부분 : 직각 삼각형의 밑변을 구하는 함수
+        // 높이의 제곱 + 밑변의 제곱 의 제곱근
+        
+
+        function phthagoras(w, h) {// 높이의 제곱 + 밑변의 제곱 의 제곱근
+
+            function square (x) { //x 의 제곱을 리턴 하는 함수
+                return x * x;
+            } // 내부 함수 : 충돌 방지 목적으로 
+
+            return Math.sqrt(square(w) + square(h));
+        }
+
+    </script>
+    <script>// B가 만든 부분 : aoroqustnfh 빗변 밑변 높이를 입력 받아 직각 삼각형이면 true 반환하는 함수
+        function square(p, w, h,){
+            if(w * w + h * h == p * p){ // 직각삼각형
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    </script>
+    <script> // 사용자로부터 w, h 를 받아 빗변을 출력.
+        var w = prompt('직각 삼각형의 밑변의 길이는?');
+        var h = prompt('직각 삼각형의 높이의 길이는?');
+
+        document.writeln('밑변('+ w +'), 높이 (' + h + ') 에서 나온 ' );
+        document.writeln('빗변은 ' + phthagoras(w, h) + ' 입니다');
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

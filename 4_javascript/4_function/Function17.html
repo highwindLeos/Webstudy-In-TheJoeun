@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function17 - Encodeing and Decoding</title>
+    <script> 
+        var day = '금요일';
+
+        document.write(encodeURIComponent(day)); // Encoding
+        document.write('<br>');
+        var encodedDay = encodeURIComponent(day);// Encoding 한 문장을 변수에 담았다.
+        document.write('<hr>');
+        document.write(encodedDay);
+        document.write('<br>');
+        document.write(decodeURIComponent(encodedDay));
+
+        document.write('<hr>');
+
+        var i = 10 / 0; // 무한히 큰수가 변수에 담긴다.
+        document.write(isFinite(i)); // 매개 변수가 무한한 값이면 false / 일반적인 값이면 true 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

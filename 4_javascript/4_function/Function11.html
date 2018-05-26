@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function11 - 콜백 함수</title>
+    <script> 
+        // 매개변수로 들어온 함수를 콜백 함수라고 한다.
+        function callTenTimes(callback) {
+            for (var i = 0; i < 10; i++){
+                callback(); // 콜백 함수
+            }
+        }
+
+        var fun = function(){ document.write('함수 호출 <br>'); };
+
+        callTenTimes(fun);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

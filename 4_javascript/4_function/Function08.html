@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function08 - [Array() 함수 만들어 보기] 가변인자 함수3</title>
+    <script> // javascript는 함수를 호출시 자동적으로 arguments 배열을(매개변수 배열) 생성해준다.
+        // arguments 배열에 호출시 매개변수가 들어가게된다.
+        var array = function(){
+            var resulte = [];
+            var length = arguments.length;
+
+            if (length == 0){
+                resulte = [];
+            } else if (length == 1) {
+                // 매개변수 수 만큼 resulte.push(); 수행
+                for (var idx = 0; idx < arguments[0]; idx++){
+                    resulte.push('');
+                }
+            } else if (length >= 2){
+                // 매개변수 가지고 resulte.push(); 수행
+                for(var idx = 0; idx < arguments.length; idx++){
+                    resulte.push(arguments[idx]);
+                }
+            }
+            return resulte;
+        };
+        //호출
+        var arr1 = array();
+        var arr2 = array(5);
+        var arr3 = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        document.write('arr1 : (array()) ' + arr1 + '<br>');
+        document.write('arr2 : (array(5)) ' + arr2 + 'length'+ arr2.length +'<br>');
+        document.write('arr3 : (array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) ' + arr3 + ' length '+ arr3.length + '<br>');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

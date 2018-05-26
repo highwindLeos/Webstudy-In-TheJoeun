@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function07 - 가변인자 함수2</title>
+    <script> // javascript는 함수를 호출시 자동적으로 arguments 배열을(매개변수 배열) 생성해준다.
+        // arguments 배열에 호출시 매개변수가 들어가게된다.
+        function arrayFun(){
+            if(arguments.length == 0){
+                // 매개변수가 없을때 쓸 로직
+                alert('매개변수 없이 호출하셨습니다.');
+            } else if(arguments.length == 1){
+                // 매개변수가 1개 일때
+                alert(arguments[0] + ' : 매개변수 하나 호출하셨습니다.')
+            } else if(arguments.length >= 2){
+                // 매개 변수가 2개 이상일때
+                var output = '매개변수를 2개 이상 ';
+                for (var i = 0; i < arguments.length; i++){
+                    output += arguments[i] + ' ';
+                }
+                output += ' 입력했군요';
+                alert(output);
+            }
+        }
+        
+        arrayFun();
+        arrayFun(9999);
+        arrayFun(2, 3, 4);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

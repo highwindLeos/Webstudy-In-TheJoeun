@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function12 - Closer 함수</title>
+    <script> 
+        // 
+        function test (name) {
+            var output = 'Hellow ' + name + ' 님';
+            return function() { alert(output) }; // 클로저 함수. 리턴되는 함수.
+        }
+        
+        var name = prompt('이름이 뭐요');
+        test(name)(); // 클로저의 호출은 이렇게 해야한다.
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

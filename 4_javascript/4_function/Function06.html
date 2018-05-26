@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function06 - 가변인자 함수</title>
+    <script> // 내장 함수중 Array 함수 
+    // 매개변수가 0 개 : 빈 배열
+    // 매개 변수가 1개 일때 : 해당 매개변수가 배열의 인덱스
+    // 매개 변수가 2개 이상 일때 : 매개변수로 배열을 생성.
+
+    var arr1 = Array(); // 빈 배열을 선언
+
+    var arr2 = Array(5); // 5개의 인덱스만 생성
+    document.write('arr2 배열의 index 는 '+ arr2.length + '<br>');
+
+    var arr3 = Array(1,2,3,4,5,6,7,8,9,10); // 매개변수를 배열로 가지는 배열을 생성.
+    document.write('arr3 배열의 index 는 ' + arr3.length + '<br>') 
+    for (var i =0; i < arr3.length; i++){
+        document.write(arr3[i]+'<br>');
+    }
+
+    document.write('<hr>');
+
+    var arr_1 = [277,2,3,'hellow javascript'];
+    var arr_2 = Array(277,2,3,'hellow javascript');
+    var arr_3 = [ , , , , , ];
+    var arr_4 = Array(5);
+    var arr_5 = [];
+    var arr_6 = Array();
+
+    document.write('arr_1 **: ' + arr_1 + '<br>')
+    document.write('arr_2 **: ' + arr_2 + '<br>')
+    document.write('arr_3 : ' + arr_3 + '방크기' + arr_3.length + '<br>')
+    document.write('arr_4 **: ' + arr_4 + '방크기' + arr_4.length + '<br>')
+    document.write('arr_5 **: ' + arr_5 + '방크기' + arr_5.length + '<br>')
+    document.write('arr_6 **: ' + arr_6 + '방크기' + arr_6.length + '<br>')
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

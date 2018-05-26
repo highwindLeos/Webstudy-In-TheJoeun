@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object - </title>
+    <script>
+        var student = {
+            name : 'Leos',
+            kor : 99, eng : 100, mat : 100, sci : 98,
+
+            getSum : function () {
+                return this.kor + this.eng + this.mat + this.sci;
+            },
+
+            getAvg : function () {
+                return this.getSum() / 4;
+            },
+
+            toString : function () {
+                var temp = '';
+                for (var key in this) {// this는 객체 자신...
+                    if(key != 'getSum' && key != 'getAvg' && key != 'toString'){
+                        temp += key + this[key] + '<br>';
+                    }
+                }
+                return temp;
+            }
+        };
+
+        // var temp = '';
+        // for (var key in student) {
+        //     if(key != 'getSum' && key != 'getAvg' && key != 'toString'){
+        //         temp += student[key] + '<br>';
+        //     }
+        // }
+        // document.write(temp);
+        document.write(student.getSum());
+        document.write('<hr>');
+        document.write(student.getAvg());  
+        document.write('<hr>');
+        document.write(student.toString());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

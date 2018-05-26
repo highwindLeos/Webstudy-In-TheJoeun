@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function16 - Timer Example</title>
+    <script> /* 타이머 */
+        for (var i = 0; i < 3; i++) {
+            //setTimeout(function (){ document.write(i + '<br>'); }, 0); // 333 이 출력
+            (function(ii) {
+                setTimeout(function(){ document.write(ii + '<br>'); }, 0);
+            })(i); // 012 가 출력
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

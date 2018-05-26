@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object - </title>
+    <script>
+        var arr = []; // 배열
+        var student = { // 객체 생성.
+            'name' : 'Leos',
+            'tel' : '010-9999-9999',
+            'score': 99
+        }; 
+
+        document.write('이름 : ' + student.name + ' 연락처 : ' + student.tel + ' 점수 : '+ student.score);
+
+        document.writeln('<hr>');
+        
+        var arr = [10, 20]; /* 배열생성 */
+        for (var idx in arr){
+            document.writeln(arr[idx] + '<br>');
+        }
+
+        document.writeln('<hr>');
+
+        var temp = '';
+        for (var key in student){
+            temp += key + ' : ' +student[key] + '&nbsp; <br>';
+        }
+        document.write(temp);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
