@@ -6,17 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UI / UX Engeenering Class</title>
     <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/fixedmenu.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><!-- CDN -->
 </head>
 <body>
     <div id="wrap">
-        <header id="top">
+        <header>
             <div class="logo"><a href="../../index.html"><img src="../../img/logo.jpg" alt="Logo"></a></div>
             <h1>
                 <i class="fas fa-tablet-alt fa-1X"></i> 
                 <i class="fas fa-mobile-alt fa-1x"></i> 
-                Exception
+                Join Keyword
                 <i class="fas fa-tv fa-1x"></i> 
                 <i class="fas fa-laptop fa-1x"></i>
             </h1>
@@ -24,806 +23,494 @@
         <div id="nav">
             <div class="contents">
                 <div>
-                    <pre>                        
+                    <pre>     
 
-                    <span class="bold_color_red">예외(Exception) 처리</span>
+                        <h2>Table을 결합 할때 쓰는 문장 - Join문</h1>
+                        <h3>join : 2개 이상의 테이블을 연결하여 데이터를 검색하는 방법</h3>
 
-                    오늘 알아보게 될 예외처리는 처음 개발을 접하는 사람은 예외처리에 대해 많은 필요성을 느끼지 못 할 수 있으나 
-                    프로그램을 어느 정도 한 경우에는 하면 할수록 프로그램에서 예외처리가 얼마나 중요한지를 느낄 수 있다. 
-                    예외처리를 완벽하게 한 프로그램이어야지 프로그램이 끝나다고 할 수 있다. 처음 프로그램을 개발하는 입장에서는 
-                    예외처리를 정확히 하는 것은 불가능하므로 개발을 진행하면서 지속적으로 소스를 관찰하면서 어느 부분에 예외처리가 필요한지, 
-                    테스트 단계에서 예외처리가 필요한지를 확장해 간다.
-
-                    <span class="bold_color_blue">- 예외란</span>
-                    <span class="bold_color_blue">- 예외처리의 필요성</span>
-                    <span class="bold_color_blue">- 예외처리의 문법</span>
-                    <span class="bold_color_blue">- 일반적으로 많이 보게 되는 예외들</span>
-
-                    <h3>예외란?</h3>
-
-                    세상에 완벽한 프로그램은 없는 거 같습니다. 
-                    아무리 간단하고, 문제 없을 거 같은 프로그램도 외부환경요인 등에 의해서 문제가 발생하곤 합니다.
-                    프로그램에서 문제가 발생될 만한 곳을 예상하여 사전에 
-                    "문제가 발생하면 이렇게 해라"라고 프로그래밍 하는 것을 예외 처리라고 합니다.
-                            
                     </pre>
-                    <table>
-                        <tr>
-                            <td rowspan="4">에러</td>
-                            <td>문법 에러</td>
-                            <td>문법적으로 나타나는 에러 (syntex)</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">실행에러 (실행 시 에러)</td>
-                            <td>논리에러 : 프로그레머가 잘못 작성해서 이상한 결과가 나오는 경우</td>
-                        </tr>
-                        <tr>
-                            <td>시스템에러 : 프로그레머의 의지와 상관없이 나타나는 에러</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                예외사항 : 정상적으로 프로그램이 동작하는 과정에서 나타나는 에러<br>
-                                프로그램 실행 중에 발생하는 예기치 않는 사건 <br>
-                                ex. 정수를 0으로 나누는 경우, 배열 인덱스 벗어난 경우,<br>
-                                부적절한 형변환이 일어나는 경우<br>
-                                입출력을 위한 파일이 없는 경우
-                           </td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="a">
-                    <h3 class="headline3">예외처리의 필요성</h3>
+                    <hr>
+                        <h3>1.	Join의 필요성</h3>
+                    <hr>
                     <pre>
 
-                        프로그래머는 예외 처리를 왜 해야 될까요? 
-                        이유는 간단합니다. 몇 달 동안 심혈을 기울여 만들어 놓은 프로젝트가 단순한 어떤 이유로 
-                        작동을 하지 않다면(프로그램의 프로세스가 완전 죽은 겁니다. 다시 재가동을 시키지 않으면 움직이지 않는 상태가 된 겁니다) 
-                        얼마나 속상할까요? 예외의 필요성은 어느 한 부분에서 예외가 발생하더라도 
-                        계속해서 프로그램이 동작되도록 하는데 목적이 있습니다. 
-                        어떤 문제가 하나 발생되었다고 그 프로세스가 완전히 정지되어 
-                        시스템을 재가동하기 전까지는 구동을 아예 못한다고 한다면 
-                        너무 많은 손실이 클 것입니다. 그래서 사소한 문제 같은 경우에는 그 문제를 우회해서 가는 방법으로 
-                        프로세스가 죽지 않고 계속 구동하도록 프로그래밍하는 방법이 필요합니다.
-               
-                    </pre>
-                </div>
-                <div id="string">
-                        <pre style="background:#000;color:#f8f8f8">
-                            
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> main(<span style="color:#99cf50">String</span>[] args) {
-                            <span style="color:#99cf50">Scanner</span> scanner <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"원하는 첫번째 정수 i는 ? "</span>);
-                            <span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> scanner<span style="color:#e28964">.</span>nextInt();
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"원하는 두번째 정수 j는 ? "</span>);
-                            <span style="color:#99cf50">int</span> j <span style="color:#e28964">=</span> scanner<span style="color:#e28964">.</span>nextInt();
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i="</span><span style="color:#e28964">+</span>i<span style="color:#e28964">+</span><span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>j="</span><span style="color:#e28964">+</span>j);
-                            
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i*j = "</span><span style="color:#e28964">+</span> (i<span style="color:#e28964">*</span>j));
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i/j = "</span><span style="color:#e28964">+</span> (i<span style="color:#e28964">/</span>j));
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i+j = "</span><span style="color:#e28964">+</span> (i<span style="color:#e28964">+</span>j));
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i-j = "</span><span style="color:#e28964">+</span> (i<span style="color:#e28964">-</span>j));
-                            scanner<span style="color:#e28964">.</span>close();
-                        }
+                        특정부서번호에 대한 부서이름은 무엇인지 dept 테이블에 있고 특정 사원에 대한 부서명을 알아내기 위해서는 
+                        부서 테이블에서 정보를 얻어와야 합니다. Join을 하지 않는 경우 
+                        다음의 두 SQL문을 통해 알아내야 하는 번거로움이 있다.
+
+                        ­	<span class="color_pink">SELECT ename, deptno FROM emp ORDER BY deptno;</span>
+                        ­	<span class="color_pink">SELECT deptno, dname FROM dept;</span>
+
+                        다행히도 SQL에서는 두 개 이상의 테이블을 결합햐야만 원하는 결과를 얻을 수 있을 때 한번의 질의로 원하는 결과를 얻어내는 Join 기능을 제공.
                     
                     </pre>
+                    <hr>
+                        <h3>2.	Cross Join</h3>
+                    <hr>
+                    <pre>
+
+                        Cross Join은 특별한 키워드 없이 다음과 같이 FROM절에 두 개 이상의 테이블을 기술하는 것.
+                        <span class="bold_color_red">
+                    ­	    SELECT * FROM EMP, DEPT; 
+                        </span>
+                        Cross Join의 결과 얻어지는 컬럼의 수는 사원 테이블의 컬럼의 수(8)와 부서 테이블의 컬럼의 수(3)를 더한 것이므로 11이 됩니다.
+                        로우 수는 사원 한 명에 대해서 DEPT 테이블의 4개의 로우와 결합되기에 56개(14*4). 
+                        Cross Join의 결과를 보면 사원 테이블에 부서에 대한 상세정보가 결합되긴 했지만, 
+                        조인 될 때 아무런 조건을 제시하지 않았기에 사원 한명에 대해서 DEPT 테이블의 4개의 로우와 결합된 형태이기에 
+                        Cross Join의 결과는 아무런 의미를 갖지 못 한다.
+                ­	    <span class="bold_color_red">
+                            SELECT * FROM EMP, DEPT WHERE ENAME='SCOTT';
+                        </span>
+                        조인 결과가 의미를 갖으려면 조인할 때 조건을 지정. 조인 조건에 따라 조인의 종류가 결정.
+                        <span class="bold_color_red">
+                        ­	Equi Join : 동일한 컬럼을 기준으로 조인
+                        ­	Non-Equi Join : 동일한 컬럼없이 다른 조건을 사용하여 조인
+                        ­	Outer Join : 조인 조건에 만족하지 않는 행도 나타나는 조인
+                        ­	Self Join : 한 테이블 내에서 조인.
+                        </span>
+                    </pre>
+                    <hr>
+                        <h3>3. Equi Join</h3>
+                    <hr>
+                    <pre> 
+
+                    EQUI JOIN은 가장 많이 사용하는 조인 방법으로서 조인 대상이 되는 두 테이블에서 공통적으로 존재하는 컬럼의 값이 
+                    일치되는 행을 연결하여 결과를 생성하는 조인 방법.
+
+                    다음은 사원 정보를 출력할 때 각 사원들이 소속된 부서의 상세 정보를 출력하기 위해서 두 개의 테이블을 조인한 예
+                    <span class="bold_color_blue">
+                        SELECT * FROM emp, dept WHERE emp.deptno=dept.deptno;
+                    </span>
+                    사원(EMP) 테이블과 부서(DEPT) 테이블의 공통 컬럼인 DEPTNO의 값이 일치(=)되는 조건을 WHERE 절에 기술하여 사용. 
+                    테이블을 조인하려면 일치되는 공통 컬럼을 사용해야 하고  컬럼의 이름이 같게 되면 혼동이 오기 때문에 
+                    컬럼 이름 앞에 테이블 이름을 기술.
+
+                    이름이 SCOTT인 사람의 부서명을 출력해 봅시다.
+                    <span class="bold_color_blue">
+                        SELECT ename, dname FROM emp, dept
+                        WHERE emp.deptno=dept.deptno AND ename=’SCOTT’;
+                    </span>
+                    사원이름, 부서이름, 부서번호를 출력하기 위해 다음의 SQL문을 수행하는 경우, 
+                    두 테이블에 동일한 이름의 컬럼을 사용하면 어느 테이블소속인지 불분명하기에 애매모호한 상태라는 오류 메시지가 출력됩니다.
+                    <span class="bold_color_blue">
+                        ­SELECT ename, dname, deptno FROM emp, dept
+                        WHERE emp.deptno = dept.deptno AND ename=’SCOTT’; -error
+                ­	
+                        SELECT ename, dname, emp.deptno FROM emp, dept
+                        WHERE emp.deptno = dept.deptno AND ename=’SCOTT’;
+                    </span>
+                    이러한 문제를 해결하기 위해, 동일한 이름의 컬럼은 반드시 컬럼명앞에 테이블명을 명시적으로 기술함으로서 
+                    컬럼이 어느 테이블 소속인지 구분할 수 있게 합니다
+                    <span class="bold_color_blue">                    
+                        SELECT emp.ename, dept.dname, emp.deptno FROM emp, dept
+                        WHERE emp.deptno=dept.deptno AND ename=’SCOTT’;
+                    </span>
+                    테이블 이름에 별칭을 붙이는 방법은 FROM 절 다음에 테이블 이름을 명시하고 공백을 둔 다음에 별칭을 지정하면 됩니다.
+                    테이블 별명은 30자이하의 의미있는 단어 사용을 추천한다
+                    <span class="bold_color_blue">
+                        SELECT e.ename, d.dname, e.deptno FROM emp e, dept d
+                        WHERE e.deptno=d.deptno AND ename=’SCOTT’;
+                        
+                        SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, E.DEPTNO, DNAME, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO;
+                        
+                        SELECT E.*, DNAME, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO;
+                        
+                        SELECT ENAME, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO;
+                    </span>
+                    사번, 이름, 급여, 부서코드, 부서명
+                    <span class="bold_color_blue">
+                        select empno 사번, ename 이름, sal 급여, e.deptno 부서코드, dname 부서명 from emp e, dept d where e.deptno = d.deptno;
+                    </span>
+                    이름, 업무, 급여, 부서명, 근무지. 급여가 2000이상
+                    <span class="bold_color_blue">
+                        select e.ename 이름, e.job 업무, to_char(e.sal, 'l9,999') 급여, d.dname 부서명, d.loc 근무지 from emp e, dept d where e.sal>=2000 and e.deptno=d.deptno;
+                    </span>
+                    이름, 업무, 부서명, 근무지. 근무지가 CHICAGO인 사람
+                    <span class="bold_color_blue">
+                        select e.ename 이름, job 업무, dname 부서명, loc 근무지 from emp e, dept d where e.deptno=d.deptno and d.loc='CHICAGO';
+                    </span>
+                    이름, 업무, 근무지. deptno이 10 또는 20인 경우, 급여순
+                    <span class="bold_color_blue">
+                        select e.ename 이름, job 업무, loc 근무지 from emp e, dept d where e.deptno=d.deptno and e.deptno in (10,20) order by sal;
+                    </span>
+                    이름, 급여, comm, 연봉(별칭), 부서명, 근무지. 연봉=(급여+comm)*12 단 comm이 Null이면 0
+                    <span class="bold_color_blue">
+                        select ename 이름, sal 급여, comm 보너스, to_char((sal+NVL(comm,0))*12, 'l999,999') 연봉, d.dname 부서명, loc 근무지 from emp e, dept d e.deptno=d.deptno;
+                    </span>
+                    5에서 job이 salesman 또는 manager 대상이고 연봉이 큰순 정렬
+                    <span class="bold_color_blue">
+                        select ename 이름, sal 급여, comm 보너스, to_char((sal+NVL(comm,0))*12, 'l99,999') 연봉, d.dname 부서명, loc 근무지 from emp e, dept d 
+                        where e.deptno=d.deptno and job in (upper('salesman'), upper('manager')) order by 연봉 desc;
+                    </span>
+                    이름, 급여, 입사일, 부서코드, 부서명 comm이 null이고 급여가 1200이상인 경우. 부서명순 정렬. 부셔명이 같으면 급여큰순
+                    <span class="bold_color_blue">
+                        select ename 이름, sal 급여, to_char(hiredate, 'yyyy"년 "MM"월" dd"일" dy"요일"') 입사일, d.deptno 부서코드, dname 부서명 from emp e, dept d 
+                        where e.deptno=d.deptno and comm is Null and sal>=1200 order by dname asc, sal desc;
+                    </span>
+                    뉴욕에서 근무하는 사원의 이름과 급여를 출력하시오
+                    <span class="bold_color_blue">
+                        SELECT ename, sal FROM emp e, dept d 
+                        WHERE e.deptno=d.deptno AND loc='NEW YORK';
+                    </span>                    ­
+                    ACCOUNTING 부서 소속 사원의 이름과 입사일을 출력하시오
+                    <span class="bold_color_blue">                    
+                        SELECT ename, hiredate FROM emp e, dept d 
+                        WHERE e.deptno=d.deptno AND dname='ACCOUNTING';
+                    </span>                    ­
+                    직급이 MANAGER인 사원의 이름, 부서명을 출력하시오
+                    <span class="bold_color_blue">
+                        SELECT ename, dname FROM emp e, dept d 
+                        WHERE e.deptno=d.deptno AND job='MANAGER';
+                    </span>                    ­
+                    Comm이 null이 아닌 사원의 이름, 급여, 부서코드, 근무지를 출력하시오.
+                    <span class="bold_color_blue">
+                        SELECT ename, sal, d.deptno, loc FROM emp e, dept d 
+                        WHERE e.deptno=d.deptno AND COMM IS NOT NULL;
+                    </span>
+                    </pre>
+                    <hr>
+                        <h3>4. Non-Equi Join</h3>
+                    <hr>
+                    <pre>
+
+                        Non-Equi Join은 조인 조건에 특정 범위 내에 있는지를 조사하기 위해서 WHERE 절에 조인 조건을 
+                        = 연산자 이외의 비교 연산자를 사용합니다. Non-Equi Join을 학습하기 전에 급여 등급 테이블(SALGRADE )을 살펴봅시다.
+                            <span class="color_pink">
+                            SELECT * FROM salgrade;
+                            </span>
+                        급여 등급을 5개로 나누어 놓은 salgrade에서 정보를 얻어 와서 각 사원의 급여 등급을 지정해보도록 합시다. 
+                        이를 위해서 사원(emp) 테이블과 급여 등급(salgrade) 테이블을 조인하도록 합시다. 
+                        다음은 사원의 급여가 몇 등급인지 살펴보는 예제. 
+                            <span class="color_pink">
+                            SELECT ename, sal, grage FROM emp, salgrage WHERE sal BETWEEN losal AND sal between losal and hisal AND hisal;
+                            SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, GRADE||'등급', NVL(COMM,0), DEPTNO FROM EMP E, SALGRADE S WHERE SAL BETWEEN LOSAL AND HISAL;
+                            SELECT E.*, GRADE FROM EMP E, SALGRADE S WHERE SAL BETWEEN LOSAL AND HISAL;
+                            </span>
+                    ­	Comm이 null이 아닌 사원의 이름, 급여, 등급, 부서이름, 근무지를 출력하시오.
+                            <span class="color_pink">
+                            SELECT ENAME, SAL, GRADE, E.DEPTNO, LOC FROM EMP E, SALGRADE, DEPT D
+                            WHERE E.DEPTNO=D.DEPTNO AND SAL BETWEEN LOSAL 
+                            AND HISAL AND COMM IS NOT  NULL;
+                            </span>
+                    </pre>
                 </div>
+                <h3 class="headline3">Example - 종합예제</h3>
                 <div>
                     <pre>
 
-                        사용자한테 두 번의 숫자를 입력 받아 곱셈, 나눗셈, 덧셈, 뺄셈을 하는 프로그램이 있습니다. 
-                        사용자가 ‘10’과 ‘2’를 입력하면 결과는 다음과 같을 것입니다.
-
-                       <span class="bold_color_red"> 10 * 2 = 20, 10 / 2 = 5, 10 + 2 = 12, 10 - 2 = 8</span>
-
-                        이 경우에는 아무런 이상이 없습니다. 하지만 사용자가 10과 0을 입력하는 순간 문제가 발생 합니다.
-
-                       <span class="bold_color_red"> 10 * 0 = 0, 10 / 0 = ?, 10 + 0 = 10, 10 - 0 = 10</span>
-
-                       <span class="bold_color_blue"> 0으로 나눌 수 없어 프로그램이 중단 될 것입니다. </span>
-                        
-                        이런 경우 덧셈과 뺄셈은 이상이 없어도 사용자는 프로그램 동작이 중단되어 결과를 볼 수가 없습니다. 
-                        만약, 나눗셈 처리에 예외처리를 해두었다면, 
-                        나눗셈의 결과는 못 보더라도 덧셈과 뺄셈의 결과는 볼 수 있었을 것입니다. 
-                        이것이 바로 예외처리가 필요한 이유 입니다. 
-                        일상적으로 많이 얘기 합니다. 보험처리라고.
-                            
+                        - 이름, 급여, 입사일, 급여등급
+                        <span class="bold_color_blue">
+                        select ename 이름, sal 급여, hiredate 입사일, grade 급여등급 
+                        from emp, salgrade 
+                        where sal between losal and hisal;
+                        </span>
+                        - 이름, 급여, 입사일, 급여등급, 부서명, 근무지
+                        <span class="bold_color_blue">
+                        select ename 이름, sal 급여, hiredate 입사일, grade 급여등급, dname 부서명, loc 근무지 
+                        from emp e, dept d, salgrade 
+                        where sal between losal and hisal and e.deptno=d.deptno;
+                        </span>  
+                        - 이름, 급여, 등급, 부서코드, 근무지. 단 comm 이 null아닌 경우
+                        <span class="bold_color_blue">
+                        select ename 이름, sal 급여, grade 급여등급, d.deptno 부서코드, loc 근무지 
+                        from emp e, dept d, salgrade 
+                        where e.deptno=d.deptno and sal between losal and hisal and comm is not null;
+                        </span class="bold_color_blue">       
+                        - 이름, 급여, 급여등급, 연봉, 부서명, 부서별 출력, 부서가 같으면 연봉순. 연봉=(sal+comm)*12 comm이 null이면 0
+                        <span class="bold_color_blue">                        
+                        select ename, sal, grade, (sal+NVL(comm,0))*12 연봉, dname 
+                        from emp, dept, salgrade 
+                        where sal between losal and hisal and emp.deptno=dept.deptno 
+                        order by dname, 연봉;
+                        </span>           
+                        - 이름, 업무, 급여, 등급, 부서코드, 부서명 출력. 급여가 1000~3000사이. 정렬조건 : 부서별, 부서같으면 업무별, 업무같으면 급여 큰순
+                        <span class="bold_color_blue">                        
+                        select ename, job, sal, grade, d.deptno, dname 
+                        from emp e, dept d, salgrade 
+                        where sal between losal and hisal and e.deptno = d.deptno and sal between 1000 and 3000 
+                        order by dname asc, job asc, sal desc; -- asc 당근 생략 가능
+                        </span>
+                        <span class="bold_color_blue">                    
+                        select ename, job, sal, grade, d.deptno, dname 
+                        from emp e, dept d, salgrade 
+                        where (sal between losal and hisal )and (e.deptno=d.deptno) and (sal between 1000 and 3000) 
+                        order by dname asc, job asc, sal desc; -- 괄호로 명확하게 readability를 올림
+                        </span>
+                        -이름, 급여, 등급, 입사일, 근무지. 81년에 입사한 사람. 등급 큰순
+                        <span class="bold_color_blue">
+                        select e.ename, e.sal, s.grade, to_char(hiredate, 'yyyy"년 "MM"월" dd"일" dy"요일"') 입사일, d.loc 
+                        from emp e, dept d, salgrade s
+                        where e.deptno = d.deptno and e.sal between s.losal and s.hisal and to_char(e.hiredate, 'YY') = '81' 
+                        order by s.grade desc;
+                        </span>
+                        <span class="bold_color_blue">                        
+                        select e.ename, e.sal, s.grade, to_char(hiredate, 'yyyy"년 "MM"월" dd"일" dy"요일"') 입사일, d.loc 
+                        from emp e, dept d, salgrade s
+                        where e.deptno = d.deptno and e.sal between s.losal and s.hisal and extract(year from hiredate) = 1981 
+                        order by s.grade desc;
+                        </span>   
                     </pre>
                 </div>
                 <div>
-                    <h3 class="headline3 background_bisque">예외 처리의 기본 문법</h3>
+                    <hr>
+                        <h3>5.	Self Join</h3>
+                    <hr>
                     <pre>
-
-                        예외처리 문법(try ~ catch)
-
-                        <b>try {
-
-                            try블럭 ; 익셉션이 발생할 가능성이 있는 명령문들(문제가 발생할 수 있는 로직을 기술)
-                    
-                        } catch(익셉션타입 익셉션변수) {
-
-                            그 익셉션을 처리하는 명령문(try블록안에서 문제가 발생했을 때 대처방안 기술);
-                    
-                        } finally {
-
-                            익셉션 발생 여부와 상관없이 맨 마지막에 실행할 명령문;
-                        }</b>
-                        
-                    </pre>
-                    <h3 class="headline3 background_bisque">예외 처리를 한 예제 </h3>                        
-                    <pre style="background:#000;color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex0trycatch</span>;
-
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
-                        
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex01</span> {
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
-                                <span style="color:#99cf50">Scanner</span> sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
-                                <span style="color:#99cf50">int</span> i<span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>, j <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"사칙연산을 할겁니다."</span>);
-                        
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"첫번째 수?"</span>);
-                                <span style="color:#e28964">try</span> {
-                                    i <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt();
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"꼭 수를 입력하세요."</span>);
-                                }
-                                sc<span style="color:#e28964">.</span>nextLine(); <span style="color:#aeaeae;font-style:italic">// 버퍼 삭제</span>
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"두번째 수?"</span>);
-                                <span style="color:#e28964">try</span> {
-                                    j <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt();
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"꼭 수를 입력하세요."</span>);
-                                }
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i * j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">*</span> j));
-                                <span style="color:#e28964">try</span> {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i / j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">/</span> j));
-                                    
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">ArithmeticException</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                } <span style="color:#e28964">finally</span> {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"계속 수행됨니다."</span>);
-                                }
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i + j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">+</span> j));
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i - j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">-</span> j));
-                        
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"이상입니다."</span>);
-                                sc<span style="color:#e28964">.</span>close();
-                            }
-                        }
-                        
-                    </pre>
-                    <pre style="color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex0trycatch</span>;
-
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.InputMismatchException</span>;
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
-                        
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex02</span> {
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
-                                <span style="color:#99cf50">Scanner</span> sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
-                                <span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
-                                <span style="color:#99cf50">int</span> j <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>;
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"사칙연산을 할겁니다."</span>);
-                                
-                                <span style="color:#e28964">do</span> {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"첫번째 수?"</span>);
-                                    <span style="color:#e28964">try</span> {
-                                        i <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt(); <span style="color:#aeaeae;font-style:italic">//*</span>
-                                        <span style="color:#e28964">break</span>;
-                                    } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">InputMismatchException</span> e) {
-                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"수를 입력하세요 안그러면 0으로"</span>);
-                                        sc<span style="color:#e28964">.</span>nextLine();
-                                    }
-                                }<span style="color:#e28964">while</span>(<span style="color:#3387cc">true</span>); <span style="color:#aeaeae;font-style:italic">// 수를 입력할때 까지 계속 반복</span>
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"두번째 수?"</span>);
-                                
-                                <span style="color:#e28964">try</span> {
-                                    j <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt(); <span style="color:#aeaeae;font-style:italic">//*</span>
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i * j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">*</span> j));
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i / j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">/</span> j)); <span style="color:#aeaeae;font-style:italic">//*</span>
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">InputMismatchException</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"수를 입력하세요 안그러면 0으로"</span>);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">ArithmeticException</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                }
-                                    
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i + j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">+</span> j));
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i - j = "</span> <span style="color:#e28964">+</span> (i <span style="color:#e28964">-</span> j));
-                        
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"이상입니다."</span>);
-                                sc<span style="color:#e28964">.</span>close();
-                            }
-                        }
-                        
-                    </pre>
-                    <pre style="background:#000;color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex0trycatch</span>;
-
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">EX03</span> {
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
-                                <span style="color:#99cf50">int</span>[] iArr <span style="color:#e28964">=</span> { <span style="color:#3387cc">0</span>, <span style="color:#3387cc">1</span>, <span style="color:#3387cc">2</span> };
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"==========================================="</span>);
-                                <span style="color:#e28964">try</span> {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(iArr[<span style="color:#3387cc">3</span>]);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">ArrayIndexOutOfBoundsException</span> e) {
-                                    <span style="color:#aeaeae;font-style:italic">// e.printStackTrace(); // 예외 메세지를 자세하게 보여준다.</span>
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage() <span style="color:#e28964">+</span> <span style="color:#65b042">"인덱스를 봐"</span>);
-                                } <span style="color:#e28964">finally</span> {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"finally 나는 예외가 나든 안나든 항상 실행하지."</span>);
-                                }
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"==========================================="</span>);
-                            }
-                        }
-                        
-                    </pre>
-                </div>
-                <div id="strctuer">
-                    <h3 class="headline3">Exception Class 객체의 구조</h3>
-                    <pre>
-
-                           <h3> Exception = 최상위 객체로 존재하기때문에 해당 형으로 모든 예외를 가질수 있다.</h3>
-                                IOException
-                                ClassNotFoundException
-                                ….
-                                RuntimeException
-                                ArithmeticException
-                                ClassCaseException
-                                NullPointerException
-                                …
-                                IndexOutOfBoundsException
-
-                            * 자바 API 가 제공하는 예외는 엄청나게 많다.
                             
-                            catch 문에 예외처리를 여러 개 할 수도 있다 
+                        조인은 두 개 이상의 서로 다른 테이블을 서로 연결하는 것뿐만 아니라, 
+                        하나의 테이블 내에서 조인을 해야만 원하는 자료를 얻는 경우가 생깁니다. 
+                        Self Join이란 말 그대로 자기 자신과 조인을 맺는 것. Self Join을 보다 구체적인 예를 통해서 알아보도록 합시다. 
+                        SMITH의 매니저 이름이 무엇인지 알아내려면 어떻게 구해야 할까요? 
+                            
+                    </pre>
+                    <div class="image_modify"><img src="../../img/Join01.png" alt=""></div>
+                    <pre>
 
-                           <b>try {
+                        이런 경우 Self Join을 씁니다.
+                        Slef Join은 Edui Join과 같으나 하나의 테이블에 조인이 일어나는 것이 다름. 
+                        같은 테이블에 대해 두 개의 Alias를 작성 함으로서 from 절에 두 개의 테이블을 사용하는 것과 같이 함
+                            
+                    </pre>
+                    <div class="image_modify"><img src="../../img/Join02.jpg" alt=""></div>
+                    <pre>
 
-                                try블럭 ; 익셉션이 발생할 가능성이 있는 명령문들
-
-                            }catch(ArrayIndexOutOfBoundsException a) {
-
-                               <span class="bold_color_red"> ArrayIndexOutOfBounds 익셉션을 처리하는 명령문</span>
-
-                            } catch(NumberFormatException n) {
-
-                               <span class="bold_color_blue"> NumberFormat 익셉션을 처리하는 명령문</span>
-
-                            } catch(Exception e) {
-
-                              <span class="bold_color_red">  그 외 익셉션을 처리하는 명령문</span>
-
-                            } finally {
-
-                                익셉션 발생 여부와 상관없이 맨 마지막에 실행할 명령
-                                
-                            }</b>
-
+                        WORKER.MGR 과  MANAGER.EMPNO은 같다
+                            <span class="bold_color_red">
+                            SELECT WORKER.ENAME || ‘의 상사는 ‘ || MANAGER.ENAME
+                            FROM EMP WORKER, EMP MANAGER
+                            WHERE WORKER.MGR = MANAGER.EMPNO
+                            </span>
                     </pre>
                 </div>
                 <div>
-                    <h3 class="headline3">예외처리 문법(throws)</h3>
-                    <pre>
-                            
-                        try ~ catch 예외 처리 방법은 예외가 발생했을 때 자체적으로 catch문을 이용해서 해결 했습니다.
-                        이번에 살펴볼 throws의 경우에는 나를 호출한(실행시키는) 쪽으로 예외를 던져버리는 방식 입니다.
-                            
-                    </pre>
-                    <pre style="background:#000;color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex1</span>;
-
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">ThrowEx</span> {
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">ThrowEx</span>() <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span> {
-                                actionC();
-                            }
-                        
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionC</span>() <span style="color:#99cf50">throws</span> <span style="color:#99cf50">ArrayIndexOutOfBoundsException</span> {
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionC 전반부"</span>);
-                                actionB();
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionC 후반부"</span>);
-                            }
-                        
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionB</span>() <span style="color:#99cf50">throws</span> <span style="color:#99cf50">ArrayIndexOutOfBoundsException</span> {
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionB 전반부"</span>);
-                                actionA();      
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionB 전반부"</span>);
-                        
-                            }
-                        
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">actionA</span>() <span style="color:#99cf50">throws</span> <span style="color:#99cf50">ArrayIndexOutOfBoundsException</span> { <span style="color:#aeaeae;font-style:italic">// 예외를 이 메소드에서 처리한다.</span>
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionA 전반부"</span>);
-                                <span style="color:#99cf50">int</span>[] iArr <span style="color:#e28964">=</span> { <span style="color:#3387cc">0</span>, <span style="color:#3387cc">1</span>, <span style="color:#3387cc">2</span> };
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"인덱스 4 값"</span> <span style="color:#e28964">+</span> iArr[<span style="color:#3387cc">4</span>]);
-                        <span style="color:#aeaeae;font-style:italic">//      try {</span>
-                        <span style="color:#aeaeae;font-style:italic">//          System.out.println("인덱스 4 값" + iArr[4]);</span>
-                        <span style="color:#aeaeae;font-style:italic">//      } catch (ArrayIndexOutOfBoundsException e) {</span>
-                        <span style="color:#aeaeae;font-style:italic">//          System.out.println(e.getMessage());</span>
-                        <span style="color:#aeaeae;font-style:italic">//      }</span>
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"actionA 후반부"</span>);
-                            }
-                        
-                        }
-                        
-                    </pre>
-                    <pre style="color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex1</span>;
-
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">MainClass</span> {
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>){
-                                
-                                    <span style="color:#e28964">try</span> {
-                                        <span style="color:#99cf50">ThrowEx</span> ex <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">ThrowEx</span>();
-                                    } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                                        <span style="color:#aeaeae;font-style:italic">// TODO Auto-generated catch block</span>
-                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                    }
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"프로그램은 종료되지 않는다."</span>);
-                            }
-                        
-                        }
-                    
-                    </pre>
-                </div>
-                <div id="flag">
-                    <h3 class="headline3 background_bisque">일반적으로 많이 보게 되는 예외들</h3>
+                    <h3 class="headline3 background_bisque">Inner join Total Example - 종합예제</h3>
                     <pre>
 
-                        예외(Exception)의 종류는 아주 많습니다. 정말 많습니다.
-                        Exception클래스는 많은 예외들(자식클래스)를 가지고 있습니다. 
-                        모든 예외를 습득한다는 것은 불가능 하며, 그럴 필요도 없습니다.
-
-                        프로그래밍을 하다 보면, 자주 보게 되는 예외들이 있습니다.
-                        대표적인 몇 가지만 살펴보도록 하겠습니다.
-
-                        JAVA API문서를 통해서 Exception클래스가 얼마나 많은 자식 클래스를 가지고 있는지 알 수 있습니다.
-                        
-                      <span class="bold_color_red">※ ArrayIndexOutOfBoundsException</span> > 배열을 사용시 존재하지 않는 index값을 호출하면 발생 합니다.
-                            
-                            int[] iArr = {0,1,2,3};
-                            System.out.println(iArr[4]);
-                        
-                      <span class="bold_color_red">※ NullPointerException</span> > 존재하지 않는 객체를 가리킬 때 발생 합니다
-                            
-                            String str = null;
-                            char c = str.charAt(0);
-                        
-                      <span class="bold_color_red">※ NumberFormatException</span> > 숫자로 변경할 수 없는 문자열을 변경하려고 함.
-                            
-                            public static void main(String[] args) {
-                                String str = "aa";
-                                String str1 = "10     ";
-                                int i = 10;
-                                int j = Integer.parseInt(str)+i;
-                                j = Integer.parseInt(str1.trim())+i;
-                            }
-                        
-                       <h3>※ DB 관련 Exception</h3>
-
-                        <span class="bold_color_red">ClassNotFoundException</span> : 드라이브 이름을 찾지 못했을 때
-                        <span class="bold_color_red">SQLException</span> : db url, id, pw가 올바르지 않을 때
-                        
-                        등등 Exception의 종류만 봐도 왜 예외가 일어났는지 직관적으로 알 수 있다.
-                            
+                        매니저가 KING인 사원들의 이름과 직급을 출력하시오.
+                            <span class="bold_color_red">
+                            SELECT WORKER.ENAME, WORKER.JOB
+                            FROM EMP WORKER, EMP MANAGER
+                            WHERE WORKER.MGR=MANAGER.EMPNO AND MANAGER.ENAME='KING';
+                            </span>
+                        ­SCOTT과 동일한 근무지에서 근무하는 사원의 이름을 출력하시오
+                            <span class="bold_color_red">
+                            SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT';
+                            SELECT ENAME FROM EMP WHERE DEPTNO=20 AND ENAME<>'SCOTT';
+                            </span>
+                            <span class="bold_color_red">
+                            SELECT E1.ENAME, E1.DEPTNO, E2.DEPTNO, E2.ENAME 
+                            FROM EMP E1, EMP E2
+                            WHERE E1.ENAME='SCOTT' AND E1.DEPTNO=E2.DEPTNO;
+                            </span>
+                            <span class="bold_color_red">
+                            SELECT E2.ENAME 
+                            FROM EMP E1, EMP E2
+                            WHERE E1.ENAME='SCOTT' AND E1.DEPTNO=E2.DEPTNO
+                            AND E2.ENAME<>'SCOTT';
+                            </span>
                     </pre>
                 </div>
+                <hr>
+                    <h3>6.	Outer Join</h3>
+                <hr>
                 <div>
-                    <pre style="background:#000;color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex2exceptionexample</span>;
+                    <pre>
+                            
+                            Seif Join을 통해 특정 사원의 매니저 이름을 구한 결과를 꼼꼼히 살펴보면 
+                            이름이 KING인 사원 한 사람의 정보가 빠져 있음을 확인할 수 있다. 
+                            KING은 이 회사의 사장(PRESIDENT)으로 매니저가 존재하지 않으므로 MGR 컬럼 값이 NULL 입니다. 
+                            사원 번호(EMPNO)가 NULL인 사원은 없으므로 조인 조건에 만족하지 않아서 KING은 Self Join의 결과에서 배제되었습니다.
 
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Ex01</span> {
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
-                                <span style="color:#99cf50">String</span> name <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
-                                
-                                <span style="color:#99cf50">String</span> str <span style="color:#e28964">=</span> <span style="color:#65b042">"a"</span>;
-                                <span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#99cf50">Integer</span><span style="color:#e28964">.</span>parseInt(str);
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"i = "</span><span style="color:#e28964">+</span>i);
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"끝"</span>);
-                                
-                        <span style="color:#aeaeae;font-style:italic">//      System.out.println(name.charAt(0)); // 값이 없기때문에 포인트를 찾을수 없다.</span>
-                            }
-                        }
-                        
+                            조인 조건에 만족하지 못하였더라도 해당 로우를 나타내고 싶을 때에 사용하는 것이 외부 조인(Outer Join)입니다. 
+                            외부 조인(Outer Join)은 NULL 값이기에 배제된 행을 결과에 포함시킬 수 있으며 
+                            다음과 같이 “(+)” 기호를 조인 조건에서 정보가 부족한 칼럼 이름 뒤에 덧붙입니다. 
+                            사원 번호(EMPNO)가 NULL인 사원은 없으므로 manager.empno 뒤에 “(+)” 기호를 덧붙입니다. 
+
+                                <span class="bold_color_blue">
+                                SELECT WORKER.ENAME, MANAGER.ENAME 상사
+                                FROM EMP WORKER, EMP MANAGER
+                                WHERE WORKER.MGR=MANAGER.EMPNO(+) ;
+                                </span>
+                            말단사원들의 리스트를 출력하시오
+                                <span class="bold_color_blue">
+                                SELECT W.EMPNO, W.MGR, W.ENAME, M.ENAME FROM EMP W, EMP M
+                                WHERE W.MGR(+)=M.EMPNO  AND W.ENAME IS NULL ORDER BY W.EMPNO;
+                                </span>
+                            이름, 업무, 부서명
+                                <span class="bold_color_blue">
+                                select e.ename, e.job, d.dname from emp e, dept d where e.deptno=d.deptno;
+                                </span>
+                            이름, 업무, 부서코드, 부서명 (직원이 없는 부서명 출력)
+                                <span class="bold_color_blue">
+                                select e.ename, e.job, d.deptno, d.dname from emp e, dept d where e.deptno(+)=d.deptno;
+                                </span>
+                            이름, 업무, 부서명, 급여 (직원이 없는 부서명 출력) 부서명순 정렬, 부서가 같으면 급여 큰순
+                                <span class="bold_color_blue">
+                                select e.ename, e.job, d.dname, to_char(sal, 'l9,999') from emp e, dept d where e.deptno(+)=d.deptno order by d.dname, e.sal desc;
+                                </span>  
+                            <hr>
+                            ­	다음과 같은 결과를 같은 SQL문을 작성하시오.
+
+                                FORD의 매니저는 JONES입니다.
+                                SCOTT의 매니저는 JONES입니다.
+                                JAMES의 매니저는 BLAKE입니다.
+                                TURNER의 매니저는 BLAKE입니다.
+                                MARTIN의 매니저는 BLAKE입니다.
+                                WARD의 매니저는 BLAKE입니다.
+                                ALLEN의 매니저는 BLAKE입니다.
+                                MILLER의 매니저는 CLARK입니다.
+                                ADAMS의 매니저는 SCOTT입니다.
+                                CLARK의 매니저는 KING입니다.
+                                BLAKE의 매니저는 KING입니다.
+                                JONES의 매니저는 KING입니다.
+                                SMITH의 매니저는 FORD입니다.
+                                KING의 매니저는 無입니다.
+                                <span class="bold_color_red">
+                                SELECT employee.ename || '의 매니저는'|| NVL(manager.ename, '無') || '입니다.'
+                                FROM emp employee, emp manager
+                                WHERE employee.mgr = manager.empno(+);
+                                </span>
+                                ­사원  테이블과 부서 테이블을 조인하여 사원이름과 부서번호와 부서명을 출력하도록 합시다. 
+                                부서 테이블의 40번 부서와 조인할 사원 테이블의 부서번호가 없지만, 
+                                40번 부서의 부서 이름도 출력되도록 쿼리문을 작성해 보시오.
+                                <span class="bold_color_red">
+                                SELECT ENAME, D.DEPTNO, DNAME FROM EMP E, DEPT D WHERE E.DEPTNO(+)=D.DEPTNO;
+                                </span>
                     </pre>
                 </div>
-                <div id="create">
-                   <h3 class="headline3">강제로 예외 발생시키기(코드에서 예외 발생시키기)</h3>
-                   <pre>
+                <h3 class="headline3">Total Example - 종합 예제</h3>
+                <div>
+                    <pre>
 
-                      <span class="bold_color_red">throw new Exception(“에러메세지”);</span>
+                            --1. 이름, 직속상사
+                                <span class="bold_color_red">
+                                SELECT W.ENAME WORKER, M.ENAME MANAGER
+                                FROM EMP W, EMP M
+                                WHERE W.MGR = M.EMPNO;
+                                </span>                            
+                            --2. 이름, 급여, 업무, 직속상사
+                                <span class="bold_color_red">
+                                SELECT W.ENAME, W.SAL, W.JOB, M.ENAME
+                                FROM EMP W, EMP M
+                                WHERE W.MGR = M.EMPNO;
+                                </span>                            
+                            --3. 이름, 급여, 업무, 직속상사. (상사가 없는 직원까지 전체 직원 다 출력. 상사가 없을 시 “없음”으로 출력)
+                                <span class="bold_color_red">
+                                SELECT W.ENAME, W.SAL, W.JOB,  NVL(M.ENAME, '없음')
+                                FROM EMP W, EMP M
+                                WHERE W.MGR = M.EMPNO(+);
+                                </span>                            
+                            --4. 이름, 급여, 부서명, 직속상사명
+                                <span class="bold_color_red">
+                                SELECT W.ENAME, W.SAL, D.DNAME, M.ENAME
+                                FROM EMP W, EMP M, DEPT D
+                                WHERE W.MGR = M.EMPNO AND M.DEPTNO = D.DEPTNO;
+                                </span>                            
+                            --5. 이름, 급여, 부서코드, 부서명, 근무지, 직속상사명, (상사가 없는 직원까지 전체 직원 다 출력) *****
+                                <span class="bold_color_red">
+                                SELECT W.ENAME, W.SAL, D.DEPTNO, D.DNAME, D.LOC, NVL(M.ENAME, '없음') MANAGER
+                                FROM EMP W, EMP M, DEPT D
+                                WHERE W.MGR = M.EMPNO(+) AND W.DEPTNO = D.DEPTNO;
+                                </span>                            
+                            --6. 이름, 급여, 등급, 부서명, 직속상사명. 급여가 2000이상인 사람
+                                <span class="bold_color_red">
+                                SELECT W.ENAME, W.SAL, GRADE, D.DNAME, M.ENAME
+                                FROM EMP W, EMP M, DEPT D, SALGRADE S
+                                WHERE W.MGR = M.EMPNO AND D.DEPTNO = M.DEPTNO AND W.SAL BETWEEN S.LOSAL AND S.HISAL AND W.SAL >= 2000;
+                                </span>                            
+                            --7. 이름, 급여, 등급, 부서명, 직속상사명, (직속상사가 없는 직원까지 전체직원 부서명 순 정렬)
+                                <span class="bold_color_red">
+                                SELECT W.ENAME, W.SAL, GRADE, D.DNAME, M.ENAME
+                                FROM EMP W, EMP M, DEPT D, SALGRADE S
+                                WHERE W.MGR = M.EMPNO(+) AND W.DEPTNO = D.DEPTNO AND W.SAL BETWEEN S.LOSAL AND S.HISAL
+                                ORDER BY DNAME;
+                                </span>                            
+                            --8. 이름, 급여, 등급, 부서명, 연봉, 직속상사명. 연봉=(급여+comm)*12 단 comm이 null이면 0
+                                <span class="bold_color_red">
+                                SELECT W.ENAME, W.SAL, GRADE, D.DNAME, (W.SAL+NVL(W.COMM, 0))*12 SLAYAER, M.ENAME MGR
+                                FROM EMP W, EMP M , DEPT D, SALGRADE S
+                                WHERE W.MGR = M.EMPNO AND W.SAL BETWEEN S.LOSAL AND S.HISAL AND D.DEPTNO = M.DEPTNO;
+                                </span>                            
+                            --9. 8번을 부서명 순 부서가 같으면 급여가 큰 순 정렬
+                                <span class="bold_color_red">
+                                SELECT W.ENAME, W.SAL, W.JOB, (W.SAL+NVL(W.COMM, 0))*12 SLAYAER, M.ENAME MGR
+                                FROM EMP W, EMP M , DEPT D
+                                WHERE W.MGR = M.EMPNO AND D.DEPTNO = M.DEPTNO
+                                ORDER BY D.DNAME, SAL DESC;
+                                </span>
 
-                      throws : 강제 예외를 처리한 메소드는 반드시 메소드 뒤에 throws 키워드를 통한 예외 객체를 던지는 코드를 작성해야한다.
+                            <hr>
 
-                      <h3>ex)</h3>
-                      public void whitdraw(int amount) <span class="bold_color_blue"> throws Exception </span> {
-                        if () { 
-                            <span class="bold_color_red">throw new Exception( account + "인출하기에는 잔액(" + Math.abs(balance - amount) + ")이 부족합니다."); </span>
-                        }
-                        
-                    }
-
-                   </pre>
-                   <hr>
-                        <h3>Account Class</h3>
-                    <hr>
-                   <pre style="background:#000;color:#f8f8f8">
-                       
-                    <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex3account</span>;
-
-                    <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">Account</span> {
-                        <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> account;
-                        <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> ownerName;
-                        <span style="color:#99cf50">private</span> <span style="color:#99cf50">int</span> balance;
-                        <span style="color:#aeaeae;font-style:italic">// 생성자</span>
-                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">Account</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">account</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">ownerName</span>) {
-                            <span style="color:#3e87e3">super</span>();
-                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>account <span style="color:#e28964">=</span> account;
-                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>ownerName <span style="color:#e28964">=</span> ownerName;
-                        }
-                    
-                        <span style="color:#99cf50">public</span> <span style="color:#89bdff">Account</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">account</span>, <span style="color:#99cf50">String</span> <span style="color:#3e87e3">ownerName</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">balance</span>) {
-                            <span style="color:#3e87e3">super</span>();
-                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>account <span style="color:#e28964">=</span> account;
-                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>ownerName <span style="color:#e28964">=</span> ownerName;
-                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>balance <span style="color:#e28964">=</span> balance;
-                        }
-                        <span style="color:#aeaeae;font-style:italic">// 메소드</span>
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">deposit</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">amount</span>) {
-                            balance <span style="color:#e28964">+=</span> amount;
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(ownerName <span style="color:#e28964">+</span> <span style="color:#65b042">"님이 "</span> <span style="color:#e28964">+</span> amount <span style="color:#e28964">+</span> <span style="color:#65b042">"원 예금하여 잔액 "</span> <span style="color:#e28964">+</span> balance);
-                        }
-                    
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">whitdraw</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">amount</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span> {
-                            <span style="color:#e28964">if</span> (balance <span style="color:#e28964">&lt;</span> amount) { <span style="color:#aeaeae;font-style:italic">// 인출금액이 예금액보다 크다면</span>
-                                <span style="color:#aeaeae;font-style:italic">// 강제 예외 발생시킴</span>
-                                <span style="color:#aeaeae;font-style:italic">// 예외 메세지 작성</span>
-                                <span style="color:#e28964">throw</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Exception</span>( account <span style="color:#e28964">+</span> <span style="color:#65b042">"인출하기에는 잔액("</span> <span style="color:#e28964">+</span> <span style="color:#99cf50">Math</span><span style="color:#e28964">.</span>abs(balance <span style="color:#e28964">-</span> amount) <span style="color:#e28964">+</span> <span style="color:#65b042">")이 부족합니다."</span>); 
-                            }
-                            balance <span style="color:#e28964">-=</span> amount;
-                            <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(ownerName <span style="color:#e28964">+</span> <span style="color:#65b042">"님이 "</span> <span style="color:#e28964">+</span> amount <span style="color:#e28964">+</span> <span style="color:#65b042">"원 인출하여 잔액"</span> <span style="color:#e28964">+</span> balance);
-                        }
-                    
-                        <span style="color:#99cf50">@Override</span>
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">toString</span>() {
-                            <span style="color:#e28964">return</span> <span style="color:#65b042">"[account="</span> <span style="color:#e28964">+</span> account <span style="color:#e28964">+</span> <span style="color:#65b042">", ownerName="</span> <span style="color:#e28964">+</span> ownerName <span style="color:#e28964">+</span> <span style="color:#65b042">", balance="</span> <span style="color:#e28964">+</span> balance <span style="color:#e28964">+</span> <span style="color:#65b042">"]"</span>;
-                        }
-                        
-                        <span style="color:#aeaeae;font-style:italic">//setter getter</span>
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getAccount</span>() {
-                            <span style="color:#e28964">return</span> account;
-                        }
-                    
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setAccount</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">account</span>) {
-                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>account <span style="color:#e28964">=</span> account;
-                        }
-                    
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getOwnerName</span>() {
-                            <span style="color:#e28964">return</span> ownerName;
-                        }
-                    
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setOwnerName</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">ownerName</span>) {
-                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>ownerName <span style="color:#e28964">=</span> ownerName;
-                        }
-                    
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">int</span> <span style="color:#89bdff">getBalance</span>() {
-                            <span style="color:#e28964">return</span> balance;
-                        }
-                    
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBalance</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">balance</span>) {
-                            <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>balance <span style="color:#e28964">=</span> balance;
-                        }
-                        
-                    }
-                    
-                    </pre>
-                    <hr>
-                        <h3>Account Main Class</h3>
-                    <hr>
-                    <pre style="color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex3account</span>;
-
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">AccountMain</span> {
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
-                                <span style="color:#99cf50">Account</span> ac1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Account</span>(<span style="color:#65b042">"111-1111"</span>, <span style="color:#65b042">"홍길동"</span>);
-                                <span style="color:#99cf50">Account</span> ac2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Account</span>(<span style="color:#65b042">"222-2222"</span>, <span style="color:#65b042">"박길동"</span>, <span style="color:#3387cc">2000</span>);
-                                
-                                ac1<span style="color:#e28964">.</span>deposit(<span style="color:#3387cc">10000</span>);
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(ac1); <span style="color:#aeaeae;font-style:italic">// tostring();</span>
-                                
-                                ac2<span style="color:#e28964">.</span>deposit(<span style="color:#3387cc">10000</span>);
-                                
-                                <span style="color:#e28964">try</span> {
-                                    ac1<span style="color:#e28964">.</span>whitdraw(<span style="color:#3387cc">2000</span>);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                        <span style="color:#aeaeae;font-style:italic">//          e.printStackTrace();</span>
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                }
-                                
-                                <span style="color:#e28964">try</span> {
-                                    ac1<span style="color:#e28964">.</span>whitdraw(<span style="color:#3387cc">20000</span>);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                        <span style="color:#aeaeae;font-style:italic">//          e.printStackTrace();</span>
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage()); <span style="color:#aeaeae;font-style:italic">// throw new Exception(); 에서 설정된 메세지를 가져와서 출력해줌</span>
-                                }
-                            }
-                        
-                        }
-                        
-                    </pre>
-                </div>
-                <div id="object">
-                    <h3 class="headline3 background_bisque">예외처리 예제</h3>
-                    <pre style="background:#000;color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex4lib</span>;
-
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
-                        
-                        <span style="color:#aeaeae;font-style:italic">// 이름 나이 입력 받고 여차하면 별명 입력. </span>
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">TestMain</span> {
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
-                                <span style="color:#99cf50">Scanner</span> sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
-                        
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"이름은?"</span>);
-                                <span style="color:#99cf50">String</span> name <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>next();
-                                
-                                <span style="color:#99cf50">String</span> nickName <span style="color:#e28964">=</span> getNickName(sc);
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"나이는?"</span>);
-                                <span style="color:#99cf50">int</span> age <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>nextInt();
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"[이름] : "</span> <span style="color:#e28964">+</span> name <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>[별명] : "</span> <span style="color:#e28964">+</span> nickName <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>[나이] : "</span> <span style="color:#e28964">+</span> age);
-                                
-                                sc<span style="color:#e28964">.</span>close();
-                            }
-                        
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getNickName</span>(<span style="color:#99cf50">Scanner</span> <span style="color:#3e87e3">sc</span>) {
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"별명은?"</span>);
-                                <span style="color:#99cf50">String</span> nickname <span style="color:#e28964">=</span> sc<span style="color:#e28964">.</span>next();
-                                
-                                <span style="color:#e28964">return</span> nickname;
-                            }
-                        
-                        }
-                        
-                    </pre>
-                </div>
-                <div id="total">
-                    <h3 class="headline3">종합 예제 (Example)</h3>
-                    <hr>
-                        <h3>ILendable Interface</h3>
-                    <hr>
-                    <pre style="background:#000;color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex5booklib</span>;
-
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
-                        
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">interface</span> <span style="text-decoration:underline">ILendable</span> {
-                            <span style="color:#99cf50">byte</span> <span style="color:#3387cc">STATE_BORROWED</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">1</span>; <span style="color:#aeaeae;font-style:italic">// 대출상태</span>
-                            <span style="color:#99cf50">byte</span> <span style="color:#3387cc">STATE_NOMAL</span> <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; <span style="color:#aeaeae;font-style:italic">// 대출가능상태 </span>
-                            
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">checkOut</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">borrower</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span>; <span style="color:#aeaeae;font-style:italic">// 대출</span>
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">checkIn</span>(<span style="color:#99cf50">Scanner</span> <span style="color:#3e87e3">sc</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span>; <span style="color:#aeaeae;font-style:italic">// 반납</span>
-                        }
-                        
-                    </pre>
-                    <hr>
-                        <h3>BookLib Class</h3>
-                    <hr>
-                    <pre style="color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex5booklib</span>;
-
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.text.SimpleDateFormat</span>;
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Date</span>;
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
-                        
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">BookLib</span> <span style="color:#99cf50">implements</span> <span style="color:#9b5c2e;font-style:italic">ILendable</span> {
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> bookTitle; <span style="color:#aeaeae;font-style:italic">// 책이름</span>
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">String</span> borrower; <span style="color:#aeaeae;font-style:italic">// 대출자</span>
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">Date</span> checkOutDate; <span style="color:#aeaeae;font-style:italic">// 대출일</span>
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">byte</span> state; <span style="color:#aeaeae;font-style:italic">// 대출 상태</span>
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#89bdff">BookLib</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">bookTitle</span>) {
-                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>bookTitle <span style="color:#e28964">=</span> bookTitle;
-                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>borrower <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
-                                checkOutDate <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
-                                state <span style="color:#e28964">=</span> <span style="color:#3387cc">STATE_NOMAL</span>;
-                            } <span style="color:#aeaeae;font-style:italic">// 데이터 초기화 :</span>
-                        
-                            <span style="color:#99cf50">@Override</span>
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">checkOut</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">borrower</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span> {
-                        
-                                <span style="color:#e28964">if</span> (state <span style="color:#e28964">==</span> <span style="color:#3387cc">STATE_BORROWED</span>) { <span style="color:#aeaeae;font-style:italic">// 대출중상태 라면 참.</span>
-                                    <span style="color:#e28964">throw</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Exception</span>(bookTitle <span style="color:#e28964">+</span> <span style="color:#65b042">"은(는) 현제 대출 불가능합니다. (대출중)"</span>);
-                                }
-                        
-                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>borrower <span style="color:#e28964">=</span> borrower;
-                                checkOutDate <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Date</span>();
-                                state <span style="color:#e28964">=</span> <span style="color:#3387cc">STATE_BORROWED</span>; <span style="color:#aeaeae;font-style:italic">// "java" 도서가 대출 되었습니다.</span>
-                        
-                                <span style="color:#99cf50">SimpleDateFormat</span> sdf <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SimpleDateFormat</span>(<span style="color:#65b042">"yyyy년 MM월 dd일 (E) hh시 mm분"</span>);
-                        
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"<span style="color:#ddf2a4">\"</span>"</span> <span style="color:#e28964">+</span> bookTitle <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\"</span>도서가 대출되었습니다."</span>);
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[대출인] "</span> <span style="color:#e28964">+</span> borrower);
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[대출일] "</span> <span style="color:#e28964">+</span> sdf<span style="color:#e28964">.</span>format(checkOutDate));
-                        
-                            }
-                        
-                            <span style="color:#99cf50">@Override</span>
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">checkIn</span>(<span style="color:#99cf50">Scanner</span> <span style="color:#3e87e3">sc</span>) <span style="color:#99cf50">throws</span> <span style="color:#99cf50">Exception</span> {
-                        
-                                <span style="color:#e28964">if</span> (state <span style="color:#e28964">==</span> <span style="color:#3387cc">STATE_NOMAL</span>) {
-                                    <span style="color:#e28964">throw</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Exception</span>(bookTitle <span style="color:#e28964">+</span> <span style="color:#65b042">"도서가 대출중이 아닙니다.(예외메세지)"</span>);
-                                }
-                        
-                                <span style="color:#99cf50">Date</span> now <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Date</span>(); <span style="color:#aeaeae;font-style:italic">// 지금</span>
-                                <span style="color:#aeaeae;font-style:italic">// now.getTime() : 1970 년부터 지금까지 의 밀리세컨</span>
-                                <span style="color:#aeaeae;font-style:italic">// checkOutDate.getTime() : 1970 년부더 대출한 날짜까지의 밀리세컨</span>
-                                <span style="color:#aeaeae;font-style:italic">// diff : 지금부터 대출시점 까지의 밀리세컨</span>
-                        
-                                <span style="color:#99cf50">long</span> diff <span style="color:#e28964">=</span> now<span style="color:#e28964">.</span>getTime() <span style="color:#e28964">-</span> checkOutDate<span style="color:#e28964">.</span>getTime();
-                                
-                                
-                                <span style="color:#99cf50">long</span> borrowedDay <span style="color:#e28964">=</span> diff <span style="color:#e28964">/</span> (<span style="color:#3387cc">1000</span> <span style="color:#e28964">*</span> <span style="color:#3387cc">60</span> <span style="color:#e28964">*</span> <span style="color:#3387cc">60</span> <span style="color:#e28964">*</span> <span style="color:#3387cc">24</span>); <span style="color:#aeaeae;font-style:italic">// 대출 일수로 환산.</span>
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(borrowedDay);
-                                <span style="color:#e28964">if</span> (borrowedDay <span style="color:#e28964">></span> <span style="color:#3387cc">14</span>) { <span style="color:#aeaeae;font-style:italic">// 대출일이 7일이 넘었다면 참.</span>
-                                    <span style="color:#99cf50">int</span> money <span style="color:#e28964">=</span> (<span style="color:#99cf50">int</span>) (borrowedDay <span style="color:#e28964">-</span> <span style="color:#3387cc">14</span>) <span style="color:#e28964">*</span> <span style="color:#3387cc">100</span>;
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"연체료는 : "</span> <span style="color:#e28964">+</span> money <span style="color:#e28964">+</span> <span style="color:#65b042">"원(100원/day)"</span>);
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>print(<span style="color:#65b042">"연체료를 받으셨나요?(Y/N)?"</span>);
-                        
-                                    <span style="color:#e28964">if</span> (sc<span style="color:#e28964">.</span>next()<span style="color:#e28964">.</span>equalsIgnoreCase(<span style="color:#65b042">"n"</span>)) { <span style="color:#aeaeae;font-style:italic">// n N 을 입력했을때</span>
-                                        <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"연체료 가져와야 반납가능합니다."</span>);
-                                        <span style="color:#e28964">return</span>;
-                                    } <span style="color:#aeaeae;font-style:italic">// 연체료 납부 여부</span>
-                                } <span style="color:#aeaeae;font-style:italic">// 연체가 되었을 경우 if문</span>
-                                
-                                <span style="color:#aeaeae;font-style:italic">//반납을 위해 데이터 가공. </span>
-                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>borrower <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
-                                checkOutDate <span style="color:#e28964">=</span> <span style="color:#3387cc">null</span>;
-                                state <span style="color:#e28964">=</span> <span style="color:#3387cc">STATE_NOMAL</span>; <span style="color:#aeaeae;font-style:italic">// "java" 도서가 반납 되었습니다.</span>
-                        
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"<span style="color:#ddf2a4">\"</span>"</span> <span style="color:#e28964">+</span> bookTitle <span style="color:#e28964">+</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\"</span>도서가 반납되었습니다."</span>);
-                            }
-                        
-                            <span style="color:#99cf50">@Override</span>
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">toString</span>() {
-                                <span style="color:#99cf50">String</span> resulte;
-                                
-                                resulte <span style="color:#e28964">=</span> <span style="color:#65b042">"[책이름] : "</span> <span style="color:#e28964">+</span> bookTitle;
-                                resulte <span style="color:#e28964">+=</span> <span style="color:#65b042">" <span style="color:#ddf2a4">\t</span>[대출 가능 상태] : "</span> <span style="color:#e28964">+</span> (state <span style="color:#e28964">==</span> <span style="color:#3387cc">STATE_NOMAL</span> <span style="color:#e28964">?</span> <span style="color:#65b042">"대출가능"</span> <span style="color:#e28964">:</span> <span style="color:#65b042">"대출중"</span>); 
-                                <span style="color:#e28964">if</span> (state <span style="color:#e28964">==</span> <span style="color:#3387cc">STATE_BORROWED</span>) {
-                                    <span style="color:#99cf50">SimpleDateFormat</span> sdf <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SimpleDateFormat</span>(<span style="color:#65b042">"yyyy년 MM월 dd일 (E) hh시 mm분"</span>);
-                                    resulte <span style="color:#e28964">+=</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\t</span>[대출일] : "</span> <span style="color:#e28964">+</span> sdf<span style="color:#e28964">.</span>format(checkOutDate);
-                                }
-                                
-                                <span style="color:#e28964">return</span> resulte;
-                            }
-                            
-                            <span style="color:#aeaeae;font-style:italic">// setter</span>
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBookTitle</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">bookTitle</span>) {
-                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>bookTitle <span style="color:#e28964">=</span> bookTitle;
-                            }
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setBorrower</span>(<span style="color:#99cf50">String</span> <span style="color:#3e87e3">borrower</span>) {
-                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>borrower <span style="color:#e28964">=</span> borrower;
-                            }
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setCheckOutDate</span>(<span style="color:#99cf50">Date</span> <span style="color:#3e87e3">checkOutDate</span>) {
-                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>checkOutDate <span style="color:#e28964">=</span> checkOutDate;
-                            }
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">setState</span>(<span style="color:#99cf50">byte</span> <span style="color:#3e87e3">state</span>) {
-                                <span style="color:#3e87e3">this</span><span style="color:#e28964">.</span>state <span style="color:#e28964">=</span> state;
-                            }
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getBookTitle</span>() {
-                                <span style="color:#e28964">return</span> bookTitle;
-                            }
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">String</span> <span style="color:#89bdff">getBorrower</span>() {
-                                <span style="color:#e28964">return</span> borrower;
-                            }
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">Date</span> <span style="color:#89bdff">getCheckOutDate</span>() {
-                                <span style="color:#e28964">return</span> checkOutDate;
-                            }
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">byte</span> <span style="color:#89bdff">getState</span>() {
-                                <span style="color:#e28964">return</span> state;
-                            }
-                            
-                        }
-                        
-                    </pre>
-                    <hr>
-                        <h3>Book Main Class</h3>
-                    <hr>
-                    <pre style="background:#000;color:#f8f8f8">
-                        
-                        <span style="color:#e28964">package</span> <span style="color:#99cf50">com.tj.ex5booklib</span>;
-
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.text.SimpleDateFormat</span>;
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Date</span>;
-                        <span style="color:#e28964">import</span> <span style="color:#99cf50">java.util.Scanner</span>;
-                        
-                        <span style="color:#99cf50">public</span> <span style="color:#99cf50">class</span> <span style="text-decoration:underline">BookMain</span> {
-                            
-                            <span style="color:#99cf50">private</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">BookLib</span>[] books <span style="color:#e28964">=</span> { 
-                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"java"</span>), 
-                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"javascript"</span>), 
-                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"database"</span>), 
-                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"jsp"</span>), 
-                                                                <span style="color:#e28964">new</span> <span style="color:#99cf50">BookLib</span>(<span style="color:#65b042">"spring"</span>) 
-                                                            };
-                        
-                            <span style="color:#99cf50">public</span> <span style="color:#99cf50">static</span> <span style="color:#99cf50">void</span> <span style="color:#89bdff">main</span>(<span style="color:#99cf50">String</span>[] <span style="color:#3e87e3">args</span>) {
-                                
-                                <span style="color:#99cf50">Scanner</span> sc <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">Scanner</span>(<span style="color:#99cf50">System</span><span style="color:#e28964">.</span>in);
-                                
-                                <span style="color:#e28964">try</span> {
-                                    books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>checkOut(<span style="color:#65b042">"Leos"</span>);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                }
-                                
-                                <span style="color:#e28964">try</span> { <span style="color:#aeaeae;font-style:italic">// 빌렸는데 다시 빌리려하므로 예외 catch 로 진행</span>
-                                    books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>checkOut(<span style="color:#65b042">"Leos"</span>);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                }
-                                
-                                <span style="color:#e28964">try</span> {
-                                    books[<span style="color:#3387cc">1</span>]<span style="color:#e28964">.</span>checkOut(<span style="color:#65b042">"Leos"</span>);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                }
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(books[<span style="color:#3387cc">0</span>]);
-                                books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>setCheckOutDate(<span style="color:#e28964">new</span> <span style="color:#99cf50">Date</span>(<span style="color:#3387cc">118</span>,<span style="color:#3387cc">2</span>,<span style="color:#3387cc">3</span>)); <span style="color:#aeaeae;font-style:italic">// 2018년 3월 3일 : 보통 데이터 베이스에서 가져온다.</span>
-                                
-                                <span style="color:#e28964">try</span> {
-                                    <span style="color:#99cf50">SimpleDateFormat</span> sdf <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> <span style="color:#99cf50">SimpleDateFormat</span>(<span style="color:#65b042">"yyyy년 MM월 dd일 (E) hh시 mm분"</span>);
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"[대출 반납일] : "</span> <span style="color:#e28964">+</span> sdf<span style="color:#e28964">.</span>format(books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>getCheckOutDate()));
-                                    books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>checkIn(sc);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                }
-                                
-                                <span style="color:#e28964">try</span> {
-                                    books[<span style="color:#3387cc">0</span>]<span style="color:#e28964">.</span>checkIn(sc);
-                                } <span style="color:#e28964">catch</span> (<span style="color:#99cf50">Exception</span> e) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(e<span style="color:#e28964">.</span>getMessage());
-                                }
-                                
-                                <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(<span style="color:#65b042">"현제 대출 상태입니다. 종료합니다."</span>);
-                                
-                                <span style="color:#e28964">for</span> (<span style="color:#99cf50">BookLib</span> tb <span style="color:#e28964">:</span> books) {
-                                    <span style="color:#99cf50">System</span><span style="color:#e28964">.</span>out<span style="color:#e28964">.</span>println(tb);
-                                }
-                                
-                            }<span style="color:#aeaeae;font-style:italic">// main()</span>
-                        
-                        }
-                        
+                            --1.EMP 테이블에서 모든 사원에 대한 이름,부서번호,부서명을 출력하는 SELECT 문장을 작성하여라.
+                                <span class="bold_color_blue">
+                                SELECT ENAME, D.DEPTNO, D.DNAME
+                                FROM EMP E, DEPT D
+                                WHERE E.DEPTNO = D.DEPTNO;
+                                </span>
+                            --2. EMP 테이블에서 NEW YORK에서 근무하고 있는 사원에 대하여 이름,업무,급여,부서명을 출력하는 SELECT 문장을 작성하여라.
+                                <span class="bold_color_blue">
+                                SELECT ENAME, JOB, SAL, D.DNAME
+                                FROM EMP E, DEPT D
+                                WHERE E.DEPTNO = D.DEPTNO AND D.LOC = 'NEW YORK';
+                                </span>
+                            --3. EMP 테이블에서 보너스를 받는 사원에 대하여 이름,부서명,위치를 출력하는 SELECT 문장을 작성하여라.
+                                <span class="bold_color_blue">
+                                SELECT ENAME, D.DNAME,D.LOC
+                                FROM EMP E, DEPT D
+                                WHERE E.DEPTNO = D.DEPTNO AND COMM IS NOT NULL AND COMM != 0;
+                                </span>
+                            --4. EMP 테이블에서 이름 중 L자가 있는 사원에 대하여 이름,업무,부서명,위치를 출력하는 SELECT 문장을 작성하여라.
+                                <span class="bold_color_blue">
+                                SELECT ENAME, JOB, D.DNAME, D.LOC
+                                FROM EMP E, DEPT D
+                                WHERE E.DEPTNO = D.DEPTNO AND E.ENAME LIKE '%L%';
+                                </span>
+                            --5. 사번, 사원명, 부서코드, 부서명을 검색하라. 사원명기준으로 오름차순정열
+                                <span class="bold_color_blue">
+                                SELECT EMPNO, E.ENAME, D.DEPTNO, D.DNAME
+                                FROM EMP E, DEPT D
+                                WHERE E.DEPTNO = D.DEPTNO
+                                ORDER BY E.ENAME;
+                                </span>
+                            --6. 사번, 사원명, 급여, 부서명을 검색하라. 단 급여가 2000이상인 사원에 대하여 급여를 기준으로 내림차순으로 정열하시오
+                                <span class="bold_color_blue">
+                                SELECT EMPNO, E.ENAME, SAL, D.DNAME
+                                FROM EMP E, DEPT D
+                                WHERE E.DEPTNO = D.DEPTNO AND E.SAL >= 2000
+                                ORDER BY E.SAL DESC;
+                                </span>
+                            --7. 사번, 사원명, 업무, 급여, 부서명을 검색하시오. 단 업무가 MANAGER이며 급여가 2500이상인 사원에 대하여 사번을 기준으로 오름차순으로 정열하시오.
+                                <span class="bold_color_blue">
+                                SELECT EMPNO, E.ENAME, JOB, SAL, D.DNAME
+                                FROM EMP E, DEPT D
+                                WHERE E.DEPTNO = D.DEPTNO AND E.JOB = 'MANAGER' AND E.SAL >= 2500
+                                ORDER BY E.EMPNO;
+                                </span>
+                            --8. 사번, 사원명, 업무, 급여, 등급을 검색하시오. 등급은 급여가 하한값과 상한값 범위에 포함되고 급여기준 내림차순으로 정열하시오
+                                <span class="bold_color_blue">
+                                SELECT EMPNO, E.ENAME, JOB, SAL, S.GRADE
+                                FROM EMP E, SALGRADE S
+                                WHERE SAL BETWEEN LOSAL AND HISAL
+                                ORDER BY E.SAL DESC;
+                                </span>
+                            --9. 사원테이블에서 사원명, 사원의 상사를 검색하시오(상사가 없는 직원까지 전체)
+                                <span class="bold_color_blue">
+                                SELECT E.ENAME, M.ENAME
+                                FROM EMP E, EMP M
+                                WHERE E.MGR = M.EMPNO(+);
+                                </span>
+                            --10. 사원명, 상사명, 상사의 상사명을 검색하시오
+                                <span class="bold_color_blue">
+                                SELECT E.ENAME, M.ENAME, MM.ENAME
+                                FROM EMP E, EMP M, EMP MM
+                                WHERE E.MGR = M.EMPNO AND M.MGR = MM.EMPNO;
+                                </span>
+                            --11. 위의 결과에서 상위 상사가 없는 모든 직원의 이름도 출력되도록 수정하시오
+                                <span class="bold_color_blue">
+                                SELECT E.ENAME, M.ENAME "상사", MM.ENAME "상사의 상사"
+                                FROM EMP E, EMP M, EMP MM
+                                WHERE E.MGR = M.EMPNO(+) AND M.MGR = MM.EMPNO(+);
+                                </span>
                     </pre>
                 </div>
             </div>
@@ -831,16 +518,6 @@
         <footer>
             <h1 id="footer">Created By L. Coding Member</h1>
         </footer>
-        <div id="fixed_menu">
-            <ul>
-                <li><a href="#a">Exception</a></li>
-                <li><a href="#strctuer">strctuer</a></li>
-                <li><a href="#flag">Flag</a></li>
-                <li><a href="#create">Create</a></li>
-                <li><a href="#total">Total</a></li>
-                <li><a href="#top">Top</a></li>
-            </ul>
-        </div><!-- Fixed Menu -->
     </div>
 </body>
 </html>
