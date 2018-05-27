@@ -49,13 +49,13 @@ hr{
 
 #wrap{
     width: 85vw;
-    height: 105vh;
+    /* height: 100vh; */
     margin: 0 auto;
 }
 
 .logo {
-    padding: 30px 0;
-    margin: 15px 0 5px 0;
+    padding: 20px 0;
+    margin: 0px 0 5px 0;
     text-align: center;
     background: rgba(255, 255, 255, 0.6);
 }
@@ -89,14 +89,15 @@ ul{
 
 ul li{
     float: left;
+    box-sizing: border-box;
     width: 10.5vw;
     height: 40px;
+    line-height: 40px;
     color: white;
     background: rgba(255,255,255, .1);
-    line-height: 40px;
     text-align: center; 
-    font-size: 12px;;
-    margin: 0 1px;
+    font-size: 12px;
+    margin: 0 .5px;
 }
 
 ul li:hover{
