@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - String  함수.</title>
+    <script>
+        var str = 'aBcDeFga';
+        var temp = '대문자로 ' + str.toUpperCase() + '\n'; // 대문자를 리턴.
+        
+        temp += '소문자로 ' + str.toLowerCase() + '\n'; // 소문자로 변환해서 리턴
+        temp += 'D가 있는곳의 index(0,1,2,3)' + str.indexOf('D') + '\n'; // 값이 없다면 -1 을 리턴.
+        temp += '마지막 a 가 있는 index : ' + str.lastIndexOf('a') + '\n'; // 
+        temp += 'string 자르기. 몇번째 index부터 몇글자 짜르기 ' + str.substr(2, 3) + '\n'; // cDe 인덱스 2부터 3개의 인덱스를 잘라서 가져옴.
+        temp += '맨 마지막 한글자 ' + str.substr(str.length - 1, 1) + '\n';// 마지막글자 추출
+        temp += '2번째 부터 5번째 index까지 : ' + str.substring(2, 5) + '\n';// 2~5 인덱스.
+
+        alert(temp);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object11 - 상속</title>
+    <script> // 상속 : 기존의 생성자 함수를 이용해서 편법을 쓴다.
+
+    function RectAngel(width, height){
+        this.width = width;
+        this.height = height;
+    }
+
+    RectAngel.prototype.getArea = function (){
+        return this.width * this.height;
+    };
+
+    function Square(length) { // RectAngel을 이용해서 만든다.
+       this.base = RectAngel;
+       this.base(length, length);
+    };
+
+    Square.prototype = RectAngel.prototype; // RectAngel 공용 저장소를 Square에도 적용.
+
+    var rect = new RectAngel(3, 5);
+    var square = new Square(6);
+
+    alert('rect 넓이 ' + rect.getArea());
+    alert('squre 넓이 ' + square.getArea());
+
+    alert(rect instanceof RectAngel); // 변수가 해당 객체의 형인지 연산해본다. true.
+    alert(square instanceof RectAngel); // 상속한것처럼 프로그램해서  true 가 반환.
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

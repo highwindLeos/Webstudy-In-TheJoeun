@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - Number 에 함수를 추가.</title>
+    <script>
+        Object.prototype.toString = function(){
+            var output = '';
+            for (var key in this){
+                output += key + ' : ' + this[key];
+            }
+            return output;
+        }; // Object 내장함수를 오버라이딩.
+        
+        Object.prototype.method = function(){ alert('test'); };
+
+        var obj = new Object(); // obj 는 Object 형 객체 변수.
+        var obj = { property : '속성'} // obj 는 Object 형 객체 변수
+        temp = '';
+        temp += 'obj hasOwnProperty(\'property\') = ' +
+                obj.hasOwnProperty('property') + '<br>';
+
+        temp += 'for 문을 돌렸을 때 출력가능한 속성인지 = '
+                obj.propertyIsEnumerable('property') + '<br>';
+
+        temp += obj.toString() + '<br>';
+
+        document.write(temp);
+        obj.method(); // 추가한 메소드를 호출
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

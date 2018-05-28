@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object10 - 캡슐화 (접근제어) 한 것</title>
+    <script> // 자바스크립트에는 Class (private / public)을 이용한 캡슐화가 되지 않는다.
+        
+        function RectAngle(width, height){
+            var w = width;
+            var h = height;
+            
+            this.getWidth =  function(){ return w; };
+            this.getHeight = function(){ return h; };
+
+            this.setWidth = function(width){ 
+                if(width < 0){
+                 throw '넓이가 음수 일수 없습니다.'; 
+                } else {
+                    w = width;
+                }
+            };
+
+            this.setHeight = function(height){
+                if(height < 0){
+                    throw '높이가 음수 일수 없습니다.';
+                } else {
+                    h = height;
+                }
+            };
+        }
+
+        RectAngle.prototype.getArea = function (){
+            return this.getWidth() * this.getHeight();
+        };
+        
+        var rect = new RectAngle(3, 5);
+        alert(rect.getWidth() + ' * ' + rect.getHeight() + ' = ' + rect.getArea());
+
+        try {
+            rect.setWidth(10); // 음수일 경우 예외가 발생 (콘솔에서 확인.)
+        } catch (e) {
+            alert('확인을 요망합니다. : ' + e);
+        } // 예외처리로 프로세스가 멈추지않는다.
+
+        alert(rect.getWidth() + ' * ' + rect.getHeight() + ' = ' + rect.getArea());
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

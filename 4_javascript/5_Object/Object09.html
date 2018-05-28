@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object - 캡슐화 (접근제어) 안한 것</title>
+    <script> // 자바스크립트에는 Class (private / public)을 이용한 캡슐화가 되지 않는다.
+        
+        function RectAngle(width, height){
+            this.width = width;
+            this.height = height;
+        }
+
+        RectAngle.prototype.getArea = function (){
+            return this.width * this.height;
+        };
+        
+        var rect = new RectAngle(3, 5);
+        alert(rect.width + ' * ' + rect.height + ' = '  + rect.getArea());
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

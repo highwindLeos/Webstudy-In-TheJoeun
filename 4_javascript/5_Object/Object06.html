@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object -  생성자 함수로 객체 생성 </title>
+    <style>
+        *{ 
+            margin: 0;
+            padding: 0;
+        }
+        table tr td {
+            background-color: lightblue;
+            padding: 5px 10px;
+        }
+    </style>
+    <script>
+        var student = [];
+        
+        student.push(new Student('이데이', 100, 89, 98, 97)); // 생성자를 이용해서 배열에 객체를 입력.
+        student.push(new Student('이만화', 88, 88, 77, 67));
+        student.push(new Student('이여우', 90, 96, 86, 78));
+        student.push(new Student('이진법', 67, 90, 84, 70));
+        student.push(new Student('이상자', 99, 82, 78, 80));
+
+        var temp = '이름 총점 평균<br>';
+
+        // for (var i in students){
+        //     temp += student[i].toString();
+        // }
+
+        student.forEach(function (data, idx){
+            temp += data.toString();
+        });
+
+        document.write(temp);
+
+        function Student(name, kor, eng, mat, sci){
+            this.name = name;
+            this.kor = kor;
+            this.eng = eng;
+            this.mat = mat;
+            this.sci = sci;
+            
+            this.getSum = function () {
+                return this.kor + this.eng + this.mat + this.sci;
+            };
+
+            this.getAvg = function () {
+                return this.getSum() / 4;
+            };
+
+            this.toString = function () {
+                return this.name + ' ' + this.getSum() +  ' ' + this.getAvg() + '<br>';
+            };
+        } // 생성자 함수를 정의 해놓는다.
+
+        var students = new Student('이데이', 100, 89, 98, 77);
+        document.write('<hr>');
+        document.write(students.toString());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

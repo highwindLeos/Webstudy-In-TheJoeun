@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - Number  함수.</title>
+    <script>
+        var number = 273.5678;
+        // number 형은 -infinity, -10의 308승 ~ +10의 308승, +infinity.
+        var output = '';
+
+        output += 'toFixed(1) : ' + number.toFixed(1) + '<br>'; // 소수점 1자리 반환.
+        output += 'toFixed(4) : ' + number.toFixed(4) + '<br>'; // 소수점 4자리 반환.
+
+        output += 'toPrecision(5) : ' + number.toPrecision(5) + '<br>';
+        output += '지수형 출력 : ' + number.toExponential(4) + '<br>';
+        // 273.5678 을 지수형 :  2.735678e+2 : (2.735678 10의 2승)
+
+        output += Math.round(number * 10) / 10 + '<br>'; // 273.6 로 반올림 [10을 곱해준상태에서 반올림 그리고 소수점 다시 맞춤]
+
+        document.write(output);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

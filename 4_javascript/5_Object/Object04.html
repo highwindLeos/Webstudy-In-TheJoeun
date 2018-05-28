@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object -  객체 배열의 생성 </title>
+    <style>
+        *{ 
+            margin: 0;
+            padding: 0;
+        }
+        table tr td {
+            background-color: lightblue;
+            padding: 5px 10px;
+        }
+    </style>
+    <script>
+        var students = []; // 배열을 생성.
+
+        students.push({name : '이데이', kor : 90, eng : 69, mat : 98, sci : 92});
+        students.push({name : '이레오', kor : 77, eng : 99, mat : 90, sci : 74});
+        students.push({name : '이만화', kor : 80, eng : 79, mat : 88, sci : 99});
+        students.push({name : '신데이', kor : 99, eng : 100, mat : 70, sci : 87});
+        students.push({name : '유바바', kor : 76, eng : 86, mat : 89, sci : 75});
+        // 위아래 는 동일한 문장이다. 데이터를 배열에 입력.
+        var students = [
+            {name : '이데이', kor : 90, eng : 69, mat : 98, sci : 92},
+            {name : '이레오', kor : 77, eng : 99, mat : 90, sci : 74},
+            {name : '이만화', kor : 80, eng : 79, mat : 88, sci : 99},
+            {name : '신데이', kor : 99, eng : 100, mat : 70, sci : 87},
+            {name : '유바바', kor : 76, eng : 86, mat : 89, sci : 75}
+        ]; 
+
+        for (var idx in students){
+
+            students[idx].getSum = function(){
+                return this.kor + this.eng + this.mat + this.sci;
+            };
+
+            students[idx].getAvg = function(){
+                return this.getSum() / 4;
+            };
+
+            students[idx].toString = function(){
+                var temp = '';
+                temp += '<td>' + this.name + '</td>';
+                temp += '<td>' + this.getSum() + '</td>'; 
+                temp += '<td>' + this.getAvg() + '</td>'; 
+                return temp; 
+            };
+
+        }
+
+        document.write('<table>');
+        document.write('<tr><td>이름</td><td>총점</td><td>평균</td></tr>');
+            students.forEach(function(data, idx) {
+                // temp = students[idx].toString() + '\n';
+                document.write('<tr>'+ data.toString() + '</tr>');
+            });
+        document.write('</table>');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

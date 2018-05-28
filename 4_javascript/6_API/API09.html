@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - 숫자 정렬.</title>
+    <script> // 정렬 : 문자정렬 -> 숫자정렬 -> 객체정렬.
+        var score = [9, 65, 91, 100];
+        // 숫자정렬의 경우는 sort 안에 callback 함수가 필요하다. 
+        // 아스키코드로 정렬되는 숫자를 정렬해야하기때문이다.
+        alert('정렬전 : ' + score);
+        
+        score.sort(function(left, right) {
+            return left - right; // 오름차순 정렬
+        });
+
+        score.sort(function(left, right) {
+            return right - left; // 내림차순 정렬
+        });
+
+        alert('정렬후 : ' + score); // 100 35 65 9 91 : 아스키코드정렬이다.
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

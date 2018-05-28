@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - Number 에 함수를 추가.</title>
+    <script>
+        var i = 0;
+        var primitveNumber = 273;
+        var objectNumber = new Number(273);
+
+        Number.prototype.method = function () {
+            alert((++i) + ' Method');
+        } // 내장 객체에다가 함수를 추가해서 사용가능하다. prototype.
+
+        primitveNumber.method(); // 내장 객체에 추가한 함수를 호출했다.
+        objectNumber.method(); // 내장 객체에 추가한 함수를 호출했다.
+
+        Object.prototype.test = function (){
+            alert((++i)+ ' . ' + this);
+        }
+
+        primitveNumber.test(); // 273
+
+        var b = true;
+        b.test(); // Object라는 상위 객체에 메소드를 추가했기 때문에 동작한다.
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

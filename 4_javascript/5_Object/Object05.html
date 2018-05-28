@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object -  객체 배열의 생성 </title>
+    <style>
+        *{ 
+            margin: 0;
+            padding: 0;
+        }
+        table tr td {
+            background-color: lightblue;
+            padding: 5px 10px;
+        }
+    </style>
+    <script>
+        var students = [];
+
+        students.push(makeStudent('이데이', 90, 80, 77, 99));
+        students.push(makeStudent('이만화', 99, 91, 65, 90));
+        students.push(makeStudent('이승훈', 88, 93, 67, 91));
+        students.push(makeStudent('이영화', 70, 95, 98, 87));
+        students.push(makeStudent('손오공', 80, 98, 95, 85));
+
+        var temp = '이름 총점 평균<br>';
+
+        students.forEach(function(data) {
+            temp += data.toString();
+        });
+
+        document.write(temp);
+
+        function makeStudent(name, kor, eng, mat, sci) {
+            var st = {
+                name : name,
+                kor : kor,
+                eng : eng,
+                mat : mat,
+                sci : sci,
+
+                getSum : function() {
+                    return this.kor + this.eng + this.mat + this.sci;
+                },
+
+                getAvg : function() {
+                    return thsi.getSum() / 4;
+                },
+
+                toString : function() {
+                    return this.name + '&nbsp;' + this.getSum() + '&nbsp;' + this.getAvg() + '<br>';
+                }
+            };
+            return st;
+        };
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

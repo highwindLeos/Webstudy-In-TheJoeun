@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - Number 에 함수를 추가.</title>
+    <script>
+        var primitiveNumber = 273;
+        var objectNumber = new Number(273);
+
+        alert(typeof(primitiveNumber)); // number
+        alert(typeof(objectNumber)); // object
+        
+        // if (typeof(primitiveNumber) == 'number') {
+        //     document.write('primitiveNumber는 숫자입니다.<br>');
+        // } else {
+        //     document.write('primitiveNumber는 숫자가 아닙니다.<br>');
+        // }
+
+        // if (typeof(objectNumber) == 'number'){
+        //     document.write('objectNumber는 숫자입니다.<br>')
+        // } else {
+        //     document.write('objectNumber는 숫자가 아닙니다.<br>');
+        // }
+
+        if (primitiveNumber.constructor == Number) {
+            document.write('primitiveNumber는 숫자입니다.<br>');
+        } else {
+            document.write('primitiveNumber는 숫자가 아닙니다.<br>');
+        } // 생성자 함수가 어떤 객체인지를 물어본다.
+
+        if (objectNumber.constructor == Number){
+            document.write('objectNumber는 숫자입니다.<br>')
+        } else {
+            document.write('objectNumber는 숫자가 아닙니다.<br>');
+        } // 생성자 함수가 어떤 객체인지를 물어본다.
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

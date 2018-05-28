@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - 시간 관련 내장객체.</title>
+    <script src="./js/intervalDay.js"></script>
+    <script> // 정렬 : 문자정렬 -> 숫자정렬 -> 객체정렬.
+       
+       var now = new Date(); // 현제 시스템 시간과 날짜.
+       var thatDay = new Date(2018, 2, 1); // 월은 0~11월으로 처리된다.
+
+        // thatDay 를 4일 후로 바꾸어 세팅.
+        thatDay.setDate(thatDay.getDate() + 4);
+        
+        // alert(thatDay);
+        // 날짜 출력 스타일
+        document.write(now + '<br>');
+        document.write('toDateString() : ' + now.toDateString() + '<br>'); // 년 월 일 만 출력
+        document.write('toGMTString() : ' + now.toGMTString() + '<br>'); // 영국표준 포맷으로 출력
+        document.write('toLocaleDateString() : ' + now.toLocaleDateString() + '<br>'); //지역을 반영해서 출력
+        
+        document.write('<hr>');
+        // 날짜와 날짜간의 간격을 계산해서 출력(몇일).
+        var day = now.intervalDay(thatDay);
+        day = thatDay.intervalDay(now);
+
+        document.write('수료일부터 지금까지 ' + day + '일 지남<br>');
+        // var interval = now.getTime() - thatDay.getTime(); //지금부터 목표날짜의 밀리세컨의 값이 반환.
+        // var day = interval / (1000 * 60 * 60 * 24);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
