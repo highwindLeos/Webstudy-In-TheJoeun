@@ -15,26 +15,26 @@
 
         function change(){
             var h1 = document.getElementsByTagName('h1'); // 배열로 반환
-
             var toggle = 0;
 
             if (toggle == 0){
-                toggle = 1;
                 for (var idx in h1){
                     h1[idx].innerHTML = 'text 를 바꾼다.';
                 }
+                toggle = 1;
+                console.log(toggle);
             } else if (toggle == 1){
-                toggle = 0;
+
                 for (var idx in h1){
-                    h1[idx].innerHTML = 'header' + idx;
+                    h1[idx].innerHTML = 'header';
                 }
+                toggle = 0;
+                console.log(toggle);
             }
-            
-            
             // h1.forEach(function(data){
             //     data.innerHTML = 'text 를 바꾼다.';
             // });
-        }
+        };
 
     </script>
 </head>
@@ -42,6 +42,6 @@
     <h1>HEADER1</h1>
     <h1>HEADER2</h1>
     <h1>HEADER3</h1>
-    <button onclick="change();">다바꿔</button>
+    <button onclick="change()">다바꿔</button>
 </body>
 </html>

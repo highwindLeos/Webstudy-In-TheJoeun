@@ -18,49 +18,45 @@
                 body{
                     background-color: black; 
                 }
+
+                ul{
+                    margin: 0;
+                    padding: 0;
+                }
+
                 ul li{
                     text-align: center;
                     display: inline-block;
-                }
-                ul > li.red {
+                    margin-right: -6px;
                     width: 100px;
                     height: 150px;
+                }
+                
+                ul > li.red {
                     background-color: red;
                 }
         
                 ul > li.orange {
-                    width: 100px;
-                    height: 150px;
                     background-color: orange;
                 }
         
                 ul > li.yellow {
-                    width: 100px;
-                    height: 150px;
                     background-color: yellow;
                 }
         
                 ul > li.green {
-                    width: 100px;
-                    height: 150px;
                     background-color: green; 
                 }
         
                 ul > li.blue {
-                    width: 100px;
-                    height: 150px;
                     background-color: blue;
                 }
         
                 ul > li.darkblue {
-                    width: 100px;
-                    height: 150px;
                     background-color: darkblue;
                 }
         
                 ul > li.purple {
-                    width: 100px;
-                    height: 150px;
                     background-color: purple;
                 }
             </style>
@@ -82,14 +78,14 @@
             </script>
         </head>
         <body>
-            <ul>
-                <li class="red" onmouseover="changeText(0)" onmouseout="backText()"></li>
-                <li class="orange" onmouseover="changeText(1)" onmouseout="backText()"></li>
-                <li class="yellow" onmouseover="changeText(2)" onmouseout="backText()"></li>
-                <li class="green" onmouseover="changeText(3)" onmouseout="backText()"></li>
-                <li class="blue" onmouseover="changeText(4)" onmouseout="backText()"></li>
-                <li class="darkblue" onmouseover="changeText(5)" onmouseout="backText()"></li>
-                <li class="purple" onmouseover="changeText(6)" onmouseout="backText()"></li>
+            <ul onmouseout="backText()">
+                <li class="red" onmouseover="changeText(0)"></li>
+                <li class="orange" onmouseover="changeText(1)" ></li>
+                <li class="yellow" onmouseover="changeText(2)" ></li>
+                <li class="green" onmouseover="changeText(3)" ></li>
+                <li class="blue" onmouseover="changeText(4)" ></li>
+                <li class="darkblue" onmouseover="changeText(5)" ></li>
+                <li class="purple" onmouseover="changeText(6)" ></li>
             </ul>
             <h1 class="text">TEXT font</h1>
         </body>
