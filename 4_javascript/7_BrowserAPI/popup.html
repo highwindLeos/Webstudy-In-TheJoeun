@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Popup window</title>
+    <style>
+        img {
+            width: 500px;
+            height: 700px;
+        }
+
+        button{
+            background-color: lightcoral;
+            color: #fff;
+            border: 1px solid lightsalmon;
+            border-radius: 5px; 
+            padding: 3px 10px;
+        }
+    </style>
+    <script> 
+
+        function closepopup(){
+            window.close();
+        }
+        
+        // setTimeout(closepopup, 3000); // 3초후에 창을 닫는다.
+
+    </script>
+</head>
+<body>
+    <img src="./img/r.jpg" alt="R">
+    <hr>
+    <button onclick="closepopup();">닫기</button>
+</body>
+</html>

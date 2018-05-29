@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - 브라우저 내장객체. Location</title>
+    <script> // 페이지가 로드되기 전 수행
+        window.onload = function xx(){
+            alert('process - 0'); 
+        }; // 이렇게 처리하면 페이지를 모두 읽은후에 호출된다.
+    </script>
+</head>
+ <body> <!-- onload="xx();"-->
+   <h1>헤더</h1>
+   <script>alert('process - 1'); // 브라우저가 로드된 후 수행</script>
+   <p>무슨무슨 내용</p>
+   <script>alert('process - 2'); // 브라우저가 로드된 후 수행</script>
+</body>
+</html>

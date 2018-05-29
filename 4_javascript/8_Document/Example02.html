@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example 2</title>
+    <script>
+        function locationPage(n){
+            if (n == 0){
+                location.href = 'https://www.naver.com';
+            } else if(n == 1){
+                location.href = 'https://www.daum.net';
+            } else if(n == 2){
+                location.href = 'https://www.google.co.kr';
+            } else if(n == 3){
+                location.href = 'https://ko-kr.facebook.com';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>메뉴</h1>
+    <button onclick="locationPage(0);">네이버</button>
+    <button onclick="locationPage(1);">다음</button>
+    <button onclick="locationPage(2);">구글</button>
+    <button onclick="locationPage(3);">페이스북</button>
+</body>
+</html>

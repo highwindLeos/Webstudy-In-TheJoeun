@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Docments</title>
+    <script> // 3. innerHtml 에 추가하는 방식. 
+
+        window.onload = function () {
+            var temp = '<ul>';
+            temp += '<li><a href="#">Java</a></li>';
+            temp += '<li><a href="#">DB</a></li>';    
+            temp += '<li><a href="#">JavaScript</a></li>';   
+            temp += '</ul>';
+
+            document.body.innerHTML += temp; // 추가한다.
+        };
+
+    </script>
+</head>
+<body>
+    <h1>문서객체 만드는 법3</h1>
+   
+</body>
+</html>

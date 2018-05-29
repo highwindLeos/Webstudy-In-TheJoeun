@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - 브라우저 내장객체. window</title>
+    <script> // 현제페이지는 있는 상태에서 (윈도우)팝업을 띄우는 함수. 
+        var popup = window.open('','', 'width=300, height=300');
+        if (!popup){
+            alert('팝업 차단 해제하세요');
+        }
+
+        popup.moveTo(0, 0);
+        setInterval( function(){ popup.moveBy(10,10); }, 100); // 창을 1초마다 10*10 씩 이동시킨다.
+
+    </script>
+</head>
+<body>
+</body>
+</html>

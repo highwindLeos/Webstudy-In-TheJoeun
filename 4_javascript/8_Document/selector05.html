@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>문서 객체 선택 예제</title>
+    <style>
+        span {
+            color: lightsalmon;
+            font-weight: bold;
+        }
+    </style>
+    <script> // 문서의 객체를 가져오는 법 4 : getElementsTagname(); 배열을 반환
+
+        function change(){
+            var h1 = document.getElementsByTagName('h1'); // 배열로 반환
+
+            var toggle = 0;
+
+            if (toggle == 0){
+                toggle = 1;
+                for (var idx in h1){
+                    h1[idx].innerHTML = 'text 를 바꾼다.';
+                }
+            } else if (toggle == 1){
+                toggle = 0;
+                for (var idx in h1){
+                    h1[idx].innerHTML = 'header' + idx;
+                }
+            }
+            
+            
+            // h1.forEach(function(data){
+            //     data.innerHTML = 'text 를 바꾼다.';
+            // });
+        }
+
+    </script>
+</head>
+<body>
+    <h1>HEADER1</h1>
+    <h1>HEADER2</h1>
+    <h1>HEADER3</h1>
+    <button onclick="change();">다바꿔</button>
+</body>
+</html>

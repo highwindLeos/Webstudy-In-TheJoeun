@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example 1</title>
+    <style>
+        ul li{
+            text-align: center;
+            display: inline-block;
+        }
+        ul > li.red {
+            width: 100px;
+            height: 150px;
+            background-color: red;
+        }
+
+        ul > li.orange {
+            width: 100px;
+            height: 150px;
+            background-color: orange;
+        }
+
+        ul > li.yellow {
+            width: 100px;
+            height: 150px;
+            background-color: yellow;
+        }
+
+        ul > li.green {
+            width: 100px;
+            height: 150px;
+            background-color: green; 
+        }
+
+        ul > li.blue {
+            width: 100px;
+            height: 150px;
+            background-color: blue;
+        }
+
+        ul > li.darkblue {
+            width: 100px;
+            height: 150px;
+            background-color: darkblue;
+        }
+
+        ul > li.purple {
+            width: 100px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+    <script>
+        var color = ['red','orange','yellow','green','blue','darkblue','purple'];
+
+        function changeBg(n){
+              var body = document.getElementsByTagName('body');
+              body[0].style.backgroundColor = color[n];
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="red" onmouseover="changeBg(0)"></li>
+        <li class="orange" onmouseover="changeBg(1)"></li>
+        <li class="yellow" onmouseover="changeBg(2)"></li>
+        <li class="green" onmouseover="changeBg(3)"></li>
+        <li class="blue" onmouseover="changeBg(4)"></li>
+        <li class="darkblue" onmouseover="changeBg(5)"></li>
+        <li class="purple" onmouseover="changeBg(6)"></li>
+    </ul>
+</body>
+</html>

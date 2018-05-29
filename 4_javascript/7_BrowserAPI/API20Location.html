@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - 브라우저 내장객체. Location</title>
+    <script> //  페이지를 이동하는 법 : Location 객체 이용
+
+    function locationChange(){
+        // 현제 페이지의 URL 경로를 이동시키고자 할때.
+        // location = 'http://google.com';
+        location.href = 'locationPage.html';
+        // location.assing('http://google.com');
+        // location.replace('http://google.com');
+    }
+        
+    </script>
+</head>
+<body>
+    <button onclick="locationChange();">페이지 이동</button>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Docments</title>
+    <style>
+        button{
+            background-color: lightcoral;
+            color: #fff;
+            border: 1px solid lightsalmon;
+            border-radius: 5px; 
+            padding: 3px 10px;
+        }
+    </style>
+    <script> // 문서의 객체들을 선택하는 법. getElementById(); 
+    
+        // function changeText(index){
+        //     var header1 = document.getElementById('header_' + index);
+        //     header1.innerHTML = '바꾼 TEXT';
+        // }
+
+        function changeText(index){
+            if (index == 1){
+                var header = document.getElementById('header_1');
+            } else if (index == 2) {
+                var header = document.getElementById('header_2');
+            } else if (index == 3) {
+                var header = document.getElementById('header_3');
+            }
+            header.innerHTML = 'TEXT를 바꾸었습니다.';
+        }
+
+    </script>
+</head>
+<body>
+    <h1 id="header_1">Header 1</h1>
+    <h1 id="header_2">Header 2</h1>
+    <h1 id="header_3">Header 3</h1>
+
+    <button onclick="changeText(1);">Header 1 바꾸기</button>
+    <button onclick="changeText(2);">Header 2 바꾸기</button>
+    <button onclick="changeText(3);">Header 3 바꾸기</button>
+</body>
+</html>

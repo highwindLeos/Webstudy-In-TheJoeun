@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script> // 문서 객체 가져오는 법 2: getElementByClassName('class'); 배열을 반환
+        var toggle = 0;
+        function change(){
+            var head = document.getElementsByClassName('head');
+            if (toggle == 0){
+                    toggle = 1;
+                for(var idx in head){
+                    head[idx].innerHTML = 'Text 를 바꿈';
+                    // head[idx].style.color = '#eee';
+                }
+            } else if (toggle == 1){
+                    toggle = 0;
+                for(var idx in head){
+                    head[idx].innerHTML = 'Header';
+                    // head[idx].style.color = '#000';
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h2>Header</h2><h2>Header</h2><h2 class="head">Header</h2>
+    <h2>Header</h2><h2>Header</h2><h2 class="head">Header</h2>
+    <h2>Header</h2><h2>Header</h2><h2 class="head">Header</h2>
+
+    <button onclick="change();">바꾸기(토글기능)</button>
+</body>
+</html>

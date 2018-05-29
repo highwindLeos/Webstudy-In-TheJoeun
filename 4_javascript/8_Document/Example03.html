@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example 3</title>
+</head>
+<body>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Example 1</title>
+            <style>
+                body{
+                    background-color: black; 
+                }
+                ul li{
+                    text-align: center;
+                    display: inline-block;
+                }
+                ul > li.red {
+                    width: 100px;
+                    height: 150px;
+                    background-color: red;
+                }
+        
+                ul > li.orange {
+                    width: 100px;
+                    height: 150px;
+                    background-color: orange;
+                }
+        
+                ul > li.yellow {
+                    width: 100px;
+                    height: 150px;
+                    background-color: yellow;
+                }
+        
+                ul > li.green {
+                    width: 100px;
+                    height: 150px;
+                    background-color: green; 
+                }
+        
+                ul > li.blue {
+                    width: 100px;
+                    height: 150px;
+                    background-color: blue;
+                }
+        
+                ul > li.darkblue {
+                    width: 100px;
+                    height: 150px;
+                    background-color: darkblue;
+                }
+        
+                ul > li.purple {
+                    width: 100px;
+                    height: 150px;
+                    background-color: purple;
+                }
+            </style>
+            <script>
+                var color = ['red','orange','yellow','green','blue','darkblue','purple'];
+                var textChange = ['red TEXT', 'orange TEXT', 'yellow TEXT', 'green TEXT', 'blue TEXT', 'darkblue TEXT', 'purple TEXT'];
+                
+                function changeText(n){
+                      var text = document.getElementsByClassName('text');
+                      text[0].style.color = color[n];
+                      text[0].innerHTML = textChange[n];
+                }
+
+                function backText(){
+                    var text = document.getElementsByClassName('text');
+                    text[0].style.color = 'black';
+                    text[0].innerHTML = '';
+                }
+            </script>
+        </head>
+        <body>
+            <ul>
+                <li class="red" onmouseover="changeText(0)" onmouseout="backText()"></li>
+                <li class="orange" onmouseover="changeText(1)" onmouseout="backText()"></li>
+                <li class="yellow" onmouseover="changeText(2)" onmouseout="backText()"></li>
+                <li class="green" onmouseover="changeText(3)" onmouseout="backText()"></li>
+                <li class="blue" onmouseover="changeText(4)" onmouseout="backText()"></li>
+                <li class="darkblue" onmouseover="changeText(5)" onmouseout="backText()"></li>
+                <li class="purple" onmouseover="changeText(6)" onmouseout="backText()"></li>
+            </ul>
+            <h1 class="text">TEXT font</h1>
+        </body>
+        </html>
+</body>
+</html>

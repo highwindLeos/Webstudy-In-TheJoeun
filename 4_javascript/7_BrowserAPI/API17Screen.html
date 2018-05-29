@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - 브라우저 내장객체. Screen</title>
+    <script> // 
+    
+        var temp = '';
+        var i = 0;
+
+        for (var key in screen){
+            temp += (++i) + ' 번째 속성 ' + key + ' : ' + screen[key] + '<br>';
+        }
+
+        document.write(temp);
+
+    </script>
+</head>
+<body>
+</body>
+</html>

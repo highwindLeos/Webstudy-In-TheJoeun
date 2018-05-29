@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Docments</title>
+    <script>// 2 img 태그처럼 text node 가 없는 객체 추가.
+
+        
+        window.onload = function () {
+            var img = document.createElement('img');
+            // img.src = './img/famicom.png';
+            img.setAttribute('src', './img/famicom.png');
+            // img.alt = '그림';
+            img.setAttribute('alt', '그림');
+            // img.width = 200;
+            img.setAttribute('width', 200); // image 에 속성들을 설정한다.
+            document.body.appendChild(img);
+        };
+
+    </script>
+</head>
+<body>
+    <h1>Window 객체가 load 된 후 img 추가 할꺼야.</h1>
+</body>
+</html>

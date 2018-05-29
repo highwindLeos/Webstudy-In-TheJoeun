@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clock</title>
+    <script> // 문서 객체 가져오는 법 2: getElementByClassName('class'); 배열을 반환
+        
+        window.onload = function() {
+            var clock =  document.getElementsByClassName('clock');
+            setInterval(function() {
+                var now = new Date();
+                clock[0].innerHTML = now.toLocaleTimeString();
+                clock[1].value = now.toLocaleString();
+            }, 1000);
+        };
+
+    </script>
+</head>
+<body>
+    <h1>시계</h1>
+    <h2 class="clock"></h2>
+    <input type="text" class="clock">
+</body>
+</html>

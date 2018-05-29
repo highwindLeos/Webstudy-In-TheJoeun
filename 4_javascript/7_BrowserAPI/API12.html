@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본내장객체 - 브라우저 내장객체. window</title>
+    <script> // window 에 있는 모든 내장 객체를 출력해본다.
+       
+       var temp = '';
+       var cnt = 0;
+       for (var key in window){
+           if (key != 'temp'){
+                temp += (++cnt) + ' 번째 속성 변수 ' + key + '<br>';
+            }
+       } 
+
+       document.write(temp); 
+       docment.write('<br>');
+       document.write('반복된 횟수 : ' + cnt); 
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>문서 객체 선택 예제</title>
+    <style>
+        span {
+            color: lightsalmon;
+            font-weight: bold;
+        }
+    </style>
+    <script> 
+        //  문서 객체 가져오기 방법 _ 5 : 선택자로 가장 처음 것 하나 가져오기. 
+        // document.querySelector(선택자);
+        //  문서 객체 가져오기 방법 _ 6 : 해당 선택자 모두를 배열로 가져오기.
+        // document.querySelectorAll(선택자);
+        
+        window.onload = function() { // 문서를 읽을 때 이 익명함수를 실행한다.
+            var header1 = document.querySelector('.header');
+            header1.innerHTML = 'text 바꾸기';
+
+            var header = document.querySelectorAll('.header');
+
+            // header[0].innerHTML = '바꿔요';
+            // header[1].innerHTML = '바꿔요2';
+
+            for (var idx in header){
+                header[idx].innerHTML = '바꿔보아요~~' 
+            }
+        };
+
+        
+    </script>
+</head>
+<body>
+    <h1 class="header">HEADER1</h1>
+    <h1 class="header">HEADER2</h1>
+    <h1 id="header3">HEADER3</h1>
+
+    <button onclick="change();">다바꿔</button>
+</body>
+</html>

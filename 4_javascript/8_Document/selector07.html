@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>종합 예제</title>
+    <style>
+        
+    </style>
+    <script> 
+        
+        function remove(){
+            var header = document.getElementById('header');
+            document.body.removeChild(header); // 제거한다.
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="remove()">사라짐</button><br>
+    <h1 id="header">아래 버튼을 누르면 이게 사라져</h1>
+</body>
+</html>
