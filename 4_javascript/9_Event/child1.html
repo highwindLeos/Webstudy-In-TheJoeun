@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>인사 정보 시스템</title>
+    <style>
+        #wrap {
+            width: 450px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #wrap > h1 {
+            color: lightcoral;
+            border-bottom: 2px solid lightskyblue;
+        }
+
+        #wrap > h2 {
+            color: lightslategray;
+        }
+
+        #wrap > h3 {
+            width: 450px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: gray;
+            border-radius: 20px 0 20px 0;
+            border:2px solid lightcoral;
+            cursor: pointer;
+        }
+
+        #wrap > h3:hover{
+            color: white;
+            background-color : lightcoral;  
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var name = opener.document.getElementById('name').value; // 오픈을 한 문서의 태그의 값을 가져올수 있다.
+            var date = opener.document.getElementById('date').value; // 오픈을 한 문서의 태그의 값을 가져올수 있다.
+
+            var showData = document.getElementById('showData');
+            var modifyName = document.getElementById('modifyName');
+            
+            showData.innerHTML = '입력된 이름 : ' + name + '<br>';
+
+            if(date == '') {// 입력된 날짜가 없어서 값이 없다면. true
+                showData.innerHTML += '날짜는 입력되지 않음';
+            } else {
+                showData.innerHTML += '입력된 날짜 : ' + date;
+            }
+            modifyName.value = name;
+            
+            //이벤트를 여기서 처리.
+            // var h3 = document.getElementsByTagName('h3');
+            // for (var idx in h3){
+            //     var team = ['인사팀','재무팀','총무팀','개발팀'];
+            //     h3[idx].onclick = function (){
+                    
+            //         window.close();
+            //     };
+            // }
+        }
+
+        function sendData(team) {
+            var modifyName = document.getElementById('modifyName').value;
+            var part = opener.document.getElementById('part');
+            var nameParent = opener.document.getElementById('name');
+            
+            nameParent.value = modifyName;
+            part.innerHTML = team;
+
+            window.close();
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>인사 정보 시스템</h1>
+        <h2 id="showData"></h2>
+        <h2>이름 수정 가능 : <input type="text" id="modifyName" value="이름"></h2>
+        <hr>
+        <h3 onclick="sendData('인사팀')">인사팀으로 하고 저장</h3>
+        <h3 onclick="sendData('재무팀')">재무팀으로 하고 저장</h3>
+        <h3 onclick="sendData('총무팀')">총무팀으로 하고 저장</h3>
+        <h3 onclick="sendData('개발팀')">개발팀으로 하고 저장</h3>
+    </div>
+</body>
+</html>

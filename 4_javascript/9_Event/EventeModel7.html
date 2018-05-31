@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Model 6</title>
+    <script> // 5 표준 이벤트 모델
+
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            btn.onclick = function () {
+                alert('이 경고창은 한번만 뜰거다');
+                btn.onclick = null; //이벤트 제거 : 이벤트를 한번 실행되고 이벤트의 값이 없어져서 이벤트 X
+            };
+        }
+      
+    </script>
+</head>
+<body>
+    <h2 id="btn">Button(힌번만 클릭 이벤트 발생)</h2>
+</body>
+</html>

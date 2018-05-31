@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example 2</title>
+    <style>
+       img {
+           border: 1px solid lightpink;
+           width: 200px;
+           height: 200px;
+           margin-right: -6.5px;
+           cursor: pointer;
+       }
+    </style>
+    <script> 
+        window.onload = function (){
+            var btn = document.getElementById('btn');
+
+            btn.onmousedown = function(){ // 마우스 작동중일때
+                document.images[0].setAttribute('src', './img/cpp.jpg');
+            }
+
+            btn.onmouseup = function(){// 마우스를 땔때
+                document.images[0].setAttribute('src', './img/c.jpg');
+            }
+        };
+      
+    </script>
+</head>
+<body>
+    <img src="./img/c.jpg" alt="C" id="btn">
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example 4</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        table {
+            width: 600px;
+            text-align: center;
+            background-color: lightblue;
+        }
+
+        table tr td {
+            width: 100px;
+            height: 100px;
+            background-color: #fff; 
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var tds = document.getElementsByTagName('td'); //0~8
+            // tds.style.backgroundColor = '#bbb';
+
+            this.onkeyup = function (){
+                /*
+                    반응할 키보드 값 : 
+                    0 = 48 : 0(오른쪽) = 96
+                    1 = 49 : 1(오른쪽) = 97
+                    2 = 50 : 2(오른쪽) = 98
+                    3 = 51 : 3(오른쪽) = 99
+                    4 = 52 : 4(오른쪽) = 100
+                    5 = 53 : 5(오른쪽) = 101
+                    6 = 54 : 6(오른쪽) = 102
+                    7 = 55 : 7(오른쪽) = 103
+                    8 = 56 : 8(오른쪽) = 104
+                    9 = 57 : 9(오른쪽) = 105
+                */ 
+                if (event.keyCode >= 48 && event.keyCode <= 56){
+                    tds[event.keyCode - 48].style.backgroundColor = 'lightblue'; //0~8
+                } 
+                
+                if (event.keyCode >= 96 && event.keyCode <= 104){
+                    tds[event.keyCode - 96].style.backgroundColor = 'lightpink'; //0~8
+                } 
+            };
+        };
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Join</title>
+    <style>
+        #wrap {
+            width: 400px;
+            margin : 0 auto;
+        }
+
+        #wrap > p > input#id{
+            display: inline-block;
+            width: 200px;
+            height: 20px;
+            border: 1px solid lightblue;
+        }
+
+        #wrap > p > button{
+            display: inline-block;
+            height: 25px;
+            border: 1px solid pink;
+            background: lightcoral;
+            color: #fff;
+        }
+        
+    </style>
+    <script>
+         window.onload = function (){// 윈도우 객체가 load 이벤트를 발생했을때. 실행.
+            var confirm = document.getElementById('confirm');
+            // insa 객체가 click 이벤트 : onclick 속성에 function
+            confirm.onclick = function () {
+                window.open('confirm2.html','popup1','width=400, height=200px, left=200px, top=70px');
+                // winddow.open('속성1','속성2','속성3')
+                // 속성 1 : 외부 url 내부자원
+                // 속성 2 : 윈도우의 이름
+                // 속성 3 : width : 창너비 height : 창높이 left : 왼쪽으로부터 위치 top : 위로부터의 위치
+                //          location(주소 입력 여부 - yes/no)
+                //          resizeble(윈도우 창 크기 변경여부 - yes/no)
+                //          scrollbar(스크롤바 표시 여부 - yes/no)
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <p>아이디 : <input type="text" id="id" name="id"><button id="confirm">중복체크</button></p>
+    </div>
+</body>
+</html>

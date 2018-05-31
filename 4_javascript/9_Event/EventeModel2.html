@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Model 2</title>
+    <script> // 2 기본 이벤트 모델
+            
+        window.onload = function () {
+            var click = document.getElementById('click');
+
+            var whenClick = function() { alert('기본 이벤트 모델 : 클릭했군'); }
+            // whenClick(); : 호출가능.
+            function whenClick(){
+                alert('기본 이벤트 모델 : 클릭했군'); 
+            }
+            
+            click.onclick = whenClick;
+        };
+        
+    </script>
+</head>
+<body>
+    <h1 id="click">Click 해봐</h1>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Model 8</title>
+    <style>
+        p{
+            text-align: center;
+        }
+
+        p input[type = text] {
+            width: 200px;
+        }
+
+        p:nth-child(3) > input[type = text] {
+            width: 190px;
+        }
+    </style>
+    <script> 
+        function chk(){
+            // var pw = document.getElementsByName('pw')[0].value;
+            // var pwChk = document.getElementsByName('pwChk')[0].value;
+            // if (pw != pwChk){
+            //     alert('비밀번호가 다릅니다.');
+            //     frm.pw.value = '';
+            //     frm.pwChk.value = '';
+            //     frm.pw.focus();
+            //     return false;
+            // }
+// 아래와 위는 같은 수행을 한다.
+            if (frm.pw.value != frm.pwChk.value){
+                alert('비밀번호가 다릅니다.');
+                frm.pw.value = '';
+                frm.pwChk.value = '';
+                frm.pw.focus();
+                return false;
+            }
+            return true;
+        }
+      
+    </script>
+</head>
+<body>
+    <form action="#" name="frm" onsubmit="return chk()">
+        <p>ID
+            <input type="text" name="id" >
+        </p>
+        <p>PW
+            <input type="text" name="pw" >
+        </p>
+        <p>PWCh
+            <input type="text" name="pwChk" >
+        </p>
+        <p>
+            <input type="submit" value="로그인">
+        </p>
+    </form>
+</body>
+</html>

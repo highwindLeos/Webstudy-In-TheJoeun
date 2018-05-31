@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example 3</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        table {
+            width: 600px;
+            text-align: center;
+            background-color: lightblue;
+        }
+
+        table tr td {
+            width: 100px;
+            height: 100px;
+            background-color: #fff; 
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var curIDX = 8; // 위치값을 저장하는 변수
+            var tds = document.getElementsByTagName('td'); //0~8
+            tds[curIDX].style.backgroundColor = '#bbb';
+
+            this.onkeyup = function (){
+                /*
+                    반응할 키보드 값 : 왼쪽 37 위 38 오른쪽 39 아래쪽 40 (키값은 구글링 해보세요.)
+                */ 
+                if (event.keyCode >= 37 && event.keyCode <= 40){
+                    for (var i = 0; i < tds.length; i++){
+                        tds[i].style.backgroundColor = '#fff';
+                    }
+                    switch(event.keyCode){
+                        // 왼쪽 화살표 키코드.
+                        case 37: 
+                        if(curIDX % 3 == 0){
+                            curIDX += 2;
+                        } else {
+                            curIDX--;
+                        }
+                        break;
+
+                        // 위쪽 화살표 키코드.
+                        case 38: 
+                        if(curIDX < 3){
+                            curIDX += 6;
+                        } else {
+                            curIDX -= 3;
+                        }
+                        break;
+
+                        // 오른쪽 화살표 키코드.
+                        case 39: 
+                        if(curIDX % 3 == 2){
+                            curIDX -= 2;
+                        } else {
+                            curIDX++;
+                        }
+                        break;
+
+                        // 아래쪽 화살표 키코드.
+                        case 40: 
+                        if(curIDX >= 6){
+                            curIDX -= 6;
+                        } else {
+                            curIDX += 3;
+                        }
+                        break;
+                    }
+                    tds[curIDX].style.backgroundColor = '#bbb';
+                } // if문 :화살표 키보드를 누를경우 우선 하얀색 바탕으로
+            };
+        };
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Model 5</title>
+    <script> // 5 표준 이벤트 모델
+
+        // window.onload = function () {
+        //     document.getElementById('header').onclick = function (){
+        //         alert('클릭 했습니다.');
+        //     }
+        // }
+
+        window.onload = function () {
+            var btnA = document.getElementById('btnA');
+            var btnB = document.getElementById('btnB');
+            var btnC = document.getElementById('btnC');
+            var btnD = document.getElementById('btnD');
+
+            btnA.onclick = function(){
+                var countA = document.getElementById('countA');
+                countA.innerHTML = parseInt(countA.innerHTML) + 1;
+
+                // btnB.onclick(); 두번째 이벤트도 실행한다.
+            }
+
+            btnB.onclick = function(){
+                var countB = document.getElementById('countB');
+                countB.innerHTML = parseInt(countB.innerHTML) + 1;
+            }
+
+            btnC.onclick = function(){
+                var countA = document.getElementById('countA');
+                countA.innerHTML = parseInt(countA.innerHTML) - 1;
+            }
+
+            btnD.onclick = function(){
+                var countB = document.getElementById('countB');
+                countB.innerHTML = parseInt(countB.innerHTML) - 1;
+            }
+
+            // btnB.addEventListener('click', function (){
+            //     var countB = document.getElementById('countB');
+            //     countB.innerHTML = parseInt(countB.innerHTML) + 1;
+            // });     
+
+            // btnA.addEventListener('click', function (){
+            //     var countA = document.getElementById('countA');
+            //     countA.innerHTML = parseInt(countA.innerHTML) + 1;
+
+            //     btnB.onclick();
+            // });
+
+            // btnC.addEventListener('click', function (){
+            //     var countA = document.getElementById('countA');
+            //     countA.innerHTML = parseInt(countA.innerHTML) - 1;
+
+            // });
+
+            // btnD.addEventListener('click', function (){
+            //     var countB = document.getElementById('countB');
+            //     countB.innerHTML = parseInt(countB.innerHTML) - 1;
+            // });
+
+        }
+      
+    </script>
+</head>
+<body>
+    <p><button id="btnA">Button A +</button><button id="btnB">Button B +</button></p>
+    <p><button id="btnC">Button A -</button><button id="btnD">Button B -</button></p>
+    <h2>Button A - <span id="countA">0</span></h2>
+    <h2>Button B - <span id="countB">0</span></h2>
+</body>
+</html>

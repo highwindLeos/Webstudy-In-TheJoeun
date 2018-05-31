@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Confirm</title>
+    <style>
+        #wrap {
+            width: 400px;
+            margin : 0 auto;
+        }
+
+        #wrap > p > input#id{
+            display: inline-block;
+            width: 200px;
+            height: 20px;
+            border: 1px solid lightblue;
+        }
+
+        #wrap > p > button{
+            display: inline-block;
+            height: 25px;
+            border: 1px solid pink;
+            background: lightcoral;
+            color: #fff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var id = opener.document.getElementById('id').value;
+            document.getElementById('confirmid').value = id;
+
+            var changeClose = document.getElementById('changeclose');
+            changeClose.onclick = function () {
+
+                var changeValue = document.getElementById('confirmid').value;
+                opener.document.getElementById('id').value = changeValue;
+
+                window.close();
+            };
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <p>아이디 : <input type="text" id="confirmid" name="confirmid"></p>
+        <p><button id="changeclose">닫기</button></p>
+    </div>
+</body>
+</html>

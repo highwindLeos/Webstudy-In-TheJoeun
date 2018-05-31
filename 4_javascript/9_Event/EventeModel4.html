@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Model 4</title>
+    <script> // 4 표준 이벤트 모델
+
+        window.onload = function (){
+            var header = document.getElementById('header');
+            header.addEventListener('click', function(){ // 이벤트 리스너에 이벤트와 이벤트 함수 두개의 매개변수를 지정한다.
+                alert('표준 이벤트 모델 : 클릭했습니다.');
+            });
+
+        }
+      
+    </script>
+</head>
+<body>
+    <h1 id="header">Click 해봐</h1>
+</body>
+</html>

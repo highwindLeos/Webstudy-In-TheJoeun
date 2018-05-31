@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>인사 등록</title>
+    <style>
+        #wrap {
+            width: 350px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        #wrap > p {
+            text-align: center;
+        }
+
+        #wrap > p> input, 
+        #wrap > p > span {
+            display: inline-block;
+            width: 150px;
+            height: 20px;
+            border: 1px solid lightblue;
+        }
+
+        #wrap > #insa {
+            width: 280px;
+            margin: 50px auto;
+            text-align: center;
+            border: 2px solid lightcoral;
+            padding: 15px 10px;
+            background-color: lightpink;
+            border-radius: 0 30px 0 30px;
+            cursor: pointer;
+        }
+
+        #wrap > #insa:hover {
+            color: #fff;
+            background-color: lightsalmon;
+        }
+    </style>
+    <script>
+        window.onload = function (){// 윈도우 객체가 load 이벤트를 발생했을때. 실행.
+            var insa = document.getElementById('insa');
+            // insa 객체가 click 이벤트 : onclick 속성에 function
+            insa.onclick = function () {
+                window.open('child1.html','','width=500, height=500px, left=200px, top=70px');
+                // winddow.open('속성1','속성2','속성3')
+                // 속성 1 : 외부 url 내부자원
+                // 속성 2 : 윈도우의 이름
+                // 속성 3 : width : 창너비 height : 창높이 left : 왼쪽으로부터 위치 top : 위로부터의 위치
+                //          location(주소 입력 여부 - yes/no)
+                //          resizeble(윈도우 창 크기 변경여부 - yes/no)
+                //          scrollbar(스크롤바 표시 여부 - yes/no)
+            };
+        };
+
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <p>사원 이름 : <input type="text" name="name" id="name"></p>
+        <p>파트 명칭 : <span id="part"></span></p>
+        <p>날짜 : <input type="date" name="date" id="date"></p>
+        <h3 id="insa">인사 정보 파트선택</h3>
+    </div>
+    
+</body>
+</html>

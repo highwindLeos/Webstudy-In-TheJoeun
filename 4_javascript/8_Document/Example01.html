@@ -15,7 +15,7 @@
             text-align: center;
             display: inline-block;
             margin-right: -6px;
-            width: 100px;
+            width: 150px;
             height: 150px;
         }
 
@@ -54,9 +54,14 @@
               var body = document.getElementsByTagName('body');
               body[0].style.backgroundColor = color[n];
         }
+
+        function rollback() {
+            var body = document.getElementsByTagName('body');
+            body[0].style.backgroundColor = '#fff';
+        }
     </script>
 </head>
-<body>
+<body onmouseout="rollback()">
     <ul>
         <li class="red" onmouseover="changeBg(0)"></li>
         <li class="orange" onmouseover="changeBg(1)"></li>

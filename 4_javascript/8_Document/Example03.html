@@ -5,90 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Example 3</title>
+    <style>
+        body{
+            background-color: black; 
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            text-align: center;
+            display: inline-block;
+            margin-right: -6px;
+            width: 150px;
+            height: 150px;
+        }
+        
+        ul > li.red {
+            background-color: red;
+        }
+
+        ul > li.orange {
+            background-color: orange;
+        }
+
+        ul > li.yellow {
+            background-color: yellow;
+        }
+
+        ul > li.green {
+            background-color: green; 
+        }
+
+        ul > li.blue {
+            background-color: blue;
+        }
+
+        ul > li.darkblue {
+            background-color: darkblue;
+        }
+
+        ul > li.purple {
+            background-color: purple;
+        }
+    </style>
+    <script>
+        var color = ['red','orange','yellow','green','blue','darkblue','purple'];
+        var textChange = ['red TEXT', 'orange TEXT', 'yellow TEXT', 'green TEXT', 'blue TEXT', 'darkblue TEXT', 'purple TEXT'];
+        
+        function changeText(n){
+            var text = document.getElementsByClassName('text')[0];
+            text.innerHTML = textChange[n];
+            text.style.color = color[n];
+        }
+
+        function backText(){
+            var text = document.getElementsByClassName('text')[0];
+            text.innerHTML = '';
+        }
+    </script>
 </head>
 <body>
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Example 1</title>
-            <style>
-                body{
-                    background-color: black; 
-                }
-
-                ul{
-                    margin: 0;
-                    padding: 0;
-                }
-
-                ul li{
-                    text-align: center;
-                    display: inline-block;
-                    margin-right: -6px;
-                    width: 100px;
-                    height: 150px;
-                }
-                
-                ul > li.red {
-                    background-color: red;
-                }
-        
-                ul > li.orange {
-                    background-color: orange;
-                }
-        
-                ul > li.yellow {
-                    background-color: yellow;
-                }
-        
-                ul > li.green {
-                    background-color: green; 
-                }
-        
-                ul > li.blue {
-                    background-color: blue;
-                }
-        
-                ul > li.darkblue {
-                    background-color: darkblue;
-                }
-        
-                ul > li.purple {
-                    background-color: purple;
-                }
-            </style>
-            <script>
-                var color = ['red','orange','yellow','green','blue','darkblue','purple'];
-                var textChange = ['red TEXT', 'orange TEXT', 'yellow TEXT', 'green TEXT', 'blue TEXT', 'darkblue TEXT', 'purple TEXT'];
-                
-                function changeText(n){
-                      var text = document.getElementsByClassName('text');
-                      text[0].style.color = color[n];
-                      text[0].innerHTML = textChange[n];
-                }
-
-                function backText(){
-                    var text = document.getElementsByClassName('text');
-                    text[0].style.color = 'black';
-                    text[0].innerHTML = '';
-                }
-            </script>
-        </head>
-        <body>
-            <ul onmouseout="backText()">
-                <li class="red" onmouseover="changeText(0)"></li>
-                <li class="orange" onmouseover="changeText(1)" ></li>
-                <li class="yellow" onmouseover="changeText(2)" ></li>
-                <li class="green" onmouseover="changeText(3)" ></li>
-                <li class="blue" onmouseover="changeText(4)" ></li>
-                <li class="darkblue" onmouseover="changeText(5)" ></li>
-                <li class="purple" onmouseover="changeText(6)" ></li>
-            </ul>
-            <h1 class="text">TEXT font</h1>
-        </body>
-        </html>
+    <ul onmouseout="backText()">
+        <li class="red" onmouseover="changeText(0)"></li>
+        <li class="orange" onmouseover="changeText(1)" ></li>
+        <li class="yellow" onmouseover="changeText(2)" ></li>
+        <li class="green" onmouseover="changeText(3)" ></li>
+        <li class="blue" onmouseover="changeText(4)" ></li>
+        <li class="darkblue" onmouseover="changeText(5)" ></li>
+        <li class="purple" onmouseover="changeText(6)" ></li>
+    </ul>
+    <h1 class="text"></h1>
+</body>
+</html>
 </body>
 </html>

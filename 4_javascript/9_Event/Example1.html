@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example 1</title>
+    <style>
+       img {
+           border: 1px solid lightpink;
+           width: 200px;
+           height: 200px;
+           margin-right: -6px;
+           cursor: pointer;
+       }
+    </style>
+    <script> 
+        window.onload = function (){
+           var btnA = document.getElementById('btnA');
+           var btnB = document.getElementById('btnB');
+           var btnC = document.getElementById('btnC');
+           var btnD = document.getElementById('btnD');
+
+           var imgChange = ['./img/cpp.jpg','./img/javascript.jpg','./img/python.jpg','./img/ruby.jpg'];
+           var imgBasic = ['./img/c.jpg','./img/java.jpg','./img/php.jpg','./img/r.jpg'];
+            // btnA
+            btnA.onmouseover = function () {
+                btnA.src = imgChange[0];
+            };
+            // 원래 이미지 : 마우스가 아웃.
+            btnA.onmouseout = function () {
+                btnA.src = imgBasic[0];
+            };
+            // btnB
+            btnB.onmouseover = function () {
+                btnB.src = imgChange[1];
+            };
+            // 원래 이미지 : 마우스가 아웃.
+            btnB.onmouseout = function () {
+                btnB.src = imgBasic[1];
+            };
+            // btnC
+            btnC.onmouseover = function () {
+                btnC.src = imgChange[2];
+            };
+            // 원래 이미지 : 마우스가 아웃.
+            btnC.onmouseout = function () {
+                btnC.src = imgBasic[2];
+            };
+            // btnD
+            btnD.onmouseover = function () {
+                btnD.src = imgChange[3];
+            };
+            // 원래 이미지 : 마우스가 아웃.
+            btnD.onmouseout = function () {
+                btnD.src = imgBasic[3];
+            };
+        };
+      
+    </script>
+</head>
+<body>
+    <img src="./img/c.jpg" alt="C" id="btnA">
+    <img src="./img/java.jpg" alt="Java" id="btnB">
+    <img src="./img/php.jpg" alt="PHP" id="btnC">
+    <img src="./img/r.jpg" alt="R" id="btnD">
+</body>
+</html>

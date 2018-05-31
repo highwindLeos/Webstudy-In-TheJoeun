@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table tr td {
+            width: 100px;
+            height: 100px;
+            border: 1px solid lightpink;
+            margin-right: -4px;
+        }
+    </style>
+    <script>
+        
+        var color = new Array("gray","skyblue","yellow","green","blue","red","black") //배열 선언 - 이곳에다 추가할 색상코드를 써주시면 됩니다.
+        
+        function cbg(color) {//배경색을 바꾸는 함수
+           document.bgColor = color;
+        }
+        
+        document.write('<table>');
+        for(var j = 0; j < color.length; j++) {
+            document.write('<tr>');
+            for(var i = 0; i < color.length; i++) {//위에서 선언한 배열을 불러오는 함수
+                document.write('<td bgcolor = "' + color[i] + '" onClick = "cbg(' + color[i] + ');"></td>');
+            }
+            document.write('</tr>');
+        }
+        document.write('</tr></table>');
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
