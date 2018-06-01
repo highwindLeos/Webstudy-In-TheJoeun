@@ -21,7 +21,7 @@
 	<%! // 선언부는 실행하기전 컴파일을 먼저한다
 		private long pow(int a, int b){
 			long temp = 1;
-			for (int i = 1; i < b; i++){
+			for (int i = 1; i <= b; i++){
 				temp *= a;
 			}
 			return temp;

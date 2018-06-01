@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>arrayParameters</title>
+	<style>
+	
+	</style>
+	<script>
+	
+	</script>
+</head>
+<body>
+	<h2>오늘의 메뉴와 식당 고민</h2>
+	<form action="../ArrayParameter" method="GET">
+		<p>메뉴 : <br />
+			<select name="menu" id="menu" multiple="multiple" size="3" >
+				<option value="된장찌개">된장찌개</option>
+				<option value="김치찌개">김치찌개</option>
+				<option value="부대찌개">부대찌개</option>
+				<option value="불고기" selected="selected">불고기</option>
+			</select> 
+		</p>
+		<p>식당 : 
+			<input type="checkbox" name="rest" value="종로" checked="checked" />종로
+			<input type="checkbox" name="rest" value="광교" />광교
+			<input type="checkbox" name="rest" value="미아" />미아
+			<input type="checkbox" name="rest" value="금천" />금천
+		</p>
+		<p>국적 : 
+			<input type="radio" name="nation" value="한국" checked="checked" />한국
+			<input type="radio" name="nation" value="중국" />중국
+			<input type="radio" name="nation" value="미국" />미국
+			<input type="radio" name="nation" value="일본" />일본
+		</p>
+		 <input type="submit" value="보내기"/>
+	</form>
+</body>
+</html>

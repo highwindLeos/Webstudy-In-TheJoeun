@@ -13,6 +13,13 @@
 	}
 </style>
 <script>
+	window.onload = function (){
+		var submit = document.querySelector("form > input[type=submit]"); // Submit 버튼
+		submit.onclick = function () {
+			return validateForm();
+		}; // 클릭했을때 검증 함수 호출.
+	};
+	
 	function validateForm() {
 		
 		if (!frm.name.value){
@@ -33,6 +40,7 @@
 			return false;
 		}
 		return true;
+		
 	}
 </script>
 </head>
@@ -42,7 +50,7 @@
 		<p>이 름 : <input type="text" id="name" name="name" /></p>
 		<p>아이디 : <input type="text" id="id" name="id" /></p>
 		<p>패스워드 : <input type="password" id="pw" name="pw" /></p>
-		<button onclick="validateForm()">로그인</button>
+		<input type="submit" value="로그인"/>
 	</form>
 </div>
 </body>

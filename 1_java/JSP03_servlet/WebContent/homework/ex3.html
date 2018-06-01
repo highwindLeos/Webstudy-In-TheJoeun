@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ex3</title>
+	<style>
+	
+	</style>
+	<script>
+		function chk(){
+			if(frm.endnum.value < 0){
+				alert('반드시 자연수만 입력해주세요');
+				frm.endnum.focus();
+				return false;
+			}
+			return true;
+		}
+	</script>
+</head>
+<body>
+	<form action="../Ex3" id="frm">
+		<input type="text" name="endnum" id="endnum" />
+		<input type="submit" value="합구하기" onclick="return chk()" />
+	</form>
+</body>
+</html>

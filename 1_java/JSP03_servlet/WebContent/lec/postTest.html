@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Post Test</title>
+	<link rel="stylesheet" href="../css/main.css" />
+	<style>
+	
+	</style>
+	<script>
+	
+	</script>
+</head>
+<body>
+	<a href="http://localhost:8081/JSP03_servlet/Test?parameter=a tag">a 태그로 넘기기</a>
+	<hr />
+	<button onclick="location.href = 'http://localhost:8081/JSP03_servlet/Test?parameter=bottton으로'">Test 로 넘어가기</button>
+	<hr />
+	<form action="http://localhost:8081/JSP03_servlet/Test" method="POST">
+		<input type="text" name="parameter" />
+		<input type="submit" value="parameter 넘기기" />
+	</form>
+</body>
+</html>
