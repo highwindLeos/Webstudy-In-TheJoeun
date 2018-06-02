@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/Ex2")
-public class Ex2 extends HttpServlet {
+public class Ex2Sum100 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String encodingUTF8 = "utf-8";
        
-    public Ex2() {
+    public Ex2Sum100() {
         super();
     }
     
@@ -24,7 +24,7 @@ public class Ex2 extends HttpServlet {
 
 		int sum = 0;
 		
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i <= 100; i++) {
 			sum += i;
 		}
 		
@@ -35,7 +35,7 @@ public class Ex2 extends HttpServlet {
 		out.println("<head>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h3>" + sum + "</h3>");
+		out.println("<h3>100까지의 합은 " + sum + " 입니다.</h3>");
 		out.println("</body>");
 		out.println("</html>");
 		

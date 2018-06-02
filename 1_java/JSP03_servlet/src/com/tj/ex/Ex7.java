@@ -14,7 +14,6 @@ public class Ex7 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String encodingUTF8 = "utf-8";
 
-       
     public Ex7() {
         super();
     }

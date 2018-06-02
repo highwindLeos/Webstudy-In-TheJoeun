@@ -8,6 +8,19 @@
 	</style>
 	<script>
 		function chk(){
+						
+			if(!frm.endnum.value){
+				alert('빈칸 없이 입력해주세요');
+				frm.endnum.focus();
+				return false;
+			}
+			
+			if (isNaN(frm.endnum.value)){
+				alert('숫자만 입력해주세요');
+				frm.endnum.focus();
+				return false;
+			}
+			
 			if(frm.endnum.value < 0){
 				alert('반드시 자연수만 입력해주세요');
 				frm.endnum.focus();

@@ -31,12 +31,13 @@ public class Ex5 extends HttpServlet {
 				break;
 			}
 		}
-		
+		// 입력된 값과 같은 색상이 있는 배열의 인덱스를 가지고 i가 설정되고 반복문 탈출.
 		if(i == 0) {
 			i = 6;
 		} else {
 			i--;
 		}
+		// i가 red 의 인덱스인 0 일때는 보라색인 6, 나머지는 선택한 색의 이전 색상의 인덱스로 설정한다.
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -49,7 +50,7 @@ public class Ex5 extends HttpServlet {
 		out.println("</style>");
 		out.println("</head>");
 		out.println("<body bgcolor="+ color +">");
-		out.println("<h3>글자색은"+ colorSet[i] + "배경색은 " + color + "입니다.</h3>");
+		out.println("<h3>글자색은 "+ colorSet[i] + " 배경색은 " + color + " 입니다.</h3>");
 		out.println("</body>");
 		out.println("</html>");
 		

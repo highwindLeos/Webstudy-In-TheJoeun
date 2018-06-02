@@ -25,7 +25,7 @@ public class Ex3 extends HttpServlet {
 		
 		int sum = 0;
 		
-		for (int i = 0; i < endnum; i++) {
+		for (int i = 0; i <= endnum; i++) {
 			sum += i;
 		}
 		

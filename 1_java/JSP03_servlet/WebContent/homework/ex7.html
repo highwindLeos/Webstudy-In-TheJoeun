@@ -4,19 +4,28 @@
 	<meta charset="UTF-8">
 	<title>Ex7</title>
 	<style>
-	
+		#wrap {
+			width : 350px;
+			margin: 0 auto;
+			text-align: center;
+			border: 1px solid #666;
+		}
 	</style>
 	<script>
 	
 	</script>
 </head>
 <body>
-<h1>게시판</h1>
-	<form action="../Ex7" method="get">
-		<p>제목	<input type="text" name="title" id="title" /></p>
-		<p>작성자	<input type="text" name="author" id="author" /></p>
-		<p>내용	<textarea rows="10" cols="30" name="description" id="description" ></textarea></p>
-		<input type="submit" value="글전송" />
-	</form>
+	<div id="wrap">
+		<h2>게시판</h2>
+			<form action="../Ex7" method="get">
+				<p>제 &nbsp;목	<input type="text" name="title" id="title" required="required" placeholder="제목을 입력해주세요"/></p>
+				<p>작성자	<input type="text" name="author" id="author" required="required" placeholder="작성자를 입력해주세요"/></p>
+				<hr />
+				<p>내 용<br /><br /><textarea rows="10" cols="40" name="description" id="description" required="required" placeholder="내용을 입력해주세요"></textarea></p>
+				<input type="submit" value="글전송" />
+			</form>
+			<br />
+	</div>
 </body>
 </html>

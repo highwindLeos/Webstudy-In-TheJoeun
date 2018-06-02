@@ -10,10 +10,10 @@
 		}
 		table {
 			margin:0 auto;
-			border: pink solid 2px; 
+			border: pink solid 1px; 
 		}
 		tr {
-			background-color: lightsalmon;
+			background-color: lightgray;
 		}
 		tr:hover {
 			background-color: pink;
@@ -37,15 +37,15 @@
 			<caption>게시판</caption>
 				<tr>
 					<td>제목</td>
-					<td><input type="text" name="title" id="title" /></td>
+					<td><input type="text" name="title" id="title" required="required" placeholder="제목을 입력해주세요"/></td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="author" id="author" /></td>
+					<td><input type="text" name="author" id="author" required="required" placeholder="작성자를 입력해주세요"/></td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea rows="10" cols="30" name="description" id="description" ></textarea></td>
+					<td><textarea rows="10" cols="40" name="description" id="description" required="required" placeholder="내용을 입력해주세요"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="글전송" /></td>
