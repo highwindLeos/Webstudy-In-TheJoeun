@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Ex4")
 public class Ex4 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String encodingUTF8 = "utf-8";
+
        
     public Ex4() {
         super();
@@ -36,6 +38,7 @@ public class Ex4 extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding(encodingUTF8);
 		doGet(request, response);
 	}
 

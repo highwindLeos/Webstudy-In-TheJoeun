@@ -32,22 +32,24 @@
 
                         <h3>DML  :  Data Manipulation Language ; 데이터 검색, 수정 등</h3>
 
+                            <span class="bold_color_blue">
                             INSERT : 데이터베이스 객체에 데이터를 입력
                             DELETE : 데이터베이스 객체에 데이터를 삭제
                             UPDATE : 기존에 존재하는 데이터베이스 객체 안의 데이터수정
                             SELECT : 데이터베이스 객체로부터 데이터를 검색
+                            </span>
 
                         <h3>DDL  :  Data Definition Language ; 데이터와 그 구조를 정의</h3>
-
+                            <span class="bold_color_red">
                             CREATE : 데이터 베이스 객체 생성
                             DROP : 데이터 베이스 객체를 삭제
                             ALTER : 기존에 존재하는 데이터베이스 객체를 다시 정의
-
+                            </span>
                         <h3>DCL  :  Data Control Language ; 데이터베이스 사용자의 권한 제어</h3>
-
+                            <span class="bold_color_blue">
                             GRANT : 데이터 베이스 객체에 권한 부여
                             REVOKE : 이미 부여된 데이터베이스 객체의 권한을 취소
-
+                            </span>
                     </pre>
                     <hr id="CREATE">
                         <h3> 2.	CREATE  TABLE로 테이블 구조 정의하기 </h3>
@@ -59,17 +61,18 @@
                         테이블 구조 자체를 새롭게 생성, 수정, 삭제해 보겠습니다. 
                         우선 CREATE TABLE 명령어로 새로운 테이블을 생성해 보겠습니다. 
                         다음은 CREATE TABLE 문의 기본 형식입니다. </h3>
-                        
+                            <span class="bold_color_red">
                             CREATE TABLE table_name
                             (column_name  data_type expr, …)
-
+                            </span>
                         <h3>ex. 다음과 같은 속성을 가진 Book 테이블을 생성하시오, 정수형은 NUMBER를, 문자형은 VARCHAR2를 사용한다.</h3>
-
+                            <span class="bold_color_blue">
                             bookid(도서번호) – NUMBER (기본키 지정)
                             bookname(도서이름) – VARCHAR2(20)
                             publisher(출판사) – VARCHAR2(20)
                             price(가격) - NUMBER
-                        
+                            </span>
+                            <span class="bold_color_red">
                             CREATE TABLE Book(
                                 bokid NUMBER,
                                 bookname VARCHAR2(20),
@@ -77,62 +80,72 @@
                                 price NUMBER,
                                 PRIMARY KEY(bookid));
                         
-                                drop table book;
+                            drop table book;
                         
                             CREATE TABLE BOOK(
                                 bookid number primary key,
                                 bookname varchar2(20),
                                 publisher varchar2(20),
                                 price number);
-
-                        
+                            </span>
                         <h3>(2)	데이터형 : 데이터베이스에는 문자, 숫자, 날짜, 이미지 등과 같은 다양한 형태의 데이터가 저장됩니다. 
                             다음은 오라클에서 제공되는 데이터 형의 종류입니다. </h3>
-
+                            <span class="color_pink">
                             CHAR(size) : 고정 길이 문자 데이터. VARCHAR2와 동일한 형태의 자료를 저장할 수 있고, 
                                         입력된 자료의 길이와는 상관없이 정해진 길이만큼 저장 영역 차지. 최소 크기는 1
+
                             VARCHAR2(size) : Up to 2000 Bytes 가변 길이 문자 데이터. 실제 입력된 문자열의 길이만큼 저장 영역을 차지. 
                                             최대 크기는 명시해야 하며, 최소 크기는 1
-                            NUMBER : Internal Number Format 최고 40자리까지의 숫자를 저장할 수 있습니다. 
-                                    이때 소수점이나 부호는 길이에 포함되지 않는다
-                        	NUMBER(w) : W자리까지의 수치로 최대 38자리까지 가능하다. (38자리가 유효 숫자이다.)
-                        	NUMBER(w, d) ; W는 전체 길이, d는 소수점 이하 자릿수이다. 소수점은 자릿수에 포함되지 않는다.
-                        	DATE : BC 4712년 1월 1일~AD 4712년 12월 31일까지의 날짜
-                        	LONG : 가변 길이의 문자형 데이터 타입, 최대 크기는 2GB
-                        	LOB : 2GB까지의 가변 길이 바이너리 데이터를 저장시킬 수 있습니다. 이미지 문서, 실행 파일을 저장할 수 있습니다
-                            LOB(Large OBject) 데이터 형은 텍스트, 그래픽 이미지, 동영상, 사운드와 같이 구조화되니 않은 대용량의 
-                                            텍스트나 멀디미디어 데이터를 저장하기 위한 데이터 형입니다. 
-                                            최대 4GB 까지 저장가능합니다. 오라클에서 제공되는 
-                                            LOB 데이터 형은 BLOB, CLOB, NCLOB, BFILE 등이 있습니다. 
 
-                            BLOB는 그래픽 이미지, 동영상, 사운드와 같은 구조화되지 않은 데이터를 저장하기 위해 사용됩니다
-                            CLOB는 e-BOOK과 같은 대용량의 텍스트 데이터를 저장하기 위해서 사용합니다. 
+                            NUMBER : Internal Number Format 최고 40자리까지의 숫자를 저장할 수 있습니다. 
+                                    이때 소수점이나 부호는 길이에 포함되지 않는다.
+
+                            NUMBER(w) : W자리까지의 수치로 최대 38자리까지 가능하다. (38자리가 유효 숫자이다.)
+                            
+                            NUMBER(w, d) ; W는 전체 길이, d는 소수점 이하 자릿수이다. 소수점은 자릿수에 포함되지 않는다.
+                            
+                            DATE : BC 4712년 1월 1일~AD 4712년 12월 31일까지의 날짜.
+                            
+                            LONG : 가변 길이의 문자형 데이터 타입, 최대 크기는 2GB.
+                            
+                            LOB : 2GB까지의 가변 길이 바이너리 데이터를 저장시킬 수 있습니다. 이미지 문서, 실행 파일을 저장할 수 있습니다.
+                            
+                            LOB(Large OBject) 데이터 형은 텍스트, 그래픽 이미지, 동영상, 사운드와 같이 구조화되니 않은 대용량의 
+                                                텍스트나 멀디미디어 데이터를 저장하기 위한 데이터 형입니다. 
+                                                최대 4GB 까지 저장가능합니다. 오라클에서 제공되는 
+                                                LOB 데이터 형은 BLOB, CLOB, NCLOB, BFILE 등이 있습니다. 
+
+                            BLOB는 그래픽 이미지, 동영상, 사운드와 같은 구조화되지 않은 데이터를 저장하기 위해 사용됩니다.
+                            CLOB는 e-BOOK과 같은 대용량의 텍스트 데이터를 저장하기 위해서 사용합니다 ***(게시판 본문등에 자주사용되는 자료형)***
                             NCLOB은 국가별 문자셋 데이터를 저장하고, BFILE은 바이너리 데이터를 파일 형태로 저장합니다
                             TIMESTAMP(n) ; DATE형의 확장된 형태. 백만분의 일초 단위까지 표현할 수 있다.
-                            
+                            </span>
                         <h3>(3)	식별자 명명규칙</h3>
-
-                        	반드시 문자로 시작. A~Z까지 대소문자, 0~9까지의 숫자, 특수기호는 _,$,#만 포함 가능
-                        	1~30글자까지 가능. 공백 허용 안함.
+                            <span class="color_bisque">
+                        	반드시 문자로 시작. A~Z까지 대소문자, 0~9까지의 숫자, 특수기호는 _, $, # 만 포함 가능
+                            1~30글자까지 가능. 공백 허용 안함.
+                            
                             오라클에서 사용되는 예약어나 다른 객체명과 중복 불가
-                            
-                        <h3>(4)	실습하기 I ; </h3>
-                            지금까지 실습에 사용했던 사원 테이블과 유사한 구조의 사원번호, 사원이름, 급여 3개의 칼럼으로 
-                            구성된 EMP01 테이블을 생성해 보자
-                            
+                            </span>
+                        <h3>(4)	실습하기 I </h3>
+                        지금까지 실습에 사용했던 사원 테이블과 유사한 구조의 사원번호, 사원이름, 급여 3개의 칼럼으로 
+                        구성된 EMP01 테이블을 생성해 보자
+                            <span class="color_pink">
                             CREATE TABLE EMP01( 
                                 EMPNO NUMBER(4), 
                                 ENAME VARCHAR2(20), 
-                                SAL NUMBER(7, 2));
-
+                                SAL NUMBER(7, 2)
+                            );
+                            </span>
                         DEPTNO(NUMBER(2)), DNAME(VARCHAR2(14)), LOC(VARCHAR2(13) 의 구조를 갖는 테이블을 CREATE TABLE 명령어로 
                         생성하되 테이블의 이름은 DEPT01 로 하시오.
-
+                            <span class="color_bisque">
                             CREATE TABLE DEPT01 (
                                 DEPTNO NUMBER(2),
                                 DNAME VARCHAR2(14),
-                                LOC VARCHAR2(13));
-
+                                LOC VARCHAR2(13)
+                            );
+                            </span>
                         서브 쿼리로 테이블 생성하기 ; 이미 존재하는 테이블과 동일한 구조와 내용을 갖는 새로운 테이블을 생성할 수 있다.
                         CREATE TABLE 명령어 다음에 컬럼을 일일이 정의하는 대신 AS 절을 추가하여 
                         EMP 테이블과 동일한 내용과 구조를 갖는 EMP02 테이블을 생성해 봅시다.
@@ -204,39 +217,44 @@
                             새로운 컬럼은 테이블 맨 마지막에 추가되므로 자신이 원하는 위치에 만들어 넣을 수 없습니다. 
                             또한 이미 이전에 추가해 놓은 로우가 존재한다면 그 로우에도 컬럼이 추가되지만, 컬럼 값은 NULL 값으로 입력됩니다.
 
-                        	ALTER TABLE table_name
-                            ADD (column_name, data_type expr, …);
+                                ALTER TABLE table_name
+                                ADD (column_name, data_type expr, …);
 
-                        	EMP01 테이블에 문자 타입의 직급(JOB) 칼럼을 추가해 봅시다
-                            ALTER TABLE EMP01 ADD(JOB VARCHAR2(9));
+                            EMP01 테이블에 문자 타입의 직급(JOB) 칼럼을 추가해 봅시다
                             
-                        	탄탄다지기 : DEPT02 테이블에 문자 타입의 부서장(DMGR) 칼럼을 추가해 봅시다
-                            ALTER TABLE DEPT02 ADD(DMGR NUMBER(4));
+                                ALTER TABLE EMP01 ADD(JOB VARCHAR2(9));
+                            
+                            탄탄다지기 : DEPT02 테이블에 문자 타입의 부서장(DMGR) 칼럼을 추가해 봅시다.
+                            
+                                ALTER TABLE DEPT02 ADD(DMGR NUMBER(4));
                             
                         <h3>(4)	기존 컬럼 속성 변경하기</h3>
 
                             ALTER TABLE MODIFY 문을 다음과 같은 형식으로 사용하면 테이블에 이미 존재하는 컬럼을 변경할 수 있게 됩니다.
                             컬럼을 변경한다는 것은 컬럼에 대해서 데이터 타입이나 크기, 기본 값들을 변경한다는 의미입니다.
 
-                        	ALTER TABLE table_name
-                            MODIFY (column_name, data_type expr, …);
+                                ALTER TABLE table_name
+                                MODIFY (column_name, data_type expr, …);
 
-                        	실습하기 : EMP01 테이블의 직급(JOB) 칼럼을 최대 30글자까지 저장할 수 있게 변경해 보도록 하자
-                            ALTER TABLE EMP01 MODIFY(JOB VARCHAR2(30));
+                            실습하기 : EMP01 테이블의 직급(JOB) 칼럼을 최대 30글자까지 저장할 수 있게 변경해 보도록 하자.
+                            
+                                ALTER TABLE EMP01 MODIFY(JOB VARCHAR2(30));
                             
                             탄탄다지기 : DEPT02 테이블의 부서장(DMGR) 칼럼을 4자리 숫자 타입으로 변경해 보자
                             
                         <h3>(5)	기존 컬럼 삭제</h3>
                             테이블에 이미 존재하는 컬럼을 삭제해 봅시다. ALTER TABLE ~ DROP COLUMN 명령어로 칼럼을 삭제할 수 있습니다. 
                             
-                        	ALTER TABLE table_name 
-                            DROP COLUMN column_name;
+                                ALTER TABLE table_name 
+                                DROP COLUMN column_name;
 
-                        	실습하기 : EMP01 테이블의 직급 칼럼을 삭제해 보도록 합시다
-                            ALTER TABLE EMP01 DROP COLUMN JOB; 
+                            실습하기 : EMP01 테이블의 직급 칼럼을 삭제해 보도록 합시다.
+                            
+                                ALTER TABLE EMP01 DROP COLUMN JOB; 
 
-                        	탄탄다지기 : EMP02 테이블의 부서장(MGR) 칼럼을 삭제해 봅시다
-                            ALTER TABLE EMP02 DROP COLUMN MGR;
+                            탄탄다지기 : EMP02 테이블의 부서장(MGR) 칼럼을 삭제해 봅시다.
+                            
+                                ALTER TABLE EMP02 DROP COLUMN MGR;
 
                         <h3>(6)	SET UNUSED 옵션 적용하기</h3>
                             특정 테이블(EMP02)에서 컬럼(JOB)을 삭제하는 경우 다음과 같이 무조건 삭제하는 것은 위험합니다. 
@@ -259,8 +277,9 @@
                             이제 EMP02 테이블의 JOB 컬럼의 사용을 논리적으로 제한해 봅시다
                             ALTER TABLE EMP02 SET UNUSED(JOB);
                             
-                        	가장 사용빈도가 적은 시간에 실제적인 삭제 작업을 진행합시다
-                        	ALTER TABLE EMP02 DROP UNUSED COLUMNS; -- UNUSED한 컬럼들을 실제 삭제한다
+                            가장 사용빈도가 적은 시간에 실제적인 삭제 작업을 진행합시다.
+                            
+                        	    ALTER TABLE EMP02 DROP UNUSED COLUMNS; -- UNUSED한 컬럼들을 실제 삭제한다
                         
                     </pre>
                     <div class="image_modify"><img src="../../img/subquery01.jpg" alt=""></div>
@@ -271,12 +290,12 @@
 
                         <h3>(1)	DROP TABLE문은 기존 테이블을 제거합니다.</h3>
 
-                            DROP TABLE table_name;
+                                DROP TABLE table_name;
 
                         <h3>(2)	실습하기 : 테이블 삭제</h3>
                             CREATE TABLE을 학습할 때 만들어 놓았던 EMP01 테이블을 삭제해 봅시다.
                             
-                            DROP TABLE EMP01;
+                                DROP TABLE EMP01;
 
                     </pre>
                     <hr id="DROP">

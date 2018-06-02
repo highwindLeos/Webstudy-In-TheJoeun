@@ -57,6 +57,6 @@ public class Test extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8"); //포스트 방식의 한글이 깨짐을 utf-8 인코딩한다.
 		doGet(request, response);
-	} // 포스트로 넘어와도  doGet(); 쪽으로 넘겨준다.
+	} // 포스트로 넘어와도  doGet(); 쪽으로 넘겨준다. 처리는 항상 doGet() 으로.
 
 }

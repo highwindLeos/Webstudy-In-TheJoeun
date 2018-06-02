@@ -37,7 +37,7 @@ public class LifeCycle extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGet(request, response);
-    }
+    } //요청이 있을때 마다 실행.
     
     @Override
     public void destroy() {

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Ex5")
 public class Ex5 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String encodingUTF8 = "utf-8";
        
     public Ex5() {
         super();
@@ -55,7 +56,7 @@ public class Ex5 extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8"); //포스트 방식의 한글이 깨짐을 utf-8 인코딩한다.
+		request.setCharacterEncoding(encodingUTF8); //포스트 방식의 한글이 깨짐을 utf-8 인코딩한다.
 		doGet(request, response);
 	}
 
