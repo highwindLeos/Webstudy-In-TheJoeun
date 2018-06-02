@@ -1,5 +1,5 @@
 # Webstudy In thejoeun Academy
-# [ Coder Leos ]
+## [ Coder Leos - Lee Seung Hoon ]
 ### Java UI/UX Engineering Class
 
 자바 언어를 기반으로 웹 프로젝트의 전반적인 기초지식과
@@ -17,14 +17,14 @@ https://github.com/highwindLeos/PHPBootCamp/blob/master/MarkDownsyntex.md
 
 ### Web 표준
 
-####HTML
+####HTML5
 ####CSS3
 ####Javascript
 
 ### 언어 및 라이브러리
-####JQuery
-####Java
-####Spring
+####JQuery - javascript
+####Java - Base Programing Language
+####Spring - Java FrameWork
 
 ### 데이터베이스 시스템
 ####Oracle Database
@@ -38,6 +38,8 @@ https://github.com/highwindLeos/PHPBootCamp/blob/master/MarkDownsyntex.md
 | 3 | IT CookBook, 오라클로 배우는 데이터베이스 개론과 실습 | 박우창 , 남송휘 , 이현룡 | 한빛 미디어 |
 | 4 | 최범균의 JSP 2.3 웹 프로그래밍 : 기초부터 중급까지 | 최범균 | 가메출판사 |
 | 5 | SQL 첫걸음 | 아사이 아츠시 | 한빛 미디어 |
+
+추후 정리 준비중입니다.
 
 ## 개발도구 및 개발에 필요한 Tool Site.
 
@@ -73,6 +75,3 @@ https://www.inflearn.com/
 http://www.edwith.org/
 
 추후 정리 준비중입니다.
-
-
-
