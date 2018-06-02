@@ -17,17 +17,17 @@ https://github.com/highwindLeos/PHPBootCamp/blob/master/MarkDownsyntex.md
 
 ### Web 표준
 
-###HTML5
-###CSS3
-###Javascript
+#### HTML5
+#### CSS3
+#### Javascript
 
 ### 언어 및 라이브러리
-###JQuery - javascript
-###Java - Base Programing Language
-###Spring - Java FrameWork
+#### JQuery - javascript
+#### Java - Base Programing Language
+#### Spring - Java FrameWork
 
 ### 데이터베이스 시스템
-###Oracle Database
+#### Oracle Database
 
 ## 학습 서적.
 
