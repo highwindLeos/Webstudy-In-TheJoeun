@@ -18,110 +18,109 @@ CREATE TABLE CUSTOMER (
 );
 
 
--- ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- ½ÃÄö½º °ª ¸®¼ÂÇÏ±â
 DROP SEQUENCE SEQ_CNO;
 CREATE SEQUENCE SEQ_CNO MAXVALUE 9999;
 SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SEQ_CNO';
---1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+--1. SEQ_CNO ½ÃÄö½ºÀÇ ¸¶Áö¸· ¹øÈ£¸¦ Ãâ·ÂÇÑ´Ù.
 SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SEQ_CNO';
 
---2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ INCREMENT ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ç°ªï¿½ï¿½ 999999 ï¿½ï¿½ ï¿½ï¿½ï¿½)
+--2. Ãâ·ÂµÈ ¸¶Áö¸· ¹øÈ£¸¦ ±âÁØÀ¸·Î °ªÀ» À½¼ö·Î Áõ°¡ÇØÁØ´Ù. (¸¶Áö¸·°ªÀÌ 3ÀÌ¶ó¸é -3)
 ALTER SEQUENCE SEQ_CNO INCREMENT BY -3 MINVALUE 1;
 
---3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½
+--3. ½ÃÄö½ºÀÇ Áõ°¡°ªÀ» Ãâ·ÂÇØº»´Ù.
 SELECT SEQ_CNO.NEXTVAL FROM DUAL;
 
---4. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½ -999999 ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ ï¿½ß´ï¿½
+--4. ½ÃÄö½ºÀÇ ÇöÁ¦°ªÀ» Ãâ·ÂÇØº»´Ù.
 SELECT SEQ_CNO.CURRVAL FROM DUAL;
 
---5. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ INCREMENT ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½
+--5. ½ÃÄö½ºÀÇ Áõ°¡°ªÀ» 1·Î ¼³Á¤ÇÑ´Ù.
 ALTER SEQUENCE SEQ_CNO INCREMENT BY 1;
 
---6. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
-
+--6. µ¥ÀÌÅÍº£ÀÌ½º¿¡ Àû¿ëÇÑ´Ù.
 COMMIT;
 
--- TABLE ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+-- TABLEÀÇ ¸ðµç °ªÀ» Ãâ·ÂÇØº»´Ù.
 SELECT * FROM CGRADE;
 SELECT * FROM CUSTOMER;
 
--- ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
-INSERT INTO CGRADE VALUES (1, 'ï¿½Ï¹ï¿½', 0, 99999);
-INSERT INTO CGRADE VALUES (2, 'ï¿½Ç¹ï¿½', 100000, 199999);
-INSERT INTO CGRADE VALUES (3, 'ï¿½ï¿½ï¿½', 200000, 299999);
+-- µî±Þ Á¤º¸¸¦ Å×ÀÌºí¿¡ ÀÔ·ÂÇÑ´Ù. (µî±ÞÀÇ ±¸°£ÀÌ µÈ´Ù.)
+INSERT INTO CGRADE VALUES (1, 'ÀÏ¹Ý', 0, 99999);
+INSERT INTO CGRADE VALUES (2, '½Ç¹ö', 100000, 199999);
+INSERT INTO CGRADE VALUES (3, '°ñµå', 200000, 299999);
 INSERT INTO CGRADE VALUES (4, 'VIP',  300000, 399999);
 INSERT INTO CGRADE VALUES (5, 'VVIP', 400000, 9999999999);
 
 
--- ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
-INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-9999', 'ï¿½Ìµï¿½ï¿½ï¿½', 1000, 0, 1);
-INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-8888', 'ï¿½Ì¸ï¿½È­', 1000, 0, 1);
-INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-7777', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 1000, 0, 1);
-INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-6666', 'ï¿½ï¿½ï¿½Ù´ï¿½', 1000, 0, 1);
-INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-5555', 'ï¿½ì¸¶ï¿½ï¿½', 1000, 0, 1);
-INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-4444', 'ï¿½Õ¿ï¿½ï¿½ï¿½', 1000, 0, );
+-- °í°´ Á¤º¸¸¦ CUSTOMER Å×ÀÌºí¿¡ ÀÔ·ÂÇÑ´Ù.
+INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-9999', 'ÀÌµ¥ÀÌ', 1000, 0, 1);
+INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-8888', 'ÀÌ¸¸È­', 1000, 0, 1);
+INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-7777', 'ÀÌ·¹¿À', 1000, 0, 1);
+INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-6666', '¼Õ¿À°ø', 1000, 0, 1);
+INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-5555', 'ÇÁ¸®Àú', 1000, 0, 1);
+INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-4444', 'º£ÁöÅÍ', 1000, 0, 1);
 
 COMMIT;
 
-UPDATE CUSTOMER SET CNO = ROWNUM; -- ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ CNO ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
+UPDATE CUSTOMER SET CNO = ROWNUM; -- °í°´¹øÈ£¸¦ ÇàÀÇ °¹¼ö·Î ¼³Á¤ÇÑ´Ù.
 
--- ï¿½Þºï¿½ ï¿½Ú½ï¿½ /
+-- µî±ÞÀ» Ãâ·ÂÇØº»´Ù.
 SELECT GRADE FROM CGRADE;
 
--- 1. ï¿½ï¿½ ï¿½Ë»ï¿½ /
+-- 1. °í°´ ¿¬¶ôÃ³·Î °í°´Á¤º¸ Ãâ·Â
 SELECT C.*, G.GRADE, NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP
 FROM CUSTOMER C, CGRADE G
-WHERE C.GNO = G.GNO AND SUBSTR(CTEL, -4) = '8888';
-
-SELECT C.*, G.GRADE, NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP
-FROM CUSTOMER C, CGRADE G
-WHERE C.GNO = G.GNO AND CTEL LIKE '%8888';
-
--- 2.ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Ë»ï¿½ /
+WHERE C.GNO = G.GNO AND SUBSTR(CTEL, -4) = '6666';
 
 SELECT C.*, G.GRADE, NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP
 FROM CUSTOMER C, CGRADE G
-WHERE C.GNO = G.GNO AND CNAME = 'ï¿½Õ¿ï¿½ï¿½ï¿½';
+WHERE C.GNO = G.GNO AND CTEL LIKE '%6666';
 
--- 3.ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ /
-SELECT POINT FROM CUSTOMER WHERE CTEL LIKE '%'||'7777' AND CNAME = 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+-- 2. °í°´ÀÌ¸§À¸·Î °í°´Á¤º¸Ãâ·Â
 
-UPDATE CUSTOMER SET BUY = (BUY + 500), POINT = (POINT - 500) WHERE CTEL LIKE '%'||'7777' OR CNAME = 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+SELECT C.*, G.GRADE, NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP
+FROM CUSTOMER C, CGRADE G
+WHERE C.GNO = G.GNO AND CNAME = '¼Õ¿À°ø';
 
--- 4.ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ /
-UPDATE CUSTOMER SET POINT = POINT + (10000 * 0.05), BUY = (BUY + 10000) WHERE CTEL LIKE '%'||'7777' OR CNAME = 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+-- 3. Æ÷ÀÎÆ®·Î ±¸¸Å ±â´É - Æ÷ÀÎÆ®°¡ ±¸¸Å±Ý¾× ÀÌ»óÀÏ¶§¸¸ ±¸¸Å °¡´É
+SELECT POINT FROM CUSTOMER WHERE CTEL LIKE '%'||'6666' OR CNAME = '¼Õ¿À°ø';
 
--- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Å´ï¿½ï¿½ï¿½ï¿½Ý¾×¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ /
-SELECT G.GNO FROM CUSTOMER C, CGRADE G WHERE BUY BETWEEN LOW AND HIGH;
+UPDATE CUSTOMER SET BUY = (BUY + 500), POINT = (POINT - 500) WHERE CTEL LIKE '%'||'6666' OR CNAME = '¼Õ¿À°ø';
+
+-- 4. »óÇ°±¸¸Å - ±¸¸Å±Ý¾×ÀÇ 5% ¸¦ Æ÷ÀÎÆ®·Î Àû¸³. 
+UPDATE CUSTOMER SET POINT = POINT + (10000 * 0.05), BUY = (BUY + 10000) WHERE CTEL LIKE '%'||'6666' OR CNAME = '¼Õ¿À°ø';
+
+-- ±¸¸Å°¡ ÀÏ¾î³­ÈÄ¿¡ µî±ÞÀ» Á¶Á¤ÇÒÁö¸¦ ¼­ºêÄõ¸®·Î È®ÀÎÈÄ µî±Þ¼öÁ¤
+SELECT G.GNO FROM CUSTOMER C, CGRADE G WHERE BUY BETWEEN LOW AND HIGH AND CTEL LIKE '%'||'6666';
 
 UPDATE CUSTOMER SET GNO = (SELECT G.GNO FROM CUSTOMER C, CGRADE G
-                WHERE BUY BETWEEN LOW AND HIGH AND CTEL LIKE '%'||'4444')
-            WHERE CTEL LIKE '%'||'4444';
+                            WHERE BUY BETWEEN LOW AND HIGH AND CTEL LIKE '%'||'6666')
+                WHERE CTEL LIKE '%'||'6666';
 
--- 5.ï¿½ï¿½Þºï¿½ ï¿½ï¿½ï¿½ /
+-- 5. µî±Þº° Ãâ·Â.
 SELECT C.*, G.GRADE
 FROM CUSTOMER C, CGRADE G
-WHERE C.GNO = G.GNO AND G.GRADE = 'ï¿½Ç¹ï¿½'
+WHERE C.GNO = G.GNO AND G.GRADE = 'ÀÏ¹Ý'
 ORDER BY CNO;
 
 SELECT C.*, G.GRADE, NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP
 FROM CUSTOMER C, CGRADE G
-WHERE C.GNO = G.GNO AND G.GRADE = 'ï¿½Ï¹ï¿½' 
+WHERE C.GNO = G.GNO AND G.GRADE = 'ÀÏ¹Ý' 
 ORDER BY CNO;
 
--- 6.ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ /
+-- 6. ÀüÃ¼Ãâ·Â
 SELECT C.*, G.GRADE, NVL((SELECT HIGH-BUY+1 from CUSTOMER WHERE CNO = C.CNO and GNO != 5), 0) LEVELUP
 FROM CUSTOMER C, CGRADE G
 WHERE C.GNO = G.GNO
 ORDER BY C.CNO;
 
--- 7.È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ /
-INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-7890', 'ï¿½Ì¿ï¿½ï¿½ï¿½', 1000, 0, 1);
+-- 7. È¸¿ø°¡ÀÔ
+INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, '010-9999-7890', 'ÀÌ³ª¶ó', 1000, 0, 1);
 
--- 8.È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½ /
-UPDATE CUSTOMER SET CTEL = '010-8888-9999' WHERE CNAME = 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+-- 8. ÀÌ¸§À» ±âÁØÀ¸·Î ÀüÈ­¹øÈ£ ¼öÁ¤
+UPDATE CUSTOMER SET CTEL = '010-8888-9999' WHERE CNAME = '¼Õ¿À°ø';
 
--- 9.È¸ï¿½ï¿½ Å»ï¿½ï¿½ /
-DELETE FROM CUSTOMER WHERE CTEL = 'ï¿½ì¸¶ï¿½ï¿½';
+-- 9.È¸¿øÅ»Åð
+DELETE FROM CUSTOMER WHERE CTEL = '7890' OR CNAME = 'ÀÌ³ª¶ó';
 
 COMMIT;

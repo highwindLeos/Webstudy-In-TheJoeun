@@ -36,7 +36,7 @@ public class Ex3 extends HttpServlet {
 		out.println("<head>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h3> 1부터 ~ "+ endnum + "까지의 합은 " + sum + "</h3>");
+		out.println("<h3> 1부터 ~ "+ endnum + "까지의 누적합은 " + sum + "</h3>");
 		out.println("</body>");
 		out.println("</html>");
 		
