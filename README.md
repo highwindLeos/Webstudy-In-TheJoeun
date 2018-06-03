@@ -59,6 +59,27 @@ http://www.oracle.com/technetwork/database/database-technologies/express-edition
 ### SQL Developer 18.1 - 데이터베이스 IDEA (압축해제 후 사용 가능) : JDK 미포함버전으로 사용.
 http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html
 
+### TOAD DB IDEA - 데이터베이스 IDEA : 실무형 데이터베이스 개발툴.
+https://www.toadworld.com/
+
+### EX-ERD - 데이터베이스 ERD 설계도구 : 한국산 개인사용자 인증후 평생 무료 라이선스.
+http://ko.exerd.com/
+
+### SPRING - 스프링 프레임워크 : 자바기반 개발플랫폼.
+https://spring.io/
+
+### JAVA JDK KIT DOCUMENT - 자바 프로그래밍 API 문서 8 ver 로컬용 다운로드 링크.
+http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html
+
+### TOMCAT WEB APPLICATION SERVER -JSP 개발 서버 WAS Apache 제공.
+http://tomcat.apache.org/
+
+### GIT - 개발 협업 및 소스공유 Platform. : 프로그램 설치 후 원격저장소를 접근할수 있음.
+https://git-scm.com/
+
+### Source Tree - GIT GUI client : git 설치후 설치후 설정 후 사용. ATLASSIAN 계정요 (구글 Oauth 로그인가능) 
+https://www.sourcetreeapp.com/
+
 추후 정리 준비중입니다.
 
 ## 개발관련 참고 사이트 :
@@ -74,5 +95,8 @@ https://www.inflearn.com/
 
 ### edwith - 프로그래밍 교육 플랫폼.
 http://www.edwith.org/
+
+
+
 
 추후 정리 준비중입니다.
