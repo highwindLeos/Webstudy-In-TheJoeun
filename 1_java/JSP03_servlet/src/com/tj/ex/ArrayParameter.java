@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ArrayParameter")
 public class ArrayParameter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String encodingUTF8 = "utf-8";
 
     public ArrayParameter() {
         super();
     }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet() 호출됨");
@@ -47,6 +47,8 @@ public class ArrayParameter extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doPOST() 호출됨.");
+		request.setCharacterEncoding(encodingUTF8);
 		doGet(request, response);
 	}
 
