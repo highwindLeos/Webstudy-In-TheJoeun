@@ -28,7 +28,7 @@ https://github.com/highwindLeos/PHPBootCamp/blob/master/MarkDownsyntex.md
 
 ### 데이터베이스 시스템
 #### Oracle Database
-#### MySQL Database
+#### Mysql Datbase
 
 ## 학습 서적.
 
@@ -62,6 +62,12 @@ http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.
 ### TOAD DB IDEA - 데이터베이스 IDEA : 실무형 데이터베이스 개발툴.
 https://www.toadworld.com/
 
+### MySQL - 공개형 Database MySQL : MySQL WorkBench 제공
+https://dev.mysql.com/downloads/windows/installer/
+
+### HeidiSQL - 무료 통합 Database IDEA : WorkBench 나 기타 데이터베이스를 지원하는 SQL 작성툴.
+https://www.heidisql.com/download.php
+
 ### EX-ERD - 데이터베이스 ERD 설계도구 : 한국산 개인사용자 인증후 평생 무료 라이선스.
 http://ko.exerd.com/
 
@@ -77,8 +83,11 @@ http://tomcat.apache.org/
 ### GIT - 개발 협업 및 소스공유 Platform. : 프로그램 설치 후 원격저장소를 접근할수 있음.
 https://git-scm.com/
 
-### Source Tree - GIT GUI client : git 설치 후 설정 사용. ATLASSIAN 계정 요 (구글 Oauth 로그인가능) 
+### Source Tree - GIT GUI client : git 설치후 설치후 설정 후 사용. ATLASSIAN 계정요 (구글 Oauth 로그인가능) 
 https://www.sourcetreeapp.com/
+
+### Bitnami - 다양한 개발관련 플렛폼의 다운로드를 제공. 국외 Site. 자주쓰이는 것은 AMP (Apache, MySQL, PHP) 통합팩.
+https://bitnami.com/
 
 추후 정리 준비중입니다.
 
