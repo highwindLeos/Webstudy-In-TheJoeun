@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Font</title>
+    <link href="https://fonts.googleapis.com/css?family=Cute+Font|Oswald|Raleway|Roboto+Condensed|Roboto+Slab" rel="stylesheet">
+    <style>
+        @font-face{ /* 사용자가 이름을 지어서 로컬에 있는 폰트 파일을 적용할수 있다*/
+            font-family: 'nm_eb';
+            src: url('../font/NM_EB.ttf');
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a{
+            text-decoration: none;
+            color: gray;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        header{
+            width: 800px;
+            height: 150px;
+            margin: 0 auto;
+            border: 1px solid lightgray;
+        }
+        /* GNB */
+        header #gnb ul,
+        header #lnb ul {
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        header #gnb ul li a,
+        header #lnb ul li a  {
+            display: block;
+            padding: 10px 20px;
+        }
+
+        header #gnb ul li {
+            float: left;
+            font-family: 'Oswald', sans-serif;
+            border: 1px solid lightgray;
+        }
+
+        /* LNB */
+        header #lnb ul li {
+            float: right;
+            font-family: 'Roboto Slab', serif;
+            border: 1px solid lightgray;
+        }
+
+        /* content */
+        #content {
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid lightgray;
+            overflow: hidden;
+        }
+
+        #content #section {
+            float: left;
+            font-size: 1.2em;
+            font-family: 'Cute Font', cursive;
+            box-sizing: border-box;
+            width: 500px;
+            height: 400px;
+            border-right: 1px solid lightgray;
+            padding: 10px;
+        }
+
+        #content #aside {
+            float: left;
+            font-size: 1.2em;
+            font-family: 'Raleway', sans-serif;
+            box-sizing: border-box;
+            width: 290px;
+            height: 400px;
+            padding: 10px;
+        }
+
+        footer {
+            width: 800px;
+            height: 150px;
+            line-height: 150px;
+            text-align: center;
+            margin: 0 auto;
+            border: 1px solid lightgray;
+        }
+
+        footer #office {
+            color: lightcoral;
+            font-family: 'nm_eb', sans-serif; 
+            font-size: 1.2em;
+            font-weight: bold; 
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="gnb"><!-- gnb1 ~ gnb5 -->
+            <ul>
+                <li><a href="#">GNB 01</a></li>
+                <li><a href="#">GNB 02</a></li>
+                <li><a href="#">GNB 03</a></li>
+                <li><a href="#">GNB 04</a></li>
+                <li><a href="#">GNB 05</a></li>
+            </ul>
+        </div>
+        <div id="lnb"><!-- lnb1 ~ lnb5 -->
+            <ul>
+                <li><a href="#">LNB 01</a></li>
+                <li><a href="#">LNB 02</a></li>
+                <li><a href="#">LNB 03</a></li>
+                <li><a href="#">LNB 04</a></li>
+                <li><a href="#">LNB 05</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="content">
+        <div id="section">
+            카카오가 일본에 이어 한국에서도 블록체인 사업에 나선다. 
+            국내 시장에서 블록체인 관련 인재 확보와 전문 기술개발을 담당할 자회사를 설립했다. 
+            이 자회사는 블록체인 기반의 디앱(Dapp)서비스 사업도 추진한다. 
+            카카오의 새로운 성장동력이자 글로벌 사업 진출 아이템인 블록체인 사업이 속도를 내고 있다는 분석이다.
+
+            16일 관련업계에 따르면, 카카오는 국내에 신설법인 ‘그라운드1’를 설립하고 블록체인 전문인력 채용에 나섰다. 
+            그라운드1은 앞서 카카오가 일본에 세운 블록체인 사업 전담 자회사 그라운드X의 한국 자회사다. 
+            현재 전 퓨처플레이 CTO(최고기술책임)이자 그라운드X 최고책임자(CEO)가 그라운드1 대표직을 겸임한다. 
+            서울 강남역 삼성전자 서초사옥 인근에 둥지를 틀었다.
+        </div>
+        <div id="aside">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+            Aperiam explicabo perspiciatis dolores eos eligendi maxime rem pariatur! Alias distinctio cupiditate 
+            dignissimos dolore iure, earum quae ducimus, ea quidem nesciunt perspiciatis fugit temporibus minima facere,
+            totam eius obcaecati similique. Doloremque ea et, fugiat consequuntur laudantium 
+            est necessitatibus quae tempora pariatur officia.
+        </div>
+    </div>
+    <footer>
+        <div id="office">office information | 회사 정보</div>
+    </footer>
+</body>
+</html>

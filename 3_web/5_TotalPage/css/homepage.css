@@ -1,0 +1,111 @@
+*{
+    /* margin: 0;
+    padding: 0; */
+}
+body{
+    /* background: url('./img/sulhyun.jpg') fixed; */
+    background-size: 33.3%;
+    color: #666;
+}
+
+#wrap{
+    width: 100%;
+    margin: 0 auto;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    height: 100px;
+    margin: 5px;
+    line-height: 100px;
+    text-align: center;
+    background-color: lightyellow;
+    border: 1px solid lightgray;
+}
+
+nav{
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    height: 100px;
+    border: 1px solid lightgray;
+}
+
+nav ul li {
+    display: inline-block;
+    text-align: center;
+    color: lightslategray;
+    background-color: lightcoral;
+    margin-left: -6px;
+    padding: 15px 30px
+}
+
+nav ul li a {
+    color: lightslategray;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+nav ul li:nth-child(1) {
+    border-radius: 5px 0 0 5px;
+}
+
+nav ul li:nth-child(5) {
+    border-radius: 0 5px  5px 0;
+}
+
+section {
+    position: relative;
+    text-align: center;
+    height: 300px;
+    margin: 5px;
+    border: 1px solid lightgray;
+}
+
+section > #content {
+    position: absolute;
+    top: 10px; left: 10px;
+    text-align: center;
+    height: 280px;
+    border: 1px solid lightgray;
+    width: 65%;
+}
+
+section > #banner {
+    position: absolute;
+    top: 10px; right: 10px;
+    text-align: center;
+    height: 280px;
+    border: 1px solid lightgray;
+    width: 33%;
+}
+
+footer {
+    height: 200px;
+    line-height: 200px;
+    margin: 5px;
+    text-align: center;
+    border: 1px solid lightgray;
+    background-color: lightyellow;
+}
+
+/*  */
+#background {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .05;
+    z-index: -999;
+    background-image: url('../img/images.jpg');
+    background-size: 100%;
+}

@@ -1,0 +1,8 @@
+
+#wrap > #footer {
+    text-align: center;
+    height: 70px;
+    padding-top: 30px;
+    border: 1px solid lightgray;
+}
+

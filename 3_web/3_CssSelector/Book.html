@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book Example</title>
+    <style>
+        #wrap {
+            width: 640px;
+            margin: 0 auto; /*가운데 정렬*/
+        }
+
+        #wrap #header > h1{
+            color: lightsalmon;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        #wrap #content {
+            text-align: center;
+        }
+
+        #wrap #content > img[src $= bmp]{
+            width: 150px;
+            border: 2px solid lightblue;
+        }
+
+        #wrap #content > img[src $= gif]{
+            width: 150px;
+            border: 2px solid lightcoral;
+        }
+
+        #wrap #content > img[src $= jpg]{
+            width: 150px;
+            border: 2px solid lightgreen;
+        }
+
+        #wrap #content > img[src $= png]{
+            width: 150px;
+            border: 2px solid black;
+        }
+
+        #wrap #footer > h3 {
+            color: lightgreen;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1>자바 스크립트 책들</h1>
+        </div>
+        <div id="content">
+            <img src="./book/book.bmp" alt="book1">
+            <img src="./book/book.gif" alt="book2">
+            <img src="./book/book.jpg" alt="book3">
+            <img src="./book/book.png" alt="book4"> 
+        </div>
+        <div id="footer">
+            <h3>서울시 종로구 삼일대로 17길 51 스타골드BD 3층</h3>
+        </div>
+    </div>  
+</body>
+</html>

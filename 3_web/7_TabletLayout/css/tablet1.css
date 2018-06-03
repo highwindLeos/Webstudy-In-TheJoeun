@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-width: 1000px;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover{
+    color: #ddd;
+}
+
+/* header */
+header {
+    background-color: blueviolet;
+    height: 80px;
+    line-height: 80px;
+}
+
+header > h1 {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* gnb menu */
+#gnb {
+    background-color:  #333;
+}
+
+#gnb > ul {
+    overflow: hidden;
+    display: inline-block;
+    background-color:  #333;
+}
+
+    #gnb > ul > li {
+        float: left;
+        padding: 20px;
+        border-right: 1px solid #fff;
+    }
+
+
+    #gnb > ul > li:nth-child(6) {
+        float: right;
+        border-right: 0;
+    }
+
+    #gnb > ul > li:nth-child(7) {
+        float: right;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+    }
+
+#gnb > ul:nth-child(2) {
+    overflow: hidden;
+    float: right;
+    background-color:  #333;
+}
+
+    #gnb > ul:nth-child(2) > li:nth-child(1) {
+       border-left: 1px solid #fff;
+    }
+
+    #gnb > ul:nth-child(2) > li:nth-child(2) {
+        border-right: 0;
+     }
+
+/* wrap */
+#wrap {
+    overflow: hidden;
+    background-color: lightsalmon;
+}
+
+/* lnb  */
+#lnb {
+    background: lightsalmon;
+    width: 100px;
+    float: left;
+}
+
+#lnb > ul {
+    overflow: hidden;
+    text-align: center;
+}
+
+#lnb > ul > li{
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* section */
+section {
+   overflow: hidden;
+   background-color: azure;
+}
+
+section > #content {
+   float: left;
+   box-sizing: border-box;
+   padding: 20px;
+   width: 100%;
+   margin-right: -100px;
+ }
+
+section > #content > div > img {
+    width: 200px;
+    height: 150px;
+    margin: 5px 20px 5px 5px;
+    border: 2px dashed lightgray;
+    border-radius: 10px;
+}
+
+section > #content > div {
+    overflow: hidden;
+    margin: 0 0 15px 0;
+}
+
+section > #content > div > p::first-line {
+    font-size: 1.2em;
+    color: lightskyblue;
+}
+
+section > #content > div > p::first-letter {
+    font-size: 1.2em;
+    font-weight: bold; 
+}
+
+section > #content > div:nth-child(1) > img {
+    float: left;
+}
+
+section > #content > div:nth-child(2) > img {
+    float: right;
+}
+
+section > #content > div:nth-child(4) > ul > li {
+    display: inline-block;
+}
+
+/* footer */
+footer {
+    text-align: center;
+    background-color: #bbb;
+}
+
+footer > .footer_title {
+    color: #fff;
+    font-weight: bold;
+    font-size : 1.5em;
+    padding : 5px 0;
+}
+
+footer > .footer_copy {
+    color: #fff;
+    padding : 5px 0;
+}

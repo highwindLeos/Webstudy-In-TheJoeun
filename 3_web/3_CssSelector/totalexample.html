@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Total Example</title>
+    <style>
+        #wrap {
+            width: 500px;
+            margin: 0 auto;
+            /* border : 1px solid lightcoral; */
+        }
+        
+        #header, #content, #footer {
+            border: 1px solid lightcoral;
+        }
+        
+        div li { /*후손 선택자*/
+            list-style: none;
+            background-color: lightsalmon;
+        }
+        
+        div p{ /*후손 선택자*/
+            font-size: 24px;
+        }   
+
+        div > p { /*자손 > 선택자*/
+            color: lightsalmon
+        }
+
+        div > h1 {
+            color: lightgrey;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div id="logo"><h1>LOGO</h1></div>
+            <div id="title"><h2>UI/UX 엔지니어링 클래스</h2></h1>
+        </div>
+        <div id="content">
+            <p> 와이즈앱 4월 조사…"1인당 월 882분, 총 258억분 사용"
+                홍지인 기자 = 구글의 동영상 서비스 유튜브가 
+                국내 전 연령대에서 가장 오랜 시간 쓰이는 앱이라는 조사 결과가 나왔다. 
+                앱 분석업체 와이즈앱은 지난 4월 한 달 동안 국내 앱별 사용시간을 조사한 결과 
+                유튜브가 전 연령대에서 가장 긴 시간 사용하는 앱으로 집계됐다고 15일 밝혔다.
+                지난달 국내에서 10대가 유튜브를 사용한 시간은 총 76억분으로 추산됐다.
+            </p>
+            <ul>
+                <li><p>지난달 유튜브 앱의 월간순사용자수(MAU)는 2천924만 명으로, 1인당 월 평균 126회, 882분을 사용해 1회 실행 당 7분 동영상을 시청한 것으로 분석됐다.</p></li>
+                <li><h1>1인당 월 882분, 총 258억분 사용</h1></li>
+                <li><p>이번 조사는 국내 안드로이드폰 사용자 2만3천여명을 대상으로 4월 한 달 동안 해당 앱의 사용자들이 앱에 머무른 총 체류시간을 집계하는 방식으로 이뤄졌다.</p></li>
+            </ul>
+        </div>
+        <div id="footer">
+            <div>
+                <h2>서울시 종로구 삼일대로 17길 51 스타골드 빌딩 501 | 02-789-7890</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

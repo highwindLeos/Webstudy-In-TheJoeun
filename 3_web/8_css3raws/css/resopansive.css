@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #666;
+}
+/* 반응형 레이아웃 관련 규칙들. */
+@media screen and (max-width : 767px) { /* 스마트폰 관련 CSS */
+    #wrap > #nav > ul > li {
+        width: 33.33%;
+        background-color: lightblue;
+    }
+
+    #wrap > #nav > ul > li:nth-child(2),
+    #wrap > #nav > ul > li:nth-child(4) {
+        display: none;
+    }
+
+    #wrap > #content {
+        font-size: 1.3em;
+    }
+
+    #wrap > #content {
+        padding: 10px 10px;
+    }
+    
+}
+
+@media screen and (min-width : 768px) and (max-width : 1100px) { /* Tablet 관련 CSS */
+
+    #wrap > #nav > ul > li {
+        width: 25%;
+        background-color: lightpink;
+    }
+
+    #wrap > #nav > ul > li:nth-child(4) {
+        display: none;
+    }
+
+    #wrap > #content {
+        font-size: 1.2em;
+    }
+
+    #wrap > #content {
+        padding: 20px 10px;
+    }
+
+}
+
+@media screen and (min-width : 1101px) { /* PC 및 일반 관련 CSS */
+    #wrap { /*pc 화면*/
+        width: 800px; 
+        margin: 0 auto;
+    }
+
+    #wrap > #nav > ul > li {
+        width: 20%;
+        background-color: lightskyblue;
+    }
+}
+
+/* 모든 장치에서 작동할 CSS 들을 media 밖에서 코딩한다. */
+#wrap > #header {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border: 1px solid #666;
+}
+
+#wrap > #nav {
+   border: 1px solid #666;
+}
+
+#wrap > #nav > ul {
+    overflow: hidden;
+}
+
+#wrap > #nav > ul > li {
+    float: left;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    box-sizing: border-box;
+    border: 1px solid #666;
+}
+
+#wrap > #content {
+    padding: 20px;
+}
+
+
+#wrap > #content > h2 {
+    padding: 10px;
+    border-bottom: 1px solid #666;
+    margin-bottom: 10px;
+}
+
+#wrap > #footer {
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+    border: 1px solid #666;
+}
+
+#wrap > #footer > p {
+    font-size : 1.1em;
+    font-weight: bold;
+}

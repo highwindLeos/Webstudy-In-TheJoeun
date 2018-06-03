@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @import url('./css/header.css'); /* Css import 규칙은 반드시 최상단부터.*/
+        @import url('./css/footer.css');
+
+        @media screen{ /* 화면에서만 작동 */
+            #wrap > #section {
+                background-color: darkgreen;
+                color: #fff;
+                margin: 10px 0;
+                padding: 30px 10px;
+            }
+
+            #wrap > #section > p {
+                line-height: 50px;
+            }
+        }
+
+        @media print {/* 프린터 할때만 적용되는 스타일 */
+            #wrap > #section {
+                border: 1px solid darkgreen;
+                color: darkgreen;
+                margin: 10px 0;
+                padding: 30px 10px;
+            }
+
+            #wrap > #section > p {
+                line-height: 30px;
+            }
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="./css/header.css"> -->
+    <!-- <link rel="stylesheet" href="./css/section.css" media="screen"> 모니터에서만 적용 생략하면 all -->
+    <!-- <link rel="stylesheet" href="./css/section-print.css" media="print"> 문서를 출력시에만 적용되는 css -->
+    <link rel="stylesheet" href="./css/footer.css">
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <h1>Notice</h1>
+        </header>
+        <section id="section">
+            <p>
+                파란 하나에 어머니, 새워 가득 보고, 차 마디씩 까닭입니다. 이네들은 별빛이 무엇인지 내 쉬이 까닭입니다. 
+                무덤 하나 가을로 덮어 하나의 헤일 파란 내린 있습니다. 언덕 멀듯이, 
+                위에 추억과 너무나 아침이 북간도에 무덤 버리었습니다. 
+                별들을 말 부끄러운 프랑시스 언덕 봄이 나는 것은 덮어 봅니다. 
+                봄이 별 경, 버리었습니다. 별을 차 나는 써 별빛이 나는 있습니다. 
+                멀리 별들을 하나 어머님, 하나에 있습니다. 헤일 내 딴은 까닭입니다.
+            </p>
+        </section>
+        <footer id="footer">
+            <p>
+                2018년 05년 23일 <br> 
+                Writer by Leos
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

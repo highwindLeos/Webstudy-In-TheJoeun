@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 80px;
+            border: 1px solid lightcoral;
+            margin: 10px;
+            text-align: center;
+            line-height: 80px;
+        }
+
+        /* display 속성 : block inline inline-block  */
+        div:nth-child(1){
+            background-color:lightsalmon;
+            display: block;
+        }
+
+        div:nth-child(2){
+            background-color:lightgreen;
+        }
+
+        div:nth-child(3){
+            background-color:lightblue;
+            display: inline; /*height 의 값은 존재하지 않는다.*/
+        }
+
+        div:nth-child(4){
+            background-color: lightslategray;
+            display: inline; /*height 의 값은 존재하지 않는다.*/
+        }
+
+        div:nth-child(5){
+            background-color: lightpink;
+            display: inline-block; /* height 의 값도 존재하지만 줄바꿈은 되지 않는다. */
+        }
+
+        div:nth-child(6){
+            background-color: lightpink;
+            display: none; /* 보이지 않게 하고 공간도 사라진다. */
+        }
+
+        div:nth-child(7){
+           visibility: hidden; /* 보이지 않게 하고 공간은 확보 */
+        }
+
+        div:nth-child(8){
+            background-color: lightpink;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>content1</div>
+    <div>content2</div>
+    <div>content3</div>
+    <div>content4</div>
+    <div>content5</div>
+    <div>content6</div>
+    <div>content7</div>
+    <div>content8</div>
+</body>
+</html>
