@@ -77,7 +77,7 @@ http://tomcat.apache.org/
 ### GIT - 개발 협업 및 소스공유 Platform. : 프로그램 설치 후 원격저장소를 접근할수 있음.
 https://git-scm.com/
 
-### Source Tree - GIT GUI client : git 설치후 설치후 설정 후 사용. ATLASSIAN 계정요 (구글 Oauth 로그인가능) 
+### Source Tree - GIT GUI client : git 설치 후 설정 사용. ATLASSIAN 계정 요 (구글 Oauth 로그인가능) 
 https://www.sourcetreeapp.com/
 
 추후 정리 준비중입니다.
