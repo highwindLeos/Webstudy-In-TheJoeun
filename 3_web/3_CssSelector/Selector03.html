@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>동위선택자 Example</title>
+    <style>
+        h3 ~ div {/* tag ~ tag = h3 태그 뒤에오는 형제 태그 div 전부 다 선택 : div_01 div_02 div_03 */
+            color: lightblue;
+        }
+
+       h3 + div{ /* tag + tag = h3 태그 뒤에오는 형제 태그중 뒷에 요소 하나 : div_01 */
+            font-size: 1.5em; /* 원래 사이즈의 1.5배 */
+            font-weight: bold;
+            color: lightcoral;
+       }
+
+       #title + div { /* 위의 태그와 같음 */
+           text-decoration: underline;
+       }
+    </style>
+</head>
+<body>
+    <div>TEST</div>
+    <h3 id="title">동위 선택자 (선택자 + 선택자) / 선택자 ~ 선택자</h3>
+    <div>div_01</div>
+    <div>div_02</div>
+    <div>div_03</div>
+</body>
+</html>
