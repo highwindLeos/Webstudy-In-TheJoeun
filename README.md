@@ -96,7 +96,19 @@ https://www.inflearn.com/
 ### edwith - 프로그래밍 교육 플랫폼.
 http://www.edwith.org/
 
+### 코드랩 레퍼런스 - 각종 라이브러리 및 사전 제공
+http://coderap.tistory.com/
 
+### Codepen - 웹 Code 편집기 및 개발 플렛폼 제공. 개발 코드 공유.
+https://codepen.io/
 
+### JSfiddle - 웹 Code 편집기 및 개발 플렛폼 제공. 개발 코드 공유.
+https://jsfiddle.net/user/dashboard/
+
+### CSS LayOut Guide - CSS 기초 레이아웃 지식과 각종 CSS 라이브러리 소개 제공.
+http://ko.learnlayout.com/toc.html
+
+### Oven - 손쉬운 온라인 프로토 타이핑 툴.
+https://ovenapp.io/
 
 추후 정리 준비중입니다.
