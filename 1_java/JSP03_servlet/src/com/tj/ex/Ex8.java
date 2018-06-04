@@ -43,12 +43,13 @@ public class Ex8 extends HttpServlet {
 		out.println("</table>");
 		out.println("</body>");
 		out.println("</html>");
+		out.close();
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding(encodingUTF8); //포스트 방식의 한글이 깨짐을 utf-8 인코딩한다.
 		doGet(request, response);
-	}
+	} // POST 로 요청이 와도 결국 doGET 에서 처리하게 된다.border : none;
 
 }

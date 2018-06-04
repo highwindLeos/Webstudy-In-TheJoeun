@@ -34,6 +34,7 @@ public class Ex4 extends HttpServlet {
 		out.println("<h3> 첫번째 수 : " + num1 + "두번째 수 : " + num2 + "합계 : " + (num1 + num2) +"</h3>");
 		out.println("</body>");
 		out.println("</html>");
+		out.close();
 		
 	}
 

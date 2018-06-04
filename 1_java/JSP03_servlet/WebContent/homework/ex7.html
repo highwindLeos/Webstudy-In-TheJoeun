@@ -12,20 +12,25 @@
 		}
 	</style>
 	<script>
-	
+	function br(){
+		var str = document.getElementById("description").value;
+		str = str.replace('\r\n', '<br>');
+		
+		document.getElementById("description").value = str;
+	}
 	</script>
 </head>
 <body>
 	<div id="wrap">
 		<h2>게시판</h2>
-			<form action="../Ex7" method="get">
+			<form action="../Ex7" method="POST">
 				<p>제 &nbsp;목	<input type="text" name="title" id="title" required="required" placeholder="제목을 입력해주세요"/></p>
 				<p>작성자	<input type="text" name="author" id="author" required="required" placeholder="작성자를 입력해주세요"/></p>
 				<hr />
 				<p>내 용<br /><br /><textarea rows="10" cols="40" name="description" id="description" required="required" placeholder="내용을 입력해주세요"></textarea></p>
-				<input type="submit" value="글전송" />
+				<input type="submit" value="글전송" onclick="br()" />
 			</form>
-			<br />
+		<br />
 	</div>
 </body>
 </html>

@@ -9,4 +9,49 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 프로젝트 공용 파라메터를  
+  <context-param>
+  	<param-name>cId</param-name>
+  	<param-value>leos</param-value>
+  </context-param> 
+  형식으로 정해놓으면 이 프로젝트의 모든 서블릿,jsp 가 공유한다.
+  -->
+  <listener>
+  	<listener-class>com.tj.ex2.ListenerEx</listener-class>
+  </listener><!-- 웹프로젝트가 시작되고 닫히는 것을 해당 클래스가 감지하고 있다.  -->
+  
+  <context-param>
+  	<param-name>cId</param-name>
+  	<param-value>leos</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>cPw</param-name>
+  	<param-value>stonker26</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>cPath</param-name>
+  	<param-value>com.mysql.jdbc.Driver</param-value>
+  </context-param>
+  
+  <servlet>
+    <servlet-name>ServletInitP</servlet-name>
+    <servlet-class>com.tj.ex.ServletInitParam</servlet-class>
+    <init-param>
+      <param-name>id</param-name>
+      <param-value>root</param-value>
+    </init-param>
+    <init-param>
+      <param-name>pw</param-name>
+      <param-value>mysql</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jdbcdriver</param-name>
+      <param-value>com.mysql.jdbc.Driver</param-value>
+    </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ServletInitP</servlet-name>
+    <url-pattern>/ServletInitParam</url-pattern>
+  </servlet-mapping>
 </web-app>

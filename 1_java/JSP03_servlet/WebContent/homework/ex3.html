@@ -7,7 +7,9 @@
 	
 	</style>
 	<script>
+	
 		function chk(){
+			var num = Number(frm.endnum.value);
 						
 			if(!frm.endnum.value){
 				alert('빈칸 없이 입력해주세요');
@@ -15,25 +17,24 @@
 				return false;
 			}
 			
-			if (isNaN(frm.endnum.value)){
-				alert('숫자만 입력해주세요');
-				frm.endnum.focus();
-				return false;
-			}
-			
-			if(frm.endnum.value < 0){
+			if (isNaN(num) || num < 0){
 				alert('반드시 자연수만 입력해주세요');
 				frm.endnum.focus();
 				return false;
 			}
+			
 			return true;
 		}
+		
 	</script>
 </head>
 <body>
 	<form action="../Ex3" id="frm">
-		<input type="text" name="endnum" id="endnum" />
-		<input type="submit" value="합구하기" onclick="return chk()" />
+		<fieldset>
+		<legend>합구하기</legend>
+			<input type="text" name="endnum" id="endnum" />
+			<input type="submit" value="합구하기" onclick="return chk()" />
+		</fieldset>
 	</form>
 </body>
 </html>

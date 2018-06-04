@@ -38,6 +38,7 @@ public class Ex2Sum100 extends HttpServlet {
 		out.println("<h3>100까지의 합은 " + sum + " 입니다.</h3>");
 		out.println("</body>");
 		out.println("</html>");
+		out.close();
 		
 	}
 

@@ -34,6 +34,7 @@ public class Ex6 extends HttpServlet {
 		out.println("<h3>이름은 : " + name + " 주소는 : " + address + "</h3>");
 		out.println("</body>");
 		out.println("</html>");
+		out.close();
 		
 	}
 

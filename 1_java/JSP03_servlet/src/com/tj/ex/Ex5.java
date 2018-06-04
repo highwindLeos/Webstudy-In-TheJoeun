@@ -30,14 +30,13 @@ public class Ex5 extends HttpServlet {
 			if(colorSet[i].equals(color)) {
 				break;
 			}
-		}
-		// 입력된 값과 같은 색상이 있는 배열의 인덱스를 가지고 i가 설정되고 반복문 탈출.
+		} // 입력된 값과 같은 색상이 있는 배열의 인덱스를 가지고 i가 설정되고 반복문 탈출.
+		
 		if(i == 0) {
 			i = 6;
 		} else {
 			i--;
-		}
-		// i가 red 의 인덱스인 0 일때는 보라색인 6, 나머지는 선택한 색의 이전 색상의 인덱스로 설정한다.
+		} // i가 red 의 인덱스인 0 일때는 보라색인 6, 나머지는 선택한 색의 이전 색상의 인덱스로 설정한다.
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -46,19 +45,49 @@ public class Ex5 extends HttpServlet {
 		out.println("<head>");
 		out.println("<title>배경색 글자색 변경</title>");
 		out.println("<style>");
+		out.println("body { background-color : " + color + "; }");
 		out.println("h3 { color : " + colorSet[i] + "; }");
 		out.println("</style>");
 		out.println("</head>");
-		out.println("<body bgcolor="+ color +">");
+		out.println("<body>");
 		out.println("<h3>글자색은 "+ colorSet[i] + " 배경색은 " + color + " 입니다.</h3>");
 		out.println("</body>");
 		out.println("</html>");
+		out.close();
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding(encodingUTF8); //포스트 방식의 한글이 깨짐을 utf-8 인코딩한다.
-		doGet(request, response);
+		System.out.println("doPOST() 호출됨");
+		String[] colorSet = {"red", "orange", "yellow", "green", "blue", "navy", "violet"};
+		int i; // 배경색은 넘어온 파라미터, 글자색은 colorSet[i] 가 될 예정
+		int backgroundIdx = Integer.parseInt(request.getParameter("color"));
+		
+		System.out.println(backgroundIdx);
+		
+		if(backgroundIdx == 0) {
+			backgroundIdx = 6;
+		} else {
+			backgroundIdx--;
+		} // i가 red 의 인덱스인 0 일때는 보라색인 6, 나머지는 선택한 색의 이전 색상의 인덱스로 설정한다.
+		
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<title>배경색 글자색 변경</title>");
+		out.println("<style>");
+		out.println("body { background-color : " + backgroundIdx + "; }");
+		out.println("h3 { color : " + colorSet[backgroundIdx] + "; }");
+		out.println("</style>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<h3>글자색은 "+ colorSet[backgroundIdx] + " 배경색은 " + backgroundIdx + " 입니다.</h3>");
+		out.println("</body>");
+		out.println("</html>");
+		out.close();
 	}
 
 }
