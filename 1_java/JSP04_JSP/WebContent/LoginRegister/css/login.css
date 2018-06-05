@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+body {
+	background-image: url('');
+}
+
+a {
+	text-decoration: none;
+	color: #61380B;
+}
+
+div#wrap {
+	width: 600px;
+	margin: 0 auto;
+	border: 1px solid #A47160;
+	border-radius: 20px;
+}
+
+#wrap> form >table {
+	margin: 0 auto;
+	width: 80%;
+}
+
+#wrap>form >table tr td h1 {
+	text-align: center;
+	border-bottom: 1px solid #A47160;
+	padding: 15px 0;
+}
+
+#wrap>form >table tr td {
+	text-align: center;
+	padding: 5px 0;
+	font-size: 14px;
+}
+
+#wrap>form >table tr td input[type=text], 
+#wrap>form >table tr td input[type=password]
+	{
+	width: 100%;
+	border: 1px dashed #A47160;
+	box-sizing: border-box;
+	padding: 5px 3px;
+	background-color: #fff;
+}
+
+#wrap>form >table tr td input[type=submit] {
+	width: 100%;
+	margin: 15px 0;
+	border: 0;
+	color: #fff;
+	font-size: 17px;
+	background-color: lightblue;
+	cursor: pointer;
+}
+
+div#wrap>p {
+	text-align: center;
+	font-size: 14px;
+	margin-bottom : 20px;
+}
+
+div#wrap>p>#register {
+	font-size: 15px;
+	font-weight: bold;
+	color: #A47160;
+	cursor: pointer;
+}
