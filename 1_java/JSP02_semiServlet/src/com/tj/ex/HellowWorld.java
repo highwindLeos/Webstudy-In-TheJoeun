@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-//@WebServlet("/HW") // mapping 을 시켜준다.
+//@WebServlet("/HW") //WEB-INF web.xml  mapping 을 시켜준다.
 public class HellowWorld extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

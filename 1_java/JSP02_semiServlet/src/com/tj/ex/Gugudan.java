@@ -30,9 +30,9 @@ public class Gugudan extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>출력할 단수는 " + gugu + " 단</h1>");
-		for (int i = 1; i <= 9; i++) {
-			out.printf("<h2> %d * %d = %d</h2> \n", gugu, i, gugu * i);
-		}
+			for (int i = 1; i <= 9; i++) {
+				out.printf("<h2> %d * %d = %d</h2> \n", gugu, i, gugu * i);
+			}
 		out.println("</body>");
 		out.println("</html>");
 		out.close();

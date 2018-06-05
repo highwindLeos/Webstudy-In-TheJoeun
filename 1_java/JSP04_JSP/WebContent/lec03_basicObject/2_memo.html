@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		td {text-align: center;}
+	</style>
+	<script>
+	
+	</script>
+</head>
+<body>
+<!-- get방식으로 submit을 클릭하면 localhost:8081/JSP04_JSP/2_memo.jsp?name=leos&memo=한줄메모 -->
+	<form action="2_memo.jsp" method="POST">
+		<table>
+			<tr>
+				<td>작성자 :</td>
+				<td><input type="text" name="name" required="required"></td>
+			</tr>
+			<tr>
+				<td>한줄메모 :</td>
+				<td><input type="text" name="memo" required="required"></td>
+			</tr>
+			<tr><td colspan="2"><input type="submit" value="메모작성"/></td></tr>
+		</table>
+	</form>
+</body>
+</html>

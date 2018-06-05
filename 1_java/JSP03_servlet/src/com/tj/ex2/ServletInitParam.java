@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 //	initParams= {@WebInitParam(name="id", value="root"), 
 //				@WebInitParam(name="pw",value="mysql"),
 //				@WebInitParam(name ="jdbcDriver", value = "com.mysql.jdbc.Driver")})
-
+// 위의 형식으로 파라메터를 정해놓을수 있다.
 public class ServletInitParam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
