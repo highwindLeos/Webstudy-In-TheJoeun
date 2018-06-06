@@ -11,8 +11,26 @@ table {
 	border-radius: 15px;
 }
 
+#wrap {
+	width : 600px;
+	margin: 0 auto;
+}
+
+button {
+	border : 0;
+	width: 90%;
+	background-color: #D4A190;
+	color: #fff;
+}
+
+button:hover {
+	width: 90%;
+	background-color: lightblue;
+	color: #fff;
+}
+
 tr {
-	background-color: rgba(150, 150, 150, 0.3);
+	background-color: #fff;
 }
 
 tr:first-child td:nth-child(1) {
@@ -28,7 +46,7 @@ tr:last-child td:nth-child(1) {
 
 tr:hover {
 	color: #fff;
-	background-color: #999;
+	background-color: #aaa;
 }
 
 #title {

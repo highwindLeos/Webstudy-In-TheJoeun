@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,16 +6,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Register</title>
-	<link rel="stylesheet" href="css/join.css" />
+	<link rel="stylesheet" href="css/register.css" />
 	<script src="js/validateJoin.js"></script>
 </head>
 <%
 	request.setCharacterEncoding("utf-8");
-
-	request.
+		String id ="", password ="";
+	
+		try {
+			id = request.getParameter("id");
+			password = request.getParameter("pw");
+			
+			if (id.equals("aaa") && password.equals("111")) {
+				String msg = "id=" + id + " / pw=" + password;
+				response.sendRedirect("login.jsp?msg="+msg);
+			} else {
+				String msgError = URLEncoder.encode( "아이디와 패스워드를 잊으셨나요?");
+				response.sendRedirect("login.jsp?msgError=" + msgError);
+			}
+			
+		} catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+	
 %>
 <body>
-	<form action="" method="POST" id="frm">
+	<form action="registerResult.jsp" method="POST" id="frm">
 		<table>
 				<tr><td colspan="2">회원가입</td></tr>
 				<tr>
@@ -65,11 +82,11 @@
 						  <option value="배송">배 송</option>
 						  <option value="공지" selected="selected">공 지</option>
 						</select>
-						<input type="hidden" name="hiddenParam" value="xx" />
+						<input type="hidden" name="hiddenParam" value="leos" />
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="글전송" onclick="return vlidateJoinInfo()" /><input type="reset" value="다시하기" /><input type="button" value="뒤로가기" onclick="history.back()" /></td>
+					<td colspan="2"><input type="submit" value="글전송" onclick="return vlidateJoinInfo()" /><input type="reset" value="다시하기" /><input type="button" value="뒤로가기" onclick="location.href = 'login.jsp'" /></td>
 				</tr>
 		</table>
 	</form>

@@ -24,6 +24,7 @@ public class Join extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet() 호출됨");
+		
 		 Enumeration<String> params = request.getParameterNames();
 		 while (params.hasMoreElements()) {
 			 System.out.println(params.nextElement());
@@ -65,7 +66,8 @@ public class Join extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<table>");
-		out.println("<caption><h1>회원가입 정보</h1></caption>");
+		out.println("<tr><td><h1>회원가입 정보</h1></td></tr>");
+		out.println("<tr><td><hr></tr></td>");
 		out.println("<tr><td><h2>hiddenParam : "+ hiddenParam +"</h2></td></tr>");
 		out.println("<tr><td><h2>이 름 : "+ name +"</h2></td></tr>");
 		out.println("<tr><td><h2>아이디 : "+ id +"</h2></td></tr>");
@@ -83,7 +85,7 @@ public class Join extends HttpServlet {
 					if (i == hobby.length - 1) {
 						out.println(hobby[i]);
 					} else {
-						out.println(hobby[i] + " ");
+						out.println(hobby[i] + ", ");
 					}
 				}
 				out.println("</h2>");

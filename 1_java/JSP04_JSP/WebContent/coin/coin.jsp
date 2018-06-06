@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<title>Coin Game</title>
 </head>
 <style>
 	body {
