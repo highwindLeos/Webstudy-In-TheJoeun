@@ -10,28 +10,10 @@
 	<script src="js/validateJoin.js"></script>
 </head>
 <%
-	request.setCharacterEncoding("utf-8");
-		String id ="", password ="";
-	
-		try {
-			
-			id = request.getParameter("id");
-			password = request.getParameter("pw");
-			
-			if (id.equals("aaa") && password.equals("111")) {
-				String msg = "id=" + id + " / pw=" + password;
-				response.sendRedirect("login.jsp?msg="+msg);
-			} else {
-				String msgError = URLEncoder.encode( "아이디와 패스워드를 잊으셨나요?");
-				response.sendRedirect("login.jsp?msgError=" + msgError);
-			}
-			
-		} catch(Exception e){
-			System.out.println(e.getMessage());
-		}
 	
 %>
 <body>
+<jsp:include page="head.jsp" />
 	<form action="registerResult.jsp" method="POST" id="frm">
 		<table>
 				<tr><td colspan="2">회원가입</td></tr>
@@ -91,5 +73,6 @@
 				</tr>
 		</table>
 	</form>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	if (session.getAttribute("id") != null){
+		response.sendRedirect("main.jsp"); // 이 페이지를 로드 하지 않고 특정페이지로 보낸다.
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,26 +15,10 @@
 
 	</script>
 </head>
-<%
-	request.setCharacterEncoding("utf-8");
-
-	Boolean isValiad = false;
-
-	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");
-	
-	if(id != null && id.equals("aaa") && pw != null && pw.equals("111")) {
-		isValiad = true;
-	}
-	
-	if(!isValiad){
-		response.sendRedirect("login.jsp");
-	}
-	
-%>
+<jsp:include page="head.jsp" />
 <body>
-	<div id="wrap">
-		<form action="register.jsp" method="POST">
+	<div id="login">
+		<form action="loginOk.jsp" method="POST">
 			<table>
 				<tr>
 					<td colspan="2"><h1><a href="login.jsp">로그인</a></h1></td>
@@ -53,7 +42,9 @@
 				if (msgError != null){ %>
 					<p id="errorMsg"><%= msgError %></p>
 			<% } %>
-		<p>아직 회원이 아니신가요? <span id="register"><a href="register.jsp">회원가입</a></span></p>
+		<p><% if (session.getAttribute("msg") != null) { out.print(session.getAttribute("msg")); session.removeAttribute("msg"); }  %></p>
+		<p>아직 회원이 아니신가요? <span id="register"><a href="join.jsp">회원가입</a></span></p>
 	</div>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

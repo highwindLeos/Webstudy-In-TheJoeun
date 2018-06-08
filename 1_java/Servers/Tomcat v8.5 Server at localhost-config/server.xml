@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="JSP03_servlet" path="/JSP03_servlet" reloadable="true" source="org.eclipse.jst.jee.server:JSP03_servlet"/><Context docBase="JSP01_semiJSP" path="/JSP01_semiJSP" reloadable="true" source="org.eclipse.jst.jee.server:JSP01_semiJSP"/><Context docBase="JSP02_semiServlet" path="/JSP02_semiServlet" reloadable="true" source="org.eclipse.jst.jee.server:JSP02_semiServlet"/><Context docBase="JSP04_JSP" path="/JSP04_JSP" reloadable="true" source="org.eclipse.jst.jee.server:JSP04_JSP"/></Host>
+      <Context docBase="JSP03_servlet" path="/JSP03_servlet" reloadable="true" source="org.eclipse.jst.jee.server:JSP03_servlet"/><Context docBase="JSP01_semiJSP" path="/JSP01_semiJSP" reloadable="true" source="org.eclipse.jst.jee.server:JSP01_semiJSP"/><Context docBase="JSP02_semiServlet" path="/JSP02_semiServlet" reloadable="true" source="org.eclipse.jst.jee.server:JSP02_semiServlet"/><Context docBase="JSP04_JSP" path="/JSP04_JSP" reloadable="true" source="org.eclipse.jst.jee.server:JSP04_JSP"/><Context docBase="JSP05_ActionTag" path="/JSP05_StandardTag" reloadable="true" source="org.eclipse.jst.jee.server:JSP05_ActionTag"/><Context docBase="JSP06_Cookie" path="/JSP06_Cookie" reloadable="true" source="org.eclipse.jst.jee.server:JSP06_Cookie"/><Context docBase="JSP07_Session" path="/JSP07_Session" reloadable="true" source="org.eclipse.jst.jee.server:JSP07_Session"/></Host>
     </Engine>
   </Service>
 </Server>

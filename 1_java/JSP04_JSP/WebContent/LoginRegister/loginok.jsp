@@ -13,18 +13,13 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-	Boolean isValiad = false;
+	String msg = request.getParameter("msg");
 
-	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");
-	
-	if(id != null && id.equals("aaa") && pw != null && pw.equals("111")) {
-		isValiad = true;
-	}
-	
-	if(!isValiad){
-		response.sendRedirect("login.jsp");
-	}
+	if (msg != null){
+		out.print("<script>");
+		out.print("alert('" + msg + "');");
+		out.print("</script>");
+	} // 아이디와 패스워드가 aaa / 111 인경우 alert 창으로 알려준다.
 	
 %>
 <body>
