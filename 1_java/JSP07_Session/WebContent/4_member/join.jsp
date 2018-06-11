@@ -9,9 +9,6 @@
 	<link rel="stylesheet" href="css/register.css" />
 	<script src="js/validateJoin.js"></script>
 </head>
-<%
-	
-%>
 <body>
 <jsp:include page="head.jsp" />
 	<form action="registerResult.jsp" method="POST" id="frm">

@@ -33,7 +33,7 @@
 				<p>2.웹사이트의 정상적인 운영을 방해하는 회원은 탈퇴 처리합니다.</p>
 			</div>
 			<hr />
-			<form action="welcome.jsp" method="post">
+			<form action="fileprocess.jsp" method="post">
 				<input type="radio" id="agree" name="agree" value="동의" /><label for="agree">동의</label>
 				<input type="radio" id="disagree" name="agree" value="거부" checked="checked" /><label for="disagree">거부</label>
 				&nbsp;&nbsp;&nbsp;&nbsp;

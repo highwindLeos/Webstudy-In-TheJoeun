@@ -27,7 +27,8 @@
 	
 %>
 <body>
-	<div id="wrap">
+<jsp:include page="head.jsp" />
+	<div id="main">
 		<table>
 			<tr>
 				<td colspan="2"><h3>회원 가입 정보</h3></td>
@@ -42,10 +43,13 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><h4><% 
+				<td><h4>
+				<% 
 					for(int i =0; i < password.length() ; i++) {
 						out.println("*");
-					} %></h4></td>
+					} 
+				%>
+				</h4></td>
 			</tr>
 			<tr>
 				<td>생년월일</td>
@@ -89,15 +93,15 @@
 						}
 					}
 				%>
-				</h4></td>
-			</tr>
+			</h4></td>
 			<tr>
 				<td colspan="2"><h3>Register Result : <%= hiddenvalue %></h3></td>
 			</tr>
 			<tr>
-				<td colspan="2"><button onclick="location.href ='register.jsp'">뒤로가기</button></td>
+				<td colspan="2"><button onclick="location.href ='main.jsp'">뒤로가기</button></td>
 			</tr>
 		</table>
 	</div>
 </body>
+<jsp:include page="footer.jsp" />	
 </html>

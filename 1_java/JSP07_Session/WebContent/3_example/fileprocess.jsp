@@ -32,20 +32,20 @@
 		OutputStream os = null;
 		
 		try{
-			String file = application.getRealPath("/WEB-INF/" + id + ".txt");
+			String file = application.getRealPath("/WEB-INF/" + id + ".txt"); // 톰캣의 해당 경로를 문자열로 저장
 			
-			System.out.println(file);
-			writer = new PrintWriter(file);
+			System.out.println(file); // 경로를 출력해서 확인.
+			writer = new PrintWriter(file); 
 			
 			writer.println("DB 대신 파일에 넣었습니다.");
 			writer.println("아이디 : " + id);
 			writer.println("패스워드 : " + pw);
 			writer.println("이 름 : " + name);
 			writer.close();
-			// 톰캣의 실팽 폴더의 WEB-INF 밑에 text 파일을 생성 -> 파일 복사
+			// 톰캣의 실행 폴더의 WEB-INF 밑에 text 파일을 생성 -> 파일 복사
 			String copyFile = "C:/Users/Leodays/Desktop/Dev/webstudy/1_java/JSP07_Session/WebContent/WEB-INF/" + id +".txt";
-			
 			File tomcatFile = new File(file);
+			
 			is = new FileInputStream(file);
 			os = new FileOutputStream(copyFile);
 			
@@ -69,7 +69,7 @@
 			if (writer != null){ writer.close(); }
 		}
 		
-	} else {
+	} else { // 거부
 		result = "fail";		
 	}
 	

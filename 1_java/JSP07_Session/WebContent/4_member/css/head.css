@@ -22,7 +22,7 @@ ul {
 	margin-right: 20px;
 }
 
-ul>li {
+#wrap > ul > li {
 	display: inline-block;
 	font-size: 1.1em;
 	padding: 0 15px;

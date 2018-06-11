@@ -2,18 +2,18 @@
 
 body {
 	background-color: #FFF;
-	font-size: 9pt;
+}
+
+
+#main {
+	width : 600px;
+	margin: 0 auto;
 }
 
 table {
 	margin: 0 auto;
 	border: #A47160 solid 1px;
 	border-radius: 15px;
-}
-
-#wrap {
-	width : 600px;
-	margin: 0 auto;
 }
 
 button {
@@ -60,12 +60,12 @@ td, th {
 }
 
 td:nth-child(1) {
-	width: 100px;
+	width: 150px;
 	min-width: 80px;
 }
 
 td:nth-child(2) {
-	width: 300px;
+	width: 350px;
 }
 
 input[type=text], input[type=password], input[type=email], input[type=date]
