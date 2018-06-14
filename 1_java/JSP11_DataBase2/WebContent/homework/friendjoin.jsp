@@ -10,17 +10,18 @@
 	<title>join</title>
 	<style>
 		#wrap, #outwrap{
-			width : 35%;
+			width : 40%;
 			margin: 0 auto;
 			text-align: center;
 		}
 	</style>
 	<script>
-		var fname = document.getElementById("fname").value;
-		var tel = document.getElementById("tel").value;
-		
 		function serachFriend() {
-			location.href = 'friendJoinSerach.jsp?fname='+ fname +"&tel="+ tel;
+			var fname = document.getElementById("fname").value;
+			var tel = document.getElementById("tel").value;
+			console.log(fname);
+			console.log(tel);
+			location.href = 'friendJoinSerach.jsp?fname='+ fname +'&tel='+ tel;
 		}
 	</script>
 </head>
@@ -33,7 +34,7 @@
 		<form action="friendjoinOk.jsp" method="POST">
 			<table>
 				<tr>
-					<td>친구이름</td>
+					<td>이름</td>
 					<td><input type="text" id="fname" name="fname" ></td>
 					<td>전화</td>
 					<td><input type="text" id="tel" name="tel" ></td>

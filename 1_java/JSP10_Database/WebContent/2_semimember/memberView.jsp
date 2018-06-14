@@ -4,7 +4,8 @@
 <%@page import="java.sql.Connection"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%!String driver = "oracle.jdbc.driver.OracleDriver";
+<%!
+	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 
 	String uid = "leos";
@@ -14,21 +15,22 @@
 	Statement stmt;
 	ResultSet rs;
 
-	String sql = "SELECT ID, PW, NAME, NVL(PHONE, '연락처 없음') PHONE FROM MEMBER";%>
+	String sql = "SELECT ID, PW, NAME, NVL(PHONE, '연락처 없음') PHONE FROM MEMBER";
+%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Member view</title>
 	<style>
-	table {
-		background-color: #bbb;
-	}
-	
-	td {
-		background-color: #fff;
-		padding: 8px;
-	}
+		table {
+			background-color: #bbb;
+		}
+		
+		td {
+			background-color: #fff;
+			padding: 8px;
+		}
 	</style>
 </head>
 <body>

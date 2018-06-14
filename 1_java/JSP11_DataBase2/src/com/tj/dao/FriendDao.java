@@ -80,25 +80,21 @@ public class FriendDao {
 	
 	public ArrayList<FriendDto> friendDaoSelectAll(String fname, String tel) {
 		ArrayList<FriendDto> dtos = new ArrayList<FriendDto>();
-		// 데이터 베이스로 부터 SELECT * FROM MEMBER 수행 결과를 dtos 에 넣는다.
-		String sql = "SELECT * FROM FRIEND WHERE FNAME LIKE '%||?||%' AND TEL LIKE ?";
+		
+		String sql = "SELECT * FROM FRIEND WHERE FNAME LIKE '%"+ fname +"%' AND TEL LIKE '%"+ tel +"%'";
 
 		try {
 			conn = datasorce.getConnection(); // 커넥션 풀에서 데이터 베이스 연결 객체를 가져온다.
 			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery(sql);
 			
-			pstmt.setString(1, fname);
-			pstmt.setString(2, "%"+tel+"%");
-			
-			rs = stmt.executeQuery(sql);
-
 			if (rs.next()) {
 				do {
 					FriendDto dto = new FriendDto();
 					dto.setNo(rs.getInt("no"));
 					dto.setFname(rs.getString("fname"));
 					dto.setTel(rs.getString("tel"));
-				
+
 					System.out.println(dto.toString());
 					dtos.add(dto);
 					
@@ -107,11 +103,11 @@ public class FriendDao {
 				System.out.println("데이터 베이스의 결과 값이 없습니다.");
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("friendDaoSelectAll 예외 발생 : "+ e.getMessage());
 		} finally {
 			try {
 				if (rs != null)	rs.close();
-				if (stmt != null) stmt.close();
+				if (pstmt != null) pstmt.close();
 				if (conn != null) conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
