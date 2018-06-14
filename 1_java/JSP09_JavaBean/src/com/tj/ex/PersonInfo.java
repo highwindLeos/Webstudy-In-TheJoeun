@@ -6,9 +6,9 @@ public class PersonInfo {
 	private int age;
 	private String gender;
 	
-	public PersonInfo() {} // ÀÚ¹ÙºóÀ¸·Î ¾µ¶§´Â  ¹İµå½Ã ¸Å°³º¯¼ö°¡ ¾ø´Â »ı¼ºÀÚ°¡ ÇÊ¿äÇÏ´Ù.
+	public PersonInfo() {} // íšŒì›
 	
-	// getter setter µµ ²À ÇÊ¿äÇÏ´Ù.
+	// getter setter å ì™ì˜™ å ì™ì˜™ å ì‹­ìš¸ì˜™å ì‹¹ëŒì˜™.
 	public String getName() {
 		return name;
 	}
@@ -28,6 +28,4 @@ public class PersonInfo {
 		this.gender = gender;
 	}
 	
-	
-
 }

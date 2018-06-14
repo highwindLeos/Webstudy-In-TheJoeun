@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>loginResult</title>
+	<title>Login Result</title>
 	<style>
 	
 	</style>
@@ -14,7 +14,7 @@
 </head>
 <%
 	String name = (String)session.getAttribute("name");
-	String id = session.getAttribute("id").toString();
+	String id = (String)session.getAttribute("id");
 	
 	if (id == null){ // 로그인 한 사용자만 보여지는 페이지
 		response.sendRedirect("login.jsp");
