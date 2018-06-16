@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#wrap{
+	width : 40%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#outwrap{
+	width : 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+table {
+	width : 100%;
+	background-color : #bbb;
+}
+
+td {
+	color : #666;
+	background-color : #fff;
+	padding : 8px;
+}
+
+input {
+	border : 0;
+	width : 80%;
+	border-radius: 5px;
+	background-color: lightblue;
+	height : 40px;
+	padding : 0 3px; 
+}
+
+input[type=submit],
+input[type=button] {
+	border : 0;
+	color : #fff;
+	background-color : lightblue;
+	padding : 5px;
+}

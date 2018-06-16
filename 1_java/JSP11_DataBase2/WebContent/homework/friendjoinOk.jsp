@@ -9,19 +9,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>joinOK</title>
+<title>Friend JoinOK</title>
 </head>
 <%
 	FriendDao friendDao = FriendDao.getInstance();
 	int result = friendDao.friendInsert(dto);
 	
 	if (result > 0) {
-%>
-	<h3>친구 리스트에 입력됨</h3>
-<%		
+		System.out.println("친구 리스트 테이블에 입력됨");	
 		response.sendRedirect("friendjoin.jsp");
 	} else {
-		String msg = URLEncoder.encode("입력한 데이터를 확인후 가입해주세요.", "utf-8");
+		String msg = URLEncoder.encode("입력한 데이터를 확인후 추가해주세요.", "utf-8");
 		response.sendRedirect("friendjoin.jsp?msg=" + msg);
 	}
 %>

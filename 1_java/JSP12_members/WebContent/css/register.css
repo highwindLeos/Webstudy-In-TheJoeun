@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+body {
+	background-color: #FFF;
+	font-size: 16px;
+}
+
+h1,h2,h3,h4 {
+	text-align: center;
+}
+
+#wrap {
+	width : 75%;
+	margin : 0 auto;
+}
+
+table {
+	margin: 0 auto;
+	border: #A47160 solid 1px;
+	border-radius: 15px;
+}
+
+tr {
+	background-color: #fff;
+}
+
+tr:first-child td:nth-child(1) {
+	border-radius: 15px 15px 0 0;
+	font-size : 20px;
+	font-weight: bold;
+}
+
+tr:last-child td:nth-child(1) {
+	border-radius: 0 0 15px 15px;
+	padding: 15px 0;
+}
+
+tr:hover {
+	color: #fff;
+	background-color: #aaa;
+}
+
+#title {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+td, th {
+	padding: 5pt;
+	text-align: center;
+}
+
+td:nth-child(1) {
+	width: 150px;
+	min-width: 80px;
+}
+
+td:nth-child(2) {
+	width: 300px;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=date]
+{
+	border: 1px solid #D4A190;
+	border-radius: 10px;
+	width: 250px;
+	height: 25px;
+	padding: 5px;
+}
+
+select {
+	display : inline-block;
+	border: 1px solid #D4A190;
+	border-radius: 10px;
+	width : 50px;
+	height : 35px;
+}
+
+#phone2, #phone3 {
+	width : 80px;
+	height : 20px;
+}
+
+
+input[type=submit], input[type=button], input[type=reset] {
+	border: none;
+	width: 120px;
+	height: 25px;
+	margin: 0 7px;
+	color: #fff;
+	background-color: #A47160;
+	cursor: pointer;
+}
+

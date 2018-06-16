@@ -7,27 +7,28 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>join</title>
-	<style>
-		#wrap, #outwrap{
-			width : 40%;
-			margin: 0 auto;
-			text-align: center;
-		}
-	</style>
-	<script>
-		function serachFriend() {
-			var fname = document.getElementById("fname").value;
-			var tel = document.getElementById("tel").value;
-			console.log(fname);
-			console.log(tel);
-			location.href = 'friendJoinSerach.jsp?fname='+ fname +'&tel='+ tel;
-		}
-	</script>
+	<title>Friend Join</title>
+	<link href="./css/friend.css" rel="stylesheet" />
+	<script src="./js/searchFriend.js"></script>
 </head>
 <%
-	FriendDao friendDao = FriendDao.getInstance();
-	ArrayList<FriendDto> dtos = friendDao.friendDaoSelectAll();
+	String fname = request.getParameter("fname");
+	String tel = request.getParameter("tel");
+	
+	String msg = request.getParameter("msg");
+	
+	ArrayList<FriendDto> dtos;
+	if (fname == null && tel == null) {
+		FriendDao friendDao = FriendDao.getInstance();
+		dtos = friendDao.friendDaoSelectAll();
+	} else {
+		FriendDao friendDao = FriendDao.getInstance();
+		dtos = friendDao.friendDaoSelectAll(fname, tel);
+	} 
+	
+	if (msg != null) {
+		out.println("<script>alert('"+ msg +"')</script>");
+	} // 친구 추가 오류
 %>
 <body>
 	<div id="wrap">
@@ -35,9 +36,9 @@
 			<table>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" id="fname" name="fname" ></td>
+					<td><input type="text" id="fname" name="fname" /></td>
 					<td>전화</td>
-					<td><input type="text" id="tel" name="tel" ></td>
+					<td><input type="text" id="tel" name="tel" /></td>
 					<td><input type="submit" value="친구추가"></td>
 					<td><input type="button" value="검색" onclick="serachFriend()"></td>
 				</tr>

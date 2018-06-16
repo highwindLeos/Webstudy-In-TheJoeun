@@ -17,32 +17,32 @@ public class FriendDao {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 
-	private DataSource datasorce;
-	private static FriendDao INSTANCE = null;
+	private DataSource datasource;
+	private static FriendDao instance = null;
 
 	private FriendDao() {
 		try {
 			Context context = new InitialContext();
-			datasorce = (DataSource) context.lookup("java:comp/env/jdbc/Oracle11g");
+			datasource = (DataSource) context.lookup("java:comp/env/jdbc/Oracle11g");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	} // 싱글톤을 위해서 이 클래스에서만 사용하도록 private 한다.
 
 	public static FriendDao getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new FriendDao();
+		if (instance == null) {
+			instance = new FriendDao();
 		}
-		return INSTANCE;
+		return instance;
 	} // 생성자 객체를 반환하는 함수를 만들어놓는다.
 
 	public ArrayList<FriendDto> friendDaoSelectAll() {
 		ArrayList<FriendDto> dtos = new ArrayList<FriendDto>();
-		// 데이터 베이스로 부터 SELECT * FROM MEMBER 수행 결과를 dtos 에 넣는다.
+		// 데이터 베이스로 부터 SELECT * FROM MEMBER 수행 결과를 dtos에 넣는다.
 		String sql = "SELECT * FROM FRIEND ORDER BY NO";
 
 		try {
-			conn = datasorce.getConnection(); // 커넥션 풀에서 데이터 베이스 연결 객체를 가져온다.
+			conn = datasource.getConnection(); // 커넥션 풀에서 데이터 베이스 연결 객체를 가져온다.
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 
@@ -55,7 +55,6 @@ public class FriendDao {
 				
 					System.out.println(dto.toString());
 					dtos.add(dto);
-					
 				} while (rs.next());
 			} else {
 				System.out.println("데이터 베이스의 결과 값이 없습니다.");
@@ -64,15 +63,10 @@ public class FriendDao {
 			System.out.println(e.getMessage());
 		} finally {
 			try {
-				if (rs != null)
-					rs.close();
-				if (stmt != null)
-					stmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} // close 예외 발생시.
+				if (rs != null) rs.close();
+				if (stmt != null) stmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) { } // close 예외 발생시.
 		}
 
 		return dtos;
@@ -81,12 +75,16 @@ public class FriendDao {
 	public ArrayList<FriendDto> friendDaoSelectAll(String fname, String tel) {
 		ArrayList<FriendDto> dtos = new ArrayList<FriendDto>();
 		
-		String sql = "SELECT * FROM FRIEND WHERE FNAME LIKE '%"+ fname +"%' AND TEL LIKE '%"+ tel +"%'";
+		String sql = "SELECT * FROM FRIEND WHERE FNAME LIKE '%'||?||'%' AND TEL LIKE '%'||?||'%' ORDER BY NO";
 
 		try {
-			conn = datasorce.getConnection(); // 커넥션 풀에서 데이터 베이스 연결 객체를 가져온다.
+			conn = datasource.getConnection(); // 커넥션 풀에서 데이터 베이스 연결 객체를 가져온다.
 			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery(sql);
+			
+			pstmt.setString(1, fname);
+			pstmt.setString(2, tel);
+			
+			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
 				do {
@@ -109,13 +107,11 @@ public class FriendDao {
 				if (rs != null)	rs.close();
 				if (pstmt != null) pstmt.close();
 				if (conn != null) conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} // close 예외 발생시.
+			} catch (Exception e) { } // close 예외 발생시.
 		}
 
 		return dtos;
-	}
+	} // 검색기능 함수
 
 	public int friendInsert(FriendDto dto) {
 		int result = 0;
@@ -124,7 +120,7 @@ public class FriendDao {
 		String insertSql = "INSERT INTO FRIEND VALUES(FRIEND_SEQ.NEXTVAL, ?, ?)";
 
 		try {
-			conn = datasorce.getConnection();
+			conn = datasource.getConnection();
 			pstmt = conn.prepareStatement(insertSql);
 
 			pstmt.setString(1, dto.getFname());
@@ -135,7 +131,6 @@ public class FriendDao {
 			if (result > 0) {
 				System.out.println("회원 가입 성공 : Friend Table Insert 완료");
 				System.out.println(dto.toString());
-
 			} else {
 				System.out.println("회원 가입 실패 : Friend Table Insert 실패");
 			}
@@ -144,14 +139,11 @@ public class FriendDao {
 			System.out.println("회원 가입 실패 : 예외" + e.getMessage());
 		} finally {
 			try {
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-			}
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) { }
 		}
-
+		
 		return result;
-	}
+	} // 친구 연락처 입력.
 }
