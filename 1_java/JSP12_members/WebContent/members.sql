@@ -13,7 +13,7 @@ CREATE TABLE MEMBERS (
 SELECT * FROM MEMBERS;
 
 -- 회원 가입 시 ID 유무 에 따라서 판단되는 로직이 필요
-SELECT * MEMBERS WHERE ID = 'aaa';
+SELECT * FROM MEMBERS WHERE ID = 'aaa';
 
 -- 회원가입시 INSERT.
 INSERT INTO MEMBERS VALUES ('aaa', '111', '이데이', 'lee@gmail.com', '1990-01-01', SYSDATE, '서울 종로');

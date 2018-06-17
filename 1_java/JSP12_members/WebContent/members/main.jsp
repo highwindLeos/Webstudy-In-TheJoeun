@@ -1,3 +1,4 @@
+
 <%@page import="com.tj.members.MembersDao"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="com.tj.members.MembersDto"%>
@@ -6,9 +7,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Main</title>
-<link href="../css/register.css" rel="stylesheet"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Main</title>
+	<link href="../css/register.css" rel="stylesheet"/>
 </head>
 <%
 	if (session.getAttribute("validMember") == null) {

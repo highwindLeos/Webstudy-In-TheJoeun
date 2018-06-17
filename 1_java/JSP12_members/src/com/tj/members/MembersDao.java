@@ -24,14 +24,14 @@ public class MembersDao {
 	
 	private static MembersDao instance; // 생성자 객체 변수
 	
+	private MembersDao() { }
+
 	public static MembersDao getInstance(){
 		if (instance == null) {
 			instance = new MembersDao();
 		}
 		return instance;
 	}
-	
-	private MembersDao() { }
 	
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;

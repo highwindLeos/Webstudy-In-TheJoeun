@@ -1,3 +1,4 @@
+
 <%@page import="com.tj.members.MembersDao"%>
 <%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,8 +9,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>modify OK</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>modify OK</title>
 </head>
 <%
 	Timestamp birth = Timestamp.valueOf(request.getParameter("bbirth")+ " 00:00:00");

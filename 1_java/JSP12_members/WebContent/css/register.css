@@ -81,6 +81,10 @@ select {
 	height : 20px;
 }
 
+form {
+	text-align: center;	
+}
+
 
 input[type=submit], input[type=button], input[type=reset] {
 	border: none;
@@ -92,3 +96,9 @@ input[type=submit], input[type=button], input[type=reset] {
 	cursor: pointer;
 }
 
+
+input[type=submit]:hover, 
+input[type=button]:hover, 
+input[type=reset]:hover {
+	background-color : lightblue;
+}

@@ -1,6 +1,5 @@
 package com.tj.members;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 // DTO 에 반드시 들어가는 것 - 속성변수, setter getter, 매개변수 없는 생성자, toString()
 public class MembersDto {

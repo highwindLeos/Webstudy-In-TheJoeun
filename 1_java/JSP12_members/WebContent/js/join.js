@@ -1,5 +1,5 @@
 /**
- *  회원 가입 함수
+ *  회원 가입 검증 함수
  */
 
 function infoConfirm(){

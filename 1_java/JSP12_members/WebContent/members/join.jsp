@@ -1,12 +1,14 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>join</title>
-<link href="../css/register.css" rel="stylesheet"/>
-<script type="text/javascript" src="../js/join.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>join</title>
+	<link href="../css/register.css" rel="stylesheet"/>
+	<script type="text/javascript" src="../js/join.js"></script>
 </head>
 <%
 	if (session.getAttribute("validMember") != null) { // 로그인 했다면 이 페이지를 보이지 않는다.
