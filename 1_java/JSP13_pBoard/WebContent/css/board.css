@@ -23,15 +23,6 @@ a:hover {
 	margin : 0 auto;
 }
 
-#error {
-	text-align: center;
-}
-
-#error > img {
-	width: 700px;
-	height: 550px;
-}
-
 table {
 	width : 100%;
 	margin: 0 auto;
@@ -43,7 +34,13 @@ tr {
 	background-color: #fff;
 }
 
+
 tr:first-child td:nth-child(1) {
+	background-image : url('../img/visual.png');
+	background-repeat : no-repeat;
+	background-position : center;
+	background-size : 80% 200px;
+	height : 200px;
 	border-radius: 15px 15px 0 0;
 	font-size : 20px;
 	font-weight: bold;
@@ -56,7 +53,11 @@ tr:last-child td:nth-child(1) {
 
 tr:hover {
 	color: #fff;
-	background-color: #aaa;
+	background-color: #eee;
+}
+
+.width {
+	width : 15vw;
 }
 
 #title {
@@ -72,7 +73,8 @@ tr:hover {
 }
 
 td, th {
-	padding: 5pt;
+	font-size : 0.75em;
+	padding: 5px;
 	text-align: center;
 }
 
@@ -120,12 +122,13 @@ form {
 input[type=submit], 
 input[type=button], 
 input[type=reset] {
-	border: none;
+	border: 2px solid #D4A190;
+	border-radius : 10px 0 10px 0;
 	width: 120px;
-	height: 25px;
+	height: 30px;
 	margin: 0 7px;
 	color: #fff;
-	background-color: #A47160;
+	background-color: lightcoral;
 	cursor: pointer;
 }
 
@@ -135,10 +138,21 @@ input[type=reset]:hover {
 	background-color : lightblue;
 }
 
+/* 정렬 class  */
+
 .left {
 	text-align: left;
 }
 
 .right {
 	text-align: right;
+}
+/* 예외 페이지  */
+#error {
+	text-align: center;
+}
+
+#error > img {
+	width: 700px;
+	height: 550px;
 }

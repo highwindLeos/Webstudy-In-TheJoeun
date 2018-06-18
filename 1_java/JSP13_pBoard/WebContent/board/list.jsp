@@ -19,11 +19,11 @@
 <body>
 <div id="wrap">
 	<table>
-		<tr><td colspan='7'>Board</td></tr>
+		<tr><td colspan='7'></td></tr>
 		<tr>
 			<th>글번호</th>
 			<th>작성자</th>
-			<th>글제목</th>
+			<th class="width">글제목</th>
 			<th>메일</th>
 			<th>IP</th>
 			<th>작성일</th>
@@ -41,7 +41,7 @@
 		out.println("<tr>");
 			out.println("<td>"+ dt.getNum() +"</td>");
 			out.println("<td>"+ dt.getWriter() +"</td>");
-			out.println("<td class='left'>");
+			out.println("<td class='left width'>");
 			out.println("<a href='content.jsp?num="+ dt.getNum() +"' />");
 			if (dt.getReadCount() > 10) {
 				out.println("<img id='icon' src='../img/hot.gif' alt='hot' />");
