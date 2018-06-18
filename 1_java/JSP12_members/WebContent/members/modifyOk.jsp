@@ -22,7 +22,7 @@
 	
 	if (nowPw.equals(sessionPw)) { // 현제 비번을 맞게 입력하면 update 진행
 		// 새 비밀번호를 빈칸으로 넘겼으면 새비번을 현제 비번으로 
-		if (dto.getPw().equals("")) {
+		if (dto.getPw() == null || dto.getPw().equals("")) {
 			dto.setPw(nowPw);
 		}
 		

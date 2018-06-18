@@ -21,6 +21,7 @@
 	String name = (String)session.getAttribute("name");
 	
 	MembersDto dto = (MembersDto)session.getAttribute("member");
+	
 	MembersDao dao = MembersDao.getInstance();
 	MembersDto dto2 = dao.getMember(id); // 로그인 한 사용자의 데이터
 %>
