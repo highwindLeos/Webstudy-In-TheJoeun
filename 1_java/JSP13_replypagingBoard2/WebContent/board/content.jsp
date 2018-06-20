@@ -17,6 +17,7 @@
 </head>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
+	String pageNum = request.getParameter("pageNum");
 
 	BoardDao boardDao = BoardDao.getInstance();
 	boardDao.readCountUp(num); // 조회수 1 증가.
@@ -60,9 +61,9 @@
 			</tr>
 			<tr>
 				<td colspan="6">
-					<input type="button" value="글수정" onclick="location.href = 'updateForm.jsp?num=<%= num %>'" />
-					<input type="button" value="글삭제" onclick="location.href = 'deleteForm.jsp?num=<%= num %>'" />
-					<input type="button" value="답변달기" onclick="location.href = ''" />
+					<input type="button" value="글수정" onclick="location.href = 'updateForm.jsp?num=<%= num %>&pageNum=<%= pageNum %>'" />
+					<input type="button" value="글삭제" onclick="location.href = 'deleteForm.jsp?num=<%= num %>&pageNum=<%= pageNum %>'" />
+					<input type="button" value="답변달기" onclick="location.href = 'writeForm.jsp?num=<%= num %>&pageNum=<%= pageNum %>'" />
 					<input type="button" value="뒤로가기" onclick="location.href = 'list.jsp'" />
 				</td>
 			</tr>

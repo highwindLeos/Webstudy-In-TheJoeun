@@ -76,6 +76,17 @@ tr:last-child td:nth-child(1) {
 	border-radius: 10px;
 }
 
+#arrow {
+	width : 15px;
+	height: 15px;
+}
+
+#noimg {
+	width: 150px;
+	heigth: 150px;
+	border: 1px dotted #666;
+} 
+
 td, th {
 	font-size : 0.85em;
 	padding: 5px;
@@ -83,13 +94,18 @@ td, th {
 }
 
 div#paging {
+	margin-top: 20px;
+	padding : 8px;
 	text-align: center;
+	border: 3px solid #D4A190;
+	border-radius: 10px;
 }
 
 input[type=text], 
 input[type=password], 
 input[type=email], 
-input[type=date]
+input[type=date],
+input[type=number]
 {
 	border: 1px solid #D4A190;
 	border-radius: 10px;
@@ -146,6 +162,10 @@ input[type=reset]:hover {
 
 .left {
 	text-align: left;
+}
+
+.center {
+	text-align: center;
 }
 
 .right {

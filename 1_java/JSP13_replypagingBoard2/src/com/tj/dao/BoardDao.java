@@ -28,9 +28,7 @@ public class BoardDao {
 	
 	public static final int FAIL = 0; //실패
 	public static final int SUCCSESS = 1; //성공
-	
-	//public static final int 
-	
+		
 	private static BoardDao instance;
 	
 	public static BoardDao getInstance() {
@@ -139,6 +137,61 @@ public class BoardDao {
 		return dtos;
 	}
 	
+	// 글 목록 출력할 ArrayList<DTO> listBoard() : 시작 줄과 끝줄까지 만 
+	public ArrayList<BoardDto> listBoard(int startRow, int endRow) {
+		ArrayList<BoardDto> dtos = new ArrayList<BoardDto>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOARD ORDER BY REF DESC, RE_STEP ASC) A) " 
+		           + " WHERE RN BETWEEN ? AND ?";
+		
+		try {
+			conn = getConnnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				do {
+					BoardDto dto = new BoardDto();
+					
+					dto.setNum(rs.getInt("num"));
+					dto.setWriter(rs.getString("writer"));
+					dto.setSubject(rs.getString("subject"));
+					dto.setContent(rs.getString("content"));
+					dto.setEmail(rs.getString("email"));
+					dto.setReadCount(rs.getInt("readcount"));
+					dto.setPw(rs.getString("pw"));
+					dto.setRef(rs.getInt("ref"));
+					dto.setReStep(rs.getInt("re_step"));
+					dto.setReLevel(rs.getInt("re_level"));
+					dto.setIp(rs.getString("ip"));
+					dto.setRdate(rs.getTimestamp("rdate"));
+					
+					dtos.add(dto); // 한줄씩 추가
+				} while(rs.next());
+			} else {
+				System.out.println("가져올 데이터가 없습니다.");
+			}
+		} catch (Exception e) {
+			System.out.println("게시판 가져오기 예외 : " + e.getMessage());
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {	}
+		}
+		
+		return dtos;
+	}
+	
 	// 글 쓰기 할 int insertBoard(dto)
 	public int insertBoard(BoardDto dto) {
 		int result = FAIL;
@@ -147,14 +200,28 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String selectSql = "SELECT NVL(MAX(NUM), 0) + 1 NUMCOUNT FROM BOARD";
-		
-		String insertSql = "INSERT INTO BOARD VALUES "
-				   		 + " ( ?, ?, ?, ?, ?, 0, ?, ?, 0, 0, ?, SYSDATE)";
-		// 글번호, 글쓴이, 제목, 글내용, 이메일, 조회수, 패스워드, REF, 그룹출력순, 그룹들여쓰기정도, IP, 작성시간
-		
 		try {
 			conn = getConnnection();
+			
+			if (dto.getNum() != 0) { // 원글이 아닐때만 수정해야 하는 사항.
+				
+				String reStepSql = "UPDATE BOARD SET RE_STEP = RE_STEP + 1 " 
+						 		 + " WHERE REF = ? AND RE_STEP > ?";
+				
+				pstmt = conn.prepareStatement(reStepSql);
+				pstmt.setInt(1, dto.getRef());
+				pstmt.setInt(2, dto.getReStep());
+				pstmt.executeUpdate();
+				
+				pstmt.close();	
+				
+				dto.setReStep(dto.getReStep() + 1); // 원글보다 1 많게 설정
+				dto.setReLevel(dto.getReLevel() + 1); // 원글보다 1 많게 설정
+				System.out.println(dto.toString());
+			}
+			
+			String selectSql = "SELECT NVL(MAX(NUM), 0) + 1 NUMCOUNT FROM BOARD";
+			
 			pstmt = conn.prepareStatement(selectSql);
 			rs = pstmt.executeQuery();
 			
@@ -164,6 +231,10 @@ public class BoardDao {
 			rs.close();  // 쿼리를 재차 날리기 전에 객체를 일단 닫아줌
 			pstmt.close();
 			
+			String insertSql = "INSERT INTO BOARD VALUES "
+			   		 + " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE)";
+			// 글번호, 글쓴이, 제목, 글내용, 이메일, 조회수, 패스워드, REF, 그룹출력순, 그룹 들여쓰기정도, IP, 작성시간
+			
 			pstmt = conn.prepareStatement(insertSql);
 			
 			pstmt.setInt(1, num);
@@ -171,10 +242,18 @@ public class BoardDao {
 			pstmt.setString(3, dto.getSubject());
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getEmail());
-			pstmt.setString(6, dto.getPw());
-			pstmt.setInt(7, num);
-			pstmt.setString(8, dto.getIp());
-
+			pstmt.setInt(6, dto.getReadCount());
+			pstmt.setString(7, dto.getPw());
+			
+			if(dto.getRef() == 0) { // 원글의 경우 ref = num
+				dto.setRef(num);				
+			} // 답글의 경우 ref = 원글의 ref
+			
+			pstmt.setInt(8, dto.getRef());
+			pstmt.setInt(9, dto.getReStep());
+			pstmt.setInt(10, dto.getReLevel());
+			pstmt.setString(11, dto.getIp());
+		
 			int temp = pstmt.executeUpdate();
 			
 			if (temp > 0) {
