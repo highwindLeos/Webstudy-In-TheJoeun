@@ -57,10 +57,11 @@
 				OutputStream os = null;
 				try{
 					is = new FileInputStream(file);
-					String copyFile = "C:/Users/Leodays/Desktop/Dev/webstudy/1_java/JSP14_fileupload/WebContent/bookImg/" + bimgTemp;
+					// String copyFile = "C:/Users/Leodays/Desktop/Dev/webstudy/1_java/JSP14_fileupload/WebContent/bookImg/" + bimgTemp; // noteBooks 경로
+					String copyFile = "C:/Users/Leos/Desktop/Dev/webstudy/1_java/JSP14_fileupload/WebContent/bookImg/" + bimgTemp;
 					os = new FileOutputStream(copyFile);
 					
-					byte[] bs = new byte[(int)file.length()];
+					byte[] bs = new byte[(int)file.length()]; // 파일 단위로 생성해놓는다.
 					
 					while(true){
 						int readByte = is.read(bs);
@@ -76,10 +77,10 @@
 					if (os != null) os.close();
 					if (is != null) is.close();
 				}
-			}
-			
-		}
-	}
+			} // end if
+		} // end if
+	} // 반복문
+	
 	// Dto객체를 생성해서 insert할 내용들을 담아서
 	String bname = mRequest.getParameter("bname");
 	int bprice = Integer.parseInt(mRequest.getParameter("bprice"));
@@ -103,21 +104,22 @@
 		out.println("<h2>등록된 책정보</h2>");
 		out.println("<h2>제목 : "+ bname +"</h2>");
 		out.println("<h2>가격 : "+ bprice +"</h2>");
-		out.println("<h2>그림1 : <img src='../bookImg/"+ bImage[1] +"' /></h2>");
-		out.println("<h2>그림2 : <img id='noimg' src='../bookImg/"+ bImage[0] +"' /></h2>");
+		out.println("<h2>그림1 : <img class='imgBook' src='../bookImg/"+ bImage[1] +"' /></h2>");
+		out.println("<h2>그림2 : <img class='imgBook' src='../bookImg/"+ bImage[0] +"' /></h2>");
 		out.println("<p><pre>책 소개 : "+ bcontent +"</pre></p>");
 		out.println("<h2>할인율 : "+ bdiscount +"%</h2>");
 	} else {
 		out.println("<h2>책 등록 실패</h2>");
 		out.println("<h2>제목 : "+ bname +"</h2>");
 		out.println("<h2>가격 : "+ bprice +"</h2>");
-		out.println("<h2>그림1 : <img src='../bookImg/"+ bImage[1] +"' /></h2>");
-		out.println("<h2>그림2 : <img src='../bookImg/"+ bImage[0] +"' /></h2>");
+		out.println("<h2>그림1 : <img class='imgBook' src='../bookImg/"+ bImage[1] +"' /></h2>");
+		out.println("<h2>그림2 : <img class='imgBook' src='../bookImg/"+ bImage[0] +"' /></h2>");
 		out.println("<p><pre>책 소개 : "+ bcontent +"</pre></p>");
 		out.println("<h2>할인율 : "+ bdiscount +"%</h2>");
 	}
 %>	
 <a href="bookList.jsp">책 리스트</a>
 <a href="bookListPaging.jsp">책 리스트(paging)</a>
+<a href="bookRegister.jsp">책 등록 페이지</a>
 </body>
 </html>

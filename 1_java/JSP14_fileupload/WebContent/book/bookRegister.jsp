@@ -51,6 +51,7 @@
 				<td colspan="2">
 					<input type="submit" value="책등록" />
 					<input type="reset" value="재설정" />
+					<input type="button" value="책목록보기" onclick="location.href = 'bookList.jsp'" />
 				</td>
 			</tr>
 			<tr>

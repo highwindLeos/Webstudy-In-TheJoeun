@@ -15,7 +15,7 @@ a {
 }
 
 a:hover {
-	color : #fff;
+	color : lightgray;
 }
 
 table {
@@ -32,11 +32,15 @@ tr {
 
 tr:hover {
 	color: #fff;
-	background-color: #eee;
+	background: #b3dced; /* Old browsers */
+	background: -moz-linear-gradient(top, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=0 ); /* IE6-9 */
 }
 
 #wrap {
-	width : 60%;
+	width : 75%;
 	margin : 0 auto;
 }
 
@@ -81,10 +85,9 @@ tr:last-child td:nth-child(1) {
 	height: 15px;
 }
 
-#noimg {
-	width: 150px;
-	heigth: 150px;
-	border: 1px dotted #666;
+.imgBook {
+	width: 100px;
+	heigth: 100px;
 } 
 
 td, th {
