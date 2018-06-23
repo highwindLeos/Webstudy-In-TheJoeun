@@ -29,7 +29,7 @@
 		
 		session.setAttribute("member", dto); // 세션의 로그인된 객체데이터를 넣어놓는다.
 	
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("main.jsㄴㄷp");
 	} else if (result == MembersDao.LOGIN_FAIL_ID){ %>
 	<script>
 		alert('존재하지 않는 ID 입니다.');

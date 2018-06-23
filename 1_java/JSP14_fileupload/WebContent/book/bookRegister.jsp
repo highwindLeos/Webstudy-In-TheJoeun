@@ -21,7 +21,7 @@
 				<td colspan="2"></td>
 			</tr>
 			<tr>
-				<td colspan="2">책 등록</td>
+				<td colspan="2"><h2>책 등록</h2></td>
 			</tr>
 			<tr>
 				<td>책 이름</td>
@@ -45,7 +45,7 @@
 			</tr>
 			<tr>
 				<td>할인율</td>
-				<td><input type="number" name="bdiscount" required="required" value="0" /></td>
+				<td><input type="number" min="0" max="100" name="bdiscount" required="required" value="0" /></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -60,6 +60,5 @@
 		</table>
 	</form>
 </div>
-
 </body>
 </html>

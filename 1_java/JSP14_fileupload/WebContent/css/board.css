@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+/* 리셋부분 */
 body {
 	background-color: #FFF;
 	font-size: 16px;
@@ -17,13 +17,17 @@ a {
 a:hover {
 	color : lightgray;
 }
+/* 레이아웃 부분 */
+#wrap {
+	width : 60%;
+	margin : 0 auto;
+}
 
 table {
 	width : 100%;
 	margin: 0 auto;
 	border: #A47160 solid 1px;
 	border-radius: 15px;
-	background-color: lightcoral;
 }
 
 tr {
@@ -31,17 +35,7 @@ tr {
 }
 
 tr:hover {
-	color: #fff;
-	background: #b3dced; /* Old browsers */
-	background: -moz-linear-gradient(top, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=0 ); /* IE6-9 */
-}
-
-#wrap {
-	width : 75%;
-	margin : 0 auto;
+	color: #666;
 }
 
 tr:first-child td:nth-child(1) {
@@ -90,10 +84,25 @@ tr:last-child td:nth-child(1) {
 	heigth: 100px;
 } 
 
+.btn {
+	font-size : 0.8em;
+	padding: 5px 15px;
+	border: 2px solid lightpink;
+}
+
+	.btn:hover {
+		background-color: #000;
+	}
+	
+.discount {
+	color : darkblue;
+}
+
 td, th {
 	font-size : 0.85em;
 	padding: 5px;
 	text-align: center;
+	background-color: #eee;
 }
 
 div#paging {
@@ -169,6 +178,7 @@ input[type=reset]:hover {
 
 .center {
 	text-align: center;
+	padding : 15px;
 }
 
 .right {

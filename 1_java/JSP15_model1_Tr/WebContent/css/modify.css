@@ -1,0 +1,29 @@
+@charset "UTF-8";
+#joinForm_wrap {
+	width: 430px;	margin: 35px auto;
+	border: 1px solid #003300;	padding: 20px;
+}
+#join_title {
+	margin: 10px auto;
+	padding-bottom: 20px;
+	width: 400px;
+	border-bottom: 1px solid #003300;
+	color: #003300;
+	font-size: 1.5em;
+	text-align: center;
+	font-weight: bold;
+}
+#cid, #cpw, #pw_check, #hyun_pw, #cname, #ctel, #cemail, #caddr {
+	border: 1px solid #003300;
+	width: 80%;	padding: 3px;
+}
+#joinForm_wrap table { margin: 0 auto; color: #003300;}
+#joinForm_wrap table tr {height: 30px;}
+#joinForm_wrap table th {
+	width: 120px;	font-size: 0.9em;
+	color: #003300;	font-weight: bold;
+	text-align: center;	padding-left: 10px;
+}
+#joinForm_wrap table td {	width: 300px;}
+.joinBtn_style {color: #ffffff;	background: #003300;border-style: none;}
+.joinBtn_style { width: 49%; height: 120%; padding: 3px; }

@@ -52,7 +52,6 @@
 		out.println("<tr><td colspan='7'>글이 없습니다.</td></tr>");
 	} else { // 글이 있으니 글목록을 가져와 for 문으로 뿌려준다.
 		// paging 에 필요한 변수들.
-		
 		ArrayList<BoardDto> dtos = boardDao.listBoard(startRow, endRow);
 		for (BoardDto dt : dtos) {
 		out.println("<tr>");
@@ -110,14 +109,11 @@
 		if (endPage < pageCnt) {
 			out.println(" [<a href='list.jsp?pageNum="+ (endPage + 1) +"' > 다음 </a> ] ");
 		} // 다음을 출력
-	
 	%>	
 	</div>
-	<form action="">
-		<p class="right">
-			<input type="button" value="글쓰기" onclick="location.href = 'writeForm.jsp'" />
-		</p>
-	</form>
+	<p class="right">
+		<input type="button" value="글쓰기" onclick="location.href = 'writeForm.jsp'" />
+	</p>
 </div>
 </body>
 </html>

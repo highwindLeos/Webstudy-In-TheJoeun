@@ -57,8 +57,8 @@
 				OutputStream os = null;
 				try{
 					is = new FileInputStream(file);
-					// String copyFile = "C:/Users/Leodays/Desktop/Dev/webstudy/1_java/JSP14_fileupload/WebContent/bookImg/" + bimgTemp; // noteBooks 경로
-					String copyFile = "C:/Users/Leos/Desktop/Dev/webstudy/1_java/JSP14_fileupload/WebContent/bookImg/" + bimgTemp;
+					String copyFile = "C:/Users/Leodays/Desktop/Dev/webstudy/1_java/JSP14_fileupload/WebContent/bookImg/" + bimgTemp; // noteBooks 경로
+					// String copyFile = "C:/Users/Leos/Desktop/Dev/webstudy/1_java/JSP14_fileupload/WebContent/bookImg/" + bimgTemp; // PC 경로
 					os = new FileOutputStream(copyFile);
 					
 					byte[] bs = new byte[(int)file.length()]; // 파일 단위로 생성해놓는다.
@@ -101,25 +101,57 @@
 	int result = dao.insertBook(dto);
 	
 	if(result == BookDao.SUCCESS) {
-		out.println("<h2>등록된 책정보</h2>");
-		out.println("<h2>제목 : "+ bname +"</h2>");
-		out.println("<h2>가격 : "+ bprice +"</h2>");
-		out.println("<h2>그림1 : <img class='imgBook' src='../bookImg/"+ bImage[1] +"' /></h2>");
-		out.println("<h2>그림2 : <img class='imgBook' src='../bookImg/"+ bImage[0] +"' /></h2>");
-		out.println("<p><pre>책 소개 : "+ bcontent +"</pre></p>");
-		out.println("<h2>할인율 : "+ bdiscount +"%</h2>");
-	} else {
-		out.println("<h2>책 등록 실패</h2>");
-		out.println("<h2>제목 : "+ bname +"</h2>");
-		out.println("<h2>가격 : "+ bprice +"</h2>");
-		out.println("<h2>그림1 : <img class='imgBook' src='../bookImg/"+ bImage[1] +"' /></h2>");
-		out.println("<h2>그림2 : <img class='imgBook' src='../bookImg/"+ bImage[0] +"' /></h2>");
-		out.println("<p><pre>책 소개 : "+ bcontent +"</pre></p>");
-		out.println("<h2>할인율 : "+ bdiscount +"%</h2>");
-	}
-%>	
-<a href="bookList.jsp">책 리스트</a>
-<a href="bookListPaging.jsp">책 리스트(paging)</a>
-<a href="bookRegister.jsp">책 등록 페이지</a>
+%>
+<div id="wrap">
+	<table>
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td><h1>등록된 책정보</h1></td>
+		</tr>
+		<tr>
+			<td><h2>제목 : <%=  bname %></h2></td>
+		</tr>
+		<tr>
+			<td><h2>가격 : <%=  bprice %></h2></td>
+		</tr>
+		<tr>
+			<td><h2>그림1 : <img class="imgBook" src="../bookImg/<%= bImage[1] %>" /></h2></td>
+		</tr>
+		<tr>
+			<td><h2>그림1 : <img class="imgBook" src="../bookImg/<%= bImage[0] %>" /></h2></td>
+		</tr>
+		<tr>
+			<td><h3><pre>책 소개 : <%= bcontent %></pre></h3></td>
+		</tr>
+		<tr>
+			<td><h2>할인율 : <%= bdiscount %> %</h2></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+</div>
+<%	} else { %>
+<div id="wrap">
+	<table>
+		<tr><td></td></tr>
+		<tr><td><h1>책 정보 등록 실패</h1></td></tr>
+		<tr><td><h2>제목 : <%=  bname %></h2></td></tr>
+		<tr><td><h2>가격 : <%=  bprice %></h2></td></tr>
+		<tr><td><h2>그림1 : <img class="imgBook" src="../bookImg/<%= bImage[1] %>" /></h2></td></tr>
+		<tr><td><h2>그림1 : <img class="imgBook" src="../bookImg/<%= bImage[0] %>" /></h2></td></tr>
+		<tr><td><h3><pre>책 소개 : <%= bcontent %></pre></h3></td></tr>
+		<tr><td><h2>할인율 : <%= bdiscount %> %</h2></td></tr>
+		<tr><td></td></tr>
+	</table>
+</div>
+<% } %>	
+<div class="center">
+	<a class="btn" href="bookList.jsp">책 리스트</a>
+	<a class="btn" href="bookListPaging.jsp">책 리스트(paging)</a>
+	<a class="btn" href="bookRegister.jsp">책 등록 페이지</a>
+</div>
 </body>
 </html>
