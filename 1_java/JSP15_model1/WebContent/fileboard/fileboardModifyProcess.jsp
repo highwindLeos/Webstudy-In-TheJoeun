@@ -103,13 +103,11 @@
 		alert('수정 성공했습니다');
 		location.href = 'fileboardList.jsp';
 	</script>
-<% } else { %>
+<% } else { System.out.println("수정  실패"); %>
 	<script>
 		alert('수정 실패 실패했습니다.');
 		history.back();
 	</script>
-<%		System.out.println("수정  실패");
-	}
-%>
+<%	} %>
 </body>
 </html>

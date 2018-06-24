@@ -124,6 +124,16 @@ tr:last-child td:nth-child(1) {
 	heigth: 120px;
 } 
 
+.imgBookmain {
+	width: 80%;
+	-webkit-transition: all .2s; /* For Safari 3.1 to 6.0 */
+    transition: all .2s;
+} 
+
+.imgBookmain:hover {
+	width : 100%;
+} 
+
 .btn {
 	font-size : 0.8em;
 	padding: 5px 15px;

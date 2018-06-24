@@ -190,7 +190,7 @@ public class BookDao {
 				rs = pstmt.executeQuery();
 
 				if (rs.next()) {
-					totalCnt = rs.getInt(1);
+					totalCnt = rs.getInt(1); // 출력된 열의 1번을 가져온다.
 				} else {
 					System.out.println("가져올 데이터가 없습니다.");
 				}
