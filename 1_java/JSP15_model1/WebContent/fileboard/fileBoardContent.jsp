@@ -57,7 +57,7 @@
 				<td><%= fdto.getFreadcount() %></td>
 			</tr>
 			<tr>
-				<td colspan="3">첨부 파일</td>
+				<td colspan="3">첨부 파일(5Mbyte 이하첨부)</td>
 				<td colspan="3">
 					<% if (fdto.getFfilename() != null) { %>
 						<a href="../upFile/<%= fdto.getFfilename() %>"><%= fdto.getFfilename() %></a>

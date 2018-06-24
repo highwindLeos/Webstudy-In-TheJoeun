@@ -53,7 +53,8 @@
 				OutputStream os =null;
 				try {
 					is = new FileInputStream(f);
-					String copyFile = "C:/Users/Leodays/Desktop/Dev/webstudy/1_java/JSP15_model1/WebContent/upFile/" + files;
+					// String copyFile = "C:/Users/Leodays/Desktop/Dev/webstudy/1_java/JSP15_model1/WebContent/upFile/" + files;
+					String copyFile = "C:/Users/Leos/Desktop/Dev/webstudy/1_java/JSP15_model1/WebContent/upFile/" + files;
 					os = new FileOutputStream(copyFile);
 					
 					byte[] bs = new byte[(int)f.length()];

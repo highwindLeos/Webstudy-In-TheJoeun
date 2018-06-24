@@ -19,6 +19,10 @@
 	BookDto bookDto = bookDao.getBook(bid);
 	
 	DecimalFormat df = new DecimalFormat("#,###,##0");
+	
+	String cid = (String)session.getAttribute("cid");
+	
+	
 %>
 <body>
 <jsp:include page="../main/head.jsp" />
@@ -54,6 +58,10 @@
 			</tr>
 			<tr>
 				<td colspan="6">
+				<% if ( session.getAttribute("loginOk") != null ) { %>
+					<input type="button" value="도서 수정" onclick="location.href = 'bookModify.jsp'" />
+					<input type="button" value="도서 삭제" onclick="location.href = 'bookDelete.jsp'" />
+				<% } %>
 					<input type="button" value="뒤로가기" onclick="location.href = 'bookList.jsp'" />
 				</td>
 			</tr>
