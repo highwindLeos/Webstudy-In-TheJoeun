@@ -44,7 +44,7 @@ public class CustomerDao {
 	}
 	
 	public int confirmId(String cid) {
-		int result = C_EXISTENT;
+		int result = C_NONEEXISTENT;
 		// DB 에서 아이디 검색해서 결과에 따라서  return 값을 변경.
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -162,13 +162,13 @@ public class CustomerDao {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
-			String sql = "SELECT * FROM " + 
+			String selectSql = "SELECT * FROM " + 
 					"    (SELECT ROWNUM RN, A.* FROM " + 
 					"        (SELECT * FROM CUSTOMER ORDER BY CID) A) " + 
 					"    WHERE RN BETWEEN ? AND ?";
 			try {
 				conn = getConnection();
-				pstmt = conn.prepareStatement(sql);	
+				pstmt = conn.prepareStatement(selectSql);	
 				
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
@@ -386,11 +386,11 @@ public class CustomerDao {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			
-			String sql = "DELETE FROM CUSTOMER WHERE CID = ? AND CPW = ?";
+			String deleteSql = "DELETE FROM CUSTOMER WHERE CID = ? AND CPW = ?";
 			
 			try {
 				conn = getConnection();
-				pstmt = conn.prepareStatement(sql);
+				pstmt = conn.prepareStatement(deleteSql);
 				
 				pstmt.setString(1, cid);
 				pstmt.setString(2, cpw);

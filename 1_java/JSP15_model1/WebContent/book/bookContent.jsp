@@ -35,8 +35,8 @@
 				<td colspan="6"><h4><%= bookDto.getBtitle() %> 책 소개 이미지</h4></td>
 			</tr>
 			<tr>
-				<td colspan="3"><img src="../bookImg/<%= bookDto.getBimage1() %>" alt="book Img 1" /></td>
-				<td colspan="3"><img src="../bookImg/<%= bookDto.getBimage2() %>" alt="book Img 2" /></td>
+				<td colspan="3"><img class="imgBookmain" src="../bookImg/<%= bookDto.getBimage1() %>" alt="book Img 1" /></td>
+				<td colspan="3"><img class="imgBookmain" src="../bookImg/<%= bookDto.getBimage2() %>" alt="book Img 2" /></td>
 			</tr>
 			<tr>
 				<td colspan="6"><h2>책 소개</h2></td>

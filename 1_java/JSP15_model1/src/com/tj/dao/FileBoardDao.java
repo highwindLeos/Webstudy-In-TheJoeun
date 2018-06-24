@@ -37,6 +37,7 @@ public class FileBoardDao {
 		}
 		return conn;
 	}
+	
 	// 테이블의 행을 구해오는 기능
 	public int getFileBoardCnt() {
 		int totalCnt = FAIL;
@@ -72,27 +73,28 @@ public class FileBoardDao {
 	}
 	
 	// 답변글 쓰기 전 ⓐ 단계
-		private void preReplyAstep(int ref, int re_step) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			String sql = "UPDATE FILEBOARD "
-				+ "SET FRESTEP = FRESTEP+1 WHERE FREF=? AND FRESTEP>?";
-			try {
-				conn = getConnection();
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, ref);
-				pstmt.setInt(2, re_step);
-				pstmt.executeUpdate();
-			}catch (Exception e) {
-				System.out.println(e.getMessage());
-			}finally {
-				try {
-					if(pstmt!=null) pstmt.close();
-					if(conn!=null)  conn.close();
-				}catch (Exception e) {System.out.println(e.getMessage());}
-			}
+	private void preReplyAstep(int ref, int re_step) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String updateSql = "UPDATE FILEBOARD "
+				   + " SET FRESTEP = FRESTEP + 1 WHERE FREF = ? AND FRESTEP > ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(updateSql);
 			
+			pstmt.setInt(1, ref);
+			pstmt.setInt(2, re_step);
+			
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null)  conn.close();
+			}catch (Exception e) {System.out.println(e.getMessage());}
 		}
+	}
 	
 	// 파일보드 글입력
 	public int insertFileBoard(FileBoardDto fdto) {
@@ -130,11 +132,11 @@ public class FileBoardDao {
 			
 			result = pstmt.executeUpdate();
 			
-			if (result == FileBoardDao.SUCCESS) {
-				System.out.println("답변글 입력성공");
-			} else {
-				System.out.println("답변글 입력성공");				
-			}
+				if (result == FileBoardDao.SUCCESS) {
+					System.out.println("답변글 입력성공");
+				} else {
+					System.out.println("답변글 입력성공");				
+				}
 			
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -146,15 +148,17 @@ public class FileBoardDao {
 			}
 			
 		} else { // 원글의 경우
-			String sql = "INSERT INTO FILEBOARD VALUES "
-					+ "(FILEBOARD_SEQ.NEXTVAL, ?,?,?,?,0,?,"
-					+ "fileboard_seq.CURRVAL, 0,0,?,SYSDATE)";
+			
+			String insertSql = "INSERT INTO FILEBOARD VALUES "
+					   + "(FILEBOARD_SEQ.NEXTVAL, ?, ?, ?, ?, 0, ?, "
+					   + " FILEBOARD_SEQ.CURRVAL, 0,0,?,SYSDATE)";
 				// cid(1), fsubject(2), fcontent(3), ffilename(4),
 				// freadcount, fpw(5),
 				// fref, fre_step,fre_level,fip(6)
 				try {
 					conn = getConnection();
-					pstmt = conn.prepareStatement(sql);
+					pstmt = conn.prepareStatement(insertSql);
+					
 					pstmt.setString(1, fdto.getCid());
 					pstmt.setString(2, fdto.getFsubject());
 					pstmt.setString(3, fdto.getFcontent());
@@ -162,7 +166,7 @@ public class FileBoardDao {
 					pstmt.setString(5, fdto.getFpw());
 					pstmt.setString(6, fdto.getFip());
 					
-					result =pstmt.executeUpdate();
+					result = pstmt.executeUpdate();
 					
 					if (result == FileBoardDao.SUCCESS) {
 						System.out.println("원글 입력성공");
@@ -190,7 +194,7 @@ public class FileBoardDao {
 		ResultSet rs = null;
 		
 		String sql = "SELECT F.*, C.CNAME, C.CEMAIL FROM FILEBOARD F, CUSTOMER C "
-		           + "WHERE F.CID = C.CID ORDER BY FNUM DESC";
+		           + " WHERE F.CID = C.CID ORDER BY FNUM DESC";
 		
 		try {
 			conn = getConnection();
@@ -303,7 +307,13 @@ public class FileBoardDao {
 			pstmt = conn.prepareStatement(updateSql);
 			
 			pstmt.setInt(1, fnum);
-			pstmt.executeUpdate();
+			int temp = pstmt.executeUpdate();
+			
+			if (temp > 0) {
+				System.out.println("조회수 1 증가");
+			} else {
+				System.out.println("조회수 증가 실패");
+			}
 			
 		} catch (Exception e) {
 			System.out.println("조회수 올리기 예외" + e.getMessage());
@@ -326,7 +336,13 @@ public class FileBoardDao {
 			pstmt = conn.prepareStatement(updateSql);
 			
 			pstmt.setString(1, fnum);
-			pstmt.executeUpdate();
+			int temp = pstmt.executeUpdate();
+			
+			if(temp > 0) {
+				System.out.println("조회수 1증가");
+			} else {
+				System.out.println("조회수 증가 실패");				
+			}
 			
 		} catch (Exception e) {
 			System.out.println("조회수 올리기 예외" + e.getMessage());
@@ -338,7 +354,7 @@ public class FileBoardDao {
 		}	
 	} // readCountUp(String num)
 	
-	// 특정 아이디의 상세 내용을 보여주는 DTO 
+	// 특정 글 번호의  상세 내용을 보여주는 DTO 
 	public FileBoardDto getFileBoardOneLine(int fnum) {
 		FileBoardDto fdto =  null;
 		
@@ -346,8 +362,8 @@ public class FileBoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String selectSql = "SELECT F.*, C.CNAME, C.CEMAIL FROM FILEBOARD F, CUSTOMER C " + 
-					 	   " WHERE F.CID = C.CID AND F.FNUM = ?";
+		String selectSql = "SELECT F.*, C.CNAME, C.CEMAIL FROM FILEBOARD F, CUSTOMER C " 
+						+  " WHERE F.CID = C.CID AND F.FNUM = ?";
 		
 		try {
 			conn = getConnection();
@@ -556,9 +572,6 @@ public class FileBoardDao {
 				if (conn != null) conn.close();
 			} catch (Exception e) {	}
 		}
-		
 		return result;
 	}
-	
-
 }
