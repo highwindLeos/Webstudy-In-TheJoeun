@@ -25,11 +25,18 @@
 			<td colspan="9"><h3>사원테이블</h3></td>
 		</tr>
 		<tr>
-			<td colspan="9">
+			<td colspan="5">
 				<form action="${ conPath }/EMPSeach" method="POST">
 					<p>사원명 : <input type="text" name="ename" value="${ fn:toUpperCase(ename) }" /></p>
 					<p>직책명 : <input type="text" name="job" value="${ fn:toUpperCase(job) }"/></p>
 					<p><input type="submit" value="검색" /></p>
+				</form>
+			</td>
+			<td colspan="4">
+				<form action="${ conPath }/EMPSal" method="POST">
+					<p>월급여 검색 (해당 급여 이상인 사원) : </p> 
+					<p><input type="number" name="sal" value="${ sal }" required="required"/></p>
+					<p><input type="submit" value="급여검색" /></p>
 				</form>
 			</td>
 		</tr>
@@ -49,7 +56,7 @@
 			<td>${ et.empno }</td>
 			<td>${ et.ename }</td>
 			<td>${ et.job }</td>
-			<td>${ et.mgr }</td>
+			<td>${ et.mgr eq 0 ? "상사없음" : et.mgr }</td>
 			<td><fmt:formatDate value="${et.hiredate }" type="both" pattern="yyyy/MM/dd (E) hh:mm:ss (a)" /></td>
 			<td><fmt:formatNumber value="${ et.sal }" pattern="#,###.00" /> &#36;</td>
 			<td><fmt:formatNumber value="${ et.comm }" pattern="#,###.00" /> &#36;</td>

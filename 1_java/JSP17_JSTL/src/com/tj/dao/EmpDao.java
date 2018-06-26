@@ -114,4 +114,48 @@ public class EmpDao {
 		return dtos;
 	}
 	
+	public ArrayList<EmpDto> getEmpsSalrary(int sal){
+		ArrayList<EmpDto> dtos = new ArrayList<EmpDto>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM EMP WHERE SAL >= ? ORDER BY	SAL DESC";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, sal);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EmpDto emp = new EmpDto();
+				
+				emp.setEmpno(rs.getInt("empno"));
+				emp.setEname(rs.getString("ename"));
+				emp.setJob(rs.getString("job"));
+				emp.setMgr(rs.getInt("mgr"));
+				emp.setHiredate(rs.getDate("hiredate"));
+				emp.setSal(rs.getInt("sal"));
+				emp.setComm(rs.getInt("comm"));
+				emp.setDeptno(rs.getInt("deptno"));
+				
+				dtos.add(emp);
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {}
+		}
+	
+		return dtos;
+	}
+	
 }

@@ -15,7 +15,7 @@
 </head>
 <body>
 <form action="ex2.jsp" method="POST">
-	<p>이름 : <input type="text" name="name" required="required" /><input type="submit" value="전송" /></p>
+	<p>이름 : <input type="text" name="name" required="required" /> &nbsp;<input type="submit" value="전송" /></p>
 </form>	
 </body>
 </html>

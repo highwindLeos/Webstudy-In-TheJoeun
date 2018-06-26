@@ -27,7 +27,5 @@
 <hr />
 <c:set var="num3" value="${num2 }" />
 <fmt:formatNumber value="${num2 }" pattern="#,###.00" />
-
-
 </body>
 </html>
