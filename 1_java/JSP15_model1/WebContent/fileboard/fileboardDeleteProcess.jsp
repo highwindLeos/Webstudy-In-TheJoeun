@@ -36,7 +36,7 @@
 	} else {
 		System.out.println("파일삭제 실패" + deleteFile);		
 	}
-	 // 해당 파일을 삭제한다.
+	 // 게시물이 삭제될때 첨부파일도 삭제한다. (소스폴더에 삭제되면 TOMCAT 에서도 삭제된다)
 	
 	int result = fdao.delectFileBoard(fnum, fpw);
 	if(result == FileBoardDao.SUCCESS) {

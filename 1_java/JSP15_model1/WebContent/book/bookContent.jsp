@@ -22,7 +22,7 @@
 	
 	String cid = (String)session.getAttribute("cid");
 	
-	
+	String totalprice = df.format(Math.round(bookDto.getBprice() - (bookDto.getBprice() * (bookDto.getBdiscount() * 0.01)))) ;
 %>
 <body>
 <jsp:include page="../main/head.jsp" />
@@ -54,7 +54,7 @@
 				<td><b>할인율</b></td>
 				<td><%= bookDto.getBdiscount() %> %</td>
 				<td><b>할인 적용 가격</b></td>
-				<td><%= df.format(Math.round(bookDto.getBprice() - (bookDto.getBprice() * (bookDto.getBdiscount() * 0.01)))) %> &#8361;</td>
+				<td><%= totalprice %> &#8361;</td>
 			</tr>
 			<tr>
 				<td colspan="6">

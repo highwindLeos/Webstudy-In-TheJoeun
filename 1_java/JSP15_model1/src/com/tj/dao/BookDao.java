@@ -300,7 +300,6 @@ public class BookDao {
 					if (conn != null) conn.close();
 				} catch (Exception e2) {}			
 			}
-			
 			return dto;
 		}
 	

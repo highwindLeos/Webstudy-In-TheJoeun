@@ -1,9 +1,4 @@
 @charset "UTF-8";
-/* 리셋부분 */
-* {
-	margin: 0;
-	padding: 0;
-}
 
 body {
 	background-color: #FFF;
@@ -16,44 +11,11 @@ h1,h2,h3,h4 {
 
 a {
 	text-decoration: none;
-	color : #000;
-}
-
-ul > li {
-	display: inline-block;
-	padding : 0 25px;
-}
-
-ul > li:hover {
-	font-weight: 600;
-	color: navy;
+	color : lightcoral;
 }
 
 a:hover {
-	color : lightgray;
-}
-/* 레이아웃 부분 */
-#wrap {
-	width : 60%;
-	margin : 40px auto;
-}
-
-#head {
-	text-align: right;
-	background-color: lightcoral;
-	padding : 20px;
-}
-
-#footer {
-	height : 15vh;
-	line-height : 70px;
-	background-color: lightcoral;
-	padding : 20px;
-}
-
-.logoImg {
-	width : 100%;
-	height: 50vh;
+	color : #fff;
 }
 
 table {
@@ -61,6 +23,7 @@ table {
 	margin: 0 auto;
 	border: #A47160 solid 1px;
 	border-radius: 15px;
+	background-color: lightcoral;
 }
 
 tr {
@@ -68,7 +31,13 @@ tr {
 }
 
 tr:hover {
-	color: #666;
+	color: darkblue;
+	background-color: #eee;
+}
+
+#wrap {
+	width : 60%;
+	margin : 0 auto;
 }
 
 tr:first-child td:nth-child(1) {
@@ -76,7 +45,7 @@ tr:first-child td:nth-child(1) {
 	background-repeat : no-repeat;
 	background-position : center;
 	background-size : 60% 250px;
-	height : 200px;
+	height : 250px;
 	border-radius: 15px 15px 0 0;
 	font-size : 20px;
 	font-weight: bold;
@@ -88,8 +57,7 @@ tr:last-child td:nth-child(1) {
 }
 
 .width {
-	min-width : 10vw;
-	width : 25vw;
+	width : 15vw;
 }
 
 .high_height{
@@ -113,47 +81,10 @@ tr:last-child td:nth-child(1) {
 	height: 15px;
 }
 
-.imgBook {
-	width: 100px;
-	heigth: 100px;
-	-webkit-transition: all .2s; /* For Safari 3.1 to 6.0 */
-    transition: all .2s;
-} 
-
-.imgBook:hover {
-	width: 120px;
-	heigth: 120px;
-} 
-
-.imgBookmain {
-	width: 80%;
-	-webkit-transition: all .2s; /* For Safari 3.1 to 6.0 */
-    transition: all .2s;
-} 
-
-.imgBookmain:hover {
-	width : 100%;
-} 
-
-.btn {
-	font-size : 0.8em;
-	padding: 5px 15px;
-	border: 2px solid lightpink;
-}
-
-	.btn:hover {
-		background-color: #000;
-	}
-	
-.discount {
-	color : darkblue;
-}
-
 td, th {
 	font-size : 0.85em;
 	padding: 5px;
 	text-align: center;
-	background-color: #eee;
 }
 
 div#paging {
@@ -164,21 +95,10 @@ div#paging {
 	border-radius: 10px;
 }
 
-.pagingOut {
-	border: 1.5px solid #333;
-	border-radius : 5px;
-	padding : 0 10px; 
-}
-
-.pagingOut:hover {
-	background-color: #333;
-}
-
 input[type=text], 
 input[type=password], 
 input[type=email], 
-input[type=date],
-input[type=number]
+input[type=date]
 {
 	border: 1px solid #D4A190;
 	border-radius: 10px;
@@ -232,6 +152,7 @@ input[type=reset]:hover {
 }
 
 /* 정렬 class  */
+
 .left {
 	text-align: left;
 }

@@ -52,6 +52,7 @@ public class CustomerDao {
 		
 		String sql = "SELECT * FROM CUSTOMER WHERE CID = ?";
 		try {
+			
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			

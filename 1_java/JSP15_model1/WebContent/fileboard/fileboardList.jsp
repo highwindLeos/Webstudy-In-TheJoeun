@@ -67,7 +67,7 @@
 			<% if (ft.getFrelevel() > 0)  {
 				int width = ft.getFrelevel() * 20;
 			%>
-				<img src='../img/dot.png' height='10' width='"+ width +"'/>
+				<img src='../img/level.gif' height='10' width='<%= width %>'/>
 				<img id='arrow' src='../img/arrow.png'/>
 			<% } %>
 				<a href="fileBoardContent.jsp?fnum=<%= ft.getFnum() %>&pageNum=<%= pageNum %>" >
@@ -97,7 +97,7 @@
 				<a href="fileboardList.jsp?pageNum=<%= startPage - 1 %>"><span class="pagingOut"> 이전 </span></a>
 			<% } %>
 			<% for (int i = startPage; i <= endPage; i++ ) { %>
-			<%	if (i == currentPage){ %>
+				<%	if (i == currentPage){ %>
 				<span class="pagingOut"><b><%= i %></b></span>
 				<% } else { %>
 				<a href="fileboardList.jsp?pageNum=<%= i %>"><span class="pagingOut"><%= i %></span></a>
