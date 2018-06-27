@@ -22,7 +22,7 @@
 <div id="wrap">
 	<table>
 		<tr>
-			<td colspan="9"><h3>사원테이블</h3></td>
+			<td colspan="9"><h1>사원테이블</h1></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -51,17 +51,17 @@
 			<td>연봉</td>
 			<td>부서번호</td>
 		</tr>
-		<c:forEach var="et" items="${ emps }" >
+		<c:forEach var="etemp" items="${ emps }" >
 		<tr>
-			<td>${ et.empno }</td>
-			<td>${ et.ename }</td>
-			<td>${ et.job }</td>
-			<td>${ et.mgr eq 0 ? "상사없음" : et.mgr }</td>
-			<td><fmt:formatDate value="${et.hiredate }" type="both" pattern="yyyy/MM/dd (E) hh:mm:ss (a)" /></td>
-			<td><fmt:formatNumber value="${ et.sal }" pattern="#,###.00" /> &#36;</td>
-			<td><fmt:formatNumber value="${ et.comm }" pattern="#,###.00" /> &#36;</td>
-			<td><fmt:formatNumber value="${ (et.sal*12) + et.comm }" pattern="#,###.00" /> &#36;</td>
-			<td>${ et.deptno }</td>
+			<td>${ etemp.empno }</td>
+			<td>${ etemp.ename }</td>
+			<td>${ etemp.job }</td>
+			<td>${ etemp.mgr eq 0 ? "상사없음" : etemp.mgr }</td>
+			<td><fmt:formatDate value="${etemp.hiredate }" type="both" pattern="yyyy/MM/dd (E) hh:mm:ss (a)" /></td>
+			<td><fmt:formatNumber value="${etemp.sal }" pattern="#,###.00" /> &#36;</td>
+			<td><fmt:formatNumber value="${etemp.comm }" pattern="#,###.00" /> &#36;</td>
+			<td><fmt:formatNumber value="${(etemp.sal*12) + etemp.comm }" pattern="#,###.00" /> &#36;</td>
+			<td>${ etemp.deptno }</td>
 		</tr>
 		</c:forEach>
 		<tr>

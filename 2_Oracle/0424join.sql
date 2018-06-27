@@ -1,4 +1,4 @@
--- JOIN 2개 이상의 테이블을 연결해서 데이터를 출력
+    -- JOIN 2개 이상의 테이블을 연결해서 데이터를 출력
 SELECT ENAME, DEPTNO FROM EMP;
 SELECT * FROM EMP;
 SELECT * FROM DEPT;

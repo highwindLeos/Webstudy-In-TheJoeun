@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.tj.dao.EmpDao;
 import com.tj.dto.EmpDto;
 
-/**
- * Servlet implementation class Emp
- */
 @WebServlet("/Emp")
 public class Emp extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.tj.dao.EmpDao;
 import com.tj.dto.EmpDto;
 
-/**
- * Servlet implementation class EMPSeach
- */
+
 @WebServlet("/EMPSal")
 public class EMPSal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,17 +23,14 @@ public class EMPSal extends HttpServlet {
         super();
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		actionDo(request, response);
 	}
-
 
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
