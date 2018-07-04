@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ex01</title>
+	<script src="js/jquery-3.3.1.js"></script>
+	<script>
+		/* window.onload = function(){
+			var p1 = document.getElementById("p1");
+			p1.onclick = function () {
+				p1.innerHTML = '이텍스트로 바꾼다.';
+			}
+		}; */
+		window.onload = function() {/* 자바스크립트 문법 */};
+		
+		$(document).ready(function (){ /* Jqery문법  */ });
+		$(function(){ /* Jqery문법  */ });
+		
+		$(document).ready(function (){ 
+			$('#p1').click(function(){
+				$('#p1').html('<font color="red"><b>다른걸로 바꾸어</b></font>');
+				alert($(this).html());
+			})
+		});
+	</script>
+</head>
+<body>
+	<p id="p1">P tag One</p>
+</body>
+</html>

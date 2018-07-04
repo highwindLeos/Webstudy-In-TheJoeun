@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function(){
+			$('h1').click(function(){
+				$('#div1').append('<h1>야후 신난다.</h1>');
+				var length = $('h1').length;
+				$('#div1').append('<p> h1의 갯수'+ length +'</p>');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="div1"><h1>점심 시간이다.</h1></div>
+</body>
+</html>

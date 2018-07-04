@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>function</title>
+</head>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script>
+	$(document).ready(function(){
+		$('input[type = "text"]').val('hellow jQuery');
+		$('input[type = "password"]').focus(function(){
+			$(this).css('backgroundColor', 'lightblue').css('color', '#fff');
+		});
+		$('input[type = "password"]').blur(function(){
+			$(this).css('backgroundColor', '#fff').css('color', '#000');
+		});
+	});
+	
+</script>
+<body>
+	<h2>속성 선택자</h2>
+	<p>메세지 <input type="text" name="msg" /></p>
+	<p>패스워드 <input type="password" name="pw" /></p>
+	<p>선택1 <input type="radio" name="select1" value="v1" /></p>
+	<p>중복선택 <input type="checkbox" name="sleect2" value="v2" /></p>
+	<p>파일 <input type="file" name="file" /></p>
+</body>
+</html>

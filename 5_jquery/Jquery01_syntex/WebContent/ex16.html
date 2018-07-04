@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			
+			$('h1').one('click', function(){
+				$(this).append('~끝');
+				$(this).prepend('끝~');
+			});	 // 해당 이벤트를 한번만 시행
+		
+			/* $('h1').click(function(){
+				$(this).append('~끝');
+				$(this).prepend('끝~');
+				$(this).off();
+			}); */
+		});
+	</script>
+</head>
+<body>
+	<h1>click 이벤트 한번만 되요</h1>
+	<h1>click 이벤트 한번만 되요</h1>
+</body>
+</html>

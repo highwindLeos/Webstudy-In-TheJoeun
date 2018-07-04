@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('button').click(function(){
+				$('#result').load('test.txt', function(responseTxt, statusTxt, xhr){
+					// responseTxt 호출 성공시 가져오는 값
+					// status : 성공여부
+					// xhr : 실패시 error 정보
+					if (statusTxt == 'success') {
+						alert(responseTxt);
+					} else if (statusTxt == 'error') {
+						alert('에러이유 : ' + xhr.status);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<h2>ajax 예제(load함수 이용)</h2>
+	</div>
+	<button>외부파일 가져오기</button>
+	<div id="result"></div>
+</body>
+</html>

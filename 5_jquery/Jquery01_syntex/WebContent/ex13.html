@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				alert($(this).html() + ' 버튼을 클릭하셨군요');
+			}); // 클릭
+			
+			/* $('p').mouseenter(function(){
+				$(this).css('color','lightblue').css('backgroundColor','yellow');
+			}); // 마우스 올렸을때
+			
+			$('p').mouseleave(function(){
+				$(this).css('color','black').css('backgroundColor','#fff');
+			}); // 마우스 뺐을때 */
+			
+			$('p').hover(function(){
+				$(this).css('color','lightblue').css('backgroundColor','yellow');
+			}, function(){
+				$(this).css('color','black').css('backgroundColor','#fff');
+			}); // 호버는 콜백을 두개를 써야 한다. (올렸을때, 때었을때)
+		});
+	</script>
+</head>
+<body>
+	<p>마우스를 올리거나 클릭하면 사라진다.</p>
+	<p>해보세요.</p>
+	<p>마우스를 올리던지 클릭한 그곳만 사라집니다.</p>
+	<button>클릭해볼까?</button>
+</body>
+</html>

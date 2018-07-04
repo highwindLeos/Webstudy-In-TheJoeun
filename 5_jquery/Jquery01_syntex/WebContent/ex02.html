@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex02</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('*').css('color', 'blue').css('font-size','1.2em');
+		$('p').click(function(){
+			$(this).hide(); // 클릭한 객체
+		});
+		$('#hideP1').click(function(){
+			$('#p1').hide();
+		});
+		$('#hidePtag').click(function(){
+			$('p').hide();
+		});
+		$('#showPtag').click(function(){
+			$('p').show();
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>이곳은 heading</h1>
+	<p>1 이 p 태그를 클릭하면 숨겨져요</p>
+	<p>2 이 p 태그를 클릭하면 숨겨져요</p>
+	<p id="p1">3 특정 id 하나만도 숨겨져요 태그를 클릭하면 숨겨져요</p>
+	<button id="hideP1">특정 아이디 하나만 숨겨요</button>
+	<button id="hidePtag">p태그 숨겨요</button>
+	<button id="showPtag">p태그 보이게</button>
+</body>
+</html>

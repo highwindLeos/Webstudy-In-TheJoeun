@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex05</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script>
+	$(function(){
+		$('input:disabled').css('backgroundColor','#FFFFFF');
+		$('input:enabled').click(function(){
+			alert($(this).val() + "입니까?");
+			$(this).val('');
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>반응 선택자</h2>
+	상품코드 : <input type="text" name="code" value="a01" disabled="disabled" /><br />
+	이름 : <input type="text" name="name" value="새우깡" /><br />
+	수량 : <input type="text" name="su" value="5" /><br />
+	
+</body>
+</html>

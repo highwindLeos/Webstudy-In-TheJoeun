@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			
+			$('input[name="su1"]').val(parseInt(Math.random()*10));
+			$('input[name="su2"]').val(parseInt(Math.random()*10));
+			
+			$('input[name="ansewer"]').focus(function(){
+				$(this).val('');
+			});
+			
+			$('#cal').click(function(){
+				var answer = su1 + su2;
+				if ($('input[name="ansewer"]').val() == answer){
+					$('.result').html( su1 + '+' + su2 + '='+ answer + ' 정답입니다.');
+				} else {
+					$('.result').html( su1 + '+' + su2 + '='+ answer + ' 오답입니다.');
+					$('.result').css('color', 'red');
+				}
+			});
+			
+			$('#reset').click(function(){
+				$('input[name="su1"]').val(parseInt(Math.random()*10));
+				$('input[name="su2"]').val(parseInt(Math.random()*10));
+				$('input[name="ansewer"]').val('');
+				$('.result').html('');
+			});
+			
+			$('input[type="text"]').focus(function(){
+				$(this).css('color', 'red').css('background-color', 'yellow');
+			});
+			
+			$('input[type="text"]').blur(function(){
+				$(this).css('color', 'black').css('background-color', 'white');
+			});
+			
+		});
+	</script>
+</head>
+<body>
+	<form action="">
+		<input type="text" name="su1" /> + <input type="text" name="su2" /> = <input type="text" value="답" name="ansewer" /><br />
+		<input type="reset" id="reset" value="다시해봐" /><input type="button" id="cal" value="채점해봐" />
+		<h1 class="result"></h1>
+	</form>
+</body>
+</html>

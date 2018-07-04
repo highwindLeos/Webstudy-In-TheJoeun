@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('button').click(function(){
+				$('#divResult').load('test.txt #p1');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<h2>ajax 첫 예제(load함수 이용)</h2>
+	</div>
+	<div id="divResult"></div>
+	<button>외부파일 가져오기</button>
+</body>
+</html>

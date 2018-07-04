@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ex07</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		 
+		 $(document).ready(function(){
+			 var array = [
+		 		  { name : '가메출판사',  link:'http://www.kame.co.kr' },
+				  { name : '네이버',  link:'http://www.naver.com' },
+				  { name : '다음',  link:'http://www.daum.net' },
+				  { name : '더조은 IT',  link:'http://www.mega-it.co.kr' }
+				 ];
+			 
+			/*  $(array).each(function(index, item){
+				 var output = '';
+				 output += '<h1>';
+				 output += '<a href="'+ item.link +'">'+ item.name +'</a>';
+				 output += '</h1>';
+				 
+				 document.body.innerHTML += output;
+			 }); */
+			 
+			 $.each(array, function(index, item){
+				 var output = '';
+				 output += '<h1>';
+				 output += '<a href="'+ item.link +'">'+ item.name +'</a>';
+				 output += '</h1>';
+				 
+				 document.body.innerHTML += output;
+			 });
+		 });
+		 
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

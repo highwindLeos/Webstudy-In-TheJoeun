@@ -33,7 +33,8 @@
 		password = "Stonker26"
 		name = "jdbc/Oracle11g" 
 		type = "javax.sql.DataSource"
-		maxActive = "50"
+		maxActive = "30"
 		maxWait = "1000"
-	/><!-- Oracle11g 커넥션 풀 설정 -->
+	/>
+    
 </Context>

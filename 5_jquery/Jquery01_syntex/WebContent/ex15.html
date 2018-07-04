@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		 $('h2').click(function(){
+			$(this).append('♥');
+			if ($(this).text().length == 16) {
+				$(this).prepend('좋아요 그만  : ');
+				$(this).off(); // 이벤트를 제거
+			}
+		});	 
+	
+	});
+	</script>
+</head>
+<body>
+	<h2>아이유  : </h2>
+	<h2>김세정  : </h2>
+	<h2>설 현  : </h2>
+</body>
+</html>

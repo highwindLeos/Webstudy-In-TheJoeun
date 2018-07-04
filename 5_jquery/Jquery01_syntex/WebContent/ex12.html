@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>인덱스</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function(){
+			var s = 0;
+			var id = setInterval(function(){
+				s++;
+				if (s > 10){
+					$('.result').text(s+'초 지났습니다. 빨리하세요');
+					$('.result').css('color','red');
+				} else {
+					$('.result').text(s+'초 지났습니다. 침착하게 하세요');
+					$('.result').css('color','black');
+				}
+			}, 1000);
+			
+			var n1 = [0,0,0,0,0];
+			var n2 = [0,0,0,0,0];
+			var operator = ['+','-','*','/'];
+			var spanIdx = [0,0,0,0,0];
+			var ansewer = [0,0,0,0,0];
+			
+			$('.su1').each(function(idx, item){
+				n1[idx] = parseInt(Math.random()*10);
+				$(this).val(n1[idx]);
+			});
+			
+			$('.su2').each(function(idx, item){
+				n2[idx] = parseInt(Math.random()*10);
+				$(this).val(n2[idx]);
+			});
+			
+			$('.operator').each(function(idx, item){
+				spanIdx[idx] = parseInt(Math.random()*4);
+				$(this).text(operator[spanIdx[idx]]);
+				var calVal = [
+					n1[idx] + n2[idx],
+					n1[idx] - n2[idx],
+					n1[idx] * n2[idx],
+					n1[idx] / n2[idx],
+				];
+				ansewer[idx] = calVal[spanIdx[idx]];
+			});
+				
+			// alert('답들 : '+ ansewer);
+			
+			$('input[name="ansewer"]').focus(function(){
+				$(this).val('');
+			});
+			
+			$('#cal').click(function(){
+				clearInterval(id);
+				var score = 0;
+				
+				$('.sum').each(function(index, item){
+					if(!isFinite(ansewer[index])){
+						score += 20;
+						$(this).val('0으로 나눈 경우는 점수줘');
+					}else if(ansewer[index]==$(this).val()){
+						score += 20;
+					}
+				});
+				
+				$('.result').text('점수 : '+ score +"점 / 경과시간 :" + s);
+			});
+			
+			$('#reset').on('click', function(){
+				clearInterval(id);
+				s = 0;
+				id = setInterval(function(){
+					s++;
+					if(s > 10){
+						$('.result').text(s+'초 지났어. 빨리해');
+						$('.result').css('color','red');
+					}else{
+						$('.result').text(s+'초 경과. 침착하게 하세요');
+						$('.result').css('color','blue');
+					}
+				}, 1000);
+				
+				$('.num1').each(function(index, item){
+					n1[index] = parseInt(Math.random()*10);
+					$(item).val(n1[index]);
+				});
+				$('.num2').each(function(index, item){
+					n2[index] = parseInt(Math.random()*10);
+					item.value = n2[index];
+				})
+				$('span').each(function(index, item){
+					spanIdx[index] = parseInt(Math.random()*4);
+					$(this).text(operator[spanIdx[index]]);
+					var calVal = [
+						n1[index]+n2[index],
+						n1[index]-n2[index],
+						n1[index]*n2[index],
+						n1[index]/n2[index]
+					];
+					ansewer[index] = calVal[spanIdx[index]];
+				});
+				$('.sum').val('');
+				$('.result').text('0초 시작. 화이팅');
+			});
+		
+		});
+	</script>
+</head>
+<body>
+	<form action="">
+		<p>1번 :<input type="text" name="su1" class="su1" /><span class="operator"></span> <input type="text" name="su2" class="su2"/> = <input type="text" class="sum" value="답" name="ansewer" /></p>
+		<p>2번 :<input type="text" name="su1" class="su1" /><span class="operator"></span> <input type="text" name="su2" class="su2"/> = <input type="text" class="sum" value="답" name="ansewer" /></p>
+		<p>3번 :<input type="text" name="su1" class="su1" /><span class="operator"></span> <input type="text" name="su2" class="su2"/> = <input type="text" class="sum" value="답" name="ansewer" /></p>
+		<p>4번 :<input type="text" name="su1" class="su1" /><span class="operator"></span> <input type="text" name="su2" class="su2"/> = <input type="text" class="sum" value="답" name="ansewer" /></p>
+		<p>5번 :<input type="text" name="su1" class="su1" /><span class="operator"></span> <input type="text" name="su2" class="su2"/> = <input type="text" class="sum" value="답" name="ansewer" /></p>
+		<input type="button" id="reset" value="다시해봐" /><input type="button" id="cal" value="채점해봐" />
+		<h3>경과시간 <span class="time"></span>잘 풀어봐</h3>
+		<h1 class="result"></h1>
+	</form>
+</body>
+</html>

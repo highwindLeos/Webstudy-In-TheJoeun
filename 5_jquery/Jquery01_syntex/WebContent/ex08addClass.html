@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		.high_light_0{
+			background-color : red;
+		}
+		
+		.high_light_1{
+			background-color : green;
+		}
+		
+		.high_light_2{
+			background-color : blue;
+		}
+		
+		.high_light_3{
+			background-color : yellow;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$('document').ready(function(){
+			$('h1').each(function(idx, data){
+				$(data).addClass('high_light_'+idx);
+			});
+			
+			$('button').click(function(){
+				$('h1').each(function(idx, data){
+					$(data).removeClass('high_light_'+idx);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>item-0</h1><h1>item-1</h1><h1>item-2</h1><h1>item-3</h1>
+	<button>클래스 삭제</button>
+</body>
+</html>

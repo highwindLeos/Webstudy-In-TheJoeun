@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Event</title>
+	<style>
+		canvas{
+			width : 600px;
+			height : 600px;
+			border : 1px solid red;
+		}
+		img {
+			position: absolute;
+			width: 100px;
+
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('canvas').mousedown(function(event){
+				// 현제의 좌표값 (event.pageX, event.pageY)
+				$('input[name="xPos"]').val(event.pageX);
+				$('input[name="yPos"]').val(event.pageY);
+				
+				var diamondPos = $('#diamond').offset();
+				$('#xPos2').html(diamondPos.left+50);
+				$('#yPos2').html(diamondPos.top+50);
+				$('#diamond').css("left", event.pageX-50);
+				$('#diamond').css("top", event.pageY-50);
+				
+			});
+		});
+	</script>
+</head>
+<body>
+	<canvas></canvas>
+	<h2>현제 좌표</h2>
+	<p>x좌표 : <input type="text" name ="xPos" /></p>
+	<p>y좌표 : <input type="text" name ="yPos" /></p>
+	<fieldset>
+		<legend>방금 전 좌표(방금전에 다이아몬드가 있었던 좌표)</legend>
+		<p>방금전 X좌표 : <span id="xPos2"></span></p>
+		<p>방금전 Y좌표 : <span id="yPos2"></span></p>
+	</fieldset>
+	<img src="img/diamond.png" id="diamond" alt="diamond" />
+</body>
+</html>

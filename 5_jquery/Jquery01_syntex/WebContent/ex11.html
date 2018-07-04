@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function(){
+			
+			$('input[name="su1"]').val(parseInt(Math.random()*10));
+			$('input[name="su2"]').val(parseInt(Math.random()*10));
+			
+			var idx = parseInt(Math.random()*4);
+			var operator = ['+','-','*','/'];
+			$('.operator').text(operator[idx]);
+				
+			$('input[name="ansewer"]').focus(function(){
+				$(this).val('');
+			});
+			
+			$('#cal').click(function(){
+				var su1 = Number($('input[name="su1"]').val());
+				var su2 = Number($('input[name="su2"]').val());
+				
+				var calVal = [su1+su2 , su1-su2, su1*su2, su1/su2];
+				var answer = calVal[idx];
+				
+				if(!isFinite(answer)){ // 무한한 값이면
+					$('.result').text('0으로 나누었네요. 다시합니다.');
+					$('.result').css('color', 'green');
+				} else if ($('input[name="ansewer"]').val() == answer){
+					$('.result').text( su1 + operator[idx] + su2 + '='+ answer + ' 정답입니다.');
+				} else {
+					$('.result').text( su1 + operator[idx] + su2 + '='+ answer + ' 오답입니다.');
+					$('.result').css('color', 'red');
+				}
+			});
+			
+			$('#reset').click(function(){
+				$('input[name="su1"]').val(parseInt(Math.random()*10));
+				$('input[name="su2"]').val(parseInt(Math.random()*10));	
+				idx = parseInt(Math.random()*4);
+				$('.operator').text(operator[idx]);
+				$('input[name="ansewer"]').val('');
+				$('.result').html('');
+			});
+			 
+		});
+	</script>
+</head>
+<body>
+	<form action="">
+		<input type="text" name="su1" class="su1" /> <span class="operator"></span> <input type="text" name="su2" class="su2"/> = <input type="text" value="답" name="ansewer" /><br />
+		<input type="button" id="reset" value="다시해봐" /><input type="button" id="cal" value="채점해봐" />
+		<h1 class="result"></h1>
+	</form>
+</body>
+</html>

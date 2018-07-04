@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#wrap {
+			width : 400px;
+			margin : 0 auto;
+			border : 1px solid #666;
+			text-align: center;
+		}
+		
+		table {
+			margin: 0 auto;
+		}
+		
+		table td {
+			margin: 0 auto;
+			background-color: #AAFFAA;
+			width : 100px;
+			height: 100px;
+			text-align: center;
+		}
+	
+		.white_background {
+			background-color: #fff;
+		}
+		
+		.DdukIdx {
+			background-image: url('img/images.jpg');
+			background-size: 100px 100px;
+			background-position: center;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			var DdukIdx = parseInt(Math.random()*9);
+			//alert('비밀입니다 '+DdukIdx );
+			$('td').click(function(){
+				$('td').removeClass();
+				$(this).addClass('white_background');	
+				$('#result').text($(this).attr('id')+'번째를 선택하셨네요.');			
+				
+				if ($(this).html() == DdukIdx){
+					alert('떡 있는 곳을 맞췄어요.');
+					$(this).addClass('DdukIdx');
+					$(this).text('');
+				} else {
+					alert('떡  있는 곳이 아닙니다.');
+				}
+			});
+			
+			$('button').click(function(){
+				$('td').removeClass();
+				$('#result').text('');
+			}); 
+		});
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<button>초기화</button>
+	<table>
+		<tr>
+			<td id="0">0</td>
+			<td id="1">1</td>
+			<td id="2">2</td>
+		</tr>
+		<tr>
+			<td id="3">3</td>
+			<td id="4">4</td>
+			<td id="5">5</td>
+		</tr>
+		<tr>
+			<td id="6">6</td>
+			<td id="7">7</td>
+			<td id="8">8</td>
+		</tr>
+	</table>
+	<div id="result"></div>
+</div>
+</body>
+</html>
