@@ -1,15 +1,18 @@
-select * from members where id = 'aaa'; -- 중복확인 (있으면)
+SELECT * FROM MEMBERS WHERE ID = 'AAA'; -- 중복확인 (있으면)
 
 -- 종합 예제 1
 
-select * from goods; 
+SELECT * FROM GOODS;
 
 SELECT * FROM GOODS WHERE GNAME = '땅콩';
 
-update goods set gstock = 20 where gname = '기저귀';
+UPDATE GOODS SET GSTOCK = 20 WHERE GNAME = '기저귀';
 
-commit;
+COMMIT;
 
 -- 종합예제 2
 
-SELECT * FROM EMP WHERE ENAME LIKE '%'||'A'||'%' AND JOB LIKE '%'||'MA'||'%';
+SELECT empno, ename, job, mgr, hiredate, sal, NVL(comm, 0) comm, deptno
+FROM EMP WHERE ENAME LIKE '%'||'A'||'%' AND JOB LIKE '%'||'MA'||'%';
+
+select * from emp;

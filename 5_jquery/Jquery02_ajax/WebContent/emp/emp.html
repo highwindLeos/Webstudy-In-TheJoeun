@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>total Example</title>
+	<style></style>
+	<link rel="stylesheet" href="../css/board.css" />
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			
+			$.get('searchEmp.jsp', function(data, status){
+				$('#showEmp').html(data);
+			}); // 화면 로드되면  테이블 뿌리기
+			
+			
+			
+			$('#search').click(function(){
+				var sandData = 'searchEname='+$('#searchEname').val()+'&searchJob='+$('#searchJob').val();
+				$.ajax({
+					url : 'searchEmp.jsp',
+					type : 'post',
+					data : sandData,
+					dataType : 'html',
+					success : function(data, status){
+						$('#showEmp').html(data);
+					},
+					error : function(){
+						$('#showEmp').html('');
+					}
+				});
+			});
+			
+			 $('#searchEname, #searchJob').keyup(function(){
+				var sandData = 'searchEname='+$('#searchEname').val()+'&searchJob='+$('#searchJob').val();
+				$.ajax({
+					url : 'searchEmp.jsp',
+					type : 'post',
+					data : sandData,
+					dataType : 'html',
+					success : function(data, status){
+						$('#showEmp').html(data);
+					},
+					error : function(){
+						$('#showEmp').html('');
+					}
+				});
+			}); 
+		}); 
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<table>
+		<tr>
+			<td colspan="8"></td>
+		</tr>
+		<tr>
+			<td colspan="8">
+				이 름  <input type="text" id="searchEname" name="searchEname" /><br />
+				직 책  <input type="text" id="searchJob" name="searchJob" /><br />
+				<input type="button" id="search" value="검색" />
+			</td>
+		</tr>
+	</table>
+	<div id="showEmp"></div>
+</div>	
+</body>
+</html>

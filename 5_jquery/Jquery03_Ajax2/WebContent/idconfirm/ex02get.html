@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		#confirm{
+			opacity: 0;
+			border : 1px solid gray;
+			border-radius: 5px;
+			padding: 3px;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#idConfirm').click(function(){
+				var id = $('#id').val();
+				$.get('idConfirm.do?id='+id, function(data, status){ // ajax 처리
+					$('span#confirm').html('*'+data).css('opacity', '1');
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<form action="" method="POST">
+		<p>
+			아이디 : <input type="text" name="id" id="id" />
+			<input type="button" id="idConfirm" value="중복확인" />
+		</p>
+		<span id="confirm"></span>
+		<p>패스워드 : <input type="password" name="pw" id="pw" /></p>
+		<p></p>
+	</form>
+</body>
+</html>

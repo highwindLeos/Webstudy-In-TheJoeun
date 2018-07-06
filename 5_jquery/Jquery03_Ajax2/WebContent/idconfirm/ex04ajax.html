@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<link rel="stylesheet" href="css/board.css" />
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+	/* ajax() 의 속성들
+	1. url요청경로
+	2. type : get/post
+	3. data : 요청경로로 들어가야할 데이터
+	4. dataType : 응답결과로 반환되는 데이터의 종류 'html'/ json 등등
+	5. success : 성공되었을때 처리할 콜백함수
+	6. error : 응답이 에러가 났을때 처리할 콜백함수
+	*/
+		$(document).ready(function(){
+			var i = 0;
+			$('#confirm').css('opacity', '0');
+			$('#id').keyup(function(){
+				$.ajax({
+					url : 'idConfirm.do',
+					type : 'get',
+					data : 'id='+$('#id').val(),
+					dataType : 'html',
+					success : function(data, status){
+						i++;
+						$('#confirm').html(data);
+						if(i > 1) {
+							$('#confirm').css('opacity', '1');
+						}
+					}
+				});
+			});
+		});
+				
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<form action="" method="POST">
+	<table>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+		<tr>
+			<td>아이디 :</td>
+			<td>
+				<input type="text" name="id" id="id" />
+				<input type="button" id="idConfirm" value="중복확인" /><br />
+				<span id="confirm"></span>
+			</td>
+		</tr>
+		<tr>
+			<td>패스워드 :</td>
+			<td><input type="password" name="pw" id="pw" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+	</table>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			/* $('#idConfirm').click(function(){
+				$.post('confirmid.jsp', { id : $('#id').val() }, 
+					function(data, status){
+						$('#confirm').html('*' + data);
+				});
+			}); */
+			$('#id').keyup(function(){
+				$.post('idConfirm.do', { id : $('#id').val()}, 
+					function(data, status){
+						$('#confirm').html('*' + data);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<form action="" method="POST">
+		<p>
+			아이디 : <input type="text" name="id" id="id" />
+			<input type="button" id="idConfirm" value="중복확인" />
+		</p>
+		<span id="confirm"></span>
+		<p>패스워드 : <input type="password" name="pw" id="pw" /></p>
+		<p></p>
+	</form>
+</body>
+</html>

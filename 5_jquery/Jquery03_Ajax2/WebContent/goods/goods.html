@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Goods</title>
+	<style>
+		span {
+			width : 250px;
+			color : red;
+		}
+	</style>
+	<link rel="stylesheet" href="../css/board.css" />
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		/* $('#stock').click(function(){
+			$.ajax({
+				url : '../comfirmStock.do',
+				type : 'post',
+				data : 'gname='+ $('#gname').val(),
+				datatype : 'html',
+				success : function(data , status){
+					$('#stockVal').html(data);
+				},
+				error : function(){
+					$('#stockVal').html('없는제품');	
+				}
+			});
+		}); */
+		$('#gname').keyup(function(){
+			var sandData = 'gname='+ $('#gname').val();
+			$.ajax({
+				url : '../getStock.do',
+				type : 'post',
+				data : sandData,
+				dataType : 'html',
+				success : function(data , status){
+					$('#stockVal').html(data);
+				},
+				error : function(){
+					$('#stockVal').html('없는제품');	
+				}
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<table>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+		<tr>
+			<td>물건명</td>
+			<td><input type="text" id="gname" name="gname" />&nbsp;&nbsp;&nbsp;<span id="stockVal"></span></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="button" id="stock" value="재고량 확인" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>
