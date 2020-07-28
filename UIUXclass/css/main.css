@@ -94,6 +94,7 @@ ul li{
     height: 40px;
     line-height: 40px;
     color: white;
+    color: rgba(110, 110, 110, 0.3);
     background: rgba(255,255,255, .1);
     text-align: center; 
     font-size: 12px;

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Android03_tableLayout</string>
+    <string name="hint1">숫자 1 입력</string>
+    <string name="hint2">숫자 2 입력</string>
+</resources>

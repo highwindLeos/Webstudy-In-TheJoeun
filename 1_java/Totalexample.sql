@@ -1,0 +1,12 @@
+-- Á¾ÇÕ ¿¹Á¦ 1
+
+select * from goods; 
+
+SELECT * FROM GOODS WHERE GNAME = '¶¥Äá';
+
+update goods set gstock = 20 where gname = '±âÀú±Í';
+
+commit;
+
+-- Á¾ÇÕ¿¹Á¦ 2
+SELECT * FROM EMP WHERE ENAME LIKE '%'||'A'||'%' AND JOB LIKE '%'||'MA'||'%';

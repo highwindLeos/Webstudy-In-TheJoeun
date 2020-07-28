@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 불러올 Dto별명 -->
+<mapper namespace="Is_Mater">
+	<resultMap type="Is_Mater" id="Is_MaterResult">
+		<result property="user_No" column="user_No" />
+		<result property="kor_Name" column="kor_Name" />
+		<result property="eng_Name" column="eng_Name" />
+		<result property="han_Name" column="han_Name" />
+		<result property="jumin_No" column="jumin_No" />
+		<result property="sajin_Nm" column="sajin_Nm" />
+		<result property="birth_Ymd" column="birth_Ymd" />
+		<result property="birth_Rn" column="birth_Rn" />
+		<result property="sex" column="sex" />
+		<result property="marry_Yn" column="marry_Yn" />
+		<result property="work_Year" column="work_Year" />
+		<result property="join_St" column="join_St" />
+		<result property="hope_Work" column="hope_Work" />
+		<result property="addr" column="addr" />
+		<result property="tel" column="tel" />
+		<result property="email" column="email" />
+		<result property="tech_Grd" column="tech_Grd" />
+		<result property="alc_Qt" column="alc_Qt" />
+		
+		<result property="startRow" column="startRow" />
+		<result property="endRow" column="endRow" />
+	</resultMap>
+	
+	<!-- 사원 리스트 총 갯수 구하기 -->
+	<select id="cntIs_Marter" resultType="int">
+		SELECT COUNT(*) FROM IS_MATER
+	</select>
+	
+	<!-- 사원 정보 가져오기 페이징 List-->
+	<select id="is_Materlist" parameterType="Is_Mater" resultMap="Is_MaterResult">
+		<!-- SELECT * FROM CUSTOMER WHERE cusId=#{cusId} AND cusPw=#{cusPw} -->
+		SELECT * FROM
+			(SELECT ROWNUM RN, A.* FROM (SELECT * FROM is_mater ORDER BY USER_NO DESC) A)
+		   		 WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 사원 정보 가져오기 : 한행 -->
+	<select id="is_MaterOneRow" parameterType="Is_Mater" resultMap="Is_MaterResult">
+		SELECT * FROM IS_MATER WHERE USER_NO = #{user_No}
+	</select>
+	
+	<!-- 사원 정보 입력 -->
+	<insert id="writeMater" parameterType="Is_Mater">
+		INSERT INTO IS_MATER (USER_NO, KOR_NAME, ENG_NAME, HAN_NAME, JUMIN_NO, SAJIN_NM, BIRTH_YMD, BIRTH_RN, SEX, MARRY_YN, WORK_YEAR, JOIN_ST, HOPE_WORK, ADDR, TEL, EMAIL, TECH_GRD, ALC_QT)
+	     VALUES (SEQ_IS_MATER.NEXTVAL, #{kor_Name}, #{eng_Name}, #{han_Name}, #{jumin_No}, #{sajin_Nm}, #{birth_Ymd}, #{birth_Rn}, #{sex}, #{marry_Yn}, #{work_Year}, #{join_St}, #{hope_Work}, #{addr}, #{tel}, #{email}, #{tech_Grd}, #{alc_Qt})
+	</insert>
+	
+	<!-- 사원 정보 수정  -->
+	<update id="modifyMater" parameterType="Is_Mater">
+		UPDATE IS_MATER SET 
+			       KOR_NAME =  #{kor_Name},     
+			       ENG_NAME  = #{eng_Name},    
+			       HAN_NAME  = #{han_Name},     
+			       JUMIN_NO  = #{jumin_No},   
+			       SAJIN_NM  = #{sajin_Nm},    
+			       BIRTH_YMD = #{birth_Ymd},      
+			       BIRTH_RN =  #{birth_Rn},      
+			       SEX =  #{sex},      
+			       MARRY_YN =  #{marry_Yn},    
+			       WORK_YEAR =  #{work_Year},      
+			       JOIN_ST =  #{join_St},      
+			       HOPE_WORK =  #{hope_Work},  
+			       ADDR =  #{addr},     
+			       TEL =  #{tel},
+			       EMAIL =  #{email},
+			       TECH_GRD =  #{tech_Grd},
+			       ALC_QT = #{alc_Qt}
+		WHERE USER_NO = #{user_No}
+	</update>
+</mapper>
+    
+    
